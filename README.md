@@ -5,6 +5,10 @@
 本项目将持续跟进 [Lagrange.Core](https://github.com/LagrangeDev/Lagrange.Core) 项目进度。由于 [Lagrange.Core](https://github.com/LagrangeDev/Lagrange.Core) 项目仍在开发当中，可能有部分功能暂未支持。  
 如果对该项目有任何问题，欢迎在 [Issues](https://github.com/XeronOwO/Makabaka/issues) 中提出。  
 
+## 安装
+Makabaka 已发布到 [Nuget](https://www.nuget.org/packages/Makabaka "前往NuGet") ，可以通过NuGet包管理器搜索并安装到工程。  
+或者，可以直接去 [Releases](https://github.com/XeronOwO/Makabaka/releases) 中下载 .nupkg 文件。 
+
 ## 已适配内容
 <Details>
 <Summary>消息类型</Summary>

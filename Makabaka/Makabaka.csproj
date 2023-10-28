@@ -3,7 +3,26 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
 		<LangVersion>10.0</LangVersion>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<Title>Makabaka</Title>
+		<Description>基于 OneBot-11标准 的、适配于 Lagrange.Onebot 的、C# .NET Standard 2.0 的异步机器人开发框架。</Description>
+		<PackageProjectUrl>https://github.com/XeronOwO/Makabaka</PackageProjectUrl>
+		<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<RepositoryUrl>https://github.com/XeronOwO/Makabaka</RepositoryUrl>
+		<PackageTags>csharp,dotnet,lagrange,qqbot,onebot,onebot11</PackageTags>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\LICENSE.txt">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Fleck" Version="1.2.0" />
