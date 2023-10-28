@@ -3,7 +3,7 @@
 基于 [OneBot-11标准](https://github.com/botuniverse/onebot-11) 的、适配于 [Lagrange.Core](https://github.com/LagrangeDev/Lagrange.Core#lagrangeonebot) 的、C# .NET Standard 2.0 的异步机器人开发框架。  
   
 本项目将持续跟进 [Lagrange.Core](https://github.com/LagrangeDev/Lagrange.Core#lagrangeonebot) 项目进度。由于 [Lagrange.Core](https://github.com/LagrangeDev/Lagrange.Core#lagrangeonebot) 项目仍在开发当中，可能有部分功能暂未支持。  
-如果对该项目有任何问题，欢迎在 [Issues](/issues) 中提出。  
+如果对该项目有任何问题，欢迎在 [Issues](https://github.com/XeronOwO/Makabaka/issues) 中提出。  
 
 ## 已适配内容
 <Details>
@@ -268,4 +268,4 @@ namespace Test
 ```
 
 ## 开源协议
-[GPL-3.0 license](/blob/main/LICENSE)
+[GPL-3.0 license](https://github.com/XeronOwO/Makabaka/blob/main/LICENSE.txt)
