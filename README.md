@@ -203,13 +203,12 @@
 ## 代码示例
 ```csharp
 using Makabaka.Models.API.Responses;
-using Makabaka.Models.EventArgs;
 using Makabaka.Models.EventArgs.Messages;
 using Makabaka.Models.EventArgs.Meta;
 using Makabaka.Models.Messages;
 using Makabaka.Services;
-using Newtonsoft.Json;
 using Serilog;
+using XeronBot.Configurations;
 
 namespace Test
 {
@@ -226,7 +225,7 @@ namespace Test
 
             _service = ServiceFactory.CreateForwardWebSocketService(new() // 创建正向WebSocket服务
             {
-                AccessToken = "114514", // 协议中的access_token，用于鉴权
+                AccessToken = "114514", // 适配器的access_token，用于认证
                 Host = "127.0.0.1", // 服务器地址
                 Port = "8080", // 服务器端口
             });
