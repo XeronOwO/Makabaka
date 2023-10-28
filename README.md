@@ -263,7 +263,7 @@ namespace Test
 
         private static async void OnLifeCycle(object? sender, LifeCycleEventArgs e)
         {
-            LoginInfo info = await e.Session.GetLoginInfo(); // 获取登录信息
+            LoginInfo info = await e.Session.GetLoginInfoAsync(); // 获取登录信息
             Log.Information($"当前登录账号：[{info.UserId}]{info.Nickname}");
         }
     }
