@@ -42,6 +42,11 @@ namespace Makabaka.Models.Messages
 			}
 		}
 
+		/// <summary>
+		/// 转换为字符串<br/>
+		/// 注：如果非文本信息，会转化为CQ Code
+		/// </summary>
+		/// <returns>字符串</returns>
 		public override string ToString()
 		{
 			return string.Empty;
