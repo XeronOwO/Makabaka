@@ -89,7 +89,7 @@ namespace Makabaka.Network
 		/// <param name="userId">要设置管理员的 QQ 号</param>
 		/// <param name="enable">true 为设置，false 为取消</param>
 		/// <returns>纯Json信息响应</returns>
-		Task<APIResponse<EmptyInfo>> SetGroupAdmin(long groupId, long userId, bool enable = true);
+		Task<APIResponse<EmptyInfo>> SetGroupAdminAsync(long groupId, long userId, bool enable = true);
 
 		/// <summary>
 		/// 设置群名片（群备注）
@@ -98,7 +98,7 @@ namespace Makabaka.Network
 		/// <param name="userId">要设置的 QQ 号</param>
 		/// <param name="card">群名片内容，不填或空字符串表示删除群名片</param>
 		/// <returns>纯Json信息响应</returns>
-		Task<APIResponse<EmptyInfo>> SetGroupCard(long groupId, long userId, string card);
+		Task<APIResponse<EmptyInfo>> SetGroupCardAsync(long groupId, long userId, string card);
 
 		/// <summary>
 		/// 设置群名
@@ -106,7 +106,7 @@ namespace Makabaka.Network
 		/// <param name="groupId">群号</param>
 		/// <param name="groupName">新群名</param>
 		/// <returns>纯Json信息响应</returns>
-		Task<APIResponse<EmptyInfo>> SetGroupName(long groupId, string groupName);
+		Task<APIResponse<EmptyInfo>> SetGroupNameAsync(long groupId, string groupName);
 
 		/// <summary>
 		/// 退出群组
@@ -114,13 +114,13 @@ namespace Makabaka.Network
 		/// <param name="groupId">群号</param>
 		/// <param name="isDismiss">是否解散，如果登录号是群主，则仅在此项为 true 时能够解散</param>
 		/// <returns>纯Json信息响应</returns>
-		Task<APIResponse<EmptyInfo>> LeaveGroup(long groupId, bool isDismiss);
+		Task<APIResponse<EmptyInfo>> LeaveGroupAsync(long groupId, bool isDismiss);
 
 		/// <summary>
 		/// 获取登录号信息
 		/// </summary>
 		/// <returns>登录信息响应</returns>
-		Task<APIResponse<LoginInfo>> GetLoginInfo();
+		Task<APIResponse<LoginInfo>> GetLoginInfoAsync();
 
 		/// <summary>
 		/// 获取群信息
@@ -128,13 +128,13 @@ namespace Makabaka.Network
 		/// <param name="groupId">群号</param>
 		/// <param name="noCache">是否不使用缓存（使用缓存可能更新不及时，但响应更快）</param>
 		/// <returns>群信息响应</returns>
-		Task<APIResponse<GroupInfo>> GetGroupInfo(long groupId, bool noCache);
+		Task<APIResponse<GroupInfo>> GetGroupInfoAsync(long groupId, bool noCache);
 
 		/// <summary>
 		/// 获取群列表
 		/// </summary>
 		/// <returns>群列表信息响应</returns>
-		Task<APIResponse<GroupListInfo>> GetGroupList();
+		Task<APIResponse<GroupListInfo>> GetGroupListAsync();
 
 		#endregion
 	}

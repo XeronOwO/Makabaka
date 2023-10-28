@@ -1,8 +1,6 @@
 ﻿using Makabaka.Configurations;
-using Makabaka.Exceptions;
 using Makabaka.Models.API.Requests;
 using Makabaka.Models.API.Responses;
-using Makabaka.Models.EventArgs.Meta;
 using Makabaka.Models.Messages;
 using Makabaka.Services;
 using Makabaka.Utils;
@@ -20,7 +18,7 @@ using System.Threading.Tasks;
 
 namespace Makabaka.Network
 {
-    internal class ForwardWebSocket : ISession, IDisposable
+	internal class ForwardWebSocket : ISession, IDisposable
 	{
 		#region 构造函数与参数
 
@@ -374,7 +372,7 @@ namespace Makabaka.Network
 			}, Guid.NewGuid().ToString());
 		}
 
-		public async Task<APIResponse<EmptyInfo>> SetGroupAdmin(long groupId, long userId, bool enable = true)
+		public async Task<APIResponse<EmptyInfo>> SetGroupAdminAsync(long groupId, long userId, bool enable = true)
 		{
 			return await ExecuteAPIAsync<EmptyInfo, SetGroupAdminInfo>("set_group_admin", new()
 			{
@@ -384,7 +382,7 @@ namespace Makabaka.Network
 			}, Guid.NewGuid().ToString());
 		}
 
-		public async Task<APIResponse<EmptyInfo>> SetGroupCard(long groupId, long userId, string card)
+		public async Task<APIResponse<EmptyInfo>> SetGroupCardAsync(long groupId, long userId, string card)
 		{
 			return await ExecuteAPIAsync<EmptyInfo, SetGroupCardInfo>("set_group_card", new()
 			{
@@ -394,7 +392,7 @@ namespace Makabaka.Network
 			}, Guid.NewGuid().ToString());
 		}
 
-		public async Task<APIResponse<EmptyInfo>> SetGroupName(long groupId, string groupName)
+		public async Task<APIResponse<EmptyInfo>> SetGroupNameAsync(long groupId, string groupName)
 		{
 			return await ExecuteAPIAsync<EmptyInfo, SetGroupNameInfo>("set_group_name", new()
 			{
@@ -403,7 +401,7 @@ namespace Makabaka.Network
 			}, Guid.NewGuid().ToString());
 		}
 
-		public async Task<APIResponse<EmptyInfo>> LeaveGroup(long groupId, bool isDismiss)
+		public async Task<APIResponse<EmptyInfo>> LeaveGroupAsync(long groupId, bool isDismiss)
 		{
 			return await ExecuteAPIAsync<EmptyInfo, SetGroupLeaveInfo>("set_group_leave", new()
 			{
@@ -412,12 +410,12 @@ namespace Makabaka.Network
 			}, Guid.NewGuid().ToString());
 		}
 
-		public async Task<APIResponse<LoginInfo>> GetLoginInfo()
+		public async Task<APIResponse<LoginInfo>> GetLoginInfoAsync()
 		{
 			return await ExecuteAPIAsync<LoginInfo>("get_login_info", Guid.NewGuid().ToString());
 		}
 
-		public async Task<APIResponse<GroupInfo>> GetGroupInfo(long groupId, bool noCache)
+		public async Task<APIResponse<GroupInfo>> GetGroupInfoAsync(long groupId, bool noCache)
 		{
 			return await ExecuteAPIAsync<GroupInfo, GetGroupInfoInfo>("get_group_info", new()
 			{
@@ -426,7 +424,7 @@ namespace Makabaka.Network
 			}, Guid.NewGuid().ToString());
 		}
 
-		public async Task<APIResponse<GroupListInfo>> GetGroupList()
+		public async Task<APIResponse<GroupListInfo>> GetGroupListAsync()
 		{
 			return await ExecuteAPIAsync<GroupListInfo>("get_group_list", Guid.NewGuid().ToString());
 		}

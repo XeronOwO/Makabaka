@@ -2,10 +2,8 @@
 using Makabaka.Services;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
-using Serilog;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using Makabaka.Network;
 using Makabaka.Models.EventArgs.Messages;
 
