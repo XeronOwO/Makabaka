@@ -216,7 +216,6 @@ using Makabaka.Models.EventArgs.Meta;
 using Makabaka.Models.Messages;
 using Makabaka.Services;
 using Serilog;
-using XeronBot.Configurations;
 
 namespace Test
 {
