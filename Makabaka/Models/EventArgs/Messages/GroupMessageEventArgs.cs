@@ -17,49 +17,49 @@ namespace Makabaka.Models.EventArgs.Messages
 		/// 消息 ID
 		/// </summary>
 		[JsonProperty("message_id")]
-		public int MessageId { get; set; }
+		public int MessageId { get; internal set; }
 
 		/// <summary>
 		/// 群号
 		/// </summary>
 		[JsonProperty("group_id")]
-		public long GroupId { get; set; }
+		public long GroupId { get; internal set; }
 
 		/// <summary>
 		/// 发送者 QQ 号
 		/// </summary>
 		[JsonProperty("user_id")]
-		public long UserId { get; set; }
+		public long UserId { get; internal set; }
 
 		/// <summary>
 		/// 匿名信息，如果不是匿名消息则为 null
 		/// </summary>
 		[JsonProperty("anonymous")]
-		public GroupAnonymousSender Anonymous { get; set; }
+		public GroupAnonymousSender Anonymous { get; internal set; }
 
 		/// <summary>
 		/// 消息内容
 		/// </summary>
 		[JsonProperty("message")]
-		public Message Message { get; set; }
+		public Message Message { get; internal set; }
 
 		/// <summary>
 		/// 原始消息内容
 		/// </summary>
 		[JsonProperty("raw_message")]
-		public string RawMessage { get; set; }
+		public string RawMessage { get; internal set; }
 
 		/// <summary>
 		/// 字体
 		/// </summary>
 		[JsonProperty("font")]
-		public int Font { get; set; }
+		public int Font { get; internal set; }
 
 		/// <summary>
 		/// 发送人信息
 		/// </summary>
 		[JsonProperty("sender")]
-		public GroupSender Sender { get; set; }
+		public GroupSender Sender { get; internal set; }
 
 		public void PostProcessMessage()
 		{
