@@ -195,7 +195,7 @@ Makabaka 已发布到 [NuGet](https://www.nuget.org/packages/Makabaka "前往NuG
 | [Http]             |    🔴    |
 | [Http-Post]        |    🔴    |
 | [ForwardWebSocket] |    🟢    |
-| [ReverseWebSocket] |    🔴    |
+| [ReverseWebSocket] |    🟢    |
 
 [Http]: https://github.com/botuniverse/onebot-11/blob/master/communication/http.md
 [Http-Post]: https://github.com/botuniverse/onebot-11/blob/master/communication/http-post.md
