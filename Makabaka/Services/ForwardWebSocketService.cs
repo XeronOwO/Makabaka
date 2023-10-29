@@ -4,6 +4,7 @@ using Makabaka.Models.EventArgs.Meta;
 using Makabaka.Network;
 using Serilog;
 using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -47,17 +48,19 @@ namespace Makabaka.Services
 
 		private ForwardWebSocket _ws;
 
-		public ISession Session => _ws;
+		public List<ISession> Sessions { get; private set; } = new();
 
-		public async Task LoopAsync()
+		private async Task LoopAsync()
 		{
 			try
 			{
 				while (_config.AutoReconnect)
 				{
 					_ws = new ForwardWebSocket(this, _config);
+					Sessions.Add(_ws);
 					await _ws.StartAndWaitAsync(_cts.Token);
 
+					Sessions.Remove(_ws);
 					_ws.Dispose();
 					_ws = null;
 

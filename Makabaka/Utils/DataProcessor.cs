@@ -18,12 +18,12 @@ namespace Makabaka.Utils
 
 		private readonly IService _service;
 
-		private readonly ISession _network;
+		private readonly ISession _session;
 
 		public DataProcessor(IService service, ISession network)
 		{
 			_service = service;
-			_network = network;
+			_session = network;
 
 			_postTypeMap = new()
 			{
@@ -99,14 +99,14 @@ namespace Makabaka.Utils
 		private void ProcessMetaLifeCycle(string data, JObject _)
 		{
 			var e = JsonConvert.DeserializeObject<LifeCycleEventArgs>(data);
-			e.Session = _network;
+			e.Session = _session;
 			_service.SendLifeCycleEvent(e);
 		}
 
 		private void ProcessHeartbeat(string data, JObject _)
 		{
 			var e = JsonConvert.DeserializeObject<HeartbeatEventArgs>(data);
-			e.Session = _network;
+			e.Session = _session;
 			_service.SendHeartbeatEvent(e);
 		}
 
@@ -133,7 +133,7 @@ namespace Makabaka.Utils
 		private void ProcessMessageGroup(string data, JObject _)
 		{
 			var e = JsonConvert.DeserializeObject<GroupMessageEventArgs>(data);
-			e.Session = _network;
+			e.Session = _session;
 			e.PostProcessMessage();
 			_service.SendGroupMessageEvent(e);
 		}
@@ -153,7 +153,7 @@ namespace Makabaka.Utils
 			var retcode = (int)jretcode;
 			var echo = (string)json["echo"] ?? throw new Exception("echo为null");
 
-			_network.OnAPIResponse(data, json, retcode, echo);
+			_session.OnAPIResponse(data, json, retcode, echo);
 		}
 
 		#endregion

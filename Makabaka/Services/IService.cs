@@ -40,13 +40,13 @@ namespace Makabaka.Services
 		#region 属性
 
 		/// <summary>
-		/// 获取当前有效的会话。如果没有，返回null
+		/// 获取服务中所有有效的会话
 		/// </summary>
-		ISession Session { get; }
+		List<ISession> Sessions { get; }
 
 		#endregion
 
-		#region 事件
+		#region 元事件
 
 		/// <summary>
 		/// <a href="https://github.com/botuniverse/onebot-11/blob/master/event/meta.md#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F">生命周期</a>事件

@@ -18,6 +18,11 @@ namespace Makabaka.Network
 		/// </summary>
 		internal void OnAPIResponse(string data, JObject json, int retcode, string echo);
 
+		/// <summary>
+		/// 会话的唯一标识符
+		/// </summary>
+		Guid Guid { get; }
+
 		#region API
 
 		/// <summary>

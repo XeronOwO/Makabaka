@@ -11,9 +11,9 @@
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<RepositoryUrl>https://github.com/XeronOwO/Makabaka</RepositoryUrl>
 		<PackageTags>csharp,dotnet,lagrange,qqbot,onebot,onebot11</PackageTags>
-		<AssemblyVersion>1.0.0.1</AssemblyVersion>
-		<FileVersion>1.0.0.1</FileVersion>
-		<Version>1.0.0.1</Version>
+		<AssemblyVersion>1.0.0.2</AssemblyVersion>
+		<FileVersion>1.0.0.2</FileVersion>
+		<Version>1.0.0.2</Version>
   </PropertyGroup>
 
   <ItemGroup>
@@ -28,9 +28,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Fleck" Version="1.2.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="Serilog" Version="3.1.0-dev-02086" />
+    <PackageReference Include="WatsonWebsocket" Version="4.0.11" />
   </ItemGroup>
 
 </Project>
