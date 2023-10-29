@@ -17,7 +17,7 @@ namespace Makabaka.Configurations
 
 		/// <summary>
 		/// Universal客户端路径<br/>
-		/// 默认值：/ws
+		/// 默认值：/ws/
 		/// </summary>
 		public string UniversalPath { get; set; } = "/ws/";
 	}
