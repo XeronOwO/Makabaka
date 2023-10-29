@@ -206,7 +206,6 @@ Makabaka 已发布到 [NuGet](https://www.nuget.org/packages/Makabaka "前往NuG
 
 ## 画饼~~充饥~~
 - [ ] 添加Http-Post支持
-- [ ] 添加ReverseWebSocket支持
 
 ## 代码示例
 ```csharp
