@@ -52,6 +52,10 @@ namespace Makabaka.Models.Messages
 			return string.Empty;
 		}
 
+		/// <summary>
+		/// 隐式转换为消息
+		/// </summary>
+		/// <param name="segment">消息</param>
 		public static implicit operator Message(Segment segment)
 		{
 			return new Message()
@@ -60,6 +64,11 @@ namespace Makabaka.Models.Messages
 			};
 		}
 
+		/// <summary>
+		/// 隐式转换为字符串<br/>
+		/// 注：如果非文本信息，会转化为CQ Code
+		/// </summary>
+		/// <param name="segment">字符串</param>
 		public static implicit operator string(Segment segment)
 		{
 			return segment.ToString();

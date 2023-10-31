@@ -6,6 +6,9 @@ using System.Text;
 
 namespace Makabaka.Models.EventArgs
 {
+	/// <summary>
+	/// 常见事件参数
+	/// </summary>
 	public class CommonEventArgs : TypeEventArgs
 	{
 		/// <summary>

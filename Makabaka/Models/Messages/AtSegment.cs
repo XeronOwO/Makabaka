@@ -45,6 +45,7 @@ namespace Makabaka.Models.Messages
 			_qq = qq;
 		}
 
+		/// <inheritdoc/>
 		public override string ToString()
 		{
 			return $"[CQ:at,qq={_qq}]";

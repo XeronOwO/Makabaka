@@ -55,6 +55,11 @@ namespace Makabaka.Models.API.Responses
 			}
 		}
 
+		/// <summary>
+		/// 创建一个失败的响应
+		/// </summary>
+		/// <typeparam name="T"></typeparam>
+		/// <returns></returns>
 		public static APIResponse<T> GetFailedResponse<T>()
 		{
 			return new APIResponse<T>()

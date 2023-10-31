@@ -46,6 +46,7 @@ namespace Makabaka.Models.Messages
 			_id = id;
 		}
 
+		/// <inheritdoc/>
 		public override string ToString()
 		{
 			return $"[CQ:face,id={_id}]";

@@ -202,6 +202,7 @@ namespace Makabaka.Models.Messages
 			_timeout = timeout;
 		}
 
+		/// <inheritdoc/>
 		public override string ToString()
 		{
 			return $"[CQ:image,file={_file}]";

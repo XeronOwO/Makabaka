@@ -70,6 +70,9 @@ namespace Makabaka.Services
 
 		internal void SendGroupMessageEvent(GroupMessageEventArgs e);
 
+		/// <summary>
+		/// <a href="https://github.com/botuniverse/onebot-11/blob/master/event/request.md#%E5%8A%A0%E5%A5%BD%E5%8F%8B%E8%AF%B7%E6%B1%82">加好友请求</a>事件
+		/// </summary>
 		event EventHandler<AddFriendRequestEventArgs> OnAddFriendRequest;
 
 		internal void SendAddFriendRequestEvent(AddFriendRequestEventArgs e);

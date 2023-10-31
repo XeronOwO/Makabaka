@@ -61,7 +61,7 @@ namespace Makabaka.Models.EventArgs.Messages
 		[JsonProperty("sender")]
 		public GroupSender Sender { get; internal set; }
 
-		public void PostProcessMessage()
+		internal void PostProcessMessage()
 		{
 			for (int i = 0; i < Message.Count; i++)
 			{

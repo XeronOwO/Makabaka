@@ -9,7 +9,7 @@ namespace Makabaka.Exceptions
 	/// </summary>
 	public class APIResponseException : Exception
 	{
-		public APIResponseException(string status, int retcode, string echo) : base($"[{echo}]API响应异常：[{retcode}]{status}")
+		internal APIResponseException(string status, int retcode, string echo) : base($"[{echo}]API响应异常：[{retcode}]{status}")
 		{
 
 		}

@@ -189,7 +189,7 @@ namespace Makabaka.Network
 				if (!promise.Success)
 				{
 					Log.Warning($"[{_guid}]指定Echo的API请求超时：[{echo}]");
-					return APIResponse.GetFailedResponse<TResult>(); ;
+					return APIResponse.GetFailedResponse<TResult>();
 				}
 
 				// 执行API成功
@@ -265,7 +265,7 @@ namespace Makabaka.Network
 				if (!promise.Success)
 				{
 					Log.Warning($"[{_guid}]指定Echo的API请求超时：[{echo}]");
-					return APIResponse.GetFailedResponse<TResult>(); ;
+					return APIResponse.GetFailedResponse<TResult>();
 				}
 
 				// 执行API成功

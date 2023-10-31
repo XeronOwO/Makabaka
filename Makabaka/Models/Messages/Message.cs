@@ -9,6 +9,11 @@ namespace Makabaka.Models.Messages
 	/// </summary>
 	public class Message : List<Segment>
 	{
+		/// <summary>
+		/// 转换为字符串<br/>
+		/// 注：如果非文本信息，会转化为CQ Code
+		/// </summary>
+		/// <returns>字符串</returns>
 		public override string ToString()
 		{
 			var sb = new StringBuilder();
@@ -19,6 +24,11 @@ namespace Makabaka.Models.Messages
 			return sb.ToString();
 		}
 
+		/// <summary>
+		/// 隐式转换为字符串<br/>
+		/// 注：如果非文本信息，会转化为CQ Code
+		/// </summary>
+		/// <param name="segment">字符串</param>
 		public static implicit operator string(Message segment)
 		{
 			return segment.ToString();

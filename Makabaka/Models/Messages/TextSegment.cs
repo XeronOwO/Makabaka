@@ -44,6 +44,7 @@ namespace Makabaka.Models.Messages
 			_text = text;
 		}
 
+		/// <inheritdoc/>
 		public override string ToString()
 		{
 			return _text;
