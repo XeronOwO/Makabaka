@@ -2,6 +2,7 @@
 using Makabaka.Models.EventArgs;
 using Makabaka.Models.EventArgs.Messages;
 using Makabaka.Models.EventArgs.Meta;
+using Makabaka.Models.EventArgs.Requests;
 using Makabaka.Network;
 using System;
 using System.Collections.Generic;
@@ -68,6 +69,10 @@ namespace Makabaka.Services
 		event EventHandler<GroupMessageEventArgs> OnGroupMessage;
 
 		internal void SendGroupMessageEvent(GroupMessageEventArgs e);
+
+		event EventHandler<AddFriendRequestEventArgs> OnAddFriendRequest;
+
+		internal void SendAddFriendRequestEvent(AddFriendRequestEventArgs e);
 
 		#endregion
 	}

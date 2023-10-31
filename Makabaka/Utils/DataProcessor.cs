@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using Makabaka.Network;
 using Makabaka.Models.EventArgs.Messages;
+using Makabaka.Models.EventArgs.Requests;
 
 namespace Makabaka.Utils
 {
@@ -29,6 +30,7 @@ namespace Makabaka.Utils
 			{
 				{ "meta_event", ProcessMeta },
 				{ "message", ProcessMessage },
+				{ "request", ProcessRequest },
 			};
 			_metaEventTypeMap = new()
 			{
@@ -38,6 +40,10 @@ namespace Makabaka.Utils
 			_messageTypeMap = new()
 			{
 				{ "group", ProcessMessageGroup },
+			};
+			_requestTypeMap = new()
+			{
+				{ "friend", ProcessRequestAddFriend },
 			};
 		}
 
@@ -136,6 +142,33 @@ namespace Makabaka.Utils
 			e.Session = _session;
 			e.PostProcessMessage();
 			_service.SendGroupMessageEvent(e);
+		}
+
+		#endregion
+
+		#region 请求事件
+
+		private readonly Dictionary<string, ProcessDelegate> _requestTypeMap;
+
+		private void ProcessRequest(string data, JObject json)
+		{
+			var request_type = (string)json["request_type"] ?? throw new Exception("request_type为null");
+
+			if (_requestTypeMap.TryGetValue(request_type, out var method))
+			{
+				method.Invoke(data, json);
+			}
+			else
+			{
+				throw new Exception($"不支持的request_type：{request_type}");
+			}
+		}
+
+		private void ProcessRequestAddFriend(string data, JObject _)
+		{
+			var e = JsonConvert.DeserializeObject<AddFriendRequestEventArgs>(data);
+			e.Session = _session;
+			_service.SendAddFriendRequestEvent(e);
 		}
 
 		#endregion

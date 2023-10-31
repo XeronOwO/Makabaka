@@ -1,6 +1,7 @@
 ﻿using Makabaka.Configurations;
 using Makabaka.Models.EventArgs.Messages;
 using Makabaka.Models.EventArgs.Meta;
+using Makabaka.Models.EventArgs.Requests;
 using Makabaka.Network;
 using Serilog;
 using System;
@@ -122,6 +123,13 @@ namespace Makabaka.Services
 		void IService.SendGroupMessageEvent(GroupMessageEventArgs e)
 		{
 			OnGroupMessage?.Invoke(this, e);
+		}
+
+		public event EventHandler<AddFriendRequestEventArgs> OnAddFriendRequest;
+
+		void IService.SendAddFriendRequestEvent(AddFriendRequestEventArgs e)
+		{
+			OnAddFriendRequest?.Invoke(this, e);
 		}
 
 		#endregion
