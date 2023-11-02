@@ -17,7 +17,7 @@ using WatsonWebsocket;
 
 namespace Makabaka.Services
 {
-	internal class ReverseWebSocketService : IService
+	internal class ReverseWebSocketService : IService, IDisposable
 	{
 		#region 基本信息与构造函数
 
@@ -149,6 +149,8 @@ namespace Makabaka.Services
 			_ws.Stop();
 			await _ws;
 			Log.Information($"[{_guid}]已停止反向WebSocket服务");
+
+			_running = false;
 		}
 
 		#endregion
@@ -181,6 +183,42 @@ namespace Makabaka.Services
 		void IService.SendAddFriendRequestEvent(AddFriendRequestEventArgs e)
 		{
 			OnAddFriendRequest?.Invoke(this, e);
+		}
+
+		#endregion
+
+		#region 释放
+
+		private bool disposedValue;
+
+		protected virtual void Dispose(bool disposing)
+		{
+			if (!disposedValue)
+			{
+				if (disposing)
+				{
+					// TODO: 释放托管状态(托管对象)
+					_ws.Dispose();
+				}
+
+				// TODO: 释放未托管的资源(未托管的对象)并重写终结器
+				// TODO: 将大型字段设置为 null
+				disposedValue = true;
+			}
+		}
+
+		// // TODO: 仅当“Dispose(bool disposing)”拥有用于释放未托管资源的代码时才替代终结器
+		// ~ReverseWebSocketService()
+		// {
+		//     // 不要更改此代码。请将清理代码放入“Dispose(bool disposing)”方法中
+		//     Dispose(disposing: false);
+		// }
+
+		public void Dispose()
+		{
+			// 不要更改此代码。请将清理代码放入“Dispose(bool disposing)”方法中
+			Dispose(disposing: true);
+			GC.SuppressFinalize(this);
 		}
 
 		#endregion

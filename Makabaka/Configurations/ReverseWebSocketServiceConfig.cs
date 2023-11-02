@@ -16,7 +16,7 @@ namespace Makabaka.Configurations
 		public int APITimeout { get; set; } = 5000;
 
 		/// <summary>
-		/// Universal客户端路径<br/>
+		/// Universal路径<br/>
 		/// 默认值：/ws/
 		/// </summary>
 		public string UniversalPath { get; set; } = "/ws/";
