@@ -211,7 +211,9 @@ Makabaka 已发布到 [NuGet](https://www.nuget.org/packages/Makabaka "前往NuG
 - [x] 添加正向WebSocket支持
 
 ## 代码示例
-### 正向/反向WebSocket
+<Details>
+<Summary>正向/反向WebSocket</Summary>
+
 ```csharp
 using Makabaka.Models.API.Responses;
 using Makabaka.Models.EventArgs.Messages;
@@ -272,7 +274,12 @@ namespace Test
     }
 }
 ```
-### HttpPost（目前Lagrange.Core暂未支持，不推荐使用）
+
+</Details>
+
+<Details>
+<Summary>HttpPost（目前Lagrange.Core暂未支持，不推荐使用）</Summary>
+
 ```csharp
 using Makabaka.Models.EventArgs.Messages;
 using Makabaka.Models.FastActions;
@@ -338,6 +345,8 @@ namespace XeronBot
     }
 }
 ```
+
+</Details>
 
 ## 开源协议
 [GPL-3.0 license](https://github.com/XeronOwO/Makabaka/blob/main/LICENSE.txt)
