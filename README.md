@@ -193,7 +193,7 @@ Makabaka 已发布到 [NuGet](https://www.nuget.org/packages/Makabaka "前往NuG
 | 适配器类型          | 是否支持 |
 | ------------------ | :-----: |
 | [Http]             |    🔴    |
-| [Http-Post]        |    🔴    |
+| [Http-Post]        |    🟢    |
 | [ForwardWebSocket] |    🟢    |
 | [ReverseWebSocket] |    🟢    |
 
@@ -208,6 +208,7 @@ Makabaka 已发布到 [NuGet](https://www.nuget.org/packages/Makabaka "前往NuG
 - [ ] 添加Http-Post支持
 
 ## 代码示例
+### 正向/反向WebSocket
 ```csharp
 using Makabaka.Models.API.Responses;
 using Makabaka.Models.EventArgs.Messages;
@@ -264,6 +265,72 @@ namespace Test
         {
             LoginInfo info = await e.Session.GetLoginInfoAsync(); // 获取登录信息
             Log.Information($"当前登录账号：[{info.UserId}]{info.Nickname}");
+        }
+    }
+}
+```
+### HttpPost（目前Lagrange.Core暂未支持，不推荐使用）
+```csharp
+using Makabaka.Models.EventArgs.Messages;
+using Makabaka.Models.FastActions;
+using Makabaka.Models.Messages;
+using Makabaka.Services;
+using Serilog;
+using XeronBot.Configurations;
+
+namespace XeronBot
+{
+    internal class Program
+    {
+        private static IPassiveService _service;
+
+        static async Task Main(string[] args)
+        {
+            Log.Logger = new LoggerConfiguration() // Serilog包
+                .MinimumLevel.Verbose() // 日志等级
+                .WriteTo.Console() // 日志输出
+                .CreateLogger(); // 配置日志
+
+            _service = ServiceFactory.CreateHttpPostService(new() // 创建正向WebSocket服务
+            {
+                AccessToken = "114514", // 适配器的secret，用于认证
+                Host = "127.0.0.1", // 服务器地址
+                Port = "8080", // 服务器端口
+            });
+
+            // 注册事件
+            _service.OnLifeCycle += OnLifeCycle; // 生命周期事件
+            _service.OnGroupMessage += OnGroupMessage; // 群消息事件
+
+            await _service.StartAsync(); // 启动服务
+            await _service.WaitAsync(); // 等待服务关闭
+
+            //await _service.StopAsync(); // 关闭服务，可以放在任何地方（放这里其实没用，前面在等待服务关闭）
+        }
+
+        private static async Task<IFastAction> OnGroupMessage(object? sender, GroupMessageEventArgs e)
+        {
+            if (e.Message == "测试") // 接收到“测试”
+            {
+                return new GroupMessageFastAction(message: new TextSegment("耶")); // 快速操作，回复“耶”
+            }
+
+            // 注意：由于 HttpPost 的特殊性， e.Session 永远为 null
+            // 也就是说，您将无法使用 e.Session 进行主动操作
+            // 故不推荐使用 HttpPost
+
+            await Task.CompletedTask; // 强制异步
+
+            return null; // 如果不需要快速操作，返回null
+        }
+
+        private static async Task<IFastAction> OnLifeCycle(object? sender, LifeCycleEventArgs e)
+        {
+            // TODO: ...
+
+            await Task.CompletedTask; // 强制异步
+
+            return null; // 如果不需要快速操作，返回null
         }
     }
 }

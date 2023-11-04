@@ -2,10 +2,16 @@
 using Makabaka.Models.EventArgs.Messages;
 using Makabaka.Models.EventArgs.Meta;
 using Makabaka.Models.EventArgs.Requests;
+using Makabaka.Models.FastActions;
+using Makabaka.Network;
+using Makabaka.Utils;
+using Newtonsoft.Json;
 using Serilog;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -13,7 +19,7 @@ using WatsonWebserver;
 
 namespace Makabaka.Services
 {
-	internal class HttpPostService : IService, IDisposable
+	internal class HttpPostService : IPassiveService, IDisposable
 	{
 		#region 基本信息与构造函数
 
@@ -27,6 +33,8 @@ namespace Makabaka.Services
 
 		private readonly CancellationTokenSource _cts;
 
+		private readonly PassiveDataProcessor _dataProcessor;
+
 		public HttpPostService(HttpPostServiceConfig config)
 		{
 			_config = config;
@@ -34,6 +42,7 @@ namespace Makabaka.Services
 			_server = new(config.Host, config.Port);
 			_guid = Guid.NewGuid();
 			_cts = new();
+			_dataProcessor = new(this);
 
 			Log.Information($"创建HttpPost服务：[{_guid}]");
 		}
@@ -54,7 +63,7 @@ namespace Makabaka.Services
 			}
 			_running = true;
 
-			Log.Information($"[{_guid}]启动反向WebSocket：{_uri}");
+			Log.Information($"[{_guid}]启动HttpPost：{_uri}");
 			_server.Routes.Static.Add(HttpMethod.POST, _config.UniversalPath, OnPost);
 			_serverTask = _server.StartAsync(_cts.Token);
 
@@ -63,7 +72,60 @@ namespace Makabaka.Services
 
 		public async Task OnPost(HttpContext ctx)
 		{
+			var needAuth = _config.AccessToken != null && _config.AccessToken.Length > 0;
+			var authSuccess = false;
 			var content = ctx.Request.DataAsString;
+
+			Log.Debug($"[{_guid}][{ctx.Request.Source.IpAddress}:{ctx.Request.Source.Port}]接收数据：{content}");
+
+			if (!needAuth)
+			{
+				authSuccess = true;
+			}
+			else
+			{
+				var signature = ctx.Request.Headers["X-Signature"];
+				var signature2 = ComputeSignature(content, _config.AccessToken);
+				if (signature == $"sha1={signature2}")
+				{
+					authSuccess = true;
+				}
+
+				Log.Verbose($"[{_guid}][{ctx.Request.Source.IpAddress}:{ctx.Request.Source.Port}]请求头的签名：{signature}，期望的签名：sha1={signature2}");
+			}
+
+			if (authSuccess)
+			{
+				var fastAction = await _dataProcessor.Process(content);
+				if (fastAction == null)
+				{
+					ctx.Response.StatusCode = (int)HttpStatusCode.NoContent;
+					await ctx.Response.Send();
+					Log.Debug($"[{_guid}][{ctx.Request.Source.IpAddress}:{ctx.Request.Source.Port}]发送数据：NoContent");
+				}
+				else
+				{
+					ctx.Response.ContentType = "application/json";
+					var data = JsonConvert.SerializeObject(fastAction);
+					await ctx.Response.Send(data);
+					Log.Debug($"[{_guid}][{ctx.Request.Source.IpAddress}:{ctx.Request.Source.Port}]发送数据：{data}");
+				}
+			}
+			else
+			{
+				Log.Error($"[{_guid}][{ctx.Request.Url}]签名异常");
+				ctx.Response.StatusCode = (int)HttpStatusCode.Forbidden;
+				await ctx.Response.Send();
+			}
+		}
+
+		private static string ComputeSignature(string body, string secret)
+		{
+			using var sha1 = SHA1.Create();
+			var key1 = sha1.ComputeHash(Encoding.UTF8.GetBytes(body));
+			var key2 = key1.Concat(Encoding.UTF8.GetBytes(secret)).ToArray();
+			var key3 = sha1.ComputeHash(key2);
+			return BitConverter.ToString(key3).Replace("-", string.Empty);
 		}
 
 		public async Task WaitAsync()
@@ -90,32 +152,32 @@ namespace Makabaka.Services
 
 		#region 事件
 
-		public event EventHandler<LifeCycleEventArgs> OnLifeCycle;
+		public event FastActionEventHandler<LifeCycleEventArgs> OnLifeCycle;
 
-		void IService.SendLifeCycleEvent(LifeCycleEventArgs e)
+		public async Task<IFastAction> SendLifeCycleEvent(LifeCycleEventArgs e)
 		{
-			OnLifeCycle?.Invoke(this, e);
+			return await OnLifeCycle?.Invoke(this, e);
 		}
 
-		public event EventHandler<HeartbeatEventArgs> OnHeartbeat;
+		public event FastActionEventHandler<HeartbeatEventArgs> OnHeartbeat;
 
-		void IService.SendHeartbeatEvent(HeartbeatEventArgs e)
+		public async Task<IFastAction> SendHeartbeatEvent(HeartbeatEventArgs e)
 		{
-			OnHeartbeat?.Invoke(this, e);
+			return await OnHeartbeat?.Invoke(this, e);
 		}
 
-		public event EventHandler<GroupMessageEventArgs> OnGroupMessage;
+		public event FastActionEventHandler<GroupMessageEventArgs> OnGroupMessage;
 
-		void IService.SendGroupMessageEvent(GroupMessageEventArgs e)
+		public async Task<IFastAction> SendGroupMessageEvent(GroupMessageEventArgs e)
 		{
-			OnGroupMessage?.Invoke(this, e);
+			return await OnGroupMessage?.Invoke(this, e);
 		}
 
-		public event EventHandler<AddFriendRequestEventArgs> OnAddFriendRequest;
+		public event FastActionEventHandler<AddFriendRequestEventArgs> OnAddFriendRequest;
 
-		void IService.SendAddFriendRequestEvent(AddFriendRequestEventArgs e)
+		public async Task<IFastAction> SendAddFriendRequestEvent(AddFriendRequestEventArgs e)
 		{
-			OnAddFriendRequest?.Invoke(this, e);
+			return await OnAddFriendRequest?.Invoke(this, e);
 		}
 
 		#endregion

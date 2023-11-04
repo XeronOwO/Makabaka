@@ -19,11 +19,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Network\HttpPost.cs" />
-    <Compile Remove="Services\HttpPostService.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Include="..\README.md">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
@@ -32,8 +27,6 @@
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
-    <None Include="Network\HttpPost.cs" />
-    <None Include="Services\HttpPostService.cs" />
   </ItemGroup>
 
   <ItemGroup>

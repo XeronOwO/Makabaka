@@ -33,5 +33,13 @@ namespace Makabaka.Models.Messages
 		{
 			return segment.ToString();
 		}
+
+		internal void PostProcessMessage()
+		{
+			for (int i = 0; i < Count; i++)
+			{
+				this[i] = this[i].PostProcessSegment();
+			}
+		}
 	}
 }

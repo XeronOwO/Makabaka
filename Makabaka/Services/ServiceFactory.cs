@@ -28,5 +28,15 @@ namespace Makabaka.Services
 		{
 			return new ReverseWebSocketService(config);
 		}
+
+		/// <summary>
+		/// 创建HttpPost服务
+		/// </summary>
+		/// <param name="config">配置信息</param>
+		/// <returns>被动服务接口</returns>
+		public static IPassiveService CreateHttpPostService(HttpPostServiceConfig config)
+		{
+			return new HttpPostService(config);
+		}
 	}
 }

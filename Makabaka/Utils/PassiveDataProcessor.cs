@@ -1,30 +1,30 @@
-﻿using Makabaka.Models.EventArgs.Meta;
+﻿using Makabaka.Models.EventArgs.Messages;
+using Makabaka.Models.EventArgs.Meta;
+using Makabaka.Models.EventArgs.Requests;
+using Makabaka.Network;
 using Makabaka.Services;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using Makabaka.Network;
-using Makabaka.Models.EventArgs.Messages;
-using Makabaka.Models.EventArgs.Requests;
+using System.Text;
+using Makabaka.Models.FastActions;
+using System.Threading.Tasks;
 
 namespace Makabaka.Utils
 {
 	/// <summary>
-	/// 数据处理器，用于处理接收的消息，并发送相应的事件
+	/// 被动数据处理器，用于处理接收的被动消息，并发送相应的事件
 	/// </summary>
-	internal class DataProcessor
+	internal class PassiveDataProcessor
 	{
 		#region 构造函数与基本数据
 
-		private readonly IService _service;
+		private readonly IPassiveService _service;
 
-		private readonly ISession _session;
-
-		public DataProcessor(IService service, ISession session)
+		public PassiveDataProcessor(IPassiveService service)
 		{
 			_service = service;
-			_session = session;
 
 			_postTypeMap = new()
 			{
@@ -51,32 +51,30 @@ namespace Makabaka.Utils
 
 		#region 数据处理
 
-		private delegate void ProcessDelegate(string data, JObject json);
+		private delegate Task<IFastAction> ProcessDelegate(string data, JObject json);
 
-		public void Process(string data)
+		public async Task<IFastAction> Process(string data)
 		{
 			var json = JObject.Parse(data);
 			if (json.ContainsKey("post_type"))
 			{
-				ProcessPost(data, json);
+				return await ProcessPost(data, json);
 			}
-			else if (json.ContainsKey("status"))
-			{
-				ProcessAPIResponse(data, json);
-			}
+
+			return null;
 		}
 
 		#region Post
 
 		private readonly Dictionary<string, ProcessDelegate> _postTypeMap;
 
-		private void ProcessPost(string data, JObject json)
+		private async Task<IFastAction> ProcessPost(string data, JObject json)
 		{
 			var post_type = (string)json["post_type"] ?? throw new Exception("post_type为null");
 
 			if (_postTypeMap.TryGetValue(post_type, out var method))
 			{
-				method.Invoke(data, json);
+				return await method.Invoke(data, json);
 			}
 			else
 			{
@@ -88,13 +86,13 @@ namespace Makabaka.Utils
 
 		private readonly Dictionary<string, ProcessDelegate> _metaEventTypeMap;
 
-		private void ProcessMeta(string data, JObject json)
+		private async Task<IFastAction> ProcessMeta(string data, JObject json)
 		{
 			var meta_event_type = (string)json["meta_event_type"] ?? throw new Exception("meta_event_type为null");
 
 			if (_metaEventTypeMap.TryGetValue(meta_event_type, out var method))
 			{
-				method.Invoke(data, json);
+				return await method.Invoke(data, json);
 			}
 			else
 			{
@@ -102,18 +100,18 @@ namespace Makabaka.Utils
 			}
 		}
 
-		private void ProcessMetaLifeCycle(string data, JObject _)
+		private async Task<IFastAction> ProcessMetaLifeCycle(string data, JObject _)
 		{
 			var e = JsonConvert.DeserializeObject<LifeCycleEventArgs>(data);
-			e.Session = _session;
-			_service.SendLifeCycleEvent(e);
+			e.Session = null;
+			return await _service.SendLifeCycleEvent(e);
 		}
 
-		private void ProcessHeartbeat(string data, JObject _)
+		private async Task<IFastAction> ProcessHeartbeat(string data, JObject _)
 		{
 			var e = JsonConvert.DeserializeObject<HeartbeatEventArgs>(data);
-			e.Session = _session;
-			_service.SendHeartbeatEvent(e);
+			e.Session = null;
+			return await _service.SendHeartbeatEvent(e);
 		}
 
 		#endregion
@@ -122,13 +120,13 @@ namespace Makabaka.Utils
 
 		private readonly Dictionary<string, ProcessDelegate> _messageTypeMap;
 
-		private void ProcessMessage(string data, JObject json)
+		private async Task<IFastAction> ProcessMessage(string data, JObject json)
 		{
 			var message_type = (string)json["message_type"] ?? throw new Exception("message_type为null");
 
 			if (_messageTypeMap.TryGetValue(message_type, out var method))
 			{
-				method.Invoke(data, json);
+				return await method.Invoke(data, json);
 			}
 			else
 			{
@@ -136,12 +134,12 @@ namespace Makabaka.Utils
 			}
 		}
 
-		private void ProcessMessageGroup(string data, JObject _)
+		private async Task<IFastAction> ProcessMessageGroup(string data, JObject _)
 		{
 			var e = JsonConvert.DeserializeObject<GroupMessageEventArgs>(data);
-			e.Session = _session;
+			e.Session = null;
 			e.Message.PostProcessMessage();
-			_service.SendGroupMessageEvent(e);
+			return await _service.SendGroupMessageEvent(e);
 		}
 
 		#endregion
@@ -150,13 +148,13 @@ namespace Makabaka.Utils
 
 		private readonly Dictionary<string, ProcessDelegate> _requestTypeMap;
 
-		private void ProcessRequest(string data, JObject json)
+		private async Task<IFastAction> ProcessRequest(string data, JObject json)
 		{
 			var request_type = (string)json["request_type"] ?? throw new Exception("request_type为null");
 
 			if (_requestTypeMap.TryGetValue(request_type, out var method))
 			{
-				method.Invoke(data, json);
+				return await method.Invoke(data, json);
 			}
 			else
 			{
@@ -164,30 +162,14 @@ namespace Makabaka.Utils
 			}
 		}
 
-		private void ProcessRequestAddFriend(string data, JObject _)
+		private async Task<IFastAction> ProcessRequestAddFriend(string data, JObject _)
 		{
 			var e = JsonConvert.DeserializeObject<AddFriendRequestEventArgs>(data);
-			e.Session = _session;
-			_service.SendAddFriendRequestEvent(e);
+			e.Session = null;
+			return await _service.SendAddFriendRequestEvent(e);
 		}
 
 		#endregion
-
-		#endregion
-
-		#region API响应
-
-		private void ProcessAPIResponse(string data, JObject json)
-		{
-			if (!json.TryGetValue("retcode", out JToken jretcode))
-			{
-				throw new Exception("retcode为null");
-			}
-			var retcode = (int)jretcode;
-			var echo = (string)json["echo"] ?? throw new Exception("echo为null");
-
-			_session.OnAPIResponse(data, json, retcode, echo);
-		}
 
 		#endregion
 

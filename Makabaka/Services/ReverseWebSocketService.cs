@@ -159,28 +159,28 @@ namespace Makabaka.Services
 
 		public event EventHandler<LifeCycleEventArgs> OnLifeCycle;
 
-		void IService.SendLifeCycleEvent(LifeCycleEventArgs e)
+		public void SendLifeCycleEvent(LifeCycleEventArgs e)
 		{
 			OnLifeCycle?.Invoke(this, e);
 		}
 
 		public event EventHandler<HeartbeatEventArgs> OnHeartbeat;
 
-		void IService.SendHeartbeatEvent(HeartbeatEventArgs e)
+		public void SendHeartbeatEvent(HeartbeatEventArgs e)
 		{
 			OnHeartbeat?.Invoke(this, e);
 		}
 
 		public event EventHandler<GroupMessageEventArgs> OnGroupMessage;
 
-		void IService.SendGroupMessageEvent(GroupMessageEventArgs e)
+		public void SendGroupMessageEvent(GroupMessageEventArgs e)
 		{
 			OnGroupMessage?.Invoke(this, e);
 		}
 
 		public event EventHandler<AddFriendRequestEventArgs> OnAddFriendRequest;
 
-		void IService.SendAddFriendRequestEvent(AddFriendRequestEventArgs e)
+		public void SendAddFriendRequestEvent(AddFriendRequestEventArgs e)
 		{
 			OnAddFriendRequest?.Invoke(this, e);
 		}
