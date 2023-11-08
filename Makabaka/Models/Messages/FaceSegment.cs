@@ -25,7 +25,7 @@ namespace Makabaka.Models.Messages
 			{
 				return _id;
 			}
-			internal set
+			set
 			{
 				_id = value;
 				RawData["id"] = _id.ToString();

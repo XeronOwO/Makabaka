@@ -36,6 +36,8 @@ namespace Makabaka.Models.Messages
 					return new ImageSegment((string)RawData["file"], (string)RawData["type"], (string)RawData["url"]);
 				case "at":
 					return new AtSegment((string)RawData["qq"]);
+				case "forward":
+					return new ForwardSegment((string)RawData["id"]);
 				default:
 					Log.Warning($"不支持的段消息类型：{Type}");
 					return null;

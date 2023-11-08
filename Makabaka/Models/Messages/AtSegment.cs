@@ -25,7 +25,7 @@ namespace Makabaka.Models.Messages
 			{
 				return _qq;
 			}
-			internal set
+			set
 			{
 				RawData["qq"] = _qq = value;
 			}
@@ -34,7 +34,7 @@ namespace Makabaka.Models.Messages
 		/// <summary>
 		/// 创建<a href="https://github.com/botuniverse/onebot-11/blob/master/message/segment.md#%E6%9F%90%E4%BA%BA">@某人段消息</a>
 		/// </summary>
-		/// <param name="qq">QQ 表情 ID<br/>参考：<a href="https://github.com/kyubotics/coolq-http-api/wiki/%E8%A1%A8%E6%83%85-CQ-%E7%A0%81-ID-%E8%A1%A8">QQ 表情 ID 表</a></param>
+		/// <param name="qq">@的 QQ 号，all 表示全体成员</param>
 		public AtSegment(string qq)
 		{
 			Type = "text";
@@ -43,6 +43,15 @@ namespace Makabaka.Models.Messages
 				{ "qq", qq },
 			};
 			_qq = qq;
+		}
+
+		/// <summary>
+		/// 创建<a href="https://github.com/botuniverse/onebot-11/blob/master/message/segment.md#%E6%9F%90%E4%BA%BA">@某人段消息</a>
+		/// </summary>
+		/// <param name="qq">@的 QQ 号，all 表示全体成员</param>
+		public AtSegment(long qq) : this(qq.ToString())
+		{
+			
 		}
 
 		/// <inheritdoc/>
