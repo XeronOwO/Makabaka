@@ -11,9 +11,6 @@ namespace Makabaka.Models.Messages
 	/// </summary>
 	public class TextSegment : Segment
 	{
-		[JsonIgnore]
-		private string _text;
-
 		/// <summary>
 		/// 纯文本内容
 		/// </summary>
@@ -22,11 +19,11 @@ namespace Makabaka.Models.Messages
 		{
 			get
 			{
-				return _text;
+				return (string)RawData["text"];
 			}
 			set
 			{
-				RawData["text"] = _text = value;
+				RawData["text"] = value;
 			}
 		}
 
@@ -41,13 +38,12 @@ namespace Makabaka.Models.Messages
 			{
 				{ "text", text },
 			};
-			_text = text;
 		}
 
 		/// <inheritdoc/>
 		public override string ToString()
 		{
-			return _text;
+			return Text;
 		}
 	}
 }

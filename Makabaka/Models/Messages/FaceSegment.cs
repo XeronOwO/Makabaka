@@ -11,24 +11,20 @@ namespace Makabaka.Models.Messages
 	/// </summary>
 	public class FaceSegment : Segment
 	{
-		[JsonIgnore]
-		private int _id;
-
 		/// <summary>
 		/// QQ 表情 ID<br/>
 		/// 参考：<a href="https://github.com/kyubotics/coolq-http-api/wiki/%E8%A1%A8%E6%83%85-CQ-%E7%A0%81-ID-%E8%A1%A8">QQ 表情 ID 表</a>
 		/// </summary>
 		[JsonIgnore]
-		public int Id
+		public string Id
 		{
 			get
 			{
-				return _id;
+				return (string)RawData["id"];
 			}
 			set
 			{
-				_id = value;
-				RawData["id"] = _id.ToString();
+				RawData["id"] = value;
 			}
 		}
 
@@ -36,20 +32,28 @@ namespace Makabaka.Models.Messages
 		/// 创建<a href="https://github.com/botuniverse/onebot-11/blob/master/message/segment.md#qq-%E8%A1%A8%E6%83%85">QQ表情段消息</a>
 		/// </summary>
 		/// <param name="id">QQ 表情 ID<br/>参考：<a href="https://github.com/kyubotics/coolq-http-api/wiki/%E8%A1%A8%E6%83%85-CQ-%E7%A0%81-ID-%E8%A1%A8">QQ 表情 ID 表</a></param>
-		public FaceSegment(int id)
+		public FaceSegment(string id)
 		{
 			Type = "text";
 			RawData = new JObject()
 			{
-				{ "id", id.ToString() },
+				{ "id", id },
 			};
-			_id = id;
+		}
+
+		/// <summary>
+		/// 创建<a href="https://github.com/botuniverse/onebot-11/blob/master/message/segment.md#qq-%E8%A1%A8%E6%83%85">QQ表情段消息</a>
+		/// </summary>
+		/// <param name="id">QQ 表情 ID<br/>参考：<a href="https://github.com/kyubotics/coolq-http-api/wiki/%E8%A1%A8%E6%83%85-CQ-%E7%A0%81-ID-%E8%A1%A8">QQ 表情 ID 表</a></param>
+		public FaceSegment(long id) : this(id.ToString())
+		{
+
 		}
 
 		/// <inheritdoc/>
 		public override string ToString()
 		{
-			return $"[CQ:face,id={_id}]";
+			return $"[CQ:face,id={Id}]";
 		}
 	}
 }

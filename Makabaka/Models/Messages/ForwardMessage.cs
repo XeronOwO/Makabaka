@@ -5,9 +5,9 @@ using System.Text;
 namespace Makabaka.Models.Messages
 {
 	/// <summary>
-	/// 消息，由一个或多个<see cref="Segment"/>组成
+	/// 转发消息，由一个或多个<see cref="NodeSegment"/>组成
 	/// </summary>
-	public class Message : List<Segment>
+	public class ForwardMessage : List<NodeSegment>
 	{
 		/// <summary>
 		/// 转换为字符串<br/>
@@ -29,17 +29,9 @@ namespace Makabaka.Models.Messages
 		/// 注：如果非文本信息，会转化为CQ Code
 		/// </summary>
 		/// <param name="message">消息</param>
-		public static implicit operator string(Message message)
+		public static implicit operator string(ForwardMessage message)
 		{
 			return message.ToString();
-		}
-
-		internal void PostProcessMessage()
-		{
-			for (int i = 0; i < Count; i++)
-			{
-				this[i] = this[i].PostProcessSegment();
-			}
 		}
 	}
 }

@@ -13,7 +13,7 @@ namespace Makabaka.Models.Messages
 	public class Segment
 	{
 		/// <summary>
-		/// 消息类型
+		/// <a href="https://github.com/botuniverse/onebot-11/blob/master/message/segment.md">消息类型</a>
 		/// </summary>
 		[JsonProperty("type")]
 		public string Type { get; internal set; }
@@ -38,6 +38,8 @@ namespace Makabaka.Models.Messages
 					return new AtSegment((string)RawData["qq"]);
 				case "forward":
 					return new ForwardSegment((string)RawData["id"]);
+				case "node":
+					return new NodeSegment((string)RawData["user_id"], (string)RawData["nickname"], (JArray)RawData["content"]);
 				default:
 					Log.Warning($"不支持的段消息类型：{Type}");
 					return null;

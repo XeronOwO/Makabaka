@@ -12,9 +12,6 @@ namespace Makabaka.Models.Messages
 	/// </summary>
 	public class AtSegment : Segment
 	{
-		[JsonIgnore]
-		private string _qq;
-
 		/// <summary>
 		/// @的 QQ 号，all 表示全体成员
 		/// </summary>
@@ -23,11 +20,11 @@ namespace Makabaka.Models.Messages
 		{
 			get
 			{
-				return _qq;
+				return (string)RawData["qq"];
 			}
 			set
 			{
-				RawData["qq"] = _qq = value;
+				RawData["qq"] = value;
 			}
 		}
 
@@ -42,7 +39,6 @@ namespace Makabaka.Models.Messages
 			{
 				{ "qq", qq },
 			};
-			_qq = qq;
 		}
 
 		/// <summary>
@@ -57,7 +53,7 @@ namespace Makabaka.Models.Messages
 		/// <inheritdoc/>
 		public override string ToString()
 		{
-			return $"[CQ:at,qq={_qq}]";
+			return $"[CQ:at,qq={QQ}]";
 		}
 	}
 }

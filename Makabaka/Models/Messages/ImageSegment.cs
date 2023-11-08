@@ -13,9 +13,6 @@ namespace Makabaka.Models.Messages
 	/// </summary>
 	public class ImageSegment : Segment
 	{
-		[JsonIgnore]
-		private string _file;
-
 		/// <summary>
 		/// 图片文件名<br/><br/>
 		/// 发送时，file 参数除了支持使用收到的图片文件名直接发送外，还支持：<br/>
@@ -28,16 +25,13 @@ namespace Makabaka.Models.Messages
 		{
 			get
 			{
-				return _file;
+				return (string)RawData["file"];
 			}
-			internal set
+			set
 			{
-				RawData["file"] = _file = value;
+				RawData["file"] = value;
 			}
 		}
-
-		[JsonIgnore]
-		private string _imageType;
 
 		/// <summary>
 		/// 图片类型，flash 表示闪照，无此参数表示普通图片
@@ -47,11 +41,11 @@ namespace Makabaka.Models.Messages
 		{
 			get
 			{
-				return _imageType;
+				return (string)RawData["type"];
 			}
-			internal set
+			set
 			{
-				RawData["type"] = _imageType = value;
+				RawData["type"] = value;
 			}
 		}
 
@@ -65,14 +59,11 @@ namespace Makabaka.Models.Messages
 			{
 				return ImageType == "flash";
 			}
-			internal set
+			set
 			{
 				ImageType = value ? "flash" : string.Empty;
 			}
 		}
-
-		[JsonIgnore]
-		private string _url;
 
 		/// <summary>
 		/// 图片 URL
@@ -82,79 +73,67 @@ namespace Makabaka.Models.Messages
 		{
 			get
 			{
-				return _url;
+				return (string)RawData["url"];
 			}
-			internal set
+			set
 			{
-				RawData["url"] = _url = value;
+				RawData["url"] = value;
 			}
 		}
-
-		[JsonIgnore]
-		private int _cache;
 
 		/// <summary>
 		/// 只在通过网络 URL 发送时有效，表示是否使用已缓存的文件，默认 1
 		/// </summary>
 		[JsonIgnore]
-		public int Cache
+		public string Cache
 		{
 			get
 			{
-				return _cache;
+				return (string)RawData["cache"];
 			}
-			internal set
+			set
 			{
-				if (value < 0 || value > 1)
+				if (value != "0" && value != "1")
 				{
 					throw new Exception("Cache的值只能为0或1");
 				}
-				_cache = value;
-				RawData["cache"] = value.ToString();
+				RawData["cache"] = value;
 			}
 		}
-
-		[JsonIgnore]
-		private int _proxy;
 
 		/// <summary>
 		/// 只在通过网络 URL 发送时有效，表示是否通过代理下载文件（需通过环境变量或配置文件配置代理），默认 1
 		/// </summary>
 		[JsonIgnore]
-		public int Proxy
+		public string Proxy
 		{
 			get
 			{
-				return _proxy;
+				return (string)RawData["proxy"];
 			}
-			internal set
+			set
 			{
-				if (value < 0 || value > 1)
+				if (value != "0" && value != "1")
 				{
 					throw new Exception("Proxy的值只能为0或1");
 				}
-				_proxy = value;
-				RawData["proxy"] = value.ToString();
+				RawData["proxy"] = value;
 			}
 		}
-
-		[JsonIgnore]
-		private int _timeout;
 
 		/// <summary>
 		/// 只在通过网络 URL 发送时有效，单位秒，表示下载网络文件的超时时间，默认不超时
 		/// </summary>
 		[JsonIgnore]
-		public int Timeout
+		public string Timeout
 		{
 			get
 			{
-				return _timeout;
+				return (string)RawData["timeout"];
 			}
-			internal set
+			set
 			{
-				_timeout = value;
-				RawData["timeout"] = value.ToString();
+				RawData["timeout"] = value;
 			}
 		}
 
@@ -167,12 +146,6 @@ namespace Makabaka.Models.Messages
 				{ "type", type },
 				{ "url", url },
 			};
-			_file = file;
-			_imageType = type;
-			_url = url;
-			_cache = 1;
-			_proxy = 1;
-			_timeout = 0;
 		}
 
 		/// <summary>
@@ -194,18 +167,12 @@ namespace Makabaka.Models.Messages
 				{ "proxy", proxy.ToString() },
 				{ "timeout", timeout.ToString() },
 			};
-			_file = file;
-			_imageType = type;
-			_url = string.Empty;
-			_cache = cache;
-			_proxy = proxy;
-			_timeout = timeout;
 		}
 
 		/// <inheritdoc/>
 		public override string ToString()
 		{
-			return $"[CQ:image,file={_file}]";
+			return $"[CQ:image,file={File}]";
 		}
 	}
 }

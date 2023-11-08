@@ -13,6 +13,7 @@ using System.Linq;
 using System.Net;
 using System.Net.WebSockets;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -428,6 +429,14 @@ namespace Makabaka.Network
 		public async Task<APIResponse<GroupListInfo>> GetGroupListAsync()
 		{
 			return await ExecuteAPIAsync<GroupListInfo>("get_group_list", Guid.NewGuid().ToString());
+		}
+
+		public async Task<APIResponse<ForwardMessageInfo>> GetForwardMessage(string id)
+		{
+			return await ExecuteAPIAsync<ForwardMessageInfo, GetForwardMessageInfo>("get_forward_msg", new()
+			{
+				Id = id,
+			}, Guid.NewGuid().ToString());
 		}
 
 		#endregion

@@ -141,6 +141,13 @@ namespace Makabaka.Network
 		/// <returns>群列表信息响应</returns>
 		Task<APIResponse<GroupListInfo>> GetGroupListAsync();
 
+		/// <summary>
+		/// 获取合并转发消息
+		/// </summary>
+		/// <param name="id">合并转发 ID</param>
+		/// <returns>合并转发消息信息响应</returns>
+		Task<APIResponse<ForwardMessageInfo>> GetForwardMessage(string id);
+
 		#endregion
 	}
 }

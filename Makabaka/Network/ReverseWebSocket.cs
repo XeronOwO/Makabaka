@@ -370,6 +370,14 @@ namespace Makabaka.Network
 			return await ExecuteAPIAsync<GroupListInfo>("get_group_list", Guid.NewGuid().ToString());
 		}
 
+		public async Task<APIResponse<ForwardMessageInfo>> GetForwardMessage(string id)
+		{
+			return await ExecuteAPIAsync<ForwardMessageInfo, GetForwardMessageInfo>("get_forward_msg", new()
+			{
+				Id = id,
+			}, Guid.NewGuid().ToString());
+		}
+
 		#endregion
 
 		#region 释放
