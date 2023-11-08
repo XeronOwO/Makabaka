@@ -137,6 +137,13 @@ namespace Makabaka.Services
 			OnGroupMemberDecrease?.Invoke(this, e);
 		}
 
+		public event EventHandler<GroupMemberIncreaseEventArgs> OnGroupMemberIncrease;
+
+		public void SendGroupMemberIncreaseEvent(GroupMemberIncreaseEventArgs e)
+		{
+			OnGroupMemberIncrease?.Invoke(this, e);
+		}
+
 		#endregion
 	}
 }

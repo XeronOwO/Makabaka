@@ -81,6 +81,13 @@ namespace Makabaka.Services
 
 		internal void SendGroupMemberDecreaseEvent(GroupMemberDecreaseEventArgs e);
 
+		/// <summary>
+		/// <a href="https://github.com/botuniverse/onebot-11/blob/master/event/notice.md#%E7%BE%A4%E6%88%90%E5%91%98%E5%A2%9E%E5%8A%A0">群成员增加</a>事件
+		/// </summary>
+		event EventHandler<GroupMemberIncreaseEventArgs> OnGroupMemberIncrease;
+
+		internal void SendGroupMemberIncreaseEvent(GroupMemberIncreaseEventArgs e);
+
 		#endregion
 	}
 }

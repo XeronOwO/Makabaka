@@ -46,7 +46,8 @@ namespace Makabaka.Utils
 			};
 			_noticeTypeMap = new()
 			{
-				{ "group_decrease", ProcessGroupDecrease },
+				{ "group_decrease", ProcessNoticeGroupMemberDecrease },
+				{ "group_increase", ProcessNoticeGroupMemberIncrease },
 			};
 		}
 
@@ -194,11 +195,18 @@ namespace Makabaka.Utils
 			}
 		}
 
-		private void ProcessGroupDecrease(string data, JObject _)
+		private void ProcessNoticeGroupMemberDecrease(string data, JObject _)
 		{
 			var e = JsonConvert.DeserializeObject<GroupMemberDecreaseEventArgs>(data);
 			e.Session = _session;
 			_service.SendGroupMemberDecreaseEvent(e);
+		}
+
+		private void ProcessNoticeGroupMemberIncrease(string data, JObject json)
+		{
+			var e = JsonConvert.DeserializeObject<GroupMemberIncreaseEventArgs>(data);
+			e.Session = _session;
+			_service.SendGroupMemberIncreaseEvent(e);
 		}
 
 		#endregion
