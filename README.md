@@ -31,7 +31,7 @@ Makabaka 已发布到 [NuGet](https://www.nuget.org/packages/Makabaka "前往NuG
 | [Location]       |    🔴    |
 | [Music]          |    🔴    |
 | [Reply]          |    🔴    |
-| [Forward]        |    🔴    |
+| [Forward]        |    🟢    |
 | [Node]           |    🔴    |
 | [Xml]            |    🔴    |
 | [Json]           |    🔴    |
@@ -69,7 +69,7 @@ Makabaka 已发布到 [NuGet](https://www.nuget.org/packages/Makabaka "前往NuG
 | ~~[/send_msg]~~            |    🔴    |
 | [/delete_msg]              |    🔴    |
 | [/get_msg]                 |    🔴    |
-| [/get_forward_msg]         |    🔴    |
+| [/get_forward_msg]         |    🟢    |
 | ~~[/send_like]~~           |    🔴    |
 | [/set_group_kick]          |    🟢    |
 | [/set_group_ban]           |    🟢    |
@@ -153,8 +153,8 @@ Makabaka 已发布到 [NuGet](https://www.nuget.org/packages/Makabaka "前往NuG
 | Message  | [Group Message]                |    🟢    |
 | Notice   | [Group File Upload]            |    🔴    |
 | Notice   | [Group Admin Change]           |    🔴    |
-| Notice   | [Group Member Decrease]        |    🔴    |
-| Notice   | [Group Member Increase]        |    🔴    |
+| Notice   | [Group Member Decrease]        |    🟢    |
+| Notice   | [Group Member Increase]        |    🟢    |
 | Notice   | [Group Mute]                   |    🔴    |
 | Notice   | [Friend Add]                   |    🔴    |
 | Notice   | [Group Recall Message]         |    🔴    |
