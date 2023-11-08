@@ -28,13 +28,15 @@ namespace Makabaka.Models.Messages
 			}
 		}
 
+		private FaceSegment() { }
+
 		/// <summary>
 		/// 创建<a href="https://github.com/botuniverse/onebot-11/blob/master/message/segment.md#qq-%E8%A1%A8%E6%83%85">QQ表情段消息</a>
 		/// </summary>
 		/// <param name="id">QQ 表情 ID<br/>参考：<a href="https://github.com/kyubotics/coolq-http-api/wiki/%E8%A1%A8%E6%83%85-CQ-%E7%A0%81-ID-%E8%A1%A8">QQ 表情 ID 表</a></param>
 		public FaceSegment(string id)
 		{
-			Type = "text";
+			Type = "face";
 			RawData = new JObject()
 			{
 				{ "id", id },

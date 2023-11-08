@@ -28,6 +28,8 @@ namespace Makabaka.Models.Messages
 			}
 		}
 
+		private AtSegment() { }
+
 		/// <summary>
 		/// 创建<a href="https://github.com/botuniverse/onebot-11/blob/master/message/segment.md#%E6%9F%90%E4%BA%BA">@某人段消息</a>
 		/// </summary>

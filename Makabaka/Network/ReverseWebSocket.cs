@@ -372,10 +372,15 @@ namespace Makabaka.Network
 
 		public async Task<APIResponse<ForwardMessageInfo>> GetForwardMessage(string id)
 		{
-			return await ExecuteAPIAsync<ForwardMessageInfo, GetForwardMessageInfo>("get_forward_msg", new()
+			var response = await ExecuteAPIAsync<ForwardMessageInfo, GetForwardMessageInfo>("get_forward_msg", new()
 			{
 				Id = id,
 			}, Guid.NewGuid().ToString());
+			foreach (var node in response.Data.Message)
+			{
+				node.PostProcessContent();
+			}
+			return response;
 		}
 
 		#endregion

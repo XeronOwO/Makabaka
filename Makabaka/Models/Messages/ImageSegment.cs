@@ -137,6 +137,8 @@ namespace Makabaka.Models.Messages
 			}
 		}
 
+		private ImageSegment() { }
+
 		internal ImageSegment(string file, string type, string url)
 		{
 			Type = "image";

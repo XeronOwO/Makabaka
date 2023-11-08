@@ -63,6 +63,14 @@ namespace Makabaka.Models.Messages
 			}
 		}
 
+		internal void PostProcessContent()
+		{
+			_content = JsonConvert.DeserializeObject<Message>(RawData["content"].ToString(Formatting.None));
+			_content.PostProcessMessage();
+		}
+
+		private NodeSegment() { }
+
 		/// <summary>
 		/// 创建<a href="https://github.com/botuniverse/onebot-11/blob/master/message/segment.md#%E5%90%88%E5%B9%B6%E8%BD%AC%E5%8F%91%E8%87%AA%E5%AE%9A%E4%B9%89%E8%8A%82%E7%82%B9">合并转发自定义节点段消息</a>
 		/// </summary>
