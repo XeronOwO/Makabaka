@@ -36,10 +36,4 @@
     <PackageReference Include="WatsonWebsocket" Version="4.0.11" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Models\EventArgs\Messages\" />
-    <Folder Include="Models\EventArgs\Meta\" />
-    <Folder Include="Models\EventArgs\Requests\" />
-  </ItemGroup>
-
 </Project>

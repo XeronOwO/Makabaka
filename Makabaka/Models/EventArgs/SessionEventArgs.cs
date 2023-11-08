@@ -8,7 +8,7 @@ using System.Text;
 namespace Makabaka.Models.EventArgs
 {
 	/// <summary>
-	/// 服务事件参数
+	/// 会话事件参数
 	/// </summary>
 	public class SessionEventArgs : System.EventArgs
 	{

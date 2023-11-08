@@ -10,7 +10,7 @@ namespace Makabaka.Models.EventArgs
     /// <summary>
     /// <a href="https://github.com/botuniverse/onebot-11/blob/master/event/message.md#%E7%BE%A4%E6%B6%88%E6%81%AF">群消息</a>事件参数
     /// </summary>
-    public class GroupMessageEventArgs : MetaEventArgs
+    public class GroupMessageEventArgs : MessageEventArgs
     {
         /// <summary>
         /// 消息 ID
