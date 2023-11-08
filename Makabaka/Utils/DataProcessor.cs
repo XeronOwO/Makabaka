@@ -29,6 +29,7 @@ namespace Makabaka.Utils
 				{ "meta_event", ProcessMeta },
 				{ "message", ProcessMessage },
 				{ "request", ProcessRequest },
+				{ "notice", ProcessNotice },
 			};
 			_metaEventTypeMap = new()
 			{
@@ -42,6 +43,10 @@ namespace Makabaka.Utils
 			_requestTypeMap = new()
 			{
 				{ "friend", ProcessRequestAddFriend },
+			};
+			_noticeTypeMap = new()
+			{
+				{ "group_decrease", ProcessGroupDecrease },
 			};
 		}
 
@@ -167,6 +172,33 @@ namespace Makabaka.Utils
 			var e = JsonConvert.DeserializeObject<AddFriendRequestEventArgs>(data);
 			e.Session = _session;
 			_service.SendAddFriendRequestEvent(e);
+		}
+
+		#endregion
+
+		#region 通知事件
+
+		private readonly Dictionary<string, ProcessDelegate> _noticeTypeMap;
+
+		private void ProcessNotice(string data, JObject json)
+		{
+			var notice_type = (string)json["notice_type"] ?? throw new Exception("notice_type为null");
+
+			if (_noticeTypeMap.TryGetValue(notice_type, out var method))
+			{
+				method.Invoke(data, json);
+			}
+			else
+			{
+				throw new Exception($"不支持的notice_type：{notice_type}");
+			}
+		}
+
+		private void ProcessGroupDecrease(string data, JObject _)
+		{
+			var e = JsonConvert.DeserializeObject<GroupMemberDecreaseEventArgs>(data);
+			e.Session = _session;
+			_service.SendGroupMemberDecreaseEvent(e);
 		}
 
 		#endregion

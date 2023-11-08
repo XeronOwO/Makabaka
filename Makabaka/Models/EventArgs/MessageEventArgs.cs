@@ -6,7 +6,7 @@ using System.Text;
 namespace Makabaka.Models.EventArgs
 {
 	/// <summary>
-	/// 消息事件参数
+	/// <a href="https://github.com/botuniverse/onebot-11/blob/master/event/message.md">消息事件</a>事件参数
 	/// </summary>
 	public class MessageEventArgs : PostEventArgs
 	{

@@ -74,6 +74,13 @@ namespace Makabaka.Services
 
 		internal void SendAddFriendRequestEvent(AddFriendRequestEventArgs e);
 
+		/// <summary>
+		/// <a href="https://github.com/botuniverse/onebot-11/blob/master/event/notice.md#%E7%BE%A4%E6%88%90%E5%91%98%E5%87%8F%E5%B0%91">群成员减少</a>事件
+		/// </summary>
+		event EventHandler<GroupMemberDecreaseEventArgs> OnGroupMemberDecrease;
+
+		internal void SendGroupMemberDecreaseEvent(GroupMemberDecreaseEventArgs e);
+
 		#endregion
 	}
 }

@@ -130,6 +130,13 @@ namespace Makabaka.Services
 			OnAddFriendRequest?.Invoke(this, e);
 		}
 
+		public event EventHandler<GroupMemberDecreaseEventArgs> OnGroupMemberDecrease;
+
+		public void SendGroupMemberDecreaseEvent(GroupMemberDecreaseEventArgs e)
+		{
+			OnGroupMemberDecrease?.Invoke(this, e);
+		}
+
 		#endregion
 	}
 }
