@@ -224,7 +224,7 @@ namespace Makabaka.Network
 			return APIResponse.GetFailedResponse<TResult>();
 		}
 
-		void ISession.OnAPIResponse(string data, JObject json, int retcode, string echo)
+		public void OnAPIResponse(string data, JObject json, int retcode, string echo)
 		{
 			APIPromise promise = null;
 			lock (_apiPromises)
