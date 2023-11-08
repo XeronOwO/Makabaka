@@ -15,7 +15,7 @@ using WatsonWebsocket;
 
 namespace Makabaka.Services
 {
-    internal class ReverseWebSocketService : IService, IDisposable
+	internal class ReverseWebSocketService : IService, IDisposable
 	{
 		#region 基本信息与构造函数
 

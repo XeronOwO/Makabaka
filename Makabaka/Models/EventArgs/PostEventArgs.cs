@@ -6,11 +6,11 @@ using System.Text;
 
 namespace Makabaka.Models.EventArgs
 {
-    /// <summary>
-    /// 上报类型事件参数
-    /// </summary>
-    public abstract class PostEventArgs : SessionEventArgs
-    {
+	/// <summary>
+	/// 上报类型事件参数
+	/// </summary>
+	public abstract class PostEventArgs : SessionEventArgs
+	{
 		/// <summary>
 		/// 事件发生的时间戳
 		/// </summary>
@@ -29,10 +29,10 @@ namespace Makabaka.Models.EventArgs
 		[JsonProperty("self_id")]
 		public long SelfId { get; internal set; }
 
-        /// <summary>
-        /// 上报类型
-        /// </summary>
-        [JsonProperty("post_type")]
-        public string PostType { get; internal set; }
+		/// <summary>
+		/// 上报类型
+		/// </summary>
+		[JsonProperty("post_type")]
+		public string PostType { get; internal set; }
 	}
 }

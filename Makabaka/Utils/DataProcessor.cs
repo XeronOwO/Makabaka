@@ -8,10 +8,10 @@ using Makabaka.Models.EventArgs;
 
 namespace Makabaka.Utils
 {
-    /// <summary>
-    /// 数据处理器，用于处理接收的消息，并发送相应的事件
-    /// </summary>
-    internal class DataProcessor
+	/// <summary>
+	/// 数据处理器，用于处理接收的消息，并发送相应的事件
+	/// </summary>
+	internal class DataProcessor
 	{
 		#region 构造函数与基本数据
 

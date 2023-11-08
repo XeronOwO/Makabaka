@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace Makabaka.Services
 {
-    /// <summary>
-    /// 被动服务接口，提供纯被动的服务，例如事件回调
-    /// </summary>
-    public interface IPassiveService
+	/// <summary>
+	/// 被动服务接口，提供纯被动的服务，例如事件回调
+	/// </summary>
+	public interface IPassiveService
 	{
 		#region 基本功能
 

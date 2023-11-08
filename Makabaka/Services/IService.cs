@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace Makabaka.Services
 {
-    /// <summary>
-    /// 服务接口，提供服务的基本控制，以及事件回调
-    /// </summary>
-    public interface IService
+	/// <summary>
+	/// 服务接口，提供服务的基本控制，以及事件回调
+	/// </summary>
+	public interface IService
 	{
 		#region 基本功能
 

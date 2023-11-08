@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Makabaka.Services
 {
-    internal class ForwardWebSocketService : IService
+	internal class ForwardWebSocketService : IService
 	{
 		#region 基本信息与构造函数
 

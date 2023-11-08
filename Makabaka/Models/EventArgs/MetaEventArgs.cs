@@ -6,15 +6,15 @@ using System.Text;
 
 namespace Makabaka.Models.EventArgs
 {
-    /// <summary>
-    /// <a href="https://github.com/botuniverse/onebot-11/blob/master/event/meta.md">元事件</a>事件参数
-    /// </summary>
-    public abstract class MetaEventArgs : PostEventArgs
-    {
-        /// <summary>
-        /// 元事件类型
-        /// </summary>
-        [JsonProperty("meta_event_type")]
-        public string MetaEventType { get; internal set; }
-    }
+	/// <summary>
+	/// <a href="https://github.com/botuniverse/onebot-11/blob/master/event/meta.md">元事件</a>事件参数
+	/// </summary>
+	public abstract class MetaEventArgs : PostEventArgs
+	{
+		/// <summary>
+		/// 元事件类型
+		/// </summary>
+		[JsonProperty("meta_event_type")]
+		public string MetaEventType { get; internal set; }
+	}
 }

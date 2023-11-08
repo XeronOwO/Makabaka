@@ -17,7 +17,7 @@ using WatsonWebserver;
 
 namespace Makabaka.Services
 {
-    internal class HttpPostService : IPassiveService, IDisposable
+	internal class HttpPostService : IPassiveService, IDisposable
 	{
 		#region 基本信息与构造函数
 
