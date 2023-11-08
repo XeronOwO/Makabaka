@@ -1,8 +1,5 @@
 ﻿using Makabaka.Models.API.Responses;
 using Makabaka.Models.EventArgs;
-using Makabaka.Models.EventArgs.Messages;
-using Makabaka.Models.EventArgs.Meta;
-using Makabaka.Models.EventArgs.Requests;
 using Makabaka.Network;
 using System;
 using System.Collections.Generic;
@@ -11,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Makabaka.Services
 {
-	/// <summary>
-	/// 服务接口，提供服务的基本控制，以及事件回调
-	/// </summary>
+    /// <summary>
+    /// 服务接口，提供服务的基本控制，以及事件回调
+    /// </summary>
     public interface IService
 	{
 		#region 基本功能

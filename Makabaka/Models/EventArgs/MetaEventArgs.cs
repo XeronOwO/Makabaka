@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Makabaka.Models.EventArgs.Meta
+namespace Makabaka.Models.EventArgs
 {
     /// <summary>
     /// <a href="https://github.com/botuniverse/onebot-11/blob/master/event/meta.md">元事件</a>事件参数

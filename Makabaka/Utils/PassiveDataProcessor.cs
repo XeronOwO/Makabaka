@@ -1,7 +1,4 @@
-﻿using Makabaka.Models.EventArgs.Messages;
-using Makabaka.Models.EventArgs.Meta;
-using Makabaka.Models.EventArgs.Requests;
-using Makabaka.Network;
+﻿using Makabaka.Network;
 using Makabaka.Services;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
@@ -10,13 +7,14 @@ using System.Collections.Generic;
 using System.Text;
 using Makabaka.Models.FastActions;
 using System.Threading.Tasks;
+using Makabaka.Models.EventArgs;
 
 namespace Makabaka.Utils
 {
-	/// <summary>
-	/// 被动数据处理器，用于处理接收的被动消息，并发送相应的事件
-	/// </summary>
-	internal class PassiveDataProcessor
+    /// <summary>
+    /// 被动数据处理器，用于处理接收的被动消息，并发送相应的事件
+    /// </summary>
+    internal class PassiveDataProcessor
 	{
 		#region 构造函数与基本数据
 
