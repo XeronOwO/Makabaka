@@ -216,8 +216,7 @@ Makabaka 已发布到 [NuGet](https://www.nuget.org/packages/Makabaka "前往NuG
 
 ```csharp
 using Makabaka.Models.API.Responses;
-using Makabaka.Models.EventArgs.Messages;
-using Makabaka.Models.EventArgs.Meta;
+using Makabaka.Models.EventArgs;
 using Makabaka.Models.Messages;
 using Makabaka.Services;
 using Serilog;
@@ -281,7 +280,7 @@ namespace Test
 <Summary>HttpPost（目前Lagrange.Core暂未支持，不推荐使用）</Summary>
 
 ```csharp
-using Makabaka.Models.EventArgs.Messages;
+using Makabaka.Models.EventArgs;
 using Makabaka.Models.FastActions;
 using Makabaka.Models.Messages;
 using Makabaka.Services;
