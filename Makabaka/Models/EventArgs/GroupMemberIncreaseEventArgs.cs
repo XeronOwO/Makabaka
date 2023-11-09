@@ -15,24 +15,24 @@ namespace Makabaka.Models.EventArgs
 		/// 可能的值：approve、invite	
 		/// </summary>
 		[JsonProperty("sub_type")]
-		public string SubType { get; set; }
+		public string SubType { get; internal set; }
 
 		/// <summary>
 		/// 群号
 		/// </summary>
 		[JsonProperty("group_id")]
-		public long GroupId { get; set; }
+		public long GroupId { get; internal set; }
 
 		/// <summary>
 		/// 操作者 QQ 号（如果是主动退群，则和 UserId 相同）
 		/// </summary>
 		[JsonProperty("operator_id")]
-		public long OperatorId { get; set; }
+		public long OperatorId { get; internal set; }
 
 		/// <summary>
 		/// 加入者 QQ 号
 		/// </summary>
 		[JsonProperty("user_id")]
-		public long UserId { get; set; }
+		public long UserId { get; internal set; }
 	}
 }
