@@ -1,16 +1,18 @@
-﻿using Makabaka.Models.Messages;
+﻿using Makabaka.Models.API.Responses;
+using Makabaka.Models.Messages;
 using Makabaka.Models.Senders;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Makabaka.Models.EventArgs
 {
 	/// <summary>
 	/// <a href="https://github.com/botuniverse/onebot-11/blob/master/event/message.md#%E7%BE%A4%E6%B6%88%E6%81%AF">群消息</a>事件参数
 	/// </summary>
-	public class GroupMessageEventArgs : MessageEventArgs
+	public class GroupMessageEventArgs : MessageEventArgs, IReply
 	{
 		/// <summary>
 		/// 消息 ID
@@ -59,5 +61,11 @@ namespace Makabaka.Models.EventArgs
 		/// </summary>
 		[JsonProperty("sender")]
 		public GroupSender Sender { get; internal set; }
+
+		/// <inheritdoc/>
+		public async Task<APIResponse<MessageIdInfo>> Reply(Message message)
+		{
+			return await Session.SendGroupMessageAsync(GroupId, message);
+		}
 	}
 }
