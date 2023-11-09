@@ -256,6 +256,7 @@ namespace Test
             if (e.Message == "测试") // 接收到“测试”
             {
                 APIResponse<MessageIdInfo> response = await e.Session.SendGroupMessageAsync(e.GroupId, new TextSegment("耶")); // 发送“耶”
+                // APIResponse<MessageIdInfo> response = await e.Reply(new TextSegment("耶")); // 此处也可以直接使用e.Reply()回复消息
                 response.EnsureSuccess(); // 确保发送成功了
                 MessageIdInfo info = response; // 这里可以隐式转换
                                                // 因此，如果你用不到APIResponse<T>，可以把两行省略成一行：
