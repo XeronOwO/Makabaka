@@ -4,7 +4,7 @@
 
 # Makabaka
 
-一个基于 [OneBot-11标准](https://github.com/botuniverse/onebot-11) 的、适配于 [Lagrange.Onebot](https://github.com/LagrangeDev/Lagrange.Core#lagrangeonebot) 的、C# .NET Standard 2.1 的异步机器人开发框架。
+一个基于 [OneBot-11标准](https://github.com/botuniverse/onebot-11) 的、适配于 [Lagrange.Onebot](https://github.com/LagrangeDev/Lagrange.Core#lagrangeonebot) 的、[C# .NET Standard 2.1](https://github.com/dotnet/dotnet) 的异步机器人开发框架。
 
 </div>
 
