@@ -1,7 +1,14 @@
+<div align="center">
+
+<img width="160" src="logo.jpg" alt="logo">
+
 # Makabaka
-## 简介
-基于 [OneBot-11标准](https://github.com/botuniverse/onebot-11) 的、适配于 [Lagrange.Onebot](https://github.com/LagrangeDev/Lagrange.Core#lagrangeonebot) 的、C# .NET Standard 2.1 的异步机器人开发框架。  
-  
+
+一个基于 [OneBot-11标准](https://github.com/botuniverse/onebot-11) 的、适配于 [Lagrange.Onebot](https://github.com/LagrangeDev/Lagrange.Core#lagrangeonebot) 的、C# .NET Standard 2.1 的异步机器人开发框架。
+
+</div>
+
+## 说明
 本项目将持续跟进 [Lagrange.Core](https://github.com/LagrangeDev/Lagrange.Core) 项目进度。由于 [Lagrange.Core](https://github.com/LagrangeDev/Lagrange.Core) 项目仍在开发当中，可能有部分功能暂未支持。  
 如果对该项目有任何问题，欢迎在 [Issues](https://github.com/XeronOwO/Makabaka/issues) 中提出。  
 
@@ -350,3 +357,7 @@ namespace XeronBot
 
 ## 开源协议
 [GPL-3.0 license](https://github.com/XeronOwO/Makabaka/blob/main/LICENSE.txt)
+
+## 特别声明
+- 本项目完全免费，仅供学习、娱乐使用，请勿运用于商业、非法用途。  
+- 因使用者使用不当而造成的法律责任，由使用者本人承担。  
