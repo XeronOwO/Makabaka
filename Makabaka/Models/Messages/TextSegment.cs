@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Makabaka.Utils;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -45,7 +46,7 @@ namespace Makabaka.Models.Messages
 		/// <inheritdoc/>
 		public override string ToString()
 		{
-			return Text;
+			return CqCode.Encode(Text);
 		}
 	}
 }

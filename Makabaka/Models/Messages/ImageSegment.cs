@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Buffers.Text;
 using System.Security.Cryptography;
+using Makabaka.Utils;
 
 namespace Makabaka.Models.Messages
 {
@@ -174,7 +175,7 @@ namespace Makabaka.Models.Messages
 		/// <inheritdoc/>
 		public override string ToString()
 		{
-			return $"[CQ:image,file={File}]";
+			return $"[CQ:image,file={CqCode.Encode(File)}]";
 		}
 	}
 }
