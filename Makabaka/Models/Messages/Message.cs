@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Newtonsoft.Json;
 
 namespace Makabaka.Models.Messages
 {
@@ -34,7 +35,10 @@ namespace Makabaka.Models.Messages
 			return message.ToString();
 		}
 
-		internal void PostProcessMessage()
+		/// <summary>
+		/// 用于在使用<see cref="JsonConvert.DeserializeObject{T}(string)"/>反序列化消息后，对消息段进行后处理（例如，将<see cref="Segment"/>转换为特定的<see cref="TextSegment"/>，以此类推）<br/>如果您不会使用，请不要调用
+		/// </summary>
+		public void PostProcessMessage()
 		{
 			for (int i = 0; i < Count; i++)
 			{
