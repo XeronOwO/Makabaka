@@ -90,10 +90,11 @@ namespace Makabaka.Services
 				throw new Exception("正向WebSocket服务未运行，无法停止服务");
 			}
 
-			Log.Information($"正在停止正向WebSocket[{_ws.Guid}]");
+			var guid = _ws.Guid;
+			Log.Information($"正在停止正向WebSocket[{guid}]");
 			_cts.Cancel();
 			await _loopTask;
-			Log.Information($"已停止正向WebSocket[{_ws.Guid}]");
+			Log.Information($"已停止正向WebSocket[{guid}]");
 
 			_running = false;
 		}
