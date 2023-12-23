@@ -11,9 +11,9 @@
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<RepositoryUrl>https://github.com/XeronOwO/Makabaka</RepositoryUrl>
 		<PackageTags>csharp,dotnet,lagrange,qqbot,onebot,onebot11</PackageTags>
-		<AssemblyVersion>1.1.1.2</AssemblyVersion>
-		<FileVersion>1.1.1.2</FileVersion>
-		<Version>1.1.1.2</Version>
+		<AssemblyVersion>1.1.1.3</AssemblyVersion>
+		<FileVersion>1.1.1.3</FileVersion>
+		<Version>1.1.1.3</Version>
 		<ProduceReferenceAssembly>False</ProduceReferenceAssembly>
 		<GenerateDocumentationFile>True</GenerateDocumentationFile>
   </PropertyGroup>
