@@ -152,6 +152,13 @@ namespace Makabaka.Services
 			OnGroupMemberIncrease?.Invoke(this, e);
 		}
 
+		public event EventHandler<GroupMuteEventArgs> OnGroupMute;
+
+		public void SendGroupMuteEvent(GroupMuteEventArgs e)
+		{
+			OnGroupMute?.Invoke(this, e);
+		}
+
 		#endregion
 	}
 }

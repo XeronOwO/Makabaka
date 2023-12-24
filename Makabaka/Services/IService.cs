@@ -95,6 +95,13 @@ namespace Makabaka.Services
 
 		internal void SendGroupMemberIncreaseEvent(GroupMemberIncreaseEventArgs e);
 
+		/// <summary>
+		/// <a href="https://github.com/botuniverse/onebot-11/blob/master/event/notice.md#%E7%BE%A4%E7%A6%81%E8%A8%80">群禁言</a>事件
+		/// </summary>
+		event EventHandler<GroupMuteEventArgs> OnGroupMute;
+
+		internal void SendGroupMuteEvent(GroupMuteEventArgs e);
+
 		#endregion
 	}
 }

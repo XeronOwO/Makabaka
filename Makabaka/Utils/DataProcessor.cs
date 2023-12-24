@@ -49,6 +49,7 @@ namespace Makabaka.Utils
 				{ "group_admin", ProcessNoticeGroupAdminChange },
 				{ "group_decrease", ProcessNoticeGroupMemberDecrease },
 				{ "group_increase", ProcessNoticeGroupMemberIncrease },
+				{ "group_mute", ProcessNoticeGroupMute },
 			};
 		}
 
@@ -215,6 +216,13 @@ namespace Makabaka.Utils
 			var e = JsonConvert.DeserializeObject<GroupMemberIncreaseEventArgs>(data);
 			e.Session = _session;
 			_service.SendGroupMemberIncreaseEvent(e);
+		}
+
+		private void ProcessNoticeGroupMute(string data, JObject _)
+		{
+			var e = JsonConvert.DeserializeObject<GroupMuteEventArgs>(data);
+			e.Session = _session;
+			_service.SendGroupMuteEvent(e);
 		}
 
 		#endregion
