@@ -6,9 +6,9 @@ using System.Text;
 namespace Makabaka.Models.Senders
 {
 	/// <summary>
-	/// <a href="https://github.com/botuniverse/onebot-11/blob/master/event/message.md#%E7%BE%A4%E6%B6%88%E6%81%AF">群消息</a>发送者
+	/// <a href="https://github.com/botuniverse/onebot-11/blob/master/event/message.md#%E7%BE%A4%E6%B6%88%E6%81%AF">消息</a>发送者<br/>需要注意的是，sender 中的各字段是尽最大努力提供的，也就是说，不保证每个字段都一定存在，也不保证存在的字段都是完全正确的（缓存可能过期）。尤其对于匿名消息，此字段不具有参考价值。
 	/// </summary>
-	public class GroupSender
+	public class Sender
 	{
 		/// <summary>
 		/// 发送者 QQ 号

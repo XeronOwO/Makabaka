@@ -14,24 +14,24 @@ namespace Makabaka.Models.API.Responses
 		/// 群号
 		/// </summary>
 		[JsonProperty("group_id")]
-		public long GroupId { get; internal set; }
+		public long GroupId { get; set; }
 
 		/// <summary>
 		/// 群名称
 		/// </summary>
 		[JsonProperty("group_name")]
-		public string GroupName { get; internal set; }
+		public string GroupName { get; set; }
 
 		/// <summary>
 		/// 成员数
 		/// </summary>
 		[JsonProperty("member_count")]
-		public int MemberCount { get; internal set; }
+		public int MemberCount { get; set; }
 
 		/// <summary>
 		/// 最大成员数（群容量）
 		/// </summary>
 		[JsonProperty("max_member_count")]
-		public int MaxMemberCount { get; internal set; }
+		public int MaxMemberCount { get; set; }
 	}
 }

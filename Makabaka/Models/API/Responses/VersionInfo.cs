@@ -15,18 +15,18 @@ namespace Makabaka.Models.API.Responses
 		/// 应用标识，如 mirai-native
 		/// </summary>
 		[JsonProperty("app_name")]
-		public string AppName { get; internal set; }
+		public string AppName { get; set; }
 
 		/// <summary>
 		/// 应用版本，如 1.2.3
 		/// </summary>
 		[JsonProperty("app_version")]
-		public string AppVersion { get; internal set; }
+		public string AppVersion { get; set; }
 
 		/// <summary>
 		/// OneBot 标准版本，如 v11
 		/// </summary>
 		[JsonProperty("protocol_version")]
-		public string ProtocolVersion { get; internal set; }
+		public string ProtocolVersion { get; set; }
 	}
 }

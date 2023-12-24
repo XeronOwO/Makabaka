@@ -51,8 +51,15 @@ namespace Makabaka.Network
 		/// 撤回消息
 		/// </summary>
 		/// <param name="messageId">消息ID</param>
-		/// <returns>纯Json信息响应</returns>
+		/// <returns>空信息响应</returns>
 		Task<APIResponse<EmptyInfo>> DeleteMessageAsync(int messageId);
+
+		/// <summary>
+		/// 获取消息
+		/// </summary>
+		/// <param name="messageId">消息ID</param>
+		/// <returns>消息信息响应</returns>
+		Task<APIResponse<MessageInfo>> GetMessageAsync(int messageId);
 
 		/// <summary>
 		/// 群组踢人
@@ -60,7 +67,7 @@ namespace Makabaka.Network
 		/// <param name="groupId">群号</param>
 		/// <param name="userId">要踢的 QQ 号</param>
 		/// <param name="rejectAddRequest">拒绝此人的加群请求</param>
-		/// <returns>纯Json信息响应</returns>
+		/// <returns>空信息响应</returns>
 		Task<APIResponse<EmptyInfo>> KickGroupMemberAsync(long groupId, long userId, bool rejectAddRequest = false);
 
 		/// <summary>
@@ -69,7 +76,7 @@ namespace Makabaka.Network
 		/// <param name="groupId">群号</param>
 		/// <param name="userId">要禁言的 QQ 号</param>
 		/// <param name="duration">禁言时长，单位秒，0 表示取消禁言</param>
-		/// <returns>纯Json信息响应</returns>
+		/// <returns>空信息响应</returns>
 		Task<APIResponse<EmptyInfo>> MuteGroupMemberAsync(long groupId, long userId, int duration = 30 * 60);
 
 		/// <summary>
@@ -77,21 +84,21 @@ namespace Makabaka.Network
 		/// </summary>
 		/// <param name="groupId">群号</param>
 		/// <param name="userId">要取消禁言的 QQ 号</param>
-		/// <returns>纯Json信息响应</returns>
+		/// <returns>空信息响应</returns>
 		Task<APIResponse<EmptyInfo>> UnmuteGroupMemberAsync(long groupId, long userId);
 
 		/// <summary>
 		/// 群组全员禁言
 		/// </summary>
 		/// <param name="groupId">群号</param>
-		/// <returns>纯Json信息响应</returns>
+		/// <returns>空信息响应</returns>
 		Task<APIResponse<EmptyInfo>> MuteGroupAllAsync(long groupId);
 
 		/// <summary>
 		/// 群组取消全员禁言
 		/// </summary>
 		/// <param name="groupId">群号</param>
-		/// <returns>纯Json信息响应</returns>
+		/// <returns>空信息响应</returns>
 		Task<APIResponse<EmptyInfo>> UnmuteGroupAllAsync(long groupId);
 
 		/// <summary>
@@ -100,7 +107,7 @@ namespace Makabaka.Network
 		/// <param name="groupId">群号</param>
 		/// <param name="userId">要设置管理员的 QQ 号</param>
 		/// <param name="enable">true 为设置，false 为取消</param>
-		/// <returns>纯Json信息响应</returns>
+		/// <returns>空信息响应</returns>
 		Task<APIResponse<EmptyInfo>> SetGroupAdminAsync(long groupId, long userId, bool enable = true);
 
 		/// <summary>
@@ -109,7 +116,7 @@ namespace Makabaka.Network
 		/// <param name="groupId">群号</param>
 		/// <param name="userId">要设置的 QQ 号</param>
 		/// <param name="card">群名片内容，不填或空字符串表示删除群名片</param>
-		/// <returns>纯Json信息响应</returns>
+		/// <returns>空信息响应</returns>
 		Task<APIResponse<EmptyInfo>> SetGroupCardAsync(long groupId, long userId, string card);
 
 		/// <summary>
@@ -117,7 +124,7 @@ namespace Makabaka.Network
 		/// </summary>
 		/// <param name="groupId">群号</param>
 		/// <param name="groupName">新群名</param>
-		/// <returns>纯Json信息响应</returns>
+		/// <returns>空信息响应</returns>
 		Task<APIResponse<EmptyInfo>> SetGroupNameAsync(long groupId, string groupName);
 
 		/// <summary>
@@ -125,7 +132,7 @@ namespace Makabaka.Network
 		/// </summary>
 		/// <param name="groupId">群号</param>
 		/// <param name="isDismiss">是否解散，如果登录号是群主，则仅在此项为 true 时能够解散</param>
-		/// <returns>纯Json信息响应</returns>
+		/// <returns>空信息响应</returns>
 		Task<APIResponse<EmptyInfo>> LeaveGroupAsync(long groupId, bool isDismiss);
 
 		/// <summary>

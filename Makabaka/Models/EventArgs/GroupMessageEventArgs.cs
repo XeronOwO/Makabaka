@@ -60,7 +60,7 @@ namespace Makabaka.Models.EventArgs
 		/// 发送人信息
 		/// </summary>
 		[JsonProperty("sender")]
-		public GroupSender Sender { get; internal set; }
+		public Sender Sender { get; internal set; }
 
 		/// <inheritdoc/>
 		public async Task<APIResponse<MessageIdInfo>> Reply(Message message)

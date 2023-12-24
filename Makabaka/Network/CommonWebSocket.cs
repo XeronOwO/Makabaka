@@ -36,40 +36,50 @@ namespace Makabaka.Network
 
 		#region API
 
-		public async Task<APIResponse<VersionInfo>> GetVersionInfoAsync()
+		public Task<APIResponse<VersionInfo>> GetVersionInfoAsync()
 		{
-			return await ExecuteAPIAsync<VersionInfo>("get_version_info", Guid.NewGuid().ToString());
+			return ExecuteAPIAsync<VersionInfo>("get_version_info", Guid.NewGuid().ToString());
 		}
 
-		public async Task<APIResponse<MessageIdInfo>> SendPrivateMessageAsync(long userId, Message message)
+		public Task<APIResponse<MessageIdInfo>> SendPrivateMessageAsync(long userId, Message message)
 		{
-			return await ExecuteAPIAsync<MessageIdInfo, SendPrivateMessageInfo>("send_private_msg", new()
+			return ExecuteAPIAsync<MessageIdInfo, SendPrivateMessageInfo>("send_private_msg", new()
 			{
 				UserId = userId,
 				Message = message,
 			}, Guid.NewGuid().ToString());
 		}
 
-		public async Task<APIResponse<MessageIdInfo>> SendGroupMessageAsync(long groupId, Message message)
+		public Task<APIResponse<MessageIdInfo>> SendGroupMessageAsync(long groupId, Message message)
 		{
-			return await ExecuteAPIAsync<MessageIdInfo, SendGroupMessageInfo>("send_group_msg", new()
+			return ExecuteAPIAsync<MessageIdInfo, SendGroupMessageInfo>("send_group_msg", new()
 			{
 				GroupId = groupId,
 				Message = message,
 			}, Guid.NewGuid().ToString());
 		}
 
-		public async Task<APIResponse<EmptyInfo>> DeleteMessageAsync(int messageId)
+		public Task<APIResponse<EmptyInfo>> DeleteMessageAsync(int messageId)
 		{
-			return await ExecuteAPIAsync<EmptyInfo, DeleteMessageInfo>("delete_msg", new()
+			return ExecuteAPIAsync<EmptyInfo, DeleteMessageInfo>("delete_msg", new()
 			{
 				MessageId = messageId,
 			}, Guid.NewGuid().ToString());
 		}
 
-		public async Task<APIResponse<EmptyInfo>> KickGroupMemberAsync(long groupId, long userId, bool rejectAddRequest = false)
+		public async Task<APIResponse<MessageInfo>> GetMessageAsync(int messageId)
 		{
-			return await ExecuteAPIAsync<EmptyInfo, KickGroupMemberInfo>("set_group_kick", new()
+			var response = await ExecuteAPIAsync<MessageInfo, GetMessageInfo>("get_msg", new()
+			{
+				MessageId = messageId,
+			}, Guid.NewGuid().ToString());
+			response.Data.Message.PostProcessMessage();
+			return response;
+		}
+
+		public Task<APIResponse<EmptyInfo>> KickGroupMemberAsync(long groupId, long userId, bool rejectAddRequest = false)
+		{
+			return ExecuteAPIAsync<EmptyInfo, KickGroupMemberInfo>("set_group_kick", new()
 			{
 				GroupId = groupId,
 				UserId = userId,
@@ -77,9 +87,9 @@ namespace Makabaka.Network
 			}, Guid.NewGuid().ToString());
 		}
 
-		public async Task<APIResponse<EmptyInfo>> MuteGroupMemberAsync(long groupId, long userId, int duration = 30 * 60)
+		public Task<APIResponse<EmptyInfo>> MuteGroupMemberAsync(long groupId, long userId, int duration = 30 * 60)
 		{
-			return await ExecuteAPIAsync<EmptyInfo, MuteGroupMemberInfo>("set_group_ban", new()
+			return ExecuteAPIAsync<EmptyInfo, MuteGroupMemberInfo>("set_group_ban", new()
 			{
 				GroupId = groupId,
 				UserId = userId,
@@ -87,32 +97,32 @@ namespace Makabaka.Network
 			}, Guid.NewGuid().ToString());
 		}
 
-		public async Task<APIResponse<EmptyInfo>> UnmuteGroupMemberAsync(long groupId, long userId)
+		public Task<APIResponse<EmptyInfo>> UnmuteGroupMemberAsync(long groupId, long userId)
 		{
-			return await MuteGroupMemberAsync(groupId, userId, 0);
+			return MuteGroupMemberAsync(groupId, userId, 0);
 		}
 
-		public async Task<APIResponse<EmptyInfo>> MuteGroupAllAsync(long groupId)
+		public Task<APIResponse<EmptyInfo>> MuteGroupAllAsync(long groupId)
 		{
-			return await ExecuteAPIAsync<EmptyInfo, MuteGroupAllInfo>("set_group_whole_ban", new()
+			return ExecuteAPIAsync<EmptyInfo, MuteGroupAllInfo>("set_group_whole_ban", new()
 			{
 				GroupId = groupId,
 				Enable = true,
 			}, Guid.NewGuid().ToString());
 		}
 
-		public async Task<APIResponse<EmptyInfo>> UnmuteGroupAllAsync(long groupId)
+		public Task<APIResponse<EmptyInfo>> UnmuteGroupAllAsync(long groupId)
 		{
-			return await ExecuteAPIAsync<EmptyInfo, MuteGroupAllInfo>("set_group_whole_ban", new()
+			return ExecuteAPIAsync<EmptyInfo, MuteGroupAllInfo>("set_group_whole_ban", new()
 			{
 				GroupId = groupId,
 				Enable = false,
 			}, Guid.NewGuid().ToString());
 		}
 
-		public async Task<APIResponse<EmptyInfo>> SetGroupAdminAsync(long groupId, long userId, bool enable = true)
+		public Task<APIResponse<EmptyInfo>> SetGroupAdminAsync(long groupId, long userId, bool enable = true)
 		{
-			return await ExecuteAPIAsync<EmptyInfo, SetGroupAdminInfo>("set_group_admin", new()
+			return ExecuteAPIAsync<EmptyInfo, SetGroupAdminInfo>("set_group_admin", new()
 			{
 				GroupId = groupId,
 				UserId = userId,
@@ -120,9 +130,9 @@ namespace Makabaka.Network
 			}, Guid.NewGuid().ToString());
 		}
 
-		public async Task<APIResponse<EmptyInfo>> SetGroupCardAsync(long groupId, long userId, string card)
+		public Task<APIResponse<EmptyInfo>> SetGroupCardAsync(long groupId, long userId, string card)
 		{
-			return await ExecuteAPIAsync<EmptyInfo, SetGroupCardInfo>("set_group_card", new()
+			return ExecuteAPIAsync<EmptyInfo, SetGroupCardInfo>("set_group_card", new()
 			{
 				GroupId = groupId,
 				UserId = userId,
@@ -130,41 +140,41 @@ namespace Makabaka.Network
 			}, Guid.NewGuid().ToString());
 		}
 
-		public async Task<APIResponse<EmptyInfo>> SetGroupNameAsync(long groupId, string groupName)
+		public Task<APIResponse<EmptyInfo>> SetGroupNameAsync(long groupId, string groupName)
 		{
-			return await ExecuteAPIAsync<EmptyInfo, SetGroupNameInfo>("set_group_name", new()
+			return ExecuteAPIAsync<EmptyInfo, SetGroupNameInfo>("set_group_name", new()
 			{
 				GroupId = groupId,
 				GroupName = groupName,
 			}, Guid.NewGuid().ToString());
 		}
 
-		public async Task<APIResponse<EmptyInfo>> LeaveGroupAsync(long groupId, bool isDismiss)
+		public Task<APIResponse<EmptyInfo>> LeaveGroupAsync(long groupId, bool isDismiss)
 		{
-			return await ExecuteAPIAsync<EmptyInfo, SetGroupLeaveInfo>("set_group_leave", new()
+			return ExecuteAPIAsync<EmptyInfo, SetGroupLeaveInfo>("set_group_leave", new()
 			{
 				GroupId = groupId,
 				IsDismiss = isDismiss,
 			}, Guid.NewGuid().ToString());
 		}
 
-		public async Task<APIResponse<LoginInfo>> GetLoginInfoAsync()
+		public Task<APIResponse<LoginInfo>> GetLoginInfoAsync()
 		{
-			return await ExecuteAPIAsync<LoginInfo>("get_login_info", Guid.NewGuid().ToString());
+			return ExecuteAPIAsync<LoginInfo>("get_login_info", Guid.NewGuid().ToString());
 		}
 
-		public async Task<APIResponse<GroupInfo>> GetGroupInfoAsync(long groupId, bool noCache)
+		public Task<APIResponse<GroupInfo>> GetGroupInfoAsync(long groupId, bool noCache)
 		{
-			return await ExecuteAPIAsync<GroupInfo, GetGroupInfoInfo>("get_group_info", new()
+			return ExecuteAPIAsync<GroupInfo, GetGroupInfoInfo>("get_group_info", new()
 			{
 				GroupId = groupId,
 				NoCache = noCache,
 			}, Guid.NewGuid().ToString());
 		}
 
-		public async Task<APIResponse<GroupListInfo>> GetGroupListAsync()
+		public Task<APIResponse<GroupListInfo>> GetGroupListAsync()
 		{
-			return await ExecuteAPIAsync<GroupListInfo>("get_group_list", Guid.NewGuid().ToString());
+			return ExecuteAPIAsync<GroupListInfo>("get_group_list", Guid.NewGuid().ToString());
 		}
 
 		public async Task<APIResponse<ForwardMessageInfo>> GetForwardMessage(string id)
