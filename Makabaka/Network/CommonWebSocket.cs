@@ -59,6 +59,14 @@ namespace Makabaka.Network
 			}, Guid.NewGuid().ToString());
 		}
 
+		public async Task<APIResponse<EmptyInfo>> DeleteMessageAsync(int messageId)
+		{
+			return await ExecuteAPIAsync<EmptyInfo, DeleteMessageInfo>("delete_msg", new()
+			{
+				MessageId = messageId,
+			}, Guid.NewGuid().ToString());
+		}
+
 		public async Task<APIResponse<EmptyInfo>> KickGroupMemberAsync(long groupId, long userId, bool rejectAddRequest = false)
 		{
 			return await ExecuteAPIAsync<EmptyInfo, KickGroupMemberInfo>("set_group_kick", new()

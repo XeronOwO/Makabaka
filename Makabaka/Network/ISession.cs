@@ -48,6 +48,13 @@ namespace Makabaka.Network
 		Task<APIResponse<MessageIdInfo>> SendGroupMessageAsync(long groupId, Message message);
 
 		/// <summary>
+		/// 撤回消息
+		/// </summary>
+		/// <param name="messageId">消息ID</param>
+		/// <returns>纯Json信息响应</returns>
+		Task<APIResponse<EmptyInfo>> DeleteMessageAsync(int messageId);
+
+		/// <summary>
 		/// 群组踢人
 		/// </summary>
 		/// <param name="groupId">群号</param>
