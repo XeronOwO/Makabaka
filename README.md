@@ -74,8 +74,8 @@ Makabaka 已发布到 [NuGet](https://www.nuget.org/packages/Makabaka "前往NuG
 | [/send_private_msg]        |    🟢    |
 | [/send_group_msg]          |    🟢    |
 | ~~[/send_msg]~~            |    🔴    |
-| [/delete_msg]              |    🔴    |
-| [/get_msg]                 |    🔴    |
+| [/delete_msg]              |    🟢    |
+| [/get_msg]                 |    🟢    |
 | [/get_forward_msg]         |    🟢    |
 | ~~[/send_like]~~           |    🔴    |
 | [/set_group_kick]          |    🟢    |
@@ -159,17 +159,17 @@ Makabaka 已发布到 [NuGet](https://www.nuget.org/packages/Makabaka "前往NuG
 | Message  | [Private Message]              |    🔴    |
 | Message  | [Group Message]                |    🟢    |
 | Notice   | [Group File Upload]            |    🔴    |
-| Notice   | [Group Admin Change]           |    🔴    |
+| Notice   | [Group Admin Change]           |    🟢    |
 | Notice   | [Group Member Decrease]        |    🟢    |
 | Notice   | [Group Member Increase]        |    🟢    |
-| Notice   | [Group Mute]                   |    🔴    |
+| Notice   | [Group Mute]                   |    🟢    |
 | Notice   | [Friend Add]                   |    🔴    |
 | Notice   | [Group Recall Message]         |    🔴    |
 | Notice   | [Friend Recall Message]        |    🔴    |
 | Notice   | [Group Poke]                   |    🔴    |
 | Notice   | [Group red envelope luck king] |    🔴    |
 | Notice   | [Group Member Honor Changed]   |    🔴    |
-| Request  | [Add Friend Request]           |    🔴    |
+| Request  | [Add Friend Request]           |    🟢    |
 | Request  | [Group Request/Invitations]    |    🔴    |
 | Meta     | [LifeCycle]                    |    🟢    |
 | Meta     | [Heartbeat]                    |    🟢    |
@@ -200,7 +200,7 @@ Makabaka 已发布到 [NuGet](https://www.nuget.org/packages/Makabaka "前往NuG
 | 适配器类型          | 是否支持 |
 | ------------------ | :-----: |
 | [Http]             |    🔴    |
-| [Http-Post]        |    🟢    |
+| [Http-Post]        |    🟡    |
 | [ForwardWebSocket] |    🟢    |
 | [ReverseWebSocket] |    🟢    |
 
