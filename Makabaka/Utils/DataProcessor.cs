@@ -46,6 +46,7 @@ namespace Makabaka.Utils
 			};
 			_noticeTypeMap = new()
 			{
+				{ "group_admin", ProcessNoticeGroupAdminChange },
 				{ "group_decrease", ProcessNoticeGroupMemberDecrease },
 				{ "group_increase", ProcessNoticeGroupMemberIncrease },
 			};
@@ -193,6 +194,13 @@ namespace Makabaka.Utils
 			{
 				throw new Exception($"不支持的notice_type：{notice_type}");
 			}
+		}
+
+		private void ProcessNoticeGroupAdminChange(string data, JObject _)
+		{
+			var e = JsonConvert.DeserializeObject<GroupAdminChangedEventArgs>(data);
+			e.Session = _session;
+			_service.SendGroupAdminChangedEvent(e);
 		}
 
 		private void ProcessNoticeGroupMemberDecrease(string data, JObject _)
