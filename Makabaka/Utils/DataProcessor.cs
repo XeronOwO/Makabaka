@@ -49,7 +49,7 @@ namespace Makabaka.Utils
 				{ "group_admin", ProcessNoticeGroupAdminChange },
 				{ "group_decrease", ProcessNoticeGroupMemberDecrease },
 				{ "group_increase", ProcessNoticeGroupMemberIncrease },
-				{ "group_mute", ProcessNoticeGroupMute },
+				{ "group_ban", ProcessNoticeGroupMute },
 			};
 		}
 
