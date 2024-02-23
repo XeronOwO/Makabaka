@@ -161,7 +161,7 @@ namespace Makabaka.Models.Messages
 		/// <param name="cache">只在通过网络 URL 发送时有效，表示是否使用已缓存的文件，默认 1</param>
 		/// <param name="proxy">只在通过网络 URL 发送时有效，表示是否通过代理下载文件（需通过环境变量或配置文件配置代理），默认 1</param>
 		/// <param name="timeout">只在通过网络 URL 发送时有效，单位秒，表示下载网络文件的超时时间，默认不超时</param>
-		public ImageSegment(string file, string type = "", int cache = 1, int proxy = 1, int timeout = 0) : this()
+		public ImageSegment(string file, string type = null, int cache = 1, int proxy = 1, int timeout = 0) : this()
 		{
 			RawData = new JObject()
 			{
@@ -171,6 +171,18 @@ namespace Makabaka.Models.Messages
 				{ "proxy", proxy.ToString() },
 				{ "timeout", timeout.ToString() },
 			};
+		}
+
+		/// <summary>
+		/// 从本地文件创建<a href="https://github.com/botuniverse/onebot-11/blob/master/message/segment.md#%E5%9B%BE%E7%89%87">图片段消息</a>
+		/// </summary>
+		/// <param name="path">本地路径</param>
+		/// <returns>图片段消息</returns>
+		public static ImageSegment FromLocalFile(string path)
+		{
+			var bytes = System.IO.File.ReadAllBytes(path);
+			var base64 = Convert.ToBase64String(bytes);
+			return new ImageSegment($"base64://{base64}");
 		}
 
 		/// <inheritdoc/>

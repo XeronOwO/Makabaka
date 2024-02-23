@@ -81,7 +81,7 @@ namespace Makabaka.Models.Messages
 		/// <param name="userId">发送者 QQ 号</param>
 		/// <param name="nickname">发送者昵称</param>
 		/// <param name="content">消息内容，支持发送消息时的 message 数据类型，见 <a href="https://github.com/botuniverse/onebot-11/tree/master/api#%E5%8F%82%E6%95%B0">API 的参数</a></param>
-		public NodeSegment(string userId, string nickname, JArray content) : this()
+		internal NodeSegment(string userId, string nickname, JArray content) : this()
 		{
 			RawData = new JObject()
 			{
@@ -99,10 +99,9 @@ namespace Makabaka.Models.Messages
 		/// <param name="userId">发送者 QQ 号</param>
 		/// <param name="nickname">发送者昵称</param>
 		/// <param name="content">消息内容，支持发送消息时的 message 数据类型，见 <a href="https://github.com/botuniverse/onebot-11/tree/master/api#%E5%8F%82%E6%95%B0">API 的参数</a></param>
-		public NodeSegment(long userId, string nickname, JArray content)
-			: this(userId.ToString(), nickname, content)
+		public NodeSegment(long userId, string nickname, Message content)
+			: this(userId.ToString(), nickname, JArray.FromObject(content))
 		{
-
 		}
 
 		/// <inheritdoc/>
