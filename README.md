@@ -211,12 +211,6 @@ Makabaka 已发布到 [NuGet](https://www.nuget.org/packages/Makabaka "前往NuG
 
 </Details>
 
-## 画饼~~充饥~~
-- [ ] 没饼画了
-- [x] 添加Http-Post支持
-- [x] 添加反向WebSocket支持
-- [x] 添加正向WebSocket支持
-
 ## 代码示例
 <Details>
 <Summary>正向/反向WebSocket</Summary>
