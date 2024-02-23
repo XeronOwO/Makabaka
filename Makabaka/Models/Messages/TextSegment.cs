@@ -28,15 +28,17 @@ namespace Makabaka.Models.Messages
 			}
 		}
 
-		private TextSegment() { }
+		private TextSegment()
+		{
+			Type = "text";
+		}
 
 		/// <summary>
 		/// 创建<a href="https://github.com/botuniverse/onebot-11/blob/master/message/segment.md#%E7%BA%AF%E6%96%87%E6%9C%AC">纯文本段消息</a>
 		/// </summary>
 		/// <param name="text">文本</param>
-		public TextSegment(string text)
+		public TextSegment(string text) : this()
 		{
-			Type = "text";
 			RawData = new JObject()
 			{
 				{ "text", text },

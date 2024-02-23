@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Makabaka.Network
+namespace Makabaka.Models.API.Responses
 {
 	/// <summary>
-	/// 被动会话接口，定义一些被动函数
+	/// 群列表信息
 	/// </summary>
-	public interface IPassiveSession
+	public class GroupInfoList : List<GroupInfo>
 	{
 
 	}

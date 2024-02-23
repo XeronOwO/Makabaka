@@ -26,12 +26,6 @@ namespace Makabaka.Network
 		#region API
 
 		/// <summary>
-		/// 获取Onebot<a href="https://github.com/botuniverse/onebot-11/blob/master/api/public.md#get_version_info-%E8%8E%B7%E5%8F%96%E7%89%88%E6%9C%AC%E4%BF%A1%E6%81%AF">版本信息</a>
-		/// </summary>
-		/// <returns>版本信息响应</returns>
-		Task<APIResponse<VersionInfo>> GetVersionInfoAsync();
-
-		/// <summary>
 		/// 发送私聊消息
 		/// </summary>
 		/// <param name="userId">群号</param>
@@ -52,14 +46,29 @@ namespace Makabaka.Network
 		/// </summary>
 		/// <param name="messageId">消息ID</param>
 		/// <returns>空信息响应</returns>
-		Task<APIResponse<EmptyInfo>> DeleteMessageAsync(int messageId);
+		Task<APIResponse<EmptyInfo>> DeleteMessageAsync(long messageId);
 
 		/// <summary>
 		/// 获取消息
 		/// </summary>
 		/// <param name="messageId">消息ID</param>
 		/// <returns>消息信息响应</returns>
-		Task<APIResponse<MessageInfo>> GetMessageAsync(int messageId);
+		Task<APIResponse<MessageInfo>> GetMessageAsync(long messageId);
+
+		/// <summary>
+		/// 获取合并转发消息
+		/// </summary>
+		/// <param name="id">合并转发 ID</param>
+		/// <returns>合并转发消息信息响应</returns>
+		Task<APIResponse<ForwardMessageInfo>> GetForwardMessageAsync(string id);
+
+		/// <summary>
+		/// 发送好友赞
+		/// </summary>
+		/// <param name="userId">对方 QQ 号</param>
+		/// <param name="times">赞的次数，每个好友每天最多 10 次</param>
+		/// <returns>空消息响应</returns>
+		Task<APIResponse<EmptyInfo>> SendLikeAsync(long userId, int times = 1);
 
 		/// <summary>
 		/// 群组踢人
@@ -142,25 +151,71 @@ namespace Makabaka.Network
 		Task<APIResponse<LoginInfo>> GetLoginInfoAsync();
 
 		/// <summary>
+		/// 获取好友列表
+		/// </summary>
+		/// <returns>好友信息列表响应</returns>
+		Task<APIResponse<FriendInfoList>> GetFriendListAsync();
+
+		/// <summary>
 		/// 获取群信息
 		/// </summary>
 		/// <param name="groupId">群号</param>
 		/// <param name="noCache">是否不使用缓存（使用缓存可能更新不及时，但响应更快）</param>
 		/// <returns>群信息响应</returns>
-		Task<APIResponse<GroupInfo>> GetGroupInfoAsync(long groupId, bool noCache);
+		Task<APIResponse<GroupInfo>> GetGroupAsync(long groupId, bool noCache);
 
 		/// <summary>
 		/// 获取群列表
 		/// </summary>
 		/// <returns>群列表信息响应</returns>
-		Task<APIResponse<GroupListInfo>> GetGroupListAsync();
+		Task<APIResponse<GroupInfoList>> GetGroupListAsync();
 
 		/// <summary>
-		/// 获取合并转发消息
+		/// 获取群成员信息
 		/// </summary>
-		/// <param name="id">合并转发 ID</param>
-		/// <returns>合并转发消息信息响应</returns>
-		Task<APIResponse<ForwardMessageInfo>> GetForwardMessage(string id);
+		/// <param name="groupId">群号</param>
+		/// <param name="userId">QQ 号</param>
+		/// <param name="noCache">是否不使用缓存（使用缓存可能更新不及时，但响应更快）</param>
+		/// <returns>群成员信息响应</returns>
+		Task<APIResponse<GroupMemberInfo>> GetGroupMemberAsync(long groupId, long userId, bool noCache = false);
+
+		/// <summary>
+		/// 获取群成员列表<br/>响应内容为 JSON 数组，每个元素的内容和上面的 get_group_member_info 接口相同，但对于同一个群组的同一个成员，获取列表时和获取单独的成员信息时，某些字段可能有所不同，例如 area、title 等字段在获取列表时无法获得，具体应以单独的成员信息为准。
+		/// </summary>
+		/// <param name="groupId">群号</param>
+		/// <returns>群成员信息列表响应</returns>
+		Task<APIResponse<GroupMemberInfoList>> GetGroupMemberListAsync(long groupId);
+
+		/// <summary>
+		/// 获取 Cookies
+		/// </summary>
+		/// <param name="domain">需要获取 cookies 的域名</param>
+		/// <returns>Cookies信息响应</returns>
+		Task<APIResponse<CookiesInfo>> GetCookiesAsync(string domain);
+
+		/// <summary>
+		/// 检查是否可以发送图片
+		/// </summary>
+		/// <returns>是否信息响应</returns>
+		Task<APIResponse<YesInfo>> CanSendImageAsync();
+
+		/// <summary>
+		/// 检查是否可以发送语音
+		/// </summary>
+		/// <returns>是否信息响应</returns>
+		Task<APIResponse<YesInfo>> CanSendRecordAsync();
+
+		/// <summary>
+		/// 获取Onebot<a href="https://github.com/botuniverse/onebot-11/blob/master/api/public.md#get_version_info-%E8%8E%B7%E5%8F%96%E7%89%88%E6%9C%AC%E4%BF%A1%E6%81%AF">版本信息</a>
+		/// </summary>
+		/// <returns>版本信息响应</returns>
+		Task<APIResponse<VersionInfo>> GetVersionInfoAsync();
+
+		/// <summary>
+		/// 重启 OneBot 实现<br/>由于重启 OneBot 实现同时需要重启 API 服务，这意味着当前的 API 请求会被中断，因此需要异步地重启，接口返回的 status 是 async。
+		/// </summary>
+		/// <returns>空信息响应</returns>
+		Task<APIResponse<EmptyInfo>> RestartAsync();
 
 		#endregion
 	}

@@ -155,18 +155,11 @@ namespace Makabaka.Services
 
 		#region 事件
 
-		public event EventHandler<LifeCycleEventArgs> OnLifeCycle;
+		public event EventHandler<PrivateMessageEventArgs> OnPrivateMessage;
 
-		public void SendLifeCycleEvent(LifeCycleEventArgs e)
+		public void SendPrivateMessageEvent(PrivateMessageEventArgs e)
 		{
-			OnLifeCycle?.Invoke(this, e);
-		}
-
-		public event EventHandler<HeartbeatEventArgs> OnHeartbeat;
-
-		public void SendHeartbeatEvent(HeartbeatEventArgs e)
-		{
-			OnHeartbeat?.Invoke(this, e);
+			OnPrivateMessage?.Invoke(this, e);
 		}
 
 		public event EventHandler<GroupMessageEventArgs> OnGroupMessage;
@@ -174,13 +167,6 @@ namespace Makabaka.Services
 		public void SendGroupMessageEvent(GroupMessageEventArgs e)
 		{
 			OnGroupMessage?.Invoke(this, e);
-		}
-
-		public event EventHandler<AddFriendRequestEventArgs> OnAddFriendRequest;
-
-		public void SendAddFriendRequestEvent(AddFriendRequestEventArgs e)
-		{
-			OnAddFriendRequest?.Invoke(this, e);
 		}
 
 		public event EventHandler<GroupAdminChangedEventArgs> OnGroupAdminChanged;
@@ -209,6 +195,41 @@ namespace Makabaka.Services
 		public void SendGroupMuteEvent(GroupMuteEventArgs e)
 		{
 			OnGroupMute?.Invoke(this, e);
+		}
+
+		public event EventHandler<GroupRecallMessageEventArgs> OnGroupRecallMessage;
+
+		public void SendGroupRecallMessageEvent(GroupRecallMessageEventArgs e)
+		{
+			OnGroupRecallMessage?.Invoke(this, e);
+		}
+
+		public event EventHandler<FriendRecallMessageEventArgs> OnFriendRecallMessage;
+
+		public void SendFriendRecallMessageEvent(FriendRecallMessageEventArgs e)
+		{
+			OnFriendRecallMessage?.Invoke(this, e);
+		}
+
+		public event EventHandler<AddFriendRequestEventArgs> OnAddFriendRequest;
+
+		public void SendAddFriendRequestEvent(AddFriendRequestEventArgs e)
+		{
+			OnAddFriendRequest?.Invoke(this, e);
+		}
+
+		public event EventHandler<LifeCycleEventArgs> OnLifeCycle;
+
+		public void SendLifeCycleEvent(LifeCycleEventArgs e)
+		{
+			OnLifeCycle?.Invoke(this, e);
+		}
+
+		public event EventHandler<HeartbeatEventArgs> OnHeartbeat;
+
+		public void SendHeartbeatEvent(HeartbeatEventArgs e)
+		{
+			OnHeartbeat?.Invoke(this, e);
 		}
 
 		#endregion

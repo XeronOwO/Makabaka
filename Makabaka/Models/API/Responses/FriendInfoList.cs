@@ -5,10 +5,9 @@ using System.Text;
 namespace Makabaka.Models.API.Responses
 {
 	/// <summary>
-	/// 群列表信息
+	/// 好友信息列表
 	/// </summary>
-	public class GroupListInfo : List<GroupInfo>
+	public class FriendInfoList : List<FriendInfo>
 	{
-
 	}
 }

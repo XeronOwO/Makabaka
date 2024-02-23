@@ -44,9 +44,9 @@ namespace Makabaka.Models.EventArgs
 		public long Duration { get; set; }
 
 		/// <inheritdoc/>
-		public async Task<APIResponse<MessageIdInfo>> Reply(Message message)
+		public Task<APIResponse<MessageIdInfo>> Reply(Message message)
 		{
-			return await Session.SendGroupMessageAsync(GroupId, message);
+			return Session.SendGroupMessageAsync(GroupId, message);
 		}
 	}
 }

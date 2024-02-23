@@ -47,18 +47,11 @@ namespace Makabaka.Services
 		#region 事件
 
 		/// <summary>
-		/// <a href="https://github.com/botuniverse/onebot-11/blob/master/event/meta.md#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F">生命周期</a>事件
+		/// <a href="https://github.com/botuniverse/onebot-11/blob/master/event/message.md#%E7%A7%81%E8%81%8A%E6%B6%88%E6%81%AF">私聊消息</a>事件
 		/// </summary>
-		event EventHandler<LifeCycleEventArgs> OnLifeCycle;
+		event EventHandler<PrivateMessageEventArgs> OnPrivateMessage;
 
-		internal void SendLifeCycleEvent(LifeCycleEventArgs e);
-
-		/// <summary>
-		/// <a href="https://github.com/botuniverse/onebot-11/blob/master/event/meta.md#%E5%BF%83%E8%B7%B3">心跳</a>事件
-		/// </summary>
-		event EventHandler<HeartbeatEventArgs> OnHeartbeat;
-
-		internal void SendHeartbeatEvent(HeartbeatEventArgs e);
+		internal void SendPrivateMessageEvent(PrivateMessageEventArgs e);
 
 		/// <summary>
 		/// <a href="https://github.com/botuniverse/onebot-11/blob/master/event/message.md#%E7%BE%A4%E6%B6%88%E6%81%AF">群消息</a>事件
@@ -66,13 +59,6 @@ namespace Makabaka.Services
 		event EventHandler<GroupMessageEventArgs> OnGroupMessage;
 
 		internal void SendGroupMessageEvent(GroupMessageEventArgs e);
-
-		/// <summary>
-		/// <a href="https://github.com/botuniverse/onebot-11/blob/master/event/request.md#%E5%8A%A0%E5%A5%BD%E5%8F%8B%E8%AF%B7%E6%B1%82">加好友请求</a>事件
-		/// </summary>
-		event EventHandler<AddFriendRequestEventArgs> OnAddFriendRequest;
-
-		internal void SendAddFriendRequestEvent(AddFriendRequestEventArgs e);
 
 		/// <summary>
 		/// <a href="https://github.com/botuniverse/onebot-11/blob/master/event/notice.md#%E7%BE%A4%E7%AE%A1%E7%90%86%E5%91%98%E5%8F%98%E5%8A%A8">群管理员变动</a>事件
@@ -101,6 +87,41 @@ namespace Makabaka.Services
 		event EventHandler<GroupMuteEventArgs> OnGroupMute;
 
 		internal void SendGroupMuteEvent(GroupMuteEventArgs e);
+
+		/// <summary>
+		/// <a href="https://github.com/botuniverse/onebot-11/blob/master/event/notice.md#%E7%BE%A4%E6%B6%88%E6%81%AF%E6%92%A4%E5%9B%9E">群消息撤回</a>事件
+		/// </summary>
+		event EventHandler<GroupRecallMessageEventArgs> OnGroupRecallMessage;
+
+		internal void SendGroupRecallMessageEvent(GroupRecallMessageEventArgs e);
+
+		/// <summary>
+		/// <a href="https://github.com/botuniverse/onebot-11/blob/master/event/notice.md#%E5%A5%BD%E5%8F%8B%E6%B6%88%E6%81%AF%E6%92%A4%E5%9B%9E">好友消息撤回</a>事件
+		/// </summary>
+		event EventHandler<FriendRecallMessageEventArgs> OnFriendRecallMessage;
+
+		internal void SendFriendRecallMessageEvent(FriendRecallMessageEventArgs e);
+
+		/// <summary>
+		/// <a href="https://github.com/botuniverse/onebot-11/blob/master/event/request.md#%E5%8A%A0%E5%A5%BD%E5%8F%8B%E8%AF%B7%E6%B1%82">加好友请求</a>事件
+		/// </summary>
+		event EventHandler<AddFriendRequestEventArgs> OnAddFriendRequest;
+
+		internal void SendAddFriendRequestEvent(AddFriendRequestEventArgs e);
+
+		/// <summary>
+		/// <a href="https://github.com/botuniverse/onebot-11/blob/master/event/meta.md#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F">生命周期</a>事件
+		/// </summary>
+		event EventHandler<LifeCycleEventArgs> OnLifeCycle;
+
+		internal void SendLifeCycleEvent(LifeCycleEventArgs e);
+
+		/// <summary>
+		/// <a href="https://github.com/botuniverse/onebot-11/blob/master/event/meta.md#%E5%BF%83%E8%B7%B3">心跳</a>事件
+		/// </summary>
+		event EventHandler<HeartbeatEventArgs> OnHeartbeat;
+
+		internal void SendHeartbeatEvent(HeartbeatEventArgs e);
 
 		#endregion
 	}

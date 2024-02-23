@@ -27,15 +27,17 @@ namespace Makabaka.Models.Messages
 			}
 		}
 
-		private ForwardSegment() { }
+		private ForwardSegment()
+		{
+			Type = "forward";
+		}
 
 		/// <summary>
 		/// 创建<a href="https://github.com/botuniverse/onebot-11/blob/master/message/segment.md#%E5%90%88%E5%B9%B6%E8%BD%AC%E5%8F%91-">合并转发段消息</a>
 		/// </summary>
 		/// <param name="id">合并转发 ID，需通过 GetForwardMsg API 获取具体内容</param>
-		public ForwardSegment(string id)
+		public ForwardSegment(string id) : this()
 		{
-			Type = "forward";
 			RawData = new JObject()
 			{
 				{ "id", id },
@@ -54,7 +56,7 @@ namespace Makabaka.Models.Messages
 		/// <inheritdoc/>
 		public override string ToString()
 		{
-			return $"[CQ:forward,id={Id}]";
+			return $"[CQ:{Type},id={Id}]";
 		}
 	}
 }

@@ -1,14 +1,17 @@
-﻿using Newtonsoft.Json;
+﻿using Makabaka.Models.API.Responses;
+using Makabaka.Models.Messages;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Makabaka.Models.EventArgs
 {
 	/// <summary>
 	/// <a href="https://github.com/botuniverse/onebot-11/blob/master/event/notice.md#%E7%BE%A4%E6%88%90%E5%91%98%E5%87%8F%E5%B0%91">群成员减少</a>事件参数
 	/// </summary>
-	public class GroupMemberDecreaseEventArgs : NoticeEventArgs
+	public class GroupMemberDecreaseEventArgs : NoticeEventArgs, IReply
 	{
 		/// <summary>
 		/// 事件子类型，分别表示主动退群、成员被踢、登录号被踢<br/>
@@ -34,5 +37,11 @@ namespace Makabaka.Models.EventArgs
 		/// </summary>
 		[JsonProperty("user_id")]
 		public long UserId { get; set; }
+
+		/// <inheritdoc/>
+		public Task<APIResponse<MessageIdInfo>> Reply(Message message)
+		{
+			return Session.SendGroupMessageAsync(GroupId, message);
+		}
 	}
 }

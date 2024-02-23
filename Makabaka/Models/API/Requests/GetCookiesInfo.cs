@@ -5,9 +5,9 @@ using System.Text;
 
 namespace Makabaka.Models.API.Requests
 {
-	internal class GetMessageInfo
+	internal class GetCookiesInfo
 	{
-		[JsonProperty("message_id")]
-		public long MessageId { get; set; }
+		[JsonProperty("domain")]
+		public string Domain { get; set; }
 	}
 }

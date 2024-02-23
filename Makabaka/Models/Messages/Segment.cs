@@ -31,11 +31,25 @@ namespace Makabaka.Models.Messages
 				case "text":
 					return new TextSegment((string)RawData["text"]);
 				case "face":
-					return new FaceSegment(int.Parse((string)RawData["id"]));
+					return new FaceSegment((string)RawData["id"]);
 				case "image":
 					return new ImageSegment((string)RawData["file"], (string)RawData["type"], (string)RawData["url"]);
+				case "record":
+					return new RecordSegment((string)RawData["file"], (string)RawData["magic"], (string)RawData["url"]);
+				case "video":
+					return new VideoSegment((string)RawData["file"], (string)RawData["url"]);
 				case "at":
 					return new AtSegment((string)RawData["qq"]);
+				case "rps":
+					return new RpsSegment();
+				case "dice":
+					return new DiceSegment();
+				case "poke":
+					return new PokeSegment((string)RawData["type"], (string)RawData["id"], (string)RawData["name"]);
+				case "location":
+					return new LocationSegment((string)RawData["lat"], (string)RawData["lon"], (string)RawData["title"], (string)RawData["content"]);
+				case "reply":
+					return new ReplySegment((string)RawData["id"]);
 				case "forward":
 					return new ForwardSegment((string)RawData["id"]);
 				case "node":

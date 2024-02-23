@@ -36,11 +36,6 @@ namespace Makabaka.Network
 
 		#region API
 
-		public Task<APIResponse<VersionInfo>> GetVersionInfoAsync()
-		{
-			return ExecuteAPIAsync<VersionInfo>("get_version_info", Guid.NewGuid().ToString());
-		}
-
 		public Task<APIResponse<MessageIdInfo>> SendPrivateMessageAsync(long userId, Message message)
 		{
 			return ExecuteAPIAsync<MessageIdInfo, SendPrivateMessageInfo>("send_private_msg", new()
@@ -59,7 +54,7 @@ namespace Makabaka.Network
 			}, Guid.NewGuid().ToString());
 		}
 
-		public Task<APIResponse<EmptyInfo>> DeleteMessageAsync(int messageId)
+		public Task<APIResponse<EmptyInfo>> DeleteMessageAsync(long messageId)
 		{
 			return ExecuteAPIAsync<EmptyInfo, DeleteMessageInfo>("delete_msg", new()
 			{
@@ -67,13 +62,36 @@ namespace Makabaka.Network
 			}, Guid.NewGuid().ToString());
 		}
 
-		public async Task<APIResponse<MessageInfo>> GetMessageAsync(int messageId)
+		public async Task<APIResponse<MessageInfo>> GetMessageAsync(long messageId)
 		{
 			var response = await ExecuteAPIAsync<MessageInfo, GetMessageInfo>("get_msg", new()
 			{
 				MessageId = messageId,
 			}, Guid.NewGuid().ToString());
 			response.Data.Message.PostProcessMessage();
+			return response;
+		}
+
+		public async Task<APIResponse<ForwardMessageInfo>> GetForwardMessageAsync(string id)
+		{
+			var response = await ExecuteAPIAsync<ForwardMessageInfo, GetForwardMessageInfo>("get_forward_msg", new()
+			{
+				Id = id,
+			}, Guid.NewGuid().ToString());
+			foreach (var node in response.Data.Message)
+			{
+				node.PostProcessContent();
+			}
+			return response;
+		}
+
+		public async Task<APIResponse<EmptyInfo>> SendLikeAsync(long userId, int times = 1)
+		{
+			var response = await ExecuteAPIAsync<EmptyInfo, SendLikeInfo>("send_like", new()
+			{
+				UserId = userId,
+				Times = times,
+			}, Guid.NewGuid().ToString());
 			return response;
 		}
 
@@ -163,31 +181,69 @@ namespace Makabaka.Network
 			return ExecuteAPIAsync<LoginInfo>("get_login_info", Guid.NewGuid().ToString());
 		}
 
-		public Task<APIResponse<GroupInfo>> GetGroupInfoAsync(long groupId, bool noCache)
+		public Task<APIResponse<FriendInfoList>> GetFriendListAsync()
 		{
-			return ExecuteAPIAsync<GroupInfo, GetGroupInfoInfo>("get_group_info", new()
+			return ExecuteAPIAsync<FriendInfoList>("get_friend_list", Guid.NewGuid().ToString());
+		}
+
+		public Task<APIResponse<GroupInfo>> GetGroupAsync(long groupId, bool noCache)
+		{
+			return ExecuteAPIAsync<GroupInfo, GetGroupInfo>("get_group_info", new()
 			{
 				GroupId = groupId,
 				NoCache = noCache,
 			}, Guid.NewGuid().ToString());
 		}
 
-		public Task<APIResponse<GroupListInfo>> GetGroupListAsync()
+		public Task<APIResponse<GroupInfoList>> GetGroupListAsync()
 		{
-			return ExecuteAPIAsync<GroupListInfo>("get_group_list", Guid.NewGuid().ToString());
+			return ExecuteAPIAsync<GroupInfoList>("get_group_list", Guid.NewGuid().ToString());
 		}
 
-		public async Task<APIResponse<ForwardMessageInfo>> GetForwardMessage(string id)
+		public Task<APIResponse<GroupMemberInfo>> GetGroupMemberAsync(long groupId, long userId, bool noCache = false)
 		{
-			var response = await ExecuteAPIAsync<ForwardMessageInfo, GetForwardMessageInfo>("get_forward_msg", new()
+			return ExecuteAPIAsync<GroupMemberInfo, GetGroupMemberInfo>("get_group_member_info", new()
 			{
-				Id = id,
+				GroupId = groupId,
+				UserId = userId,
+				NoCache = noCache,
 			}, Guid.NewGuid().ToString());
-			foreach (var node in response.Data.Message)
+		}
+
+		public Task<APIResponse<GroupMemberInfoList>> GetGroupMemberListAsync(long groupId)
+		{
+			return ExecuteAPIAsync<GroupMemberInfoList, GetGroupMemberListInfo>("get_group_member_list", new()
 			{
-				node.PostProcessContent();
-			}
-			return response;
+				GroupId = groupId,
+			}, Guid.NewGuid().ToString());
+		}
+
+		public Task<APIResponse<CookiesInfo>> GetCookiesAsync(string domain)
+		{
+			return ExecuteAPIAsync<CookiesInfo, GetCookiesInfo>("get_cookies", new()
+			{
+				Domain = domain,
+			}, Guid.NewGuid().ToString());
+		}
+
+		public Task<APIResponse<YesInfo>> CanSendImageAsync()
+		{
+			return ExecuteAPIAsync<YesInfo>("can_send_image", Guid.NewGuid().ToString());
+		}
+
+		public Task<APIResponse<YesInfo>> CanSendRecordAsync()
+		{
+			return ExecuteAPIAsync<YesInfo>("can_send_record", Guid.NewGuid().ToString());
+		}
+
+		public Task<APIResponse<VersionInfo>> GetVersionInfoAsync()
+		{
+			return ExecuteAPIAsync<VersionInfo>("get_version_info", Guid.NewGuid().ToString());
+		}
+
+		public Task<APIResponse<EmptyInfo>> RestartAsync()
+		{
+			return ExecuteAPIAsync<EmptyInfo>("set_restart", Guid.NewGuid().ToString());
 		}
 
 		#endregion

@@ -1,14 +1,17 @@
-﻿using Newtonsoft.Json;
+﻿using Makabaka.Models.API.Responses;
+using Makabaka.Models.Messages;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Makabaka.Models.EventArgs
 {
 	/// <summary>
 	/// <a href="https://github.com/botuniverse/onebot-11/blob/master/event/notice.md#%E7%BE%A4%E6%88%90%E5%91%98%E5%A2%9E%E5%8A%A0">群成员增加</a>事件参数
 	/// </summary>
-	public class GroupMemberIncreaseEventArgs : NoticeEventArgs
+	public class GroupMemberIncreaseEventArgs : NoticeEventArgs, IReply
 	{
 		/// <summary>
 		/// 事件子类型，分别表示管理员已同意入群、管理员邀请入群<br/>
@@ -34,5 +37,11 @@ namespace Makabaka.Models.EventArgs
 		/// </summary>
 		[JsonProperty("user_id")]
 		public long UserId { get; internal set; }
+
+		/// <inheritdoc/>
+		public Task<APIResponse<MessageIdInfo>> Reply(Message message)
+		{
+			return Session.SendGroupMessageAsync(GroupId, message);
+		}
 	}
 }

@@ -28,7 +28,7 @@ namespace Makabaka.Models.API.Responses
 		/// 消息 ID
 		/// </summary>
 		[JsonProperty("message_id")]
-		public int MessageId { get; set; }
+		public long MessageId { get; set; }
 
 		/// <summary>
 		/// 消息真实 ID

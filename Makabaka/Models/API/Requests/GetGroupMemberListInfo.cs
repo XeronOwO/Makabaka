@@ -5,9 +5,9 @@ using System.Text;
 
 namespace Makabaka.Models.API.Requests
 {
-	internal class GetMessageInfo
+	internal class GetGroupMemberListInfo
 	{
-		[JsonProperty("message_id")]
-		public long MessageId { get; set; }
+		[JsonProperty("group_id")]
+		public long GroupId { get; set; }
 	}
 }

@@ -138,11 +138,13 @@ namespace Makabaka.Models.Messages
 			}
 		}
 
-		private ImageSegment() { }
-
-		internal ImageSegment(string file, string type, string url)
+		private ImageSegment()
 		{
 			Type = "image";
+		}
+
+		internal ImageSegment(string file, string type, string url) : this()
+		{
 			RawData = new JObject()
 			{
 				{ "file", file },
@@ -159,9 +161,8 @@ namespace Makabaka.Models.Messages
 		/// <param name="cache">只在通过网络 URL 发送时有效，表示是否使用已缓存的文件，默认 1</param>
 		/// <param name="proxy">只在通过网络 URL 发送时有效，表示是否通过代理下载文件（需通过环境变量或配置文件配置代理），默认 1</param>
 		/// <param name="timeout">只在通过网络 URL 发送时有效，单位秒，表示下载网络文件的超时时间，默认不超时</param>
-		public ImageSegment(string file, string type = "", int cache = 1, int proxy = 1, int timeout = 0)
+		public ImageSegment(string file, string type = "", int cache = 1, int proxy = 1, int timeout = 0) : this()
 		{
-			Type = "image";
 			RawData = new JObject()
 			{
 				{ "file", file },
@@ -175,7 +176,7 @@ namespace Makabaka.Models.Messages
 		/// <inheritdoc/>
 		public override string ToString()
 		{
-			return $"[CQ:image,file={CqCode.Encode(File)}]";
+			return $"[CQ:{Type},file={CqCode.Encode(File)}]";
 		}
 	}
 }

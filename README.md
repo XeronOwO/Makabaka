@@ -25,21 +25,21 @@ Makabaka 已发布到 [NuGet](https://www.nuget.org/packages/Makabaka "前往NuG
 | [Text]           |    🟢    |
 | [Face]           |    🟢    |
 | [Image]          |    🟢    |
-| [Record]         |    🔴    |
-| [Video]          |    🔴    |
+| [Record]         |    🟢    |
+| [Video]          |    🟢    |
 | [At]             |    🟢    |
-| [Rps]            |    🔴    |
-| [Dice]           |    🔴    |
+| [Rps]            |    🟢    |
+| [Dice]           |    🟢    |
 | [Shake]          |    🔴    |
-| [Poke]           |    🔴    |
+| [Poke]           |    🟢    |
 | [Anonymous]      |    🔴    |
 | [Share]          |    🔴    |
 | [Contact]        |    🔴    |
-| [Location]       |    🔴    |
+| [Location]       |    🟢    |
 | [Music]          |    🔴    |
-| [Reply]          |    🔴    |
+| [Reply]          |    🟢    |
 | [Forward]        |    🟢    |
-| [Node]           |    🔴    |
+| [Node]           |    🟢    |
 | [Xml]            |    🔴    |
 | [Json]           |    🔴    |
 
@@ -77,37 +77,37 @@ Makabaka 已发布到 [NuGet](https://www.nuget.org/packages/Makabaka "前往NuG
 | [/delete_msg]              |    🟢    |
 | [/get_msg]                 |    🟢    |
 | [/get_forward_msg]         |    🟢    |
-| ~~[/send_like]~~           |    🔴    |
+| [/send_like]               |    🟢    |
 | [/set_group_kick]          |    🟢    |
 | [/set_group_ban]           |    🟢    |
-| [/set_group_anonymous_ban] |    🔴    |
+| ~~[/set_group_anonymous_ban]~~ |    🔴    |
 | [/set_group_whole_ban]     |    🟢    |
 | [/set_group_admin]         |    🟢    |
 | [/set_group_anonymous]     |    🔴    |
 | [/set_group_card]          |    🟢    |
 | [/set_group_name]          |    🟢    |
 | [/set_group_leave]         |    🟢    |
-| [/set_group_special_title] |    🔴    |
+| ~~[/set_group_special_title]~~ |    🔴    |
 | [/set_friend_add_request]  |    🔴    |
 | [/set_group_add_request]   |    🔴    |
 | [/get_login_info]          |    🟢    |
-| [/get_stranger_info]       |    🔴    |
-| [/get_friend_list]         |    🔴    |
+| ~~[/get_stranger_info]~~   |    🔴    |
+| [/get_friend_list]         |    🟢    |
 | [/get_group_info]          |    🟢    |
 | [/get_group_list]          |    🟢    |
-| [/get_group_member_info]   |    🔴    |
-| [/get_group_member_list]   |    🔴    |
-| [/get_group_honor_info]    |    🔴    |
-| [/get_cookies]             |    🔴    |
-| [/get_csrf_token]          |    🔴    |
-| [/get_credentials]         |    🔴    |
+| [/get_group_member_info]   |    🟢    |
+| [/get_group_member_list]   |    🟢    |
+| ~~[/get_group_honor_info]~~    |    🔴    |
+| [/get_cookies]             |    🟢    |
+| ~~[/get_csrf_token]~~          |    🔴    |
+| ~~[/get_credentials]~~         |    🔴    |
 | [/get_record]              |    🔴    |
 | [/get_image]               |    🔴    |
-| [/can_send_image]          |    🔴    |
-| [/can_send_record]         |    🔴    |
+| [/can_send_image]          |    🟢    |
+| [/can_send_record]         |    🟢    |
 | [/get_status]              |    🔴    |
 | [/get_version_info]        |    🟢    |
-| [/set_restart]             |    🔴    |
+| [/set_restart]             |    🟢    |
 | [/clean_cache]             |    🔴    |
 
 [/send_private_msg]: https://github.com/botuniverse/onebot-11/blob/master/api/public.md#send_private_msg-%E5%8F%91%E9%80%81%E7%A7%81%E8%81%8A%E6%B6%88%E6%81%AF
@@ -156,7 +156,7 @@ Makabaka 已发布到 [NuGet](https://www.nuget.org/packages/Makabaka "前往NuG
 
 | 推送类型 | 事件名称                        | 是否支持 |
 | -------- | ------------------------------ | :-----: |
-| Message  | [Private Message]              |    🔴    |
+| Message  | [Private Message]              |    🟢    |
 | Message  | [Group Message]                |    🟢    |
 | Notice   | [Group File Upload]            |    🔴    |
 | Notice   | [Group Admin Change]           |    🟢    |
@@ -164,8 +164,8 @@ Makabaka 已发布到 [NuGet](https://www.nuget.org/packages/Makabaka "前往NuG
 | Notice   | [Group Member Increase]        |    🟢    |
 | Notice   | [Group Mute]                   |    🟢    |
 | Notice   | [Friend Add]                   |    🔴    |
-| Notice   | [Group Recall Message]         |    🔴    |
-| Notice   | [Friend Recall Message]        |    🔴    |
+| Notice   | [Group Recall Message]         |    🟢    |
+| Notice   | [Friend Recall Message]        |    🟢    |
 | Notice   | [Group Poke]                   |    🔴    |
 | Notice   | [Group red envelope luck king] |    🔴    |
 | Notice   | [Group Member Honor Changed]   |    🔴    |
@@ -200,7 +200,7 @@ Makabaka 已发布到 [NuGet](https://www.nuget.org/packages/Makabaka "前往NuG
 | 适配器类型          | 是否支持 |
 | ------------------ | :-----: |
 | [Http]             |    🔴    |
-| [Http-Post]        |    🟡    |
+| [Http-Post]        |    🔴    |
 | [ForwardWebSocket] |    🟢    |
 | [ReverseWebSocket] |    🟢    |
 

@@ -9,16 +9,10 @@ using System.Threading.Tasks;
 namespace Makabaka.Models.EventArgs
 {
 	/// <summary>
-	/// <a href="https://github.com/botuniverse/onebot-11/blob/master/event/notice.md#%E7%BE%A4%E7%AE%A1%E7%90%86%E5%91%98%E5%8F%98%E5%8A%A8">群管理员变动</a>事件参数
+	/// <a href="https://github.com/botuniverse/onebot-11/blob/master/event/notice.md#%E7%BE%A4%E6%B6%88%E6%81%AF%E6%92%A4%E5%9B%9E">群消息撤回</a>事件参数
 	/// </summary>
-	public class GroupAdminChangedEventArgs : NoticeEventArgs, IReply
+	public class GroupRecallMessageEventArgs : NoticeEventArgs, IReply
 	{
-		/// <summary>
-		/// 事件子类型，分别表示设置和取消管理员<br/>可能的值：set、unset
-		/// </summary>
-		[JsonProperty("sub_type")]
-		public string SubType { get; set; }
-
 		/// <summary>
 		/// 群号
 		/// </summary>
@@ -26,10 +20,22 @@ namespace Makabaka.Models.EventArgs
 		public long GroupId { get; set; }
 
 		/// <summary>
-		/// 管理员 QQ 号
+		/// 被禁言 QQ 号
 		/// </summary>
 		[JsonProperty("user_id")]
 		public long UserId { get; set; }
+
+		/// <summary>
+		/// 操作者 QQ 号
+		/// </summary>
+		[JsonProperty("operator_id")]
+		public long OperatorId { get; set; }
+
+		/// <summary>
+		/// 操作者 QQ 号
+		/// </summary>
+		[JsonProperty("message_id")]
+		public long MessageId { get; set; }
 
 		/// <inheritdoc/>
 		public Task<APIResponse<MessageIdInfo>> Reply(Message message)
