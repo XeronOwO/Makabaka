@@ -42,7 +42,7 @@ namespace Makabaka.Test
 
 		private static async void OnGroupRequest(object? sender, GroupRequestEventArgs e)
 		{
-			await e.AcceptAsync();
+			await e.AcceptAsync(); // 有群请求，直接同意
 		}
 
 		private static async void OnPrivateMessage(object? sender, PrivateMessageEventArgs e)

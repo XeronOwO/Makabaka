@@ -184,7 +184,7 @@ namespace Makabaka.Network
 			}, Guid.NewGuid().ToString());
 		}
 
-		public Task<APIResponse<EmptyRes>> SetGroupRequestAsync(string flag, string subType, bool approve = true, string reason = null)
+		public Task<APIResponse<EmptyRes>> SetGroupAddRequestAsync(string flag, string subType, bool approve = true, string reason = null)
 		{
 			return ExecuteAPIAsync<EmptyRes, SetGroupAddRequestReq>("set_group_add_request", new()
 			{

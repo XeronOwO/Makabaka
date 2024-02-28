@@ -45,7 +45,7 @@ namespace Makabaka.Models.EventArgs
 		/// <returns>空信息响应</returns>
 		public Task<APIResponse<EmptyRes>> AcceptAsync()
 		{
-			return Context.SetGroupRequestAsync(Flag, SubType);
+			return Context.SetGroupAddRequestAsync(Flag, SubType);
 		}
 
 		/// <summary>
@@ -55,7 +55,7 @@ namespace Makabaka.Models.EventArgs
 		/// <returns>空信息响应</returns>
 		public Task<APIResponse<EmptyRes>> DenyAsync(string reason)
 		{
-			return Context.SetGroupRequestAsync(Flag, SubType, false, reason);
+			return Context.SetGroupAddRequestAsync(Flag, SubType, false, reason);
 		}
 	}
 }

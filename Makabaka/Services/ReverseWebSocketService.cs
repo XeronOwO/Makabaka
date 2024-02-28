@@ -85,9 +85,9 @@ namespace Makabaka.Services
 
 			if (authSuccess)
 			{
-				var session = new ReverseWebSocketContext(this, _ws, e.Client.Guid, _config);
-				_reverseWebSocketMap.Add(e.Client.Guid, session);
-				Contexts.Add(session);
+				var context = new ReverseWebSocketContext(this, _ws, e.Client.Guid, _config);
+				_reverseWebSocketMap.Add(e.Client.Guid, context);
+				Contexts.Add(context);
 				Log.Information($"[{_guid}][{e.Client.IpPort}]连接成功：[{e.Client.Guid}]");
 			}
 			else

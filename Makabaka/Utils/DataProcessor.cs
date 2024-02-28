@@ -17,12 +17,12 @@ namespace Makabaka.Utils
 
 		private readonly IWebSocketService _service;
 
-		private readonly IWebSocketContext _session;
+		private readonly IWebSocketContext _context;
 
-		public DataProcessor(IWebSocketService service, IWebSocketContext session)
+		public DataProcessor(IWebSocketService service, IWebSocketContext context)
 		{
 			_service = service;
-			_session = session;
+			_context = context;
 
 			_postTypeMap = new()
 			{
@@ -116,14 +116,14 @@ namespace Makabaka.Utils
 		private void ProcessMetaLifeCycle(string data, JObject _)
 		{
 			var e = JsonConvert.DeserializeObject<LifeCycleEventArgs>(data);
-			e.Context = _session;
+			e.Context = _context;
 			_service.SendLifeCycleEvent(e);
 		}
 
 		private void ProcessHeartbeat(string data, JObject _)
 		{
 			var e = JsonConvert.DeserializeObject<HeartbeatEventArgs>(data);
-			e.Context = _session;
+			e.Context = _context;
 			_service.SendHeartbeatEvent(e);
 		}
 
@@ -150,7 +150,7 @@ namespace Makabaka.Utils
 		private void ProcessMessageGroup(string data, JObject _)
 		{
 			var e = JsonConvert.DeserializeObject<GroupMessageEventArgs>(data);
-			e.Context = _session;
+			e.Context = _context;
 			e.Message.PostProcessMessage();
 			_service.SendGroupMessageEvent(e);
 		}
@@ -158,7 +158,7 @@ namespace Makabaka.Utils
 		private void ProcessMessagePrivate(string data, JObject _)
 		{
 			var e = JsonConvert.DeserializeObject<PrivateMessageEventArgs>(data);
-			e.Context = _session;
+			e.Context = _context;
 			e.Message.PostProcessMessage();
 			_service.SendPrivateMessageEvent(e);
 		}
@@ -186,14 +186,14 @@ namespace Makabaka.Utils
 		private void ProcessRequestAddFriend(string data, JObject _)
 		{
 			var e = JsonConvert.DeserializeObject<AddFriendRequestEventArgs>(data);
-			e.Context = _session;
+			e.Context = _context;
 			_service.SendAddFriendRequestEvent(e);
 		}
 
 		private void ProcessRequestGroupRequest(string data, JObject _)
 		{
 			var e = JsonConvert.DeserializeObject<GroupRequestEventArgs>(data);
-			e.Context = _session;
+			e.Context = _context;
 			_service.SendGroupRequestEvent(e);
 		}
 
@@ -220,49 +220,49 @@ namespace Makabaka.Utils
 		private void ProcessNoticeGroupAdminChange(string data, JObject _)
 		{
 			var e = JsonConvert.DeserializeObject<GroupAdminChangedEventArgs>(data);
-			e.Context = _session;
+			e.Context = _context;
 			_service.SendGroupAdminChangedEvent(e);
 		}
 
 		private void ProcessNoticeGroupMemberDecrease(string data, JObject _)
 		{
 			var e = JsonConvert.DeserializeObject<GroupMemberDecreaseEventArgs>(data);
-			e.Context = _session;
+			e.Context = _context;
 			_service.SendGroupMemberDecreaseEvent(e);
 		}
 
 		private void ProcessNoticeGroupMemberIncrease(string data, JObject _)
 		{
 			var e = JsonConvert.DeserializeObject<GroupMemberIncreaseEventArgs>(data);
-			e.Context = _session;
+			e.Context = _context;
 			_service.SendGroupMemberIncreaseEvent(e);
 		}
 
 		private void ProcessNoticeGroupMute(string data, JObject _)
 		{
 			var e = JsonConvert.DeserializeObject<GroupMuteEventArgs>(data);
-			e.Context = _session;
+			e.Context = _context;
 			_service.SendGroupMuteEvent(e);
 		}
 
 		private void ProcessNoticeFriendAdd(string data, JObject _)
 		{
 			var e = JsonConvert.DeserializeObject<FriendAddEventArgs>(data);
-			e.Context = _session;
+			e.Context = _context;
 			_service.SendFriendAddEvent(e);
 		}
 
 		private void ProcessNoticeGroupRecallMessage(string data, JObject _)
 		{
 			var e = JsonConvert.DeserializeObject<GroupRecallMessageEventArgs>(data);
-			e.Context = _session;
+			e.Context = _context;
 			_service.SendGroupRecallMessageEvent(e);
 		}
 
 		private void ProcessNoticeFriendRecallMessage(string data, JObject _)
 		{
 			var e = JsonConvert.DeserializeObject<FriendRecallMessageEventArgs>(data);
-			e.Context = _session;
+			e.Context = _context;
 			_service.SendFriendRecallMessageEvent(e);
 		}
 
@@ -281,7 +281,7 @@ namespace Makabaka.Utils
 			var retcode = (int)jretcode;
 			var echo = (string)json["echo"] ?? throw new Exception("echo为null");
 
-			_session.OnAPIResponse(data, json, retcode, echo);
+			_context.OnAPIResponse(data, json, retcode, echo);
 		}
 
 		#endregion

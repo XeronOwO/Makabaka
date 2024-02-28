@@ -9,7 +9,7 @@ namespace Makabaka.Models.EventArgs
 	/// <summary>
 	/// 上报类型事件参数
 	/// </summary>
-	public abstract class PostEventArgs : SessionEventArgs
+	public abstract class PostEventArgs : ContextEventArgs
 	{
 		/// <summary>
 		/// 事件发生的时间戳

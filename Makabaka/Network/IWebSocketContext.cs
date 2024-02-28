@@ -161,7 +161,7 @@ namespace Makabaka.Network
 		/// <param name="approve">是否同意请求／邀请</param>
 		/// <param name="reason">拒绝理由（仅在拒绝时有效）</param>
 		/// <returns>空信息响应</returns>
-		Task<APIResponse<EmptyRes>> SetGroupRequestAsync(string flag, string subType, bool approve = true, string reason = null);
+		Task<APIResponse<EmptyRes>> SetGroupAddRequestAsync(string flag, string subType, bool approve = true, string reason = null);
 
 		/// <summary>
 		/// 获取登录号信息
