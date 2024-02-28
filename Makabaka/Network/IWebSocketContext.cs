@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Makabaka.Network
 {
 	/// <summary>
-	/// 会话接口，定义一些通用函数
+	/// 上下文接口，定义一些通用函数
 	/// </summary>
 	public interface IWebSocketContext
 	{
@@ -19,7 +19,7 @@ namespace Makabaka.Network
 		internal void OnAPIResponse(string data, JObject json, int retcode, string echo);
 
 		/// <summary>
-		/// 会话的唯一标识符
+		/// 上下文的唯一标识符
 		/// </summary>
 		Guid Guid { get; }
 

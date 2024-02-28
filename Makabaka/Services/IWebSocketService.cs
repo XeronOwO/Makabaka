@@ -38,7 +38,7 @@ namespace Makabaka.Services
 		#region 属性
 
 		/// <summary>
-		/// 获取服务中所有有效的会话
+		/// 获取服务中所有有效的上下文
 		/// </summary>
 		List<IWebSocketContext> Contexts { get; }
 
