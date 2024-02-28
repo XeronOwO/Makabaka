@@ -43,9 +43,9 @@ namespace Makabaka.Models.EventArgs
 		/// 同意请求
 		/// </summary>
 		/// <returns>空信息响应</returns>
-		public Task<APIResponse<EmptyInfo>> AcceptAsync()
+		public Task<APIResponse<EmptyRes>> AcceptAsync()
 		{
-			return Session.SetGroupRequestAsync(Flag, SubType);
+			return Context.SetGroupRequestAsync(Flag, SubType);
 		}
 
 		/// <summary>
@@ -53,9 +53,9 @@ namespace Makabaka.Models.EventArgs
 		/// </summary>
 		/// <param name="reason">拒绝理由（仅在拒绝时有效）</param>
 		/// <returns>空信息响应</returns>
-		public Task<APIResponse<EmptyInfo>> DenyAsync(string reason)
+		public Task<APIResponse<EmptyRes>> DenyAsync(string reason)
 		{
-			return Session.SetGroupRequestAsync(Flag, SubType, false, reason);
+			return Context.SetGroupRequestAsync(Flag, SubType, false, reason);
 		}
 	}
 }

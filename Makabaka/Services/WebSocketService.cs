@@ -14,7 +14,7 @@ namespace Makabaka.Services
 
 		public abstract Task StopAsync();
 
-		public abstract List<IWebSocketContext> Sessions { get; }
+		public abstract List<IWebSocketContext> Contexts { get; }
 
 		#region 事件
 

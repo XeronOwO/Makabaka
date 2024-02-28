@@ -1,4 +1,5 @@
 ﻿using Makabaka.Configurations;
+using Makabaka.Models.API.Responses;
 using Makabaka.Models.EventArgs;
 using Makabaka.Models.Messages;
 using Makabaka.Services;
@@ -51,7 +52,7 @@ namespace Makabaka.Test
 			}
 			if (e.Message == "私聊测试")
 			{
-				await e.Session.SendPrivateMessageAsync(e.UserId, new TextSegment("私聊测试！"));
+				await e.Context.SendPrivateMessageAsync(e.UserId, new TextSegment("私聊测试！"));
 			}
 			if (e.Message == "表情测试")
 			{
@@ -65,6 +66,11 @@ namespace Makabaka.Test
 			{
 				//await e.Reply(new ImageSegment("base64://iVBORw0KGgoAAAANSUhEUgAAABQAAAAVCAIAAADJt1n/AAAAKElEQVQ4EWPk5+RmIBcwkasRpG9UM4mhNxpgowFGMARGEwnBIEJVAAAdBgBNAZf+QAAAAABJRU5ErkJggg=="));
 				await e.ReplyAsync(ImageSegment.FromLocalFile("test.png"));
+			}
+			if (e.Message == "转发测试")
+			{
+				string result = await e.Context.SendForwardMessageAsync([new NodeSegment(e.SelfId, string.Empty, new TextSegment("转发测试！"))]);
+				await e.ReplyAsync(new ForwardSegment(result));
 			}
 		}
 	}

@@ -51,9 +51,9 @@ namespace Makabaka.Models.EventArgs
 		public Sender Sender { get; internal set; }
 
 		/// <inheritdoc/>
-		public Task<APIResponse<MessageIdInfo>> ReplyAsync(Message message)
+		public Task<APIResponse<MessageIdRes>> ReplyAsync(Message message)
 		{
-			return Session.SendPrivateMessageAsync(UserId, message);
+			return Context.SendPrivateMessageAsync(UserId, message);
 		}
 	}
 }

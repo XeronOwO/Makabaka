@@ -56,7 +56,7 @@ namespace Makabaka.Services
 
 		private readonly Dictionary<Guid, ReverseWebSocketContext> _reverseWebSocketMap = new();
 
-		public override List<IWebSocketContext> Sessions { get; } = new();
+		public override List<IWebSocketContext> Contexts { get; } = new();
 
 		private void OnClientConnected(object sender, ConnectionEventArgs e)
 		{
@@ -87,7 +87,7 @@ namespace Makabaka.Services
 			{
 				var session = new ReverseWebSocketContext(this, _ws, e.Client.Guid, _config);
 				_reverseWebSocketMap.Add(e.Client.Guid, session);
-				Sessions.Add(session);
+				Contexts.Add(session);
 				Log.Information($"[{_guid}][{e.Client.IpPort}]连接成功：[{e.Client.Guid}]");
 			}
 			else
@@ -101,7 +101,7 @@ namespace Makabaka.Services
 		{
 			if (_reverseWebSocketMap.TryGetValue(e.Client.Guid, out var reverseWebSocket))
 			{
-				Sessions.Remove(reverseWebSocket);
+				Contexts.Remove(reverseWebSocket);
 			}
 			_reverseWebSocketMap.Remove(e.Client.Guid);
 			Log.Information($"[{_guid}][{e.Client.IpPort}]断开连接");

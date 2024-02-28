@@ -32,18 +32,18 @@ namespace Makabaka.Models.EventArgs
 		/// </summary>
 		/// <param name="remark">添加后的好友备注（仅在同意时有效）</param>
 		/// <returns>空信息响应</returns>
-		public Task<APIResponse<EmptyInfo>> AcceptAsync(string remark = null)
+		public Task<APIResponse<EmptyRes>> AcceptAsync(string remark = null)
 		{
-			return Session.SetFriendAddRequestAsync(Flag, true, remark);
+			return Context.SetFriendAddRequestAsync(Flag, true, remark);
 		}
 
 		/// <summary>
 		/// 拒绝请求
 		/// </summary>
 		/// <returns>空信息响应</returns>
-		public Task<APIResponse<EmptyInfo>> DenyAsync()
+		public Task<APIResponse<EmptyRes>> DenyAsync()
 		{
-			return Session.SetFriendAddRequestAsync(Flag, false);
+			return Context.SetFriendAddRequestAsync(Flag, false);
 		}
 	}
 }

@@ -17,6 +17,6 @@ namespace Makabaka.Models.EventArgs
 		/// </summary>
 		/// <param name="message">要发送的消息</param>
 		/// <returns>消息ID信息响应</returns>
-		Task<APIResponse<MessageIdInfo>> ReplyAsync(Message message);
+		Task<APIResponse<MessageIdRes>> ReplyAsync(Message message);
 	}
 }

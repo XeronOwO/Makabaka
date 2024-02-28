@@ -116,14 +116,14 @@ namespace Makabaka.Utils
 		private void ProcessMetaLifeCycle(string data, JObject _)
 		{
 			var e = JsonConvert.DeserializeObject<LifeCycleEventArgs>(data);
-			e.Session = _session;
+			e.Context = _session;
 			_service.SendLifeCycleEvent(e);
 		}
 
 		private void ProcessHeartbeat(string data, JObject _)
 		{
 			var e = JsonConvert.DeserializeObject<HeartbeatEventArgs>(data);
-			e.Session = _session;
+			e.Context = _session;
 			_service.SendHeartbeatEvent(e);
 		}
 
@@ -150,7 +150,7 @@ namespace Makabaka.Utils
 		private void ProcessMessageGroup(string data, JObject _)
 		{
 			var e = JsonConvert.DeserializeObject<GroupMessageEventArgs>(data);
-			e.Session = _session;
+			e.Context = _session;
 			e.Message.PostProcessMessage();
 			_service.SendGroupMessageEvent(e);
 		}
@@ -158,7 +158,7 @@ namespace Makabaka.Utils
 		private void ProcessMessagePrivate(string data, JObject _)
 		{
 			var e = JsonConvert.DeserializeObject<PrivateMessageEventArgs>(data);
-			e.Session = _session;
+			e.Context = _session;
 			e.Message.PostProcessMessage();
 			_service.SendPrivateMessageEvent(e);
 		}
@@ -186,14 +186,14 @@ namespace Makabaka.Utils
 		private void ProcessRequestAddFriend(string data, JObject _)
 		{
 			var e = JsonConvert.DeserializeObject<AddFriendRequestEventArgs>(data);
-			e.Session = _session;
+			e.Context = _session;
 			_service.SendAddFriendRequestEvent(e);
 		}
 
 		private void ProcessRequestGroupRequest(string data, JObject _)
 		{
 			var e = JsonConvert.DeserializeObject<GroupRequestEventArgs>(data);
-			e.Session = _session;
+			e.Context = _session;
 			_service.SendGroupRequestEvent(e);
 		}
 
@@ -220,49 +220,49 @@ namespace Makabaka.Utils
 		private void ProcessNoticeGroupAdminChange(string data, JObject _)
 		{
 			var e = JsonConvert.DeserializeObject<GroupAdminChangedEventArgs>(data);
-			e.Session = _session;
+			e.Context = _session;
 			_service.SendGroupAdminChangedEvent(e);
 		}
 
 		private void ProcessNoticeGroupMemberDecrease(string data, JObject _)
 		{
 			var e = JsonConvert.DeserializeObject<GroupMemberDecreaseEventArgs>(data);
-			e.Session = _session;
+			e.Context = _session;
 			_service.SendGroupMemberDecreaseEvent(e);
 		}
 
 		private void ProcessNoticeGroupMemberIncrease(string data, JObject _)
 		{
 			var e = JsonConvert.DeserializeObject<GroupMemberIncreaseEventArgs>(data);
-			e.Session = _session;
+			e.Context = _session;
 			_service.SendGroupMemberIncreaseEvent(e);
 		}
 
 		private void ProcessNoticeGroupMute(string data, JObject _)
 		{
 			var e = JsonConvert.DeserializeObject<GroupMuteEventArgs>(data);
-			e.Session = _session;
+			e.Context = _session;
 			_service.SendGroupMuteEvent(e);
 		}
 
 		private void ProcessNoticeFriendAdd(string data, JObject _)
 		{
 			var e = JsonConvert.DeserializeObject<FriendAddEventArgs>(data);
-			e.Session = _session;
+			e.Context = _session;
 			_service.SendFriendAddEvent(e);
 		}
 
 		private void ProcessNoticeGroupRecallMessage(string data, JObject _)
 		{
 			var e = JsonConvert.DeserializeObject<GroupRecallMessageEventArgs>(data);
-			e.Session = _session;
+			e.Context = _session;
 			_service.SendGroupRecallMessageEvent(e);
 		}
 
 		private void ProcessNoticeFriendRecallMessage(string data, JObject _)
 		{
 			var e = JsonConvert.DeserializeObject<FriendRecallMessageEventArgs>(data);
-			e.Session = _session;
+			e.Context = _session;
 			_service.SendFriendRecallMessageEvent(e);
 		}
 

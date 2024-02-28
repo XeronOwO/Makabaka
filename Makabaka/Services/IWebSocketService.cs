@@ -40,7 +40,7 @@ namespace Makabaka.Services
 		/// <summary>
 		/// 获取服务中所有有效的会话
 		/// </summary>
-		List<IWebSocketContext> Sessions { get; }
+		List<IWebSocketContext> Contexts { get; }
 
 		#endregion
 

@@ -46,7 +46,7 @@ namespace Makabaka.Services
 
 		private ForwardWebSocketContext _ws;
 
-		public override List<IWebSocketContext> Sessions { get; } = new();
+		public override List<IWebSocketContext> Contexts { get; } = new();
 
 		private async Task LoopAsync()
 		{
@@ -55,10 +55,10 @@ namespace Makabaka.Services
 				while (_config.AutoReconnect)
 				{
 					_ws = new ForwardWebSocketContext(this, _config);
-					Sessions.Add(_ws);
+					Contexts.Add(_ws);
 					await _ws.StartAndWaitAsync(_cts.Token);
 
-					Sessions.Remove(_ws);
+					Contexts.Remove(_ws);
 					_ws.Dispose();
 					_ws = null;
 

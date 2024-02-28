@@ -63,9 +63,9 @@ namespace Makabaka.Models.EventArgs
 		public Sender Sender { get; internal set; }
 
 		/// <inheritdoc/>
-		public Task<APIResponse<MessageIdInfo>> ReplyAsync(Message message)
+		public Task<APIResponse<MessageIdRes>> ReplyAsync(Message message)
 		{
-			return Session.SendGroupMessageAsync(GroupId, message);
+			return Context.SendGroupMessageAsync(GroupId, message);
 		}
 	}
 }
