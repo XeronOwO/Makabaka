@@ -11,7 +11,7 @@ namespace Makabaka.Services
 	/// <summary>
 	/// 服务接口，提供服务的基本控制，以及事件回调
 	/// </summary>
-	public interface IService
+	public interface IWebSocketService
 	{
 		#region 基本功能
 
@@ -40,7 +40,7 @@ namespace Makabaka.Services
 		/// <summary>
 		/// 获取服务中所有有效的会话
 		/// </summary>
-		List<ISession> Sessions { get; }
+		List<IWebSocketContext> Sessions { get; }
 
 		#endregion
 

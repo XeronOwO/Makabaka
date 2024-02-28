@@ -14,7 +14,7 @@ namespace Makabaka.Services
 		/// </summary>
 		/// <param name="config">配置信息</param>
 		/// <returns>服务接口</returns>
-		public static IService CreateForwardWebSocketService(ForwardWebSocketServiceConfig config)
+		public static IWebSocketService CreateForwardWebSocketService(ForwardWebSocketServiceConfig config)
 		{
 			return new ForwardWebSocketService(config);
 		}
@@ -24,7 +24,7 @@ namespace Makabaka.Services
 		/// </summary>
 		/// <param name="config">配置信息</param>
 		/// <returns>服务接口</returns>
-		public static IService CreateReverseWebSocketService(ReverseWebSocketServiceConfig config)
+		public static IWebSocketService CreateReverseWebSocketService(ReverseWebSocketServiceConfig config)
 		{
 			return new ReverseWebSocketService(config);
 		}

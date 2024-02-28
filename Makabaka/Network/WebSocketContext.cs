@@ -9,13 +9,13 @@ using System.Threading.Tasks;
 
 namespace Makabaka.Network
 {
-	internal abstract class CommonWebSocket : ISession
+	internal abstract class WebSocketContext : IWebSocketContext
 	{
 		#region 构造函数与参数
 
 		public abstract Guid Guid { get; }
 
-		public CommonWebSocket()
+		public WebSocketContext()
 		{
 
 		}

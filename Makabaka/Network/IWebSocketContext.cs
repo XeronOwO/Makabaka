@@ -11,7 +11,7 @@ namespace Makabaka.Network
 	/// <summary>
 	/// 会话接口，定义一些通用函数
 	/// </summary>
-	public interface ISession
+	public interface IWebSocketContext
 	{
 		/// <summary>
 		/// 当获得API响应

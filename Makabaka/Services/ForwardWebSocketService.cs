@@ -1,5 +1,4 @@
 ﻿using Makabaka.Configurations;
-using Makabaka.Models.EventArgs;
 using Makabaka.Network;
 using Serilog;
 using System;
@@ -9,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Makabaka.Services
 {
-	internal class ForwardWebSocketService : IService
+	internal class ForwardWebSocketService : WebSocketService
 	{
 		#region 基本信息与构造函数
 
@@ -31,7 +30,7 @@ namespace Makabaka.Services
 
 		private Task _loopTask;
 
-		public async Task StartAsync()
+		public override async Task StartAsync()
 		{
 			if (_running)
 			{
@@ -45,9 +44,9 @@ namespace Makabaka.Services
 			await Task.CompletedTask;
 		}
 
-		private ForwardWebSocket _ws;
+		private ForwardWebSocketContext _ws;
 
-		public List<ISession> Sessions { get; private set; } = new();
+		public override List<IWebSocketContext> Sessions { get; } = new();
 
 		private async Task LoopAsync()
 		{
@@ -55,7 +54,7 @@ namespace Makabaka.Services
 			{
 				while (_config.AutoReconnect)
 				{
-					_ws = new ForwardWebSocket(this, _config);
+					_ws = new ForwardWebSocketContext(this, _config);
 					Sessions.Add(_ws);
 					await _ws.StartAndWaitAsync(_cts.Token);
 
@@ -78,12 +77,12 @@ namespace Makabaka.Services
 			}
 		}
 
-		public async Task WaitAsync()
+		public override async Task WaitAsync()
 		{
 			await _loopTask;
 		}
 
-		public async Task StopAsync()
+		public override async Task StopAsync()
 		{
 			if (!_running)
 			{
@@ -97,101 +96,6 @@ namespace Makabaka.Services
 			Log.Information($"已停止正向WebSocket[{guid}]");
 
 			_running = false;
-		}
-
-		#endregion
-
-		#region 事件
-
-		public event EventHandler<PrivateMessageEventArgs> OnPrivateMessage;
-
-		public void SendPrivateMessageEvent(PrivateMessageEventArgs e)
-		{
-			OnPrivateMessage?.Invoke(this, e);
-		}
-
-		public event EventHandler<GroupMessageEventArgs> OnGroupMessage;
-
-		public void SendGroupMessageEvent(GroupMessageEventArgs e)
-		{
-			OnGroupMessage?.Invoke(this, e);
-		}
-
-		public event EventHandler<GroupAdminChangedEventArgs> OnGroupAdminChanged;
-
-		public void SendGroupAdminChangedEvent(GroupAdminChangedEventArgs e)
-		{
-			OnGroupAdminChanged?.Invoke(this, e);
-		}
-
-		public event EventHandler<GroupMemberDecreaseEventArgs> OnGroupMemberDecrease;
-
-		public void SendGroupMemberDecreaseEvent(GroupMemberDecreaseEventArgs e)
-		{
-			OnGroupMemberDecrease?.Invoke(this, e);
-		}
-
-		public event EventHandler<GroupMemberIncreaseEventArgs> OnGroupMemberIncrease;
-
-		public void SendGroupMemberIncreaseEvent(GroupMemberIncreaseEventArgs e)
-		{
-			OnGroupMemberIncrease?.Invoke(this, e);
-		}
-
-		public event EventHandler<GroupMuteEventArgs> OnGroupMute;
-
-		public void SendGroupMuteEvent(GroupMuteEventArgs e)
-		{
-			OnGroupMute?.Invoke(this, e);
-		}
-
-		public event EventHandler<FriendAddEventArgs> OnFriendAdd;
-
-		public void SendFriendAddEvent(FriendAddEventArgs e)
-		{
-			OnFriendAdd?.Invoke(this, e);
-		}
-
-		public event EventHandler<GroupRecallMessageEventArgs> OnGroupRecallMessage;
-
-		public void SendGroupRecallMessageEvent(GroupRecallMessageEventArgs e)
-		{
-			OnGroupRecallMessage?.Invoke(this, e);
-		}
-
-		public event EventHandler<FriendRecallMessageEventArgs> OnFriendRecallMessage;
-
-		public void SendFriendRecallMessageEvent(FriendRecallMessageEventArgs e)
-		{
-			OnFriendRecallMessage?.Invoke(this, e);
-		}
-
-		public event EventHandler<AddFriendRequestEventArgs> OnAddFriendRequest;
-
-		public void SendAddFriendRequestEvent(AddFriendRequestEventArgs e)
-		{
-			OnAddFriendRequest?.Invoke(this, e);
-		}
-
-		public event EventHandler<GroupRequestEventArgs> OnGroupRequest;
-
-		public void SendGroupRequestEvent(GroupRequestEventArgs e)
-		{
-			OnGroupRequest?.Invoke(this, e);
-		}
-
-		public event EventHandler<LifeCycleEventArgs> OnLifeCycle;
-
-		public void SendLifeCycleEvent(LifeCycleEventArgs e)
-		{
-			OnLifeCycle?.Invoke(this, e);
-		}
-
-		public event EventHandler<HeartbeatEventArgs> OnHeartbeat;
-
-		public void SendHeartbeatEvent(HeartbeatEventArgs e)
-		{
-			OnHeartbeat?.Invoke(this, e);
 		}
 
 		#endregion

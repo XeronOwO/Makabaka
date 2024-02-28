@@ -11,9 +11,9 @@ namespace Makabaka.Configurations
 	{
 		/// <summary>
 		/// API请求超时时间（ms）<br/>
-		/// 默认值：5000
+		/// 默认值：10000
 		/// </summary>
-		public int APITimeout { get; set; } = 5000;
+		public int APITimeout { get; set; } = 10000;
 
 		/// <summary>
 		/// Universal路径<br/>

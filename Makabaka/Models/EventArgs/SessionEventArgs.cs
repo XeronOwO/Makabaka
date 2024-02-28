@@ -17,6 +17,6 @@ namespace Makabaka.Models.EventArgs
 		/// <strong>注意：使用HttpPost时，此项永远为null；其它情况下永远不为null</strong>
 		/// </summary>
 		[JsonIgnore]
-		public ISession Session { get; internal set; }
+		public IWebSocketContext Session { get; internal set; }
 	}
 }

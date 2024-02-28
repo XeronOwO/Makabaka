@@ -15,11 +15,11 @@ namespace Makabaka.Utils
 	{
 		#region 构造函数与基本数据
 
-		private readonly IService _service;
+		private readonly IWebSocketService _service;
 
-		private readonly ISession _session;
+		private readonly IWebSocketContext _session;
 
-		public DataProcessor(IService service, ISession session)
+		public DataProcessor(IWebSocketService service, IWebSocketContext session)
 		{
 			_service = service;
 			_session = session;
