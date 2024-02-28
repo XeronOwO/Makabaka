@@ -31,6 +31,7 @@ namespace Makabaka.Test
 			// 初始化服务
 			var service = ServiceFactory.CreateForwardWebSocketService(config);
 			service.OnGroupMessage += OnGroupMessage;
+			service.OnPrivateMessage += OnPrivateMessage;
 			service.OnGroupRequest += OnGroupRequest;
 
 			// 启动服务
@@ -42,6 +43,14 @@ namespace Makabaka.Test
 		private static async void OnGroupRequest(object? sender, GroupRequestEventArgs e)
 		{
 			await e.AcceptAsync();
+		}
+
+		private static async void OnPrivateMessage(object? sender, PrivateMessageEventArgs e)
+		{
+			if (e.Message == "测试")
+			{
+				await e.ReplyAsync(new TextSegment("耶！"));
+			}
 		}
 
 		private static async void OnGroupMessage(object? sender, GroupMessageEventArgs e)
@@ -60,7 +69,7 @@ namespace Makabaka.Test
 			}
 			if (e.Message == "At测试")
 			{
-				await e.ReplyAsync([new AtSegment(e.Sender.UserId), new TextSegment("测试！")]);
+				await e.ReplyAsync([new AtSegment(e.Sender.UserId), new TextSegment(" 测试！")]);
 			}
 			if (e.Message == "图片测试")
 			{
