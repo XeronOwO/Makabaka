@@ -1,7 +1,6 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Makabaka.Models.API.Responses;
+using Newtonsoft.Json;
+using System.Threading.Tasks;
 
 namespace Makabaka.Models.EventArgs
 {
@@ -27,5 +26,24 @@ namespace Makabaka.Models.EventArgs
 		/// </summary>
 		[JsonProperty("flag")]
 		public string Flag { get; internal set; }
+
+		/// <summary>
+		/// 同意请求
+		/// </summary>
+		/// <param name="remark">添加后的好友备注（仅在同意时有效）</param>
+		/// <returns>空信息响应</returns>
+		public Task<APIResponse<EmptyInfo>> AcceptAsync(string remark = null)
+		{
+			return Session.SetFriendAddRequestAsync(Flag, true, remark);
+		}
+
+		/// <summary>
+		/// 拒绝请求
+		/// </summary>
+		/// <returns>空信息响应</returns>
+		public Task<APIResponse<EmptyInfo>> DenyAsync()
+		{
+			return Session.SetFriendAddRequestAsync(Flag, false);
+		}
 	}
 }

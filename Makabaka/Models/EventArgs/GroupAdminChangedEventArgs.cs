@@ -17,22 +17,22 @@ namespace Makabaka.Models.EventArgs
 		/// 事件子类型，分别表示设置和取消管理员<br/>可能的值：set、unset
 		/// </summary>
 		[JsonProperty("sub_type")]
-		public string SubType { get; set; }
+		public string SubType { get; internal set; }
 
 		/// <summary>
 		/// 群号
 		/// </summary>
 		[JsonProperty("group_id")]
-		public long GroupId { get; set; }
+		public long GroupId { get; internal	set; }
 
 		/// <summary>
 		/// 管理员 QQ 号
 		/// </summary>
 		[JsonProperty("user_id")]
-		public long UserId { get; set; }
+		public long UserId { get; internal set; }
 
 		/// <inheritdoc/>
-		public Task<APIResponse<MessageIdInfo>> Reply(Message message)
+		public Task<APIResponse<MessageIdInfo>> ReplyAsync(Message message)
 		{
 			return Session.SendGroupMessageAsync(GroupId, message);
 		}

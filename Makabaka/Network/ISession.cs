@@ -145,6 +145,25 @@ namespace Makabaka.Network
 		Task<APIResponse<EmptyInfo>> LeaveGroupAsync(long groupId, bool isDismiss);
 
 		/// <summary>
+		/// 处理加好友请求
+		/// </summary>
+		/// <param name="flag">加好友请求的 flag（需从上报的数据中获得）</param>
+		/// <param name="approve">是否同意请求</param>
+		/// <param name="remark">添加后的好友备注（仅在同意时有效）</param>
+		/// <returns>空信息响应</returns>
+		Task<APIResponse<EmptyInfo>> SetFriendAddRequestAsync(string flag, bool approve = true, string remark = null);
+
+		/// <summary>
+		/// 处理加群请求／邀请
+		/// </summary>
+		/// <param name="flag">加群请求的 flag（需从上报的数据中获得）</param>
+		/// <param name="subType">add 或 invite，请求类型（需要和上报消息中的 sub_type 字段相符）</param>
+		/// <param name="approve">是否同意请求／邀请</param>
+		/// <param name="reason">拒绝理由（仅在拒绝时有效）</param>
+		/// <returns>空信息响应</returns>
+		Task<APIResponse<EmptyInfo>> SetGroupRequestAsync(string flag, string subType, bool approve = true, string reason = null);
+
+		/// <summary>
 		/// 获取登录号信息
 		/// </summary>
 		/// <returns>登录信息响应</returns>

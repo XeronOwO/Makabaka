@@ -17,28 +17,28 @@ namespace Makabaka.Models.EventArgs
 		/// 群号
 		/// </summary>
 		[JsonProperty("group_id")]
-		public long GroupId { get; set; }
+		public long GroupId { get; internal set; }
 
 		/// <summary>
 		/// 被禁言 QQ 号
 		/// </summary>
 		[JsonProperty("user_id")]
-		public long UserId { get; set; }
+		public long UserId { get; internal set; }
 
 		/// <summary>
 		/// 操作者 QQ 号
 		/// </summary>
 		[JsonProperty("operator_id")]
-		public long OperatorId { get; set; }
+		public long OperatorId { get; internal set; }
 
 		/// <summary>
 		/// 操作者 QQ 号
 		/// </summary>
 		[JsonProperty("message_id")]
-		public long MessageId { get; set; }
+		public long MessageId { get; internal set; }
 
 		/// <inheritdoc/>
-		public Task<APIResponse<MessageIdInfo>> Reply(Message message)
+		public Task<APIResponse<MessageIdInfo>> ReplyAsync(Message message)
 		{
 			return Session.SendGroupMessageAsync(GroupId, message);
 		}

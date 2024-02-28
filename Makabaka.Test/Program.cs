@@ -30,6 +30,7 @@ namespace Makabaka.Test
 			// 初始化服务
 			var service = ServiceFactory.CreateForwardWebSocketService(config);
 			service.OnGroupMessage += OnGroupMessage;
+			service.OnGroupRequest += OnGroupRequest;
 
 			// 启动服务
 			await service.StartAsync();
@@ -37,11 +38,16 @@ namespace Makabaka.Test
 			await service.StopAsync();
 		}
 
+		private static async void OnGroupRequest(object? sender, GroupRequestEventArgs e)
+		{
+			await e.AcceptAsync();
+		}
+
 		private static async void OnGroupMessage(object? sender, GroupMessageEventArgs e)
 		{
 			if (e.Message == "测试")
 			{
-				await e.Reply(new TextSegment("耶！"));
+				await e.ReplyAsync(new TextSegment("耶！"));
 			}
 			if (e.Message == "私聊测试")
 			{
@@ -49,16 +55,16 @@ namespace Makabaka.Test
 			}
 			if (e.Message == "表情测试")
 			{
-				await e.Reply(new FaceSegment(0));
+				await e.ReplyAsync(new FaceSegment(0));
 			}
 			if (e.Message == "At测试")
 			{
-				await e.Reply([new AtSegment(e.Sender.UserId), new TextSegment("测试！")]);
+				await e.ReplyAsync([new AtSegment(e.Sender.UserId), new TextSegment("测试！")]);
 			}
 			if (e.Message == "图片测试")
 			{
 				//await e.Reply(new ImageSegment("base64://iVBORw0KGgoAAAANSUhEUgAAABQAAAAVCAIAAADJt1n/AAAAKElEQVQ4EWPk5+RmIBcwkasRpG9UM4mhNxpgowFGMARGEwnBIEJVAAAdBgBNAZf+QAAAAABJRU5ErkJggg=="));
-				await e.Reply(ImageSegment.FromLocalFile("test.jpg"));
+				await e.ReplyAsync(ImageSegment.FromLocalFile("test.png"));
 			}
 		}
 	}

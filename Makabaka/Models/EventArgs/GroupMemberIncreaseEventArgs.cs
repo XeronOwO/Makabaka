@@ -39,7 +39,7 @@ namespace Makabaka.Models.EventArgs
 		public long UserId { get; internal set; }
 
 		/// <inheritdoc/>
-		public Task<APIResponse<MessageIdInfo>> Reply(Message message)
+		public Task<APIResponse<MessageIdInfo>> ReplyAsync(Message message)
 		{
 			return Session.SendGroupMessageAsync(GroupId, message);
 		}

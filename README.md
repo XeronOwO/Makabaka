@@ -88,8 +88,8 @@ Makabaka 已发布到 [NuGet](https://www.nuget.org/packages/Makabaka "前往NuG
 | [/set_group_name]          |    🟢    |
 | [/set_group_leave]         |    🟢    |
 | ~~[/set_group_special_title]~~ |    🔴    |
-| [/set_friend_add_request]  |    🔴    |
-| [/set_group_add_request]   |    🔴    |
+| [/set_friend_add_request]  |    🟢    |
+| [/set_group_add_request]   |    🟢    |
 | [/get_login_info]          |    🟢    |
 | ~~[/get_stranger_info]~~   |    🔴    |
 | [/get_friend_list]         |    🟢    |
@@ -163,14 +163,14 @@ Makabaka 已发布到 [NuGet](https://www.nuget.org/packages/Makabaka "前往NuG
 | Notice   | [Group Member Decrease]        |    🟢    |
 | Notice   | [Group Member Increase]        |    🟢    |
 | Notice   | [Group Mute]                   |    🟢    |
-| Notice   | [Friend Add]                   |    🔴    |
+| Notice   | [Friend Add]                   |    🟢    |
 | Notice   | [Group Recall Message]         |    🟢    |
 | Notice   | [Friend Recall Message]        |    🟢    |
 | Notice   | [Group Poke]                   |    🔴    |
 | Notice   | [Group red envelope luck king] |    🔴    |
 | Notice   | [Group Member Honor Changed]   |    🔴    |
 | Request  | [Add Friend Request]           |    🟢    |
-| Request  | [Group Request/Invitations]    |    🔴    |
+| Request  | [Group Request/Invitations]    |    🟢    |
 | Meta     | [LifeCycle]                    |    🟢    |
 | Meta     | [Heartbeat]                    |    🟢    |
 
@@ -212,69 +212,7 @@ Makabaka 已发布到 [NuGet](https://www.nuget.org/packages/Makabaka "前往NuG
 </Details>
 
 ## 代码示例
-<Details>
-<Summary>正向/反向WebSocket</Summary>
-
-```csharp
-using Makabaka.Models.API.Responses;
-using Makabaka.Models.EventArgs;
-using Makabaka.Models.Messages;
-using Makabaka.Services;
-using Serilog;
-
-namespace Test
-{
-    internal class Program
-    {
-        private static IService _service;
-
-        static async Task Main(string[] args)
-        {
-            Log.Logger = new LoggerConfiguration() // Serilog包
-                .MinimumLevel.Debug() // 日志等级
-                .WriteTo.Console() // 日志输出
-                .CreateLogger(); // 配置日志
-
-            _service = ServiceFactory.CreateForwardWebSocketService(new() // 创建正向WebSocket服务
-            {
-                AccessToken = "114514", // 适配器的access_token，用于认证
-                Host = "127.0.0.1", // 服务器地址
-                Port = "8080", // 服务器端口
-            });
-
-            // 注册事件
-            _service.OnLifeCycle += OnLifeCycle; // 生命周期事件
-            _service.OnGroupMessage += OnGroupMessage; // 群消息事件
-
-            await _service.StartAsync(); // 启动服务
-            await _service.WaitAsync(); // 等待服务关闭
-
-            //await _service.StopAsync(); // 关闭服务，可以放在任何地方（放这里其实没用，前面在等待服务关闭）
-        }
-
-        private static async void OnGroupMessage(object? sender, GroupMessageEventArgs e)
-        {
-            if (e.Message == "测试") // 接收到“测试”
-            {
-                APIResponse<MessageIdInfo> response = await e.Session.SendGroupMessageAsync(e.GroupId, new TextSegment("耶")); // 发送“耶”
-                // APIResponse<MessageIdInfo> response = await e.Reply(new TextSegment("耶")); // 此处也可以直接使用e.Reply()回复消息
-                response.EnsureSuccess(); // 确保发送成功了
-                MessageIdInfo info = response; // 这里可以隐式转换
-                                               // 因此，如果你用不到APIResponse<T>，可以把两行省略成一行：
-                                               // MessageIdInfo info = await e.Session.SendGroupMessageAsync(e.GroupId, new TextSegment("耶"));
-                                               // 效果是一样的
-                Log.Information($"消息ID：{info.MessageId}"); // 输出消息ID
-            }
-        }
-
-        private static async void OnLifeCycle(object? sender, LifeCycleEventArgs e)
-        {
-            LoginInfo info = await e.Session.GetLoginInfoAsync(); // 获取登录信息
-            Log.Information($"当前登录账号：[{info.UserId}]{info.Nickname}");
-        }
-    }
-}
-```
+见 [Program.cs](Makabaka.Test/Program.cs) 。  
 
 </Details>
 

@@ -17,34 +17,34 @@ namespace Makabaka.Models.EventArgs
 		/// 事件子类型，分别表示禁言、解除禁言<br/>可能的值：ban、lift_ban
 		/// </summary>
 		[JsonProperty("sub_type")]
-		public string SubType { get; set; }
+		public string SubType { get; internal set; }
 
 		/// <summary>
 		/// 群号
 		/// </summary>
 		[JsonProperty("group_id")]
-		public long GroupId { get; set; }
+		public long GroupId { get; internal set; }
 
 		/// <summary>
 		/// 操作者 QQ 号
 		/// </summary>
 		[JsonProperty("operator_id")]
-		public long OperatorId { get; set; }
+		public long OperatorId { get; internal set; }
 
 		/// <summary>
 		/// 被禁言 QQ 号
 		/// </summary>
 		[JsonProperty("user_id")]
-		public long UserId { get; set; }
+		public long UserId { get; internal set; }
 
 		/// <summary>
 		/// 禁言时长，单位秒
 		/// </summary>
 		[JsonProperty("duration")]
-		public long Duration { get; set; }
+		public long Duration { get; internal set; }
 
 		/// <inheritdoc/>
-		public Task<APIResponse<MessageIdInfo>> Reply(Message message)
+		public Task<APIResponse<MessageIdInfo>> ReplyAsync(Message message)
 		{
 			return Session.SendGroupMessageAsync(GroupId, message);
 		}

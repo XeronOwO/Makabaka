@@ -89,6 +89,13 @@ namespace Makabaka.Services
 		internal void SendGroupMuteEvent(GroupMuteEventArgs e);
 
 		/// <summary>
+		/// <a href="https://github.com/botuniverse/onebot-11/blob/master/event/notice.md#%E5%A5%BD%E5%8F%8B%E6%B7%BB%E5%8A%A0">好友添加</a>事件
+		/// </summary>
+		event EventHandler<FriendAddEventArgs> OnFriendAdd;
+
+		internal void SendFriendAddEvent(FriendAddEventArgs e);
+
+		/// <summary>
 		/// <a href="https://github.com/botuniverse/onebot-11/blob/master/event/notice.md#%E7%BE%A4%E6%B6%88%E6%81%AF%E6%92%A4%E5%9B%9E">群消息撤回</a>事件
 		/// </summary>
 		event EventHandler<GroupRecallMessageEventArgs> OnGroupRecallMessage;
@@ -108,6 +115,13 @@ namespace Makabaka.Services
 		event EventHandler<AddFriendRequestEventArgs> OnAddFriendRequest;
 
 		internal void SendAddFriendRequestEvent(AddFriendRequestEventArgs e);
+
+		/// <summary>
+		/// <a href="https://github.com/botuniverse/onebot-11/blob/master/event/request.md#%E5%8A%A0%E7%BE%A4%E8%AF%B7%E6%B1%82%E9%82%80%E8%AF%B7">加群请求／邀请</a>事件
+		/// </summary>
+		event EventHandler<GroupRequestEventArgs> OnGroupRequest;
+
+		internal void SendGroupRequestEvent(GroupRequestEventArgs e);
 
 		/// <summary>
 		/// <a href="https://github.com/botuniverse/onebot-11/blob/master/event/meta.md#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F">生命周期</a>事件

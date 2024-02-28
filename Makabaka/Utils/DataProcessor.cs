@@ -44,6 +44,7 @@ namespace Makabaka.Utils
 			_requestTypeMap = new()
 			{
 				{ "friend", ProcessRequestAddFriend },
+				{ "group", ProcessRequestGroupRequest },
 			};
 			_noticeTypeMap = new()
 			{
@@ -51,6 +52,7 @@ namespace Makabaka.Utils
 				{ "group_decrease", ProcessNoticeGroupMemberDecrease },
 				{ "group_increase", ProcessNoticeGroupMemberIncrease },
 				{ "group_ban", ProcessNoticeGroupMute },
+				{ "friend_add", ProcessNoticeFriendAdd },
 				{ "group_recall", ProcessNoticeGroupRecallMessage },
 				{ "friend_recall", ProcessNoticeFriendRecallMessage },
 			};
@@ -188,6 +190,13 @@ namespace Makabaka.Utils
 			_service.SendAddFriendRequestEvent(e);
 		}
 
+		private void ProcessRequestGroupRequest(string data, JObject _)
+		{
+			var e = JsonConvert.DeserializeObject<GroupRequestEventArgs>(data);
+			e.Session = _session;
+			_service.SendGroupRequestEvent(e);
+		}
+
 		#endregion
 
 		#region 通知事件
@@ -222,7 +231,7 @@ namespace Makabaka.Utils
 			_service.SendGroupMemberDecreaseEvent(e);
 		}
 
-		private void ProcessNoticeGroupMemberIncrease(string data, JObject json)
+		private void ProcessNoticeGroupMemberIncrease(string data, JObject _)
 		{
 			var e = JsonConvert.DeserializeObject<GroupMemberIncreaseEventArgs>(data);
 			e.Session = _session;
@@ -234,6 +243,13 @@ namespace Makabaka.Utils
 			var e = JsonConvert.DeserializeObject<GroupMuteEventArgs>(data);
 			e.Session = _session;
 			_service.SendGroupMuteEvent(e);
+		}
+
+		private void ProcessNoticeFriendAdd(string data, JObject _)
+		{
+			var e = JsonConvert.DeserializeObject<FriendAddEventArgs>(data);
+			e.Session = _session;
+			_service.SendFriendAddEvent(e);
 		}
 
 		private void ProcessNoticeGroupRecallMessage(string data, JObject _)

@@ -176,6 +176,27 @@ namespace Makabaka.Network
 			}, Guid.NewGuid().ToString());
 		}
 
+		public Task<APIResponse<EmptyInfo>> SetFriendAddRequestAsync(string flag, bool approve = true, string remark = null)
+		{
+			return ExecuteAPIAsync<EmptyInfo, SetFriendAddRequestInfo>("set_friend_add_request", new()
+			{
+				Flag = flag,
+				Approve = approve,
+				Remark = remark,
+			}, Guid.NewGuid().ToString());
+		}
+
+		public Task<APIResponse<EmptyInfo>> SetGroupRequestAsync(string flag, string subType, bool approve = true, string reason = null)
+		{
+			return ExecuteAPIAsync<EmptyInfo, SetGroupAddRequestInfo>("set_group_add_request", new()
+			{
+				Flag = flag,
+				SubType = subType,
+				Approve = approve,
+				Reason = reason,
+			}, Guid.NewGuid().ToString());
+		}
+
 		public Task<APIResponse<LoginInfo>> GetLoginInfoAsync()
 		{
 			return ExecuteAPIAsync<LoginInfo>("get_login_info", Guid.NewGuid().ToString());

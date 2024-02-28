@@ -145,6 +145,13 @@ namespace Makabaka.Services
 			OnGroupMute?.Invoke(this, e);
 		}
 
+		public event EventHandler<FriendAddEventArgs> OnFriendAdd;
+
+		public void SendFriendAddEvent(FriendAddEventArgs e)
+		{
+			OnFriendAdd?.Invoke(this, e);
+		}
+
 		public event EventHandler<GroupRecallMessageEventArgs> OnGroupRecallMessage;
 
 		public void SendGroupRecallMessageEvent(GroupRecallMessageEventArgs e)
@@ -164,6 +171,13 @@ namespace Makabaka.Services
 		public void SendAddFriendRequestEvent(AddFriendRequestEventArgs e)
 		{
 			OnAddFriendRequest?.Invoke(this, e);
+		}
+
+		public event EventHandler<GroupRequestEventArgs> OnGroupRequest;
+
+		public void SendGroupRequestEvent(GroupRequestEventArgs e)
+		{
+			OnGroupRequest?.Invoke(this, e);
 		}
 
 		public event EventHandler<LifeCycleEventArgs> OnLifeCycle;

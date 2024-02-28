@@ -18,16 +18,16 @@ namespace Makabaka.Models.EventArgs
 		/// 被禁言 QQ 号
 		/// </summary>
 		[JsonProperty("user_id")]
-		public long UserId { get; set; }
+		public long UserId { get; internal set; }
 
 		/// <summary>
 		/// 操作者 QQ 号
 		/// </summary>
 		[JsonProperty("message_id")]
-		public long MessageId { get; set; }
+		public long MessageId { get; internal set; }
 
 		/// <inheritdoc/>
-		public Task<APIResponse<MessageIdInfo>> Reply(Message message)
+		public Task<APIResponse<MessageIdInfo>> ReplyAsync(Message message)
 		{
 			return Session.SendPrivateMessageAsync(UserId, message);
 		}
