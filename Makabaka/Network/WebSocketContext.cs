@@ -76,10 +76,7 @@ namespace Makabaka.Network
 			{
 				Id = id,
 			}, Guid.NewGuid().ToString());
-			foreach (var node in response.Data.Message)
-			{
-				node.PostProcessContent();
-			}
+			response.Data.Message.PostProcessMessage();
 			return response;
 		}
 

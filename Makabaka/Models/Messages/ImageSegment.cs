@@ -138,7 +138,10 @@ namespace Makabaka.Models.Messages
 			}
 		}
 
-		private ImageSegment()
+		/// <summary>
+		/// Json序列化时使用，请勿在代码中调用
+		/// </summary>
+		public ImageSegment()
 		{
 			Type = "image";
 		}

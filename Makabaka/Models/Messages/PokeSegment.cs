@@ -67,7 +67,10 @@ namespace Makabaka.Models.Messages
 			}
 		}
 
-		private PokeSegment()
+		/// <summary>
+		/// Json序列化时使用，请勿在代码中调用
+		/// </summary>
+		public PokeSegment()
 		{
 			Type = "poke";
 		}

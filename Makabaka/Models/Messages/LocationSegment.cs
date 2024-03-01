@@ -83,7 +83,10 @@ namespace Makabaka.Models.Messages
 			}
 		}
 
-		private LocationSegment()
+		/// <summary>
+		/// Json序列化时使用，请勿在代码中调用
+		/// </summary>
+		public LocationSegment()
 		{
 			Type = "location";
 		}

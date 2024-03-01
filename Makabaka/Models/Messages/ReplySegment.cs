@@ -28,12 +28,15 @@ namespace Makabaka.Models.Messages
 			}
 		}
 
-		private ReplySegment()
+		/// <summary>
+		/// Json序列化时使用，请勿在代码中调用
+		/// </summary>
+		public ReplySegment()
 		{
 			Type = "reply";
 		}
 
-		internal ReplySegment(string id)
+		internal ReplySegment(string id) : this()
 		{
 			RawData = new JObject()
 			{
@@ -45,7 +48,7 @@ namespace Makabaka.Models.Messages
 		/// 创建<a href="https://github.com/botuniverse/onebot-11/blob/master/message/segment.md#%E5%9B%9E%E5%A4%8D">回复段消息</a>
 		/// </summary>
 		/// <param name="id"></param>
-		public ReplySegment(int id) : this(id.ToString())
+		public ReplySegment(long id) : this(id.ToString())
 		{
 		}
 

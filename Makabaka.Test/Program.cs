@@ -51,6 +51,10 @@ namespace Makabaka.Test
 			{
 				await e.ReplyAsync(new TextSegment("耶！"));
 			}
+			if (e.Message == "回复测试")
+			{
+				await e.ReplyAsync([new ReplySegment(e.MessageId), new TextSegment("回复测试！")]);
+			}
 		}
 
 		private static async void OnGroupMessage(object? sender, GroupMessageEventArgs e)
@@ -80,6 +84,10 @@ namespace Makabaka.Test
 			{
 				string result = await e.Context.SendForwardMessageAsync([new NodeSegment(e.SelfId, string.Empty, new TextSegment("转发测试！"))]);
 				await e.ReplyAsync(new ForwardSegment(result));
+			}
+			if (e.Message == "回复测试")
+			{
+				await e.ReplyAsync([new ReplySegment(e.MessageId), new TextSegment("回复测试！")]);
 			}
 		}
 	}
