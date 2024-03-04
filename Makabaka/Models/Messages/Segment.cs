@@ -54,6 +54,12 @@ namespace Makabaka.Models.Messages
 					return new ForwardSegment((string)RawData["id"]);
 				case "node":
 					return new NodeSegment((string)RawData["user_id"], (string)RawData["nickname"], (JArray)RawData["content"]);
+				case "markdown":
+					return new MarkDownSegment((string)RawData["content"]);
+				case "keyboard":
+					return new KeyboardSegment(RawData);
+				case "longmsg":
+					return new LongMsgSegment((string)RawData["id"]);
 				default:
 					Log.Warning($"不支持的段消息类型：{Type}");
 					return null;
