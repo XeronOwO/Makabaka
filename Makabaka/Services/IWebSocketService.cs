@@ -61,6 +61,13 @@ namespace Makabaka.Services
 		internal void SendGroupMessageEvent(GroupMessageEventArgs e);
 
 		/// <summary>
+		/// <a href="https://github.com/botuniverse/onebot-11/blob/master/event/notice.md#%E7%BE%A4%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0">群文件上传</a>事件
+		/// </summary>
+		event EventHandler<GroupFileUploadEventArgs> OnGroupFileUpload;
+
+		internal void SendGroupFileUploadEvent(GroupFileUploadEventArgs e);
+
+		/// <summary>
 		/// <a href="https://github.com/botuniverse/onebot-11/blob/master/event/notice.md#%E7%BE%A4%E7%AE%A1%E7%90%86%E5%91%98%E5%8F%98%E5%8A%A8">群管理员变动</a>事件
 		/// </summary>
 		event EventHandler<GroupAdminChangedEventArgs> OnGroupAdminChanged;

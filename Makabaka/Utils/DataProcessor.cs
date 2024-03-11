@@ -48,6 +48,7 @@ namespace Makabaka.Utils
 			};
 			_noticeTypeMap = new()
 			{
+				{ "group_upload", ProcessNoticeGroupFileUpload },
 				{ "group_admin", ProcessNoticeGroupAdminChange },
 				{ "group_decrease", ProcessNoticeGroupMemberDecrease },
 				{ "group_increase", ProcessNoticeGroupMemberIncrease },
@@ -215,6 +216,13 @@ namespace Makabaka.Utils
 			{
 				throw new Exception($"不支持的notice_type：{notice_type}");
 			}
+		}
+
+		private void ProcessNoticeGroupFileUpload(string data, JObject _)
+		{
+			var e = JsonConvert.DeserializeObject<GroupFileUploadEventArgs>(data);
+			e.Context = _context;
+			_service.SendGroupFileUploadEvent(e);
 		}
 
 		private void ProcessNoticeGroupAdminChange(string data, JObject _)

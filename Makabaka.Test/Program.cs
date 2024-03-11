@@ -34,11 +34,17 @@ namespace Makabaka.Test
 			service.OnGroupMessage += OnGroupMessage;
 			service.OnPrivateMessage += OnPrivateMessage;
 			service.OnGroupRequest += OnGroupRequest;
+			service.OnGroupFileUpload += OnGroupFileUpload;
 
 			// 启动服务
 			await service.StartAsync();
 			Console.ReadLine();
 			await service.StopAsync();
+		}
+
+		private static async void OnGroupFileUpload(object? sender, GroupFileUploadEventArgs e)
+		{
+			await e.ReplyAsync(new TextSegment($"接收到文件事件：{e.File.Name}"));
 		}
 
 		private static async void OnGroupRequest(object? sender, GroupRequestEventArgs e)
@@ -121,11 +127,11 @@ _斜体_
 
 # 有序列表标题
 1. 嵌套一层
-    - 列表前是普通文本，则需要在列表前用空行隔开，否则无法识别
-    - 如果是段落标签比如标题，则无需用空行隔开
+	- 列表前是普通文本，则需要在列表前用空行隔开，否则无法识别
+	- 如果是段落标签比如标题，则无需用空行隔开
 2. 嵌套二层
-    1. 我是有序列表，二级列表前面需要空4个空格
-    2. 无序列表和有序列表可以相互嵌套，但是不建议无限制嵌套。
+	1. 我是有序列表，二级列表前面需要空4个空格
+	2. 无序列表和有序列表可以相互嵌套，但是不建议无限制嵌套。
 
 > 青青子衿，悠悠我心，但为君故，沉吟至今
 > 四月维夏，六月徂暑。先祖匪人，胡宁忍予

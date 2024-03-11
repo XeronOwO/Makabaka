@@ -32,6 +32,13 @@ namespace Makabaka.Services
 			OnGroupMessage?.Invoke(this, e);
 		}
 
+		public event EventHandler<GroupFileUploadEventArgs> OnGroupFileUpload;
+
+		public void SendGroupFileUploadEvent(GroupFileUploadEventArgs e)
+		{
+			OnGroupFileUpload?.Invoke(this, e);
+		}
+
 		public event EventHandler<GroupAdminChangedEventArgs> OnGroupAdminChanged;
 
 		public void SendGroupAdminChangedEvent(GroupAdminChangedEventArgs e)
