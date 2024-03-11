@@ -199,10 +199,10 @@ namespace Makabaka.Network
 					_apiPromises.Remove(echo); // 从队列中移除
 				}
 
-				// 执行API失败了，也就是超时了
+				// 执行API失败了
 				if (!promise.Success)
 				{
-					Log.Warning($"[{_guid}]指定Echo的API请求超时：[{echo}]");
+					Log.Warning($"[{_guid}]指定Echo的API请求失败：[{echo}]");
 					return APIResponse.GetFailedResponse<TResult>(); ;
 				}
 

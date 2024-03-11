@@ -286,6 +286,21 @@ namespace Makabaka.Network
 			return res;
 		}
 
+		public async Task<APIResponse<GetGroupMsgHistoryRes>> GetGroupMsgHistoryAsync(long groupId, long messageId, int count)
+		{
+			var res = await ExecuteAPIAsync<GetGroupMsgHistoryRes, GetGroupMsgHistoryReq>("get_group_msg_history", new()
+			{
+				GroupId = groupId,
+				MessageId = messageId,
+				Count = count,
+			}, Guid.NewGuid().ToString());
+			foreach (var message in res.Data.Messages)
+			{
+				message.Message.PostProcessMessage();
+			}
+			return res;
+		}
+
 		public Task<APIResponse<string>> SendForwardMessageAsync(List<NodeSegment> nodes)
 		{
 			return ExecuteAPIAsync<string, SendForwardMessageReq>("send_forward_msg", new()

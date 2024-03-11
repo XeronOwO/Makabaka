@@ -256,6 +256,15 @@ namespace Makabaka.Network
 		Task<APIResponse<GetFriendMsgHistoryRes>> GetFriendMsgHistoryAsync(long userId, long messageId, int count);
 
 		/// <summary>
+		/// <a href="https://lagrangedev.github.io/Lagrange.Doc/Lagrange.OneBot/API/Extend/#%E8%8E%B7%E5%8F%96%E7%BE%A4%E7%BB%84%E5%8E%86%E5%8F%B2%E6%B6%88%E6%81%AF%E8%AE%B0%E5%BD%95">获取群组历史消息记录</a>
+		/// </summary>
+		/// <param name="userId">群组 ID</param>
+		/// <param name="messageId">要获取的消息的最后一条的 ID</param>
+		/// <param name="count">获取的消息数量</param>
+		/// <returns>获取群组历史消息记录API响应</returns>
+		Task<APIResponse<GetGroupMsgHistoryRes>> GetGroupMsgHistoryAsync(long userId, long messageId, int count);
+
+		/// <summary>
 		/// <a href="https://lagrangedev.github.io/Lagrange.Doc/Lagrange.OneBot/API/Extend/#%E6%9E%84%E9%80%A0%E5%90%88%E5%B9%B6%E8%BD%AC%E5%8F%91%E6%B6%88%E6%81%AF">构造合并转发消息</a>
 		/// </summary>
 		/// <param name="nodes">节点段消息列表</param>

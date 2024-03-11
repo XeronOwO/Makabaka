@@ -1,13 +1,12 @@
 ﻿using Makabaka.Models.Messages;
-using Makabaka.Models.Senders;
 using Newtonsoft.Json;
 
 namespace Makabaka.Models.API.Responses
 {
 	/// <summary>
-	/// 私聊消息
+	/// 群组消息
 	/// </summary>
-	public class PrivateMessage
+	public class GroupMessage
 	{
 		/// <summary>
 		/// 消息类型
@@ -28,6 +27,12 @@ namespace Makabaka.Models.API.Responses
 		public long MessageId { get; set; }
 
 		/// <summary>
+		/// 群组ID
+		/// </summary>
+		[JsonProperty("group_id")]
+		public long GroupId { get; set; }
+
+		/// <summary>
 		/// 用户ID
 		/// </summary>
 		[JsonProperty("user_id")]
@@ -44,17 +49,5 @@ namespace Makabaka.Models.API.Responses
 		/// </summary>
 		[JsonProperty("raw_message")]
 		public string RawMessage { get; set; }
-
-		/// <summary>
-		/// 字体
-		/// </summary>
-		[JsonProperty("font")]
-		public int Font { get; set; }
-
-		/// <summary>
-		/// 发送者
-		/// </summary>
-		[JsonProperty("sender")]
-		public Sender Sender { get; set; }
 	}
 }

@@ -70,8 +70,10 @@ namespace Makabaka.Test
 				foreach (var message in res.Messages)
 				{
 					sb.Append('[');
-					sb.Append(message.UserId);
-					sb.Append("]: ");
+					sb.Append(message.Sender.UserId);
+					sb.Append(']');
+					sb.Append(message.Sender.NickName);
+					sb.Append(": ");
 					sb.Append(message.Message);
 					sb.AppendLine();
 				}
@@ -267,6 +269,20 @@ _斜体_
 			{
 				List<string> faces = await e.Context.FetchCustomFaceAsync();
 				await e.ReplyAsync(new TextSegment(string.Join("\n", faces)));
+			}
+			else if (e.Message == "获取群组历史消息记录测试")
+			{
+				GetGroupMsgHistoryRes res = await e.Context.GetGroupMsgHistoryAsync(e.GroupId, e.MessageId, 5);
+				var sb = new StringBuilder();
+				foreach (var message in res.Messages)
+				{
+					sb.Append('[');
+					sb.Append(message.UserId);
+					sb.Append("]: ");
+					sb.Append(message.Message);
+					sb.AppendLine();
+				}
+				await e.ReplyAsync(new TextSegment(sb.ToString()));
 			}
 		}
 	}
