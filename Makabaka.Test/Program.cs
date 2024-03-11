@@ -5,6 +5,7 @@ using Makabaka.Models.Messages;
 using Makabaka.Services;
 using Newtonsoft.Json;
 using Serilog;
+using System.Text;
 using System.Web;
 
 namespace Makabaka.Test
@@ -61,6 +62,20 @@ namespace Makabaka.Test
 			else if (e.Message == "回复测试")
 			{
 				await e.ReplyAsync([new ReplySegment(e.MessageId), new TextSegment("回复测试！")]);
+			}
+			else if (e.Message == "获取好友历史消息记录测试")
+			{
+				GetFriendMsgHistoryRes res = await e.Context.GetFriendMsgHistoryAsync(e.UserId, e.MessageId, 5);
+				var sb = new StringBuilder();
+				foreach (var message in res.Messages)
+				{
+					sb.Append('[');
+					sb.Append(message.UserId);
+					sb.Append("]: ");
+					sb.Append(message.Message);
+					sb.AppendLine();
+				}
+				await e.ReplyAsync(new TextSegment(sb.ToString()));
 			}
 		}
 

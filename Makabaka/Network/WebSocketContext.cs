@@ -271,6 +271,21 @@ namespace Makabaka.Network
 			return ExecuteAPIAsync<List<string>>("fetch_custom_face", Guid.NewGuid().ToString());
 		}
 
+		public async Task<APIResponse<GetFriendMsgHistoryRes>> GetFriendMsgHistoryAsync(long userId, long messageId, int count)
+		{
+			var res = await ExecuteAPIAsync<GetFriendMsgHistoryRes, GetFriendMsgHistoryReq>("get_friend_msg_history", new()
+			{
+				UserId = userId,
+				MessageId = messageId,
+				Count = count,
+			}, Guid.NewGuid().ToString());
+			foreach (var message in res.Data.Messages)
+			{
+				message.Message.PostProcessMessage();
+			}
+			return res;
+		}
+
 		public Task<APIResponse<string>> SendForwardMessageAsync(List<NodeSegment> nodes)
 		{
 			return ExecuteAPIAsync<string, SendForwardMessageReq>("send_forward_msg", new()
