@@ -41,7 +41,7 @@ Makabaka 已发布到 [NuGet](https://www.nuget.org/packages/Makabaka "前往NuG
 | [Forward]        |    🟢    |
 | [Node]           |    🟢    |
 | [Xml]            |    🔴    |
-| [Json]           |    🔴    |
+| [Json]           |    🟢    |
 
 [Text]: https://github.com/botuniverse/onebot-11/blob/master/message/segment.md#qq-%E8%A1%A8%E6%83%85
 [Record]: https://github.com/botuniverse/onebot-11/blob/master/message/segment.md#%E8%AF%AD%E9%9F%B3
@@ -158,7 +158,7 @@ Makabaka 已发布到 [NuGet](https://www.nuget.org/packages/Makabaka "前往NuG
 | -------- | ------------------------------ | :-----: |
 | Message  | [Private Message]              |    🟢    |
 | Message  | [Group Message]                |    🟢    |
-| Notice   | [Group File Upload]            |    🔴    |
+| Notice   | [Group File Upload]            |    🟢    |
 | Notice   | [Group Admin Change]           |    🟢    |
 | Notice   | [Group Member Decrease]        |    🟢    |
 | Notice   | [Group Member Increase]        |    🟢    |
