@@ -100,6 +100,7 @@ namespace Makabaka.Test
 			{
 				var md = new MarkDownSegment(JsonConvert.SerializeObject(new
 				{
+					#region 内容太长，折叠
 					content =
 $@"# 一号标题
 ## 二号标题
@@ -151,6 +152,7 @@ _斜体_
 第三行
 
 [/回车指令](mqqapi://aio/inlinecmd?command={HttpUtility.UrlEncode("/回车指令")}&reply=false&enter=true)"
+					#endregion
 				}));
 
 				string resid = await e.Context.SendForwardMessageAsync([new NodeSegment(e.SelfId, string.Empty, md)]);
@@ -164,6 +166,7 @@ _斜体_
 				}));
 				var kb = new KeyboardSegment(new KeyboardData
 				{
+					#region 内容太长，折叠
 					Content = new KeyboardContent
 					{
 						Rows =
@@ -239,10 +242,16 @@ _斜体_
 							},
 						]
 					}
+					#endregion
 				});
 
 				string resid = await e.Context.SendForwardMessageAsync([new NodeSegment(e.SelfId, string.Empty, [md, kb])]);
 				await e.ReplyAsync(new LongMsgSegment(resid));
+			}
+			else if (e.Message == "获取收藏表情测试")
+			{
+				List<string> faces = await e.Context.FetchCustomFaceAsync();
+				await e.ReplyAsync(new TextSegment(string.Join("\n", faces)));
 			}
 		}
 	}

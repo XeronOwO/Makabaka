@@ -241,9 +241,16 @@ namespace Makabaka.Network
 		#region 拓展API
 
 		/// <summary>
+		/// <a href="https://lagrangedev.github.io/Lagrange.Doc/Lagrange.OneBot/API/Extend/#%E8%8E%B7%E5%8F%96%E6%94%B6%E8%97%8F%E8%A1%A8%E6%83%85">获取收藏表情</a>
+		/// </summary>
+		/// <returns>收藏表情链接列表API响应</returns>
+		Task<APIResponse<List<string>>> FetchCustomFaceAsync();
+
+		/// <summary>
 		/// <a href="https://lagrangedev.github.io/Lagrange.Doc/Lagrange.OneBot/API/Extend/#%E6%9E%84%E9%80%A0%E5%90%88%E5%B9%B6%E8%BD%AC%E5%8F%91%E6%B6%88%E6%81%AF">构造合并转发消息</a>
 		/// </summary>
-		/// <returns></returns>
+		/// <param name="nodes">节点段消息列表</param>
+		/// <returns>转发消息ResId API响应</returns>
 		Task<APIResponse<string>> SendForwardMessageAsync(List<NodeSegment> nodes);
 
 		#endregion

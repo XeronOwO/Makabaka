@@ -296,7 +296,7 @@ namespace Makabaka.Network
 			}
 
 			// API完成
-			promise.Success = retcode == 0;
+			promise.Success = retcode == 0 || retcode == 200;
 			promise.Data = data;
 			promise.Json = json;
 			promise.TokenSource.Cancel(); // 打断等待

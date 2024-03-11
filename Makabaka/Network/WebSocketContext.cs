@@ -266,6 +266,11 @@ namespace Makabaka.Network
 
 		#region 拓展API
 
+		public Task<APIResponse<List<string>>> FetchCustomFaceAsync()
+		{
+			return ExecuteAPIAsync<List<string>>("fetch_custom_face", Guid.NewGuid().ToString());
+		}
+
 		public Task<APIResponse<string>> SendForwardMessageAsync(List<NodeSegment> nodes)
 		{
 			return ExecuteAPIAsync<string, SendForwardMessageReq>("send_forward_msg", new()
