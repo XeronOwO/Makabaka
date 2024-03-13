@@ -321,6 +321,14 @@ namespace Makabaka.Network
 		/// <returns>空API响应</returns>
 		Task<APIResponse<EmptyRes>> FriendPokeAsync(long userId);
 
+		/// <summary>
+		/// 群组戳一戳
+		/// </summary>
+		/// <param name="groupId">群号</param>
+		/// <param name="userId">对方 QQ 号</param>
+		/// <returns></returns>
+		Task<APIResponse<EmptyRes>> GroupPokeAsync(long groupId, long userId);
+
 		#endregion
 	}
 }

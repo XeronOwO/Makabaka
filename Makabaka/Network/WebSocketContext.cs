@@ -365,6 +365,15 @@ namespace Makabaka.Network
 			}, Guid.NewGuid().ToString());
 		}
 
+		public Task<APIResponse<EmptyRes>> GroupPokeAsync(long groupId, long userId)
+		{
+			return ExecuteAPIAsync<EmptyRes, GroupPokeReq>("group_poke", new()
+			{
+				GroupId = groupId,
+				UserId = userId,
+			}, Guid.NewGuid().ToString());
+		}
+
 		#endregion
 	}
 }

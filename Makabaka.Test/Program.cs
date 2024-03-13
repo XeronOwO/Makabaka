@@ -322,6 +322,10 @@ _斜体_
 				}
 				await e.ReplyAsync(new TextSegment(sb.ToString()));
 			}
+			else if (e.Message == "群组戳一戳测试")
+			{
+				await e.Context.GroupPokeAsync(e.GroupId, e.UserId);
+			}
 			var match = GetGroupFilesByFolderRegex().Match(e.Message);
 			if (match.Success)
 			{
