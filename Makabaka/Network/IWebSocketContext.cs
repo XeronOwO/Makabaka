@@ -278,8 +278,8 @@ namespace Makabaka.Network
 		/// <param name="file"><strong>本地</strong>文件路径</param>
 		/// <param name="name">储存名称</param>
 		/// <param name="folder">父目录 ID（可选）</param>
-		/// <returns></returns>
-		Task UploadGroupFileAsync(long groupId, string file, string name, string folder = null);
+		/// <returns>API响应</returns>
+		Task<APIResponse<object>> UploadGroupFileAsync(long groupId, string file, string name, string folder = null);
 
 		/// <summary>
 		/// 私聊发送文件
@@ -287,8 +287,15 @@ namespace Makabaka.Network
 		/// <param name="userId">对方 QQ 号</param>
 		/// <param name="file"><strong>本地</strong>文件路径</param>
 		/// <param name="name">储存名称</param>
-		/// <returns></returns>
-		Task UploadPrivateFileAsync(long userId, string file, string name);
+		/// <returns>API响应</returns>
+		Task<APIResponse<object>> UploadPrivateFileAsync(long userId, string file, string name);
+
+		/// <summary>
+		/// 获取群根目录文件列表
+		/// </summary>
+		/// <param name="groupId">群号</param>
+		/// <returns>获取群根目录文件列表API响应</returns>
+		Task<APIResponse<GetGroupRootFilesRes>> GetGroupRootFilesAsync(long groupId);
 
 		#endregion
 	}

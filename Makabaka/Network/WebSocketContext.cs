@@ -309,9 +309,9 @@ namespace Makabaka.Network
 			}, Guid.NewGuid().ToString());
 		}
 
-		public async Task UploadGroupFileAsync(long groupId, string file, string name, string folder = null)
+		public Task<APIResponse<object>> UploadGroupFileAsync(long groupId, string file, string name, string folder = null)
 		{
-			await ExecuteAPIAsync<string, UploadGroupFileReq>("upload_group_file", new()
+			return ExecuteAPIAsync<object, UploadGroupFileReq>("upload_group_file", new()
 			{
 				GroupId = groupId,
 				File = file,
@@ -320,13 +320,21 @@ namespace Makabaka.Network
 			}, Guid.NewGuid().ToString());
 		}
 
-		public async Task UploadPrivateFileAsync(long userId, string file, string name)
+		public Task<APIResponse<object>> UploadPrivateFileAsync(long userId, string file, string name)
 		{
-			await ExecuteAPIAsync<string, UploadPrivateFileReq>("upload_private_file", new()
+			return ExecuteAPIAsync<object, UploadPrivateFileReq>("upload_private_file", new()
 			{
 				UserId = userId,
 				File = file,
 				Name = name,
+			}, Guid.NewGuid().ToString());
+		}
+
+		public Task<APIResponse<GetGroupRootFilesRes>> GetGroupRootFilesAsync(long groupId)
+		{
+			return ExecuteAPIAsync<GetGroupRootFilesRes, GetGroupRootFilesReq>("get_group_root_files", new()
+			{
+				GroupId = groupId,
 			}, Guid.NewGuid().ToString());
 		}
 

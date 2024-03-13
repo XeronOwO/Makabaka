@@ -288,9 +288,25 @@ _斜体_
 				}
 				await e.ReplyAsync(new TextSegment(sb.ToString()));
 			}
-			else if(e.Message == "上传群文件测试")
+			else if (e.Message == "上传群文件测试")
 			{
 				await e.Context.UploadGroupFileAsync(e.GroupId, "Fleck.dll", "Fleck.dll");
+			}
+			else if (e.Message == "获取群根目录文件列表测试")
+			{
+				GetGroupRootFilesRes res = await e.Context.GetGroupRootFilesAsync(e.GroupId);
+				var sb = new StringBuilder();
+				sb.AppendLine("文件夹列表：");
+				foreach (var folder in res.Folders)
+				{
+					sb.AppendLine(folder.FolderName);
+				}
+				sb.AppendLine("文件列表：");
+				foreach (var file in res.Files)
+				{
+					sb.AppendLine(file.FileName);
+				}
+				await e.ReplyAsync(new TextSegment(sb.ToString()));
 			}
 		}
 	}
