@@ -309,9 +309,9 @@ namespace Makabaka.Network
 			}, Guid.NewGuid().ToString());
 		}
 
-		public Task<APIResponse<object>> UploadGroupFileAsync(long groupId, string file, string name, string folder = null)
+		public Task<APIResponse<EmptyRes>> UploadGroupFileAsync(long groupId, string file, string name, string folder = null)
 		{
-			return ExecuteAPIAsync<object, UploadGroupFileReq>("upload_group_file", new()
+			return ExecuteAPIAsync<EmptyRes, UploadGroupFileReq>("upload_group_file", new()
 			{
 				GroupId = groupId,
 				File = file,
@@ -320,9 +320,9 @@ namespace Makabaka.Network
 			}, Guid.NewGuid().ToString());
 		}
 
-		public Task<APIResponse<object>> UploadPrivateFileAsync(long userId, string file, string name)
+		public Task<APIResponse<EmptyRes>> UploadPrivateFileAsync(long userId, string file, string name)
 		{
-			return ExecuteAPIAsync<object, UploadPrivateFileReq>("upload_private_file", new()
+			return ExecuteAPIAsync<EmptyRes, UploadPrivateFileReq>("upload_private_file", new()
 			{
 				UserId = userId,
 				File = file,
@@ -354,6 +354,14 @@ namespace Makabaka.Network
 				GroupId = groupId,
 				FileId = fileId,
 				BusId = busId,
+			}, Guid.NewGuid().ToString());
+		}
+
+		public Task<APIResponse<EmptyRes>> FriendPokeAsync(long userId)
+		{
+			return ExecuteAPIAsync<EmptyRes, FriendPokeReq>("friend_poke", new()
+			{
+				UserId = userId,
 			}, Guid.NewGuid().ToString());
 		}
 

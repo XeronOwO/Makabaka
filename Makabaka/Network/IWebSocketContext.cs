@@ -278,8 +278,8 @@ namespace Makabaka.Network
 		/// <param name="file"><strong>本地</strong>文件路径</param>
 		/// <param name="name">储存名称</param>
 		/// <param name="folder">父目录 ID（可选）</param>
-		/// <returns>API响应</returns>
-		Task<APIResponse<object>> UploadGroupFileAsync(long groupId, string file, string name, string folder = null);
+		/// <returns>空API响应</returns>
+		Task<APIResponse<EmptyRes>> UploadGroupFileAsync(long groupId, string file, string name, string folder = null);
 
 		/// <summary>
 		/// 私聊发送文件
@@ -287,8 +287,8 @@ namespace Makabaka.Network
 		/// <param name="userId">对方 QQ 号</param>
 		/// <param name="file"><strong>本地</strong>文件路径</param>
 		/// <param name="name">储存名称</param>
-		/// <returns>API响应</returns>
-		Task<APIResponse<object>> UploadPrivateFileAsync(long userId, string file, string name);
+		/// <returns>空API响应</returns>
+		Task<APIResponse<EmptyRes>> UploadPrivateFileAsync(long userId, string file, string name);
 
 		/// <summary>
 		/// 获取群根目录文件列表
@@ -313,6 +313,13 @@ namespace Makabaka.Network
 		/// <param name="busId">文件类型</param>
 		/// <returns>获取群文件资源链接API响应</returns>
 		Task<APIResponse<GetGroupFileUrlRes>> GetGroupFileUrlAsync(long groupId, string fileId, int busId);
+
+		/// <summary>
+		/// 好友戳一戳
+		/// </summary>
+		/// <param name="userId">对方 QQ 号</param>
+		/// <returns>空API响应</returns>
+		Task<APIResponse<EmptyRes>> FriendPokeAsync(long userId);
 
 		#endregion
 	}

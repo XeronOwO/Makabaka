@@ -84,6 +84,10 @@ namespace Makabaka.Test
 			{
 				await e.Context.UploadPrivateFileAsync(e.UserId, "Fleck.dll", "Fleck.dll");
 			}
+			else if (e.Message == "好友戳一戳测试")
+			{
+				await e.Context.FriendPokeAsync(e.UserId);
+			}
 		}
 
 		private static async void OnGroupMessage(object? sender, GroupMessageEventArgs e)
