@@ -79,6 +79,10 @@ namespace Makabaka.Test
 				}
 				await e.ReplyAsync(new TextSegment(sb.ToString()));
 			}
+			else if (e.Message == "私聊发送文件测试")
+			{
+				await e.Context.UploadPrivateFileAsync(e.UserId, "Fleck.dll", "Fleck.dll");
+			}
 		}
 
 		private static async void OnGroupMessage(object? sender, GroupMessageEventArgs e)

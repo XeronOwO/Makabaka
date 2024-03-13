@@ -320,6 +320,16 @@ namespace Makabaka.Network
 			}, Guid.NewGuid().ToString());
 		}
 
+		public async Task UploadPrivateFileAsync(long userId, string file, string name)
+		{
+			await ExecuteAPIAsync<string, UploadPrivateFileReq>("upload_private_file", new()
+			{
+				UserId = userId,
+				File = file,
+				Name = name,
+			}, Guid.NewGuid().ToString());
+		}
+
 		#endregion
 	}
 }

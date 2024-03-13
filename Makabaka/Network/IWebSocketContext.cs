@@ -281,6 +281,15 @@ namespace Makabaka.Network
 		/// <returns></returns>
 		Task UploadGroupFileAsync(long groupId, string file, string name, string folder = null);
 
+		/// <summary>
+		/// 私聊发送文件
+		/// </summary>
+		/// <param name="userId">对方 QQ 号</param>
+		/// <param name="file"><strong>本地</strong>文件路径</param>
+		/// <param name="name">储存名称</param>
+		/// <returns></returns>
+		Task UploadPrivateFileAsync(long userId, string file, string name);
+
 		#endregion
 	}
 }
