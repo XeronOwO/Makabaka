@@ -305,6 +305,15 @@ namespace Makabaka.Network
 		/// <returns>获取群子目录文件列表API响应</returns>
 		Task<APIResponse<GetGroupFilesByFolderRes>> GetGroupFilesByFolderAsync(long groupId, string folderId);
 
+		/// <summary>
+		/// 获取群文件资源链接
+		/// </summary>
+		/// <param name="groupId">群号</param>
+		/// <param name="fileId">文件 ID</param>
+		/// <param name="busId">文件类型</param>
+		/// <returns>获取群文件资源链接API响应</returns>
+		Task<APIResponse<GetGroupFileUrlRes>> GetGroupFileUrlAsync(long groupId, string fileId, int busId);
+
 		#endregion
 	}
 }

@@ -308,6 +308,12 @@ _斜体_
 				sb.AppendLine("文件列表：");
 				foreach (var file in res.Files)
 				{
+					sb.Append('[');
+					sb.Append(file.FileId);
+					sb.Append(']');
+					sb.Append('[');
+					sb.Append(file.Busid);
+					sb.Append(']');
 					sb.AppendLine(file.FileName);
 				}
 				await e.ReplyAsync(new TextSegment(sb.ToString()));
@@ -324,6 +330,9 @@ _斜体_
 				sb.AppendLine("文件夹列表：");
 				foreach (var folder in res.Folders)
 				{
+					sb.Append('[');
+					sb.Append(folder.FolderId);
+					sb.Append(']');
 					sb.AppendLine(folder.FolderName);
 				}
 				sb.AppendLine("文件列表：");
@@ -332,13 +341,27 @@ _斜体_
 					sb.Append('[');
 					sb.Append(file.FileId);
 					sb.Append(']');
+					sb.Append('[');
+					sb.Append(file.Busid);
+					sb.Append(']');
 					sb.AppendLine(file.FileName);
 				}
 				await e.ReplyAsync(new TextSegment(sb.ToString()));
+			}
+			match = GetGroupFileUrlRegex().Match(e.Message);
+			if (match.Success)
+			{
+				var fileId = match.Groups["file"].Value;
+				var busId = int.Parse(match.Groups["busid"].Value);
+				GetGroupFileUrlRes res = await e.Context.GetGroupFileUrlAsync(e.GroupId, fileId, busId);
+				await e.ReplyAsync(new TextSegment(res.Url));
 			}
 		}
 
 		[GeneratedRegex(@"获取群子目录文件列表测试 (?<folder>\S+)", RegexOptions.Compiled)]
 		private static partial Regex GetGroupFilesByFolderRegex();
+
+		[GeneratedRegex(@"获取群文件资源链接测试 (?<file>\S+) (?<busid>[-0-9]+)", RegexOptions.Compiled)]
+		private static partial Regex GetGroupFileUrlRegex();
 	}
 }

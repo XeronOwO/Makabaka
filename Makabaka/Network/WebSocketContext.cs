@@ -347,6 +347,16 @@ namespace Makabaka.Network
 			}, Guid.NewGuid().ToString());
 		}
 
+		public Task<APIResponse<GetGroupFileUrlRes>> GetGroupFileUrlAsync(long groupId, string fileId, int busId)
+		{
+			return ExecuteAPIAsync<GetGroupFileUrlRes, GetGroupFileUrlReq>("get_group_file_url", new()
+			{
+				GroupId = groupId,
+				FileId = fileId,
+				BusId = busId,
+			}, Guid.NewGuid().ToString());
+		}
+
 		#endregion
 	}
 }
