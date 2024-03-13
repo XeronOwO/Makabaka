@@ -6,11 +6,12 @@ using Makabaka.Services;
 using Newtonsoft.Json;
 using Serilog;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Web;
 
 namespace Makabaka.Test
 {
-	internal class Program
+	internal partial class Program
 	{
 		private const string ConfigPath = "config.json";
 
@@ -299,6 +300,9 @@ _斜体_
 				sb.AppendLine("文件夹列表：");
 				foreach (var folder in res.Folders)
 				{
+					sb.Append('[');
+					sb.Append(folder.FolderId);
+					sb.Append(']');
 					sb.AppendLine(folder.FolderName);
 				}
 				sb.AppendLine("文件列表：");
@@ -308,6 +312,33 @@ _斜体_
 				}
 				await e.ReplyAsync(new TextSegment(sb.ToString()));
 			}
+			var match = GetGroupFilesByFolderRegex().Match(e.Message);
+			if (match.Success)
+			{
+				var folderId = match.Groups["folder"].Value;
+				GetGroupFilesByFolderRes res = await e.Context.GetGroupFilesByFolderAsync(e.GroupId, folderId);
+				var sb = new StringBuilder();
+				sb.Append("子目录");
+				sb.Append(folderId);
+				sb.AppendLine("中");
+				sb.AppendLine("文件夹列表：");
+				foreach (var folder in res.Folders)
+				{
+					sb.AppendLine(folder.FolderName);
+				}
+				sb.AppendLine("文件列表：");
+				foreach (var file in res.Files)
+				{
+					sb.Append('[');
+					sb.Append(file.FileId);
+					sb.Append(']');
+					sb.AppendLine(file.FileName);
+				}
+				await e.ReplyAsync(new TextSegment(sb.ToString()));
+			}
 		}
+
+		[GeneratedRegex(@"获取群子目录文件列表测试 (?<folder>\S+)", RegexOptions.Compiled)]
+		private static partial Regex GetGroupFilesByFolderRegex();
 	}
 }

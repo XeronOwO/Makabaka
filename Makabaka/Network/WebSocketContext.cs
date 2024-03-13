@@ -338,6 +338,15 @@ namespace Makabaka.Network
 			}, Guid.NewGuid().ToString());
 		}
 
+		public Task<APIResponse<GetGroupFilesByFolderRes>> GetGroupFilesByFolderAsync(long groupId, string folderId)
+		{
+			return ExecuteAPIAsync<GetGroupFilesByFolderRes, GetGroupFilesByFolderReq>("get_group_files_by_folder", new()
+			{
+				GroupId = groupId,
+				FolderId = folderId,
+			}, Guid.NewGuid().ToString());
+		}
+
 		#endregion
 	}
 }
