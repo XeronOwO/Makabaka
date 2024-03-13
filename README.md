@@ -211,10 +211,39 @@ Makabaka 已发布到 [NuGet](https://www.nuget.org/packages/Makabaka "前往NuG
 
 </Details>
 
-## 代码示例
-见 [Program.cs](Makabaka.Test/Program.cs) 。  
+<Details>
+<Summary>拓展功能</Summary>
+
+| 功能          | 是否支持 |
+| ------------------ | :-----: |
+| [获取收藏表情] |    🟢    |
+| [获取好友历史消息记录] |    🟢    |
+| [获取群组历史消息记录] |    🟢    |
+| [构造合并转发消息] |    🟢    |
+| [上传群文件] |    🟢    |
+| [私聊发送文件] |    🟢    |
+| [获取群根目录文件列表] |    🟢    |
+| [获取群子目录文件列表] |    🟢    |
+| [获取群文件资源链接] |    🟢    |
+| [好友戳一戳] |    🟢    |
+| [群组戳一戳] |    🟢    |
+
+[获取收藏表情]: https://lagrangedev.github.io/Lagrange.Doc/Lagrange.OneBot/API/Extend/#%E8%8E%B7%E5%8F%96%E6%94%B6%E8%97%8F%E8%A1%A8%E6%83%85
+[获取好友历史消息记录]: https://lagrangedev.github.io/Lagrange.Doc/Lagrange.OneBot/API/Extend/#%E8%8E%B7%E5%8F%96%E5%A5%BD%E5%8F%8B%E5%8E%86%E5%8F%B2%E6%B6%88%E6%81%AF%E8%AE%B0%E5%BD%95
+[获取群组历史消息记录]: https://lagrangedev.github.io/Lagrange.Doc/Lagrange.OneBot/API/Extend/#%E8%8E%B7%E5%8F%96%E7%BE%A4%E7%BB%84%E5%8E%86%E5%8F%B2%E6%B6%88%E6%81%AF%E8%AE%B0%E5%BD%95
+[构造合并转发消息]: https://lagrangedev.github.io/Lagrange.Doc/Lagrange.OneBot/API/Extend/#%E6%9E%84%E9%80%A0%E5%90%88%E5%B9%B6%E8%BD%AC%E5%8F%91%E6%B6%88%E6%81%AF
+[上传群文件]: https://lagrangedev.github.io/Lagrange.Doc/Lagrange.OneBot/API/Extend/#%E4%B8%8A%E4%BC%A0%E7%BE%A4%E6%96%87%E4%BB%B6
+[私聊发送文件]: https://lagrangedev.github.io/Lagrange.Doc/Lagrange.OneBot/API/Extend/#%E7%A7%81%E8%81%8A%E5%8F%91%E9%80%81%E6%96%87%E4%BB%B6
+[获取群根目录文件列表]: https://lagrangedev.github.io/Lagrange.Doc/Lagrange.OneBot/API/Extend/#%E8%8E%B7%E5%8F%96%E7%BE%A4%E6%A0%B9%E7%9B%AE%E5%BD%95%E6%96%87%E4%BB%B6%E5%88%97%E8%A1%A8
+[获取群子目录文件列表]: https://lagrangedev.github.io/Lagrange.Doc/Lagrange.OneBot/API/Extend/#%E8%8E%B7%E5%8F%96%E7%BE%A4%E5%AD%90%E7%9B%AE%E5%BD%95%E6%96%87%E4%BB%B6%E5%88%97%E8%A1%A8
+[获取群文件资源链接]: https://lagrangedev.github.io/Lagrange.Doc/Lagrange.OneBot/API/Extend/#%E8%8E%B7%E5%8F%96%E7%BE%A4%E6%96%87%E4%BB%B6%E8%B5%84%E6%BA%90%E9%93%BE%E6%8E%A5
+[好友戳一戳]: https://lagrangedev.github.io/Lagrange.Doc/Lagrange.OneBot/API/Extend/#%E5%A5%BD%E5%8F%8B%E6%88%B3%E4%B8%80%E6%88%B3
+[群组戳一戳]: https://lagrangedev.github.io/Lagrange.Doc/Lagrange.OneBot/API/Extend/#%E7%BE%A4%E7%BB%84%E6%88%B3%E4%B8%80%E6%88%B3
 
 </Details>
+
+## 代码示例
+见 [Program.cs](Makabaka.Test/Program.cs) 。  
 
 ## 开源协议
 [GPL-3.0 license](https://github.com/XeronOwO/Makabaka/blob/main/LICENSE.txt)
