@@ -284,6 +284,10 @@ _斜体_
 				}
 				await e.ReplyAsync(new TextSegment(sb.ToString()));
 			}
+			else if(e.Message == "上传群文件测试")
+			{
+				await e.Context.UploadGroupFileAsync(e.GroupId, "Fleck.dll", "Fleck.dll");
+			}
 		}
 	}
 }

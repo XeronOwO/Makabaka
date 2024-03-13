@@ -271,6 +271,16 @@ namespace Makabaka.Network
 		/// <returns>转发消息ResId API响应</returns>
 		Task<APIResponse<string>> SendForwardMessageAsync(List<NodeSegment> nodes);
 
+		/// <summary>
+		/// 上传群文件
+		/// </summary>
+		/// <param name="groupId">群号</param>
+		/// <param name="file"><strong>本地</strong>文件路径</param>
+		/// <param name="name">储存名称</param>
+		/// <param name="folder">父目录 ID（可选）</param>
+		/// <returns></returns>
+		Task UploadGroupFileAsync(long groupId, string file, string name, string folder = null);
+
 		#endregion
 	}
 }

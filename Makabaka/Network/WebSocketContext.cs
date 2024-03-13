@@ -309,6 +309,17 @@ namespace Makabaka.Network
 			}, Guid.NewGuid().ToString());
 		}
 
+		public async Task UploadGroupFileAsync(long groupId, string file, string name, string folder = null)
+		{
+			await ExecuteAPIAsync<string, UploadGroupFileReq>("upload_group_file", new()
+			{
+				GroupId = groupId,
+				File = file,
+				Name = name,
+				Folder = folder,
+			}, Guid.NewGuid().ToString());
+		}
+
 		#endregion
 	}
 }
