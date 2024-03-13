@@ -60,6 +60,8 @@ namespace Makabaka.Models.Messages
 					return new KeyboardSegment(RawData);
 				case "longmsg":
 					return new LongMsgSegment((string)RawData["id"]);
+				case "json":
+					return new JsonSegment((string)RawData["data"]);
 				default:
 					Log.Warning($"不支持的段消息类型：{Type}");
 					return null;
