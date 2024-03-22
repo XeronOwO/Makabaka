@@ -374,6 +374,16 @@ namespace Makabaka.Network
 			}, Guid.NewGuid().ToString());
 		}
 
+		public Task<APIResponse<EmptyRes>> SetGroupSpecialTitle(long groupId, long userId, string specialTitle)
+		{
+			return ExecuteAPIAsync<EmptyRes, SetGroupSpecialTitleReq>("set_group_special_title", new()
+			{
+				GroupId = groupId,
+				UserId = userId,
+				SpecialTitle = specialTitle,
+			}, Guid.NewGuid().ToString());
+		}
+
 		#endregion
 	}
 }

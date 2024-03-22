@@ -326,8 +326,17 @@ namespace Makabaka.Network
 		/// </summary>
 		/// <param name="groupId">群号</param>
 		/// <param name="userId">对方 QQ 号</param>
-		/// <returns></returns>
+		/// <returns>空API响应</returns>
 		Task<APIResponse<EmptyRes>> GroupPokeAsync(long groupId, long userId);
+
+		/// <summary>
+		/// 设置群组专属头衔
+		/// </summary>
+		/// <param name="groupId">群号</param>
+		/// <param name="userId">要设置的 QQ 号</param>
+		/// <param name="specialTitle">专属头衔, 空字符串表示删除专属头衔</param>
+		/// <returns>空API响应</returns>
+		Task<APIResponse<EmptyRes>> SetGroupSpecialTitle(long groupId, long userId, string specialTitle);
 
 		#endregion
 	}

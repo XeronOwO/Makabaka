@@ -113,6 +113,12 @@ namespace Makabaka.Test
 				//await e.Reply(new ImageSegment("base64://iVBORw0KGgoAAAANSUhEUgAAABQAAAAVCAIAAADJt1n/AAAAKElEQVQ4EWPk5+RmIBcwkasRpG9UM4mhNxpgowFGMARGEwnBIEJVAAAdBgBNAZf+QAAAAABJRU5ErkJggg=="));
 				await e.ReplyAsync(ImageSegment.FromLocalFile("test.png"));
 			}
+			else if (e.Message == "视频测试")
+			{
+				// 注意：这里的uri路径是相对于Lagrange.Onebot程序所在的路径，不是Makabaka程序所在的路径
+				// 也就是说，你要把test.mp4放到Lagrange.Onebot程序同目录下，才能发
+				await e.ReplyAsync(new VideoSegment("/home/Lagrange.OneBot/test.mp4"));
+			}
 			else if (e.Message == "转发测试")
 			{
 				string resid = await e.Context.SendForwardMessageAsync([new NodeSegment(e.SelfId, string.Empty, new TextSegment("转发测试！"))]);
