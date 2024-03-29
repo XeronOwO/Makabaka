@@ -1,7 +1,6 @@
 ﻿using Makabaka.Configurations;
 using Makabaka.Models.API.Requests;
 using Makabaka.Models.API.Responses;
-using Makabaka.Models.Messages;
 using Makabaka.Services;
 using Makabaka.Utils;
 using Newtonsoft.Json;
@@ -9,13 +8,11 @@ using Newtonsoft.Json.Linq;
 using Serilog;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
 using System.Net.WebSockets;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
+using WatsonWebsocket;
 
 namespace Makabaka.Network
 {
@@ -27,13 +24,7 @@ namespace Makabaka.Network
 
 		private readonly Uri _uri;
 
-		private readonly byte[] _buffer;
-
-		private readonly ArraySegment<byte> _bufferSegment;
-
-		private readonly List<byte> _bufferList;
-
-		private readonly ClientWebSocket _ws;
+		private readonly WatsonWsClient _ws;
 
 		private readonly Guid _guid;
 
@@ -45,11 +36,16 @@ namespace Makabaka.Network
 		{
 			_config = config;
 			_uri = new($"ws://{config.Host}:{config.Port}");
-			_buffer = new byte[config.BufferLength];
-			_bufferSegment = new(_buffer);
-			_bufferList = new();
-			_ws = new();
-			_ws.Options.Credentials = new NetworkCredential("Bearer", config.AccessToken);
+			_ws = new(config.Host, config.Port);
+			_ws.ServerConnected += ServerConnected;
+			_ws.ServerDisconnected += ServerDisconnected;
+			_ws.MessageReceived += MessageReceived;
+			_ws.ConfigureOptions(c =>
+			{
+				c.UseDefaultCredentials = true;
+				c.SetRequestHeader("Authorization", $"Bearer {config.AccessToken}");
+				//c.Credentials = new NetworkCredential("Bearer", config.AccessToken);
+			});
 			_guid = Guid.NewGuid();
 			_dataProcessor = new(service, this);
 
@@ -62,58 +58,47 @@ namespace Makabaka.Network
 
 		private CancellationToken _token;
 
+		private void ServerConnected(object sender, EventArgs e)
+		{
+			Log.Information($"[{_guid}]连接成功");
+		}
+
+		private void ServerDisconnected(object sender, EventArgs e)
+		{
+			Log.Information($"[{_guid}]断开连接");
+		}
+
 		public async Task StartAndWaitAsync(CancellationToken token)
 		{
 			_token = token;
 
 			Log.Information($"[{_guid}]尝试连接{_uri}");
-			await _ws.ConnectAsync(_uri, _token);
-
-			Log.Information($"[{_guid}]连接成功");
-			await LoopReceiveAsync();
-		}
-
-		private async Task LoopReceiveAsync()
-		{
-			try
+			if (await _ws.StartWithTimeoutAsync(_config.ConnectTimeout, _token))
 			{
-				while (true)
+				while (_ws.Connected)
 				{
-					var result = await _ws.ReceiveAsync(_bufferSegment, _token);
-
-					if (result.CloseStatus != null)
-					{
-						Log.Information($"[{_guid}]被远程主机关闭：{result.CloseStatusDescription}");
-						break;
-					}
-
-					_bufferList.AddRange(_buffer.Take(result.Count));
-
-					if (result.EndOfMessage)
-					{
-						var data = Encoding.UTF8.GetString(_bufferList.ToArray());
-						Log.Debug($"[{_guid}]接收数据：{data}");
-
-						try
-						{
-							_dataProcessor.Process(data);
-						}
-						catch (Exception e)
-						{
-							Log.Error(e, $"[{_guid}]处理数据时出现异常");
-						}
-
-						_bufferList.Clear();
-					}
+					await Task.Delay(100, _token);
 				}
 			}
-			catch (OperationCanceledException)
+			else
 			{
-				Log.Information($"[{_guid}]接收数据操作被用户中断");
+				Log.Error($"[{_guid}]连接{_uri}失败");
 			}
-			catch (Exception e)
+		}
+
+		private void MessageReceived(object sender, MessageReceivedEventArgs e)
+		{
+			var bytes = e.Data;
+			var data = Encoding.UTF8.GetString(bytes);
+			Log.Debug($"[{_guid}]接收数据：{data}");
+
+			try
 			{
-				Log.Error(e, $"[{_guid}]接收数据时出现异常");
+				_dataProcessor.Process(data);
+			}
+			catch (Exception ex)
+			{
+				Log.Error(ex, $"[{_guid}]处理数据时出现异常");
 			}
 		}
 
@@ -145,10 +130,9 @@ namespace Makabaka.Network
 					Echo = echo,
 				};
 				var data = JsonConvert.SerializeObject(request);
-				var bytes = Encoding.UTF8.GetBytes(data);
 
 				Log.Debug($"[{_guid}]发送数据：{data}");
-				var task = _ws.SendAsync(new(bytes), WebSocketMessageType.Text, true, _token);
+				var task = _ws.SendAsync(data, WebSocketMessageType.Text, _token);
 
 				// 等待响应
 				var cts = new CancellationTokenSource();
@@ -220,10 +204,9 @@ namespace Makabaka.Network
 					Echo = echo,
 				};
 				var data = JsonConvert.SerializeObject(request);
-				var bytes = Encoding.UTF8.GetBytes(data);
 
 				Log.Debug($"[{_guid}]发送数据：{data}");
-				var task = _ws.SendAsync(new(bytes), WebSocketMessageType.Text, true, _token);
+				var task = _ws.SendAsync(data, WebSocketMessageType.Text, _token);
 
 				// 等待响应
 				var cts = new CancellationTokenSource();

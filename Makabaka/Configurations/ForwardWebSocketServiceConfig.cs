@@ -10,12 +10,6 @@ namespace Makabaka.Configurations
 	public class ForwardWebSocketServiceConfig : ServiceConfig
 	{
 		/// <summary>
-		/// WebSocket缓存长度<br/>
-		/// 默认值：4096
-		/// </summary>
-		public int BufferLength { get; set; } = 4096;
-
-		/// <summary>
 		/// 是否启用自动重连<br/>
 		/// 默认值：true
 		/// </summary>
@@ -26,6 +20,12 @@ namespace Makabaka.Configurations
 		/// 默认值：0
 		/// </summary>
 		public int ReconnectInterval { get; set; } = 0;
+
+		/// <summary>
+		/// 连接超时时间（s）<br/>
+		/// 默认值：10
+		/// </summary>
+		public int ConnectTimeout { get; set; } = 10;
 
 		/// <summary>
 		/// API请求超时时间（ms）<br/>
