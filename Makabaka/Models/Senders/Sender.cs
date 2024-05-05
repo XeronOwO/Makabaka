@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Makabaka.Models.API.Responses;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Text;

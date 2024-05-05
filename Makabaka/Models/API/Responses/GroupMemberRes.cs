@@ -38,7 +38,7 @@ namespace Makabaka.Models.API.Responses
 		/// 性别，male 或 female 或 unknown
 		/// </summary>
 		[JsonProperty("sex")]
-		public SexType Sex { get; set; }
+		public string Sex { get; set; }
 
 		/// <summary>
 		/// 年龄
@@ -74,7 +74,7 @@ namespace Makabaka.Models.API.Responses
 		/// 角色，owner 或 admin 或 member
 		/// </summary>
 		[JsonProperty("role")]
-		public RoleType Role { get; set; }
+		public string Role { get; set; }
 
 		/// <summary>
 		/// 是否不良记录成员
