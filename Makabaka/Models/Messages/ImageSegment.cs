@@ -6,6 +6,7 @@ using System.Text;
 using System.Buffers.Text;
 using System.Security.Cryptography;
 using Makabaka.Utils;
+using System.IO;
 
 namespace Makabaka.Models.Messages
 {
@@ -183,7 +184,28 @@ namespace Makabaka.Models.Messages
 		/// <returns>图片段消息</returns>
 		public static ImageSegment FromLocalFile(string path)
 		{
-			var bytes = System.IO.File.ReadAllBytes(path);
+			return FromBytes(System.IO.File.ReadAllBytes(path));
+		}
+
+		/// <summary>
+		/// 从流创建<a href="https://github.com/botuniverse/onebot-11/blob/master/message/segment.md#%E5%9B%BE%E7%89%87">图片段消息</a>
+		/// </summary>
+		/// <param name="stream">流</param>
+		/// <returns>图片段消息</returns>
+		public static ImageSegment FromStream(Stream stream)
+		{
+			using var ms = new MemoryStream();
+			stream.CopyTo(ms);
+			return FromBytes(ms.ToArray());
+		}
+
+		/// <summary>
+		/// 从字节数组创建<a href="https://github.com/botuniverse/onebot-11/blob/master/message/segment.md#%E5%9B%BE%E7%89%87">图片段消息</a>
+		/// </summary>
+		/// <param name="bytes">字节数组</param>
+		/// <returns>图片段消息</returns>
+		public static ImageSegment FromBytes(byte[] bytes)
+		{
 			var base64 = Convert.ToBase64String(bytes);
 			return new ImageSegment($"base64://{base64}");
 		}
