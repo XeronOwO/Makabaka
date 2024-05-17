@@ -20,7 +20,10 @@ namespace Makabaka.Models.Messages
 			var sb = new StringBuilder();
 			foreach (var segment in this)
 			{
-				sb.Append(segment.ToString());
+				if (segment != null)
+				{
+					sb.Append(segment.ToString());
+				}
 			}
 			return sb.ToString();
 		}
