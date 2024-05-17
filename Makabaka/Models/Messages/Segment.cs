@@ -62,6 +62,8 @@ namespace Makabaka.Models.Messages
 					return new LongMsgSegment((string)RawData["id"]);
 				case "json":
 					return new JsonSegment((string)RawData["data"]);
+				case "marketface":
+					return new MarketFaceSegment((string)RawData["face_id"], (string)RawData["tab_id"], (string)RawData["key"], (string)RawData["summary"]);
 				default:
 					Log.Warning($"不支持的段消息类型：{Type}");
 					return null;
