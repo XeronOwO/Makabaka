@@ -39,9 +39,23 @@ namespace Makabaka.Test
 			service.OnGroupFileUpload += OnGroupFileUpload;
 
 			// 启动服务
-			await service.StartAsync();
-			Console.ReadLine();
-			await service.StopAsync();
+		        var cts = new CancellationTokenSource();
+		        AssemblyLoadContext.Default.Unloading += ctx => cts.Cancel();
+		        Console.CancelKeyPress += (sender, eventArgs) => cts.Cancel();
+		
+		        await service.StartAsync();
+		
+		        // 等待取消信号
+		        try
+		        {
+		            await Task.Delay(Timeout.Infinite, cts.Token);
+		        }
+		        catch (TaskCanceledException)
+		        {
+		            // 服务停止
+		        }
+		
+		        await service.StopAsync();
 		}
 
 		private static async void OnGroupFileUpload(object? sender, GroupFileUploadEventArgs e)
