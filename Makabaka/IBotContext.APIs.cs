@@ -117,5 +117,20 @@ namespace Makabaka
 			int times = 1,
 			CancellationToken cancellationToken = default
 			);
+
+		/// <summary>
+		/// 踢出群成员
+		/// </summary>
+		/// <param name="groupId">群号</param>
+		/// <param name="userId">要踢的 QQ 号</param>
+		/// <param name="rejectAddRequest">拒绝此人的加群请求</param>
+		/// <param name="cancellationToken">取消令牌</param>
+		/// <returns>踢出群成员异步任务</returns>
+		Task<APIResponse> KickGroupMemberAsync(
+			long groupId,
+			long userId,
+			bool rejectAddRequest = false,
+			CancellationToken cancellationToken = default
+			);
 	}
 }

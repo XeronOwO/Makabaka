@@ -6,6 +6,7 @@ using Makabaka.Utils;
 using Makabaka.Messages;
 using System;
 using Makabaka.Exceptions;
+using System.Timers;
 
 namespace Makabaka
 {
@@ -166,6 +167,20 @@ namespace Makabaka
 			return ExecuteAPIAsync<SendLikeRequestParams>(
 				"send_like",
 				new(userId, times),
+				cancellationToken
+				);
+		}
+
+		public Task<APIResponse> KickGroupMemberAsync(
+			long groupId,
+			long userId,
+			bool rejectAddRequest = false,
+			CancellationToken cancellationToken = default
+			)
+		{
+			return ExecuteAPIAsync<KickGroupMemberRequestParams>(
+			"send_like",
+				new(groupId, userId, rejectAddRequest),
 				cancellationToken
 				);
 		}
