@@ -3,12 +3,8 @@
 	/// <summary>
 	/// 获取商城表情密钥请求参数
 	/// </summary>
-	/// <param name="emojiIds">表情 ID</param>
-	public class FetchMarketFaceKeyRequestParams(string[] emojiIds)
+	/// <param name="EmojiIds">表情 ID</param>
+	public record class FetchMarketFaceKeyRequestParams(string[] EmojiIds)
 	{
-		/// <summary>
-		/// 表情 ID
-		/// </summary>
-		public string[] EmojiIds { get; set; } = emojiIds;
 	}
 }
