@@ -184,5 +184,19 @@ namespace Makabaka
 				cancellationToken
 				);
 		}
+
+		public Task<APIResponse> MuteGroupMemberAsync(
+			long groupId,
+			long userId,
+			int duration = 30 * 60,
+			CancellationToken cancellationToken = default
+			)
+		{
+			return ExecuteAPIAsync<MuteGroupMemberRequestParams>(
+				"set_group_ban",
+				new(groupId, userId, duration),
+				cancellationToken
+				);
+		}
 	}
 }

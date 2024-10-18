@@ -132,5 +132,20 @@ namespace Makabaka
 			bool rejectAddRequest = false,
 			CancellationToken cancellationToken = default
 			);
+
+		/// <summary>
+		/// 群组单人禁言
+		/// </summary>
+		/// <param name="groupId">群号</param>
+		/// <param name="userId">要禁言的 QQ 号</param>
+		/// <param name="duration">禁言时长，单位秒，0 表示取消禁言</param>
+		/// <param name="cancellationToken">取消令牌</param>
+		/// <returns>群组单人禁言异步任务</returns>
+		Task<APIResponse> MuteGroupMemberAsync(
+			long groupId,
+			long userId,
+			int duration = 30 * 60,
+			CancellationToken cancellationToken = default
+			);
 	}
 }
