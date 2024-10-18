@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace Makabaka.Utils
 {
@@ -9,7 +7,7 @@ namespace Makabaka.Utils
 	/// </summary>
 	public static class CqCode
 	{
-		private static readonly Dictionary<string, string> _replacement = new()
+		private static readonly Dictionary<string, string> _escapeMap = new()
 		{
 			{ "&", "&amp;" },
 			{ "[", "&#91;" },
@@ -20,13 +18,13 @@ namespace Makabaka.Utils
 		/// <summary>
 		/// 对字符串内容进行CqCode转义
 		/// </summary>
-		/// <param name="data">字符串内容</param>
+		/// <param name="text">字符串内容</param>
 		/// <returns>转义结果</returns>
-		public static string Encode(string data)
+		public static string Escape(string text)
 		{
-			var result = data;
+			var result = text;
 
-			foreach (var rep in _replacement)
+			foreach (var rep in _escapeMap)
 			{
 				result = result.Replace(rep.Key, rep.Value);
 			}
@@ -37,13 +35,13 @@ namespace Makabaka.Utils
 		/// <summary>
 		/// 对字符串内容进行CqCode逆转义
 		/// </summary>
-		/// <param name="data">字符串内容</param>
+		/// <param name="text">字符串内容</param>
 		/// <returns>逆转义结果</returns>
-		public static string Decode(string data)
+		public static string Unescape(string text)
 		{
-			var result = data;
+			var result = text;
 
-			foreach (var rep in _replacement)
+			foreach (var rep in _escapeMap)
 			{
 				result = result.Replace(rep.Value, rep.Key);
 			}
