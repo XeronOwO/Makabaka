@@ -104,5 +104,18 @@ namespace Makabaka
 			string id,
 			CancellationToken cancellationToken = default
 			);
+
+		/// <summary>
+		/// 发送好友赞
+		/// </summary>
+		/// <param name="userId">对方 QQ 号</param>
+		/// <param name="times">赞的次数，每个好友每天最多 10 次</param>
+		/// <param name="cancellationToken">取消令牌</param>
+		/// <returns>发送好友赞异步任务</returns>
+		Task<APIResponse> SendLikeAsync(
+			long userId,
+			int times = 1,
+			CancellationToken cancellationToken = default
+			);
 	}
 }

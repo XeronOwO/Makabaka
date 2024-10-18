@@ -156,5 +156,18 @@ namespace Makabaka
 				cancellationToken
 				);
 		}
+
+		public Task<APIResponse> SendLikeAsync(
+			long userId,
+			int times = 1,
+			CancellationToken cancellationToken = default
+			)
+		{
+			return ExecuteAPIAsync<SendLikeRequestParams>(
+				"send_like",
+				new(userId, times),
+				cancellationToken
+				);
+		}
 	}
 }
