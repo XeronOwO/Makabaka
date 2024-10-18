@@ -121,6 +121,13 @@ namespace Makabaka
 		internal Task InvokeOnGroupMemberHonorChange(object sender, GroupMemberHonorChangeEventArgs e);
 
 		/// <summary>
+		/// [NapCatQQ] 当好友输入状态事件发生时触发
+		/// </summary>
+		event EventHandlerAsync<InputStatusEventArgs>? OnInputStatus;
+
+		internal Task InvokeOnInputStatus(object sender, InputStatusEventArgs e);
+
+		/// <summary>
 		/// 当加好友请求事件发生时触发
 		/// </summary>
 		event EventHandlerAsync<FriendAddRequestEventArgs>? OnFriendAddRequest;

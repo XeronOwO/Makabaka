@@ -19,5 +19,10 @@
 		/// 群成员荣誉变更
 		/// </summary>
 		Honor,
+
+		/// <summary>
+		/// 输入状态
+		/// </summary>
+		InputStatus,
 	}
 }

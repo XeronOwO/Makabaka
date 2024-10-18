@@ -368,6 +368,28 @@ namespace Makabaka.Network
 			return true;
 		}
 
+		[Notify(NotifyEventType.InputStatus)]
+		private async Task<bool> ProcessInputStatusAsync(JsonNode node)
+		{
+			try
+			{
+				var info = node.Deserialize<InputStatusEventArgs>(_jsonSerializerOptions);
+				if (info == null)
+				{
+					_logger.LogError(SR.MessageDeserializeAsFailed, nameof(InputStatusEventArgs));
+					return false;
+				}
+
+				info.Context = botContext;
+				await botContext.InvokeOnInputStatus(this, info);
+			}
+			catch (Exception e)
+			{
+				_logger.LogError(e, SR.MessageHandleError);
+			}
+			return true;
+		}
+
 		[Request(RequestEventType.Friend)]
 		private async Task<bool> ProcessFriendAddRequestAsync(JsonNode node)
 		{

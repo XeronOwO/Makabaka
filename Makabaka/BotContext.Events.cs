@@ -197,6 +197,18 @@ namespace Makabaka
 			await OnGroupMemberHonorChange.Invoke(sender, e);
 		}
 
+		public event EventHandlerAsync<InputStatusEventArgs>? OnInputStatus;
+
+		async Task IBotContext.InvokeOnInputStatus(object sender, InputStatusEventArgs e)
+		{
+			if (OnInputStatus == null)
+			{
+				return;
+			}
+
+			await OnInputStatus.Invoke(sender, e);
+		}
+
 		public event EventHandlerAsync<FriendAddRequestEventArgs>? OnFriendAddRequest;
 
 		async Task IBotContext.InvokeOnFriendAddRequest(object sender, FriendAddRequestEventArgs e)
