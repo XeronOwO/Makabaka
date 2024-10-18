@@ -1,6 +1,5 @@
 ﻿using Makabaka.Events;
 using Makabaka.Messages;
-using System.Text;
 using System.Text.Json;
 
 namespace Makabaka.Test

@@ -3,7 +3,6 @@
 	/// <summary>
 	/// 文本数据
 	/// </summary>
-	/// <param name="text">文本内容</param>
 	[Segment(SegmentType.Text)]
 	public class TextData
 	{
