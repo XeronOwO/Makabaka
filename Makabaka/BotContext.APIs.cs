@@ -7,6 +7,7 @@ using Makabaka.Messages;
 using System;
 using Makabaka.Exceptions;
 using System.Timers;
+using Makabaka.Events;
 
 namespace Makabaka
 {
@@ -195,6 +196,22 @@ namespace Makabaka
 			return ExecuteAPIAsync<MuteGroupMemberRequestParams>(
 				"set_group_ban",
 				new(groupId, userId, duration),
+				cancellationToken
+				);
+		}
+
+		public Task<APIResponse> MuteGroupAnonymousMemberAsync(
+			long groupId,
+			GroupMessageAnonymousSenderInfo? anonymous = null,
+			string? anonymousFlag = null,
+			string? flag = null,
+			int duration = 30 * 60,
+			CancellationToken cancellationToken = default
+			)
+		{
+			return ExecuteAPIAsync<MuteGroupAnonymousMemberRequestParams>(
+				"set_group_anonymous_ban",
+				new(groupId, anonymous, anonymousFlag, flag, duration),
 				cancellationToken
 				);
 		}

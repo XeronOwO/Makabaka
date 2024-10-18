@@ -1,4 +1,5 @@
 ﻿using Makabaka.API;
+using Makabaka.Events;
 using Makabaka.Messages;
 using System.Collections.Concurrent;
 using System.Threading;
@@ -144,6 +145,25 @@ namespace Makabaka
 		Task<APIResponse> MuteGroupMemberAsync(
 			long groupId,
 			long userId,
+			int duration = 30 * 60,
+			CancellationToken cancellationToken = default
+			);
+
+		/// <summary>
+		/// 群组匿名用户禁言
+		/// </summary>
+		/// <param name="groupId">群号</param>
+		/// <param name="anonymous">可选，要禁言的匿名用户对象（群消息上报的 anonymous 字段）</param>
+		/// <param name="anonymousFlag">可选，要禁言的匿名用户的 flag（需从群消息上报的数据中获得）</param>
+		/// <param name="flag">可选，要禁言的匿名用户的 flag（需从群消息上报的数据中获得）</param>
+		/// <param name="duration">禁言时长，单位秒，无法取消匿名用户禁言</param>
+		/// <param name="cancellationToken">取消令牌</param>
+		/// <returns>群组匿名用户禁言异步任务</returns>
+		Task<APIResponse> MuteGroupAnonymousMemberAsync(
+			long groupId,
+			GroupMessageAnonymousSenderInfo? anonymous = null,
+			string? anonymousFlag = null,
+			string? flag = null,
 			int duration = 30 * 60,
 			CancellationToken cancellationToken = default
 			);
