@@ -93,5 +93,16 @@ namespace Makabaka
 			long messageId,
 			CancellationToken cancellationToken = default
 			);
+
+		/// <summary>
+		/// 获取转发消息
+		/// </summary>
+		/// <param name="id">合并转发 ID</param>
+		/// <param name="cancellationToken">取消令牌</param>
+		/// <returns>获取转发消息异步任务</returns>
+		Task<APIResponse<GetForwardMessageResponseData>> GetForwardMessageAsync(
+			string id,
+			CancellationToken cancellationToken = default
+			);
 	}
 }

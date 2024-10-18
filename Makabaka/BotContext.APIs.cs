@@ -144,5 +144,17 @@ namespace Makabaka
 				cancellationToken
 				);
 		}
+
+		public Task<APIResponse<GetForwardMessageResponseData>> GetForwardMessageAsync(
+			string id,
+			CancellationToken cancellationToken = default
+			)
+		{
+			return ExecuteAPIAsync<GetForwardMessageRequestParams, GetForwardMessageResponseData>(
+				"get_forward_msg",
+				new(id),
+				cancellationToken
+				);
+		}
 	}
 }
