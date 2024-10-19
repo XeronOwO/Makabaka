@@ -321,7 +321,7 @@ namespace Makabaka
 			)
 		{
 			return ExecuteAPIAsync<SetFriendAddRequestRequestParams>(
-			"set_friend_add_request",
+				"set_friend_add_request",
 				new(flag, approve, remark),
 				cancellationToken
 				);
@@ -336,7 +336,7 @@ namespace Makabaka
 			)
 		{
 			return ExecuteAPIAsync<SetGroupAddRequestRequestParams>(
-			"set_group_add_request",
+				"set_group_add_request",
 				new(flag, subType, approve, reason),
 				cancellationToken
 				);
@@ -347,8 +347,21 @@ namespace Makabaka
 			)
 		{
 			return ExecuteAPIAsync<EmptyRequestParams, GetLoginInfoResponseData>(
-			"get_login_info",
+				"get_login_info",
 				new(),
+				cancellationToken
+				);
+		}
+
+		public Task<APIResponse<GetStrangerInfoResponseData>> GetStrangerInfoAsync(
+			long userId,
+			bool noCache = false,
+			CancellationToken cancellationToken = default
+			)
+		{
+			return ExecuteAPIAsync<GetStrangerInfoRequestParams, GetStrangerInfoResponseData>(
+				"get_stranger_info",
+				new(userId, noCache),
 				cancellationToken
 				);
 		}

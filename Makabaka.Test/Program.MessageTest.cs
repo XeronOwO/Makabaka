@@ -1,6 +1,8 @@
 ﻿using Makabaka.Events;
 using Makabaka.Messages;
 using System.Text.Json;
+using System.Text.Json.Serialization;
+using System.Text.RegularExpressions;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Makabaka.Test
@@ -46,6 +48,11 @@ namespace Makabaka.Test
 		private static readonly JsonSerializerOptions _jsonSerializerDisplayOptions = new()
 		{
 			WriteIndented = true,
+			PropertyNamingPolicy = JsonNamingPolicy.SnakeCaseLower,
+			Converters =
+			{
+				new JsonStringEnumConverter(JsonNamingPolicy.SnakeCaseLower)
+			},
 		};
 
 		private static async Task HandleMessageAsync(Message message, long messageId, IBotContext botContext, IReply reply)
@@ -56,16 +63,16 @@ namespace Makabaka.Test
 
 				case "骰子测试":
 					await reply.ReplyAsync([new DiceSegment()]);
-					break;
+					return;
 				case "表情测试":
 					await reply.ReplyAsync([new FaceSegment("14")]);
-					break;
+					return;
 				case "文本测试":
 					await reply.ReplyAsync([new TextSegment("测试")]);
-					break;
+					return;
 				case "转发测试":
-					
-					break;
+
+					return;
 				case "商城表情测试":
 					var emojiId = "f9af2410431e5ee59d7087ada014cdb3";
 					var keys = await botContext.FetchMarketFaceKeyAsync([emojiId]);
@@ -86,16 +93,16 @@ namespace Makabaka.Test
 						keys.Data.First(),
 						"[测试]"
 						)]);
-					break;
+					return;
 				case "戳一戳测试":
 					await reply.ReplyAsync([new PokeSegment("1", "-1")]);
-					break;
+					return;
 				case "回复测试":
 					await reply.ReplyAsync([new ReplySegment(messageId), new TextSegment("回复测试")]);
-					break;
+					return;
 				case "图片测试":
 					await reply.ReplyAsync([ImageSegment.FromFile("test.png")]);
-					break;
+					return;
 
 				/* ===== API 测试 ===== */
 
@@ -105,23 +112,37 @@ namespace Makabaka.Test
 						await Task.Delay(3000);
 						await botContext.RevokeMessageAsync(data.MessageId);
 					}
-					break;
+					return;
 				case "获取消息测试":
 					{
 						var data = (await botContext.GetMessageAsync(messageId)).Result;
 						await reply.ReplyAsync([new TextSegment(JsonSerializer.Serialize(data, _jsonSerializerDisplayOptions))]);
 					}
-					break;
+					return;
 				case "获取登录信息测试":
 					{
 						var data = (await botContext.GetLoginInfoAsync()).Result;
 						await reply.ReplyAsync([new TextSegment(JsonSerializer.Serialize(data, _jsonSerializerDisplayOptions))]);
 					}
-					break;
+					return;
 
 				default:
 					break;
 			}
+
+			var match = _getStrangerInfoTestRegex.Match(message.ToString());
+			if (match.Success)
+			{
+				var qq = long.Parse(match.Groups["qq"].Value);
+				var data = (await botContext.GetStrangerInfoAsync(qq)).Result;
+				await reply.ReplyAsync([new TextSegment(JsonSerializer.Serialize(data, _jsonSerializerDisplayOptions))]);
+				return;
+			}
 		}
+
+		[GeneratedRegex(@"^获取陌生人信息测试 (?<qq>[0-9]+)$", RegexOptions.Compiled)]
+		private static partial Regex GetStrangerInfoTestRegex();
+
+		private static readonly Regex _getStrangerInfoTestRegex = GetStrangerInfoTestRegex();
 	}
 }

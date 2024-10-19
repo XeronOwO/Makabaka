@@ -307,5 +307,18 @@ namespace Makabaka
 		Task<APIResponse<GetLoginInfoResponseData>> GetLoginInfoAsync(
 			CancellationToken cancellationToken = default
 			);
+
+		/// <summary>
+		/// 获取陌生人信息
+		/// </summary>
+		/// <param name="userId">QQ 号</param>
+		/// <param name="noCache">是否不使用缓存（使用缓存可能更新不及时，但响应更快）</param>
+		/// <param name="cancellationToken">取消令牌</param>
+		/// <returns>获取陌生人信息异步任务</returns>
+		Task<APIResponse<GetStrangerInfoResponseData>> GetStrangerInfoAsync(
+			long userId,
+			bool noCache = false,
+			CancellationToken cancellationToken = default
+			);
 	}
 }
