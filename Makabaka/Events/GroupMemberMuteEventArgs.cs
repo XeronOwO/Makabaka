@@ -8,7 +8,7 @@
 		/// <summary>
 		/// 事件子类型，分别表示禁言、解除禁言
 		/// </summary>
-		public GroupMemberIncreaseEventType SubType { get; set; }
+		public GroupMemberMuteEventType SubType { get; set; }
 
 		/// <summary>
 		/// 群号
