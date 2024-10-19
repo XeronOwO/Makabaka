@@ -255,5 +255,19 @@ namespace Makabaka
 				cancellationToken
 				);
 		}
+
+		public Task<APIResponse> SetGroupMemberCardAsync(
+			long groupId,
+			long userId,
+			string? card = null,
+			CancellationToken cancellationToken = default
+			)
+		{
+			return ExecuteAPIAsync<SetGroupMemberCardRequestParams>(
+				"set_group_card",
+				new(groupId, userId, card),
+				cancellationToken
+				);
+		}
 	}
 }
