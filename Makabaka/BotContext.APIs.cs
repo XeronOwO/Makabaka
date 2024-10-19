@@ -295,5 +295,20 @@ namespace Makabaka
 				cancellationToken
 				);
 		}
+
+		public Task<APIResponse> SetGroupMemberTitleAsync(
+			long groupId,
+			long userId,
+			string? specialTitle = null,
+			int duration = -1,
+			CancellationToken cancellationToken = default
+			)
+		{
+			return ExecuteAPIAsync<SetGroupMemberTitleRequestParams>(
+				"set_group_special_title",
+				new(groupId, userId, specialTitle, duration),
+				cancellationToken
+				);
+		}
 	}
 }

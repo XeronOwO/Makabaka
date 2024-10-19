@@ -249,5 +249,22 @@ namespace Makabaka
 			bool isDismiss = false,
 			CancellationToken cancellationToken = default
 			);
+
+		/// <summary>
+		/// 设置群组专属头衔
+		/// </summary>
+		/// <param name="groupId">群号</param>
+		/// <param name="userId">要设置的 QQ 号</param>
+		/// <param name="specialTitle">专属头衔，不填或空字符串表示删除专属头衔</param>
+		/// <param name="duration">专属头衔有效期，单位秒，-1 表示永久，不过此项似乎没有效果，可能是只有某些特殊的时间长度有效，有待测试</param>
+		/// <param name="cancellationToken">取消令牌</param>
+		/// <returns>设置群组专属头衔异步任务</returns>
+		Task<APIResponse> SetGroupMemberTitleAsync(
+			long groupId,
+			long userId,
+			string? specialTitle = null,
+			int duration = -1,
+			CancellationToken cancellationToken = default
+			);
 	}
 }
