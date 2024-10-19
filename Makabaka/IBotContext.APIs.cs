@@ -180,5 +180,20 @@ namespace Makabaka
 			bool enable = true,
 			CancellationToken cancellationToken = default
 			);
+
+		/// <summary>
+		/// 群组设置管理员
+		/// </summary>
+		/// <param name="groupId">群号</param>
+		/// <param name="userId">要设置管理员的 QQ 号</param>
+		/// <param name="enable">true 为设置，false 为取消</param>
+		/// <param name="cancellationToken">取消令牌</param>
+		/// <returns>群组设置管理员异步任务</returns>
+		Task<APIResponse> SetGroupAdminAsync(
+			long groupId,
+			long userId,
+			bool enable = true,
+			CancellationToken cancellationToken = default
+			);
 	}
 }

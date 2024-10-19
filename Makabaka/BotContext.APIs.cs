@@ -228,5 +228,19 @@ namespace Makabaka
 				cancellationToken
 				);
 		}
+
+		public Task<APIResponse> SetGroupAdminAsync(
+			long groupId,
+			long userId,
+			bool enable = true,
+			CancellationToken cancellationToken = default
+			)
+		{
+			return ExecuteAPIAsync<SetGroupAdminRequestParams>(
+				"set_group_admin",
+				new(groupId, userId, enable),
+				cancellationToken
+				);
+		}
 	}
 }
