@@ -266,5 +266,20 @@ namespace Makabaka
 			int duration = -1,
 			CancellationToken cancellationToken = default
 			);
+
+		/// <summary>
+		/// 处理加好友请求
+		/// </summary>
+		/// <param name="flag">加好友请求的 flag（需从上报的数据中获得）</param>
+		/// <param name="approve">是否同意请求</param>
+		/// <param name="remark">添加后的好友备注（仅在同意时有效）</param>
+		/// <param name="cancellationToken">取消令牌</param>
+		/// <returns>处理加好友请求异步任务</returns>
+		Task<APIResponse> SetFriendAddRequestAsync(
+			string flag,
+			bool approve = true,
+			string? remark = null,
+			CancellationToken cancellationToken = default
+			);
 	}
 }

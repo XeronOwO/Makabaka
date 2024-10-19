@@ -18,6 +18,7 @@ namespace Makabaka.Test
 			app.BotContext.OnHeartbeat += OnHeartbeat;
 			app.BotContext.OnPrivateMessage += OnPrivateMessage;
 			app.BotContext.OnGroupMessage += OnGroupMessage;
+			app.BotContext.OnFriendAddRequest += OnFriendAddRequest;
 
 			app.Run();
 		}

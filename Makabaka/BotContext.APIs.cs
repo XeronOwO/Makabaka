@@ -8,6 +8,7 @@ using System;
 using Makabaka.Exceptions;
 using System.Timers;
 using Makabaka.Events;
+using System.Text.RegularExpressions;
 
 namespace Makabaka
 {
@@ -307,6 +308,20 @@ namespace Makabaka
 			return ExecuteAPIAsync<SetGroupMemberTitleRequestParams>(
 				"set_group_special_title",
 				new(groupId, userId, specialTitle, duration),
+				cancellationToken
+				);
+		}
+
+		public Task<APIResponse> SetFriendAddRequestAsync(
+			string flag,
+			bool approve = true,
+			string? remark = null,
+			CancellationToken cancellationToken = default
+			)
+		{
+			return ExecuteAPIAsync<SetFriendAddRequestRequestParams>(
+			"set_friend_add_request",
+				new(flag, approve, remark),
 				cancellationToken
 				);
 		}
