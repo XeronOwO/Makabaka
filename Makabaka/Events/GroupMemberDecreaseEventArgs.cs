@@ -8,7 +8,7 @@
 		/// <summary>
 		/// 事件子类型，分别表示主动退群、成员被踢、登录号被踢
 		/// </summary>
-		public GroupAdminChangeEventType SubType { get; set; }
+		public GroupMemberDecreaseEventType SubType { get; set; }
 
 		/// <summary>
 		/// 群号
