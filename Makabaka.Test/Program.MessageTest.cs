@@ -11,18 +11,29 @@ namespace Makabaka.Test
 			return e.Message.ToString() switch
 			{
 				"联系人测试" => e.ReplyAsync([new ContactSegment(ContactType.Qq, e.Sender.UserId)]),
-				_ => HandleMessage(e.Message, e.MessageId, e.Context, e),
+				_ => HandleMessageAsync(e.Message, e.MessageId, e.Context, e),
 			};
 		}
 
-		private static Task OnGroupMessage(object sender, GroupMessageEventArgs e)
+		private static async Task OnGroupMessage(object sender, GroupMessageEventArgs e)
 		{
-			return e.Message.ToString() switch
+			switch (e.Message.ToString())
 			{
-				"At测试" => e.ReplyAsync([new AtSegment(e.Sender!.UserId)]),
-				"联系人测试" => e.ReplyAsync([new ContactSegment(ContactType.Group, e.GroupId)]),
-				_ => HandleMessage(e.Message, e.MessageId, e.Context, e),
-			};
+				case "At测试":
+					await e.ReplyAsync([new AtSegment(e.Sender!.UserId)]);
+					break;
+				case "联系人测试":
+					await e.ReplyAsync([new ContactSegment(ContactType.Group, e.GroupId)]);
+					break;
+				case "群禁言测试":
+					await e.Context.MuteGroupAsync(e.GroupId, true);
+					await Task.Delay(3000);
+					await e.Context.MuteGroupAsync(e.GroupId, false);
+					break;
+				default:
+					await HandleMessageAsync(e.Message, e.MessageId, e.Context, e);
+					break;
+			}
 		}
 
 		private static readonly JsonSerializerOptions _jsonSerializerDisplayOptions = new()
@@ -30,7 +41,7 @@ namespace Makabaka.Test
 			WriteIndented = true,
 		};
 
-		private static async Task HandleMessage(Message message, long messageId, IBotContext botContext, IReply reply)
+		private static async Task HandleMessageAsync(Message message, long messageId, IBotContext botContext, IReply reply)
 		{
 			switch (message.ToString())
 			{

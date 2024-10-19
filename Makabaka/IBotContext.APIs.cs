@@ -167,5 +167,18 @@ namespace Makabaka
 			int duration = 30 * 60,
 			CancellationToken cancellationToken = default
 			);
+
+		/// <summary>
+		/// 群组全员禁言
+		/// </summary>
+		/// <param name="groupId">群号</param>
+		/// <param name="enable">是否禁言</param>
+		/// <param name="cancellationToken">取消令牌</param>
+		/// <returns>群组全员禁言异步任务</returns>
+		Task<APIResponse> MuteGroupAsync(
+			long groupId,
+			bool enable = true,
+			CancellationToken cancellationToken = default
+			);
 	}
 }
