@@ -1,6 +1,7 @@
 ﻿using Makabaka.Events;
 using Makabaka.Messages;
 using System.Text.Json;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Makabaka.Test
 {
@@ -108,6 +109,12 @@ namespace Makabaka.Test
 				case "获取消息测试":
 					{
 						var data = (await botContext.GetMessageAsync(messageId)).Result;
+						await reply.ReplyAsync([new TextSegment(JsonSerializer.Serialize(data, _jsonSerializerDisplayOptions))]);
+					}
+					break;
+				case "获取登录信息测试":
+					{
+						var data = (await botContext.GetLoginInfoAsync()).Result;
 						await reply.ReplyAsync([new TextSegment(JsonSerializer.Serialize(data, _jsonSerializerDisplayOptions))]);
 					}
 					break;

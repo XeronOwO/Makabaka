@@ -9,6 +9,7 @@ using Makabaka.Exceptions;
 using System.Timers;
 using Makabaka.Events;
 using System.Text.RegularExpressions;
+using System.Data;
 
 namespace Makabaka
 {
@@ -337,6 +338,17 @@ namespace Makabaka
 			return ExecuteAPIAsync<SetGroupAddRequestRequestParams>(
 			"set_group_add_request",
 				new(flag, subType, approve, reason),
+				cancellationToken
+				);
+		}
+
+		public Task<APIResponse<GetLoginInfoResponseData>> GetLoginInfoAsync(
+			CancellationToken cancellationToken = default
+			)
+		{
+			return ExecuteAPIAsync<EmptyRequestParams, GetLoginInfoResponseData>(
+			"get_login_info",
+				new(),
 				cancellationToken
 				);
 		}

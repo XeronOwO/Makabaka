@@ -298,5 +298,14 @@ namespace Makabaka
 			string? reason = null,
 			CancellationToken cancellationToken = default
 			);
+
+		/// <summary>
+		/// 获取登录号信息
+		/// </summary>
+		/// <param name="cancellationToken">取消令牌</param>
+		/// <returns>获取登录号信息异步任务</returns>
+		Task<APIResponse<GetLoginInfoResponseData>> GetLoginInfoAsync(
+			CancellationToken cancellationToken = default
+			);
 	}
 }
