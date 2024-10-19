@@ -223,5 +223,18 @@ namespace Makabaka
 			string? card = null,
 			CancellationToken cancellationToken = default
 			);
+
+		/// <summary>
+		/// 设置群名
+		/// </summary>
+		/// <param name="groupId">群号</param>
+		/// <param name="groupName">新群名</param>
+		/// <param name="cancellationToken">取消令牌</param>
+		/// <returns>设置群名异步任务</returns>
+		Task<APIResponse> SetGroupNameAsync(
+			long groupId,
+			string groupName,
+			CancellationToken cancellationToken = default
+			);
 	}
 }

@@ -30,6 +30,9 @@ namespace Makabaka.Test
 					await Task.Delay(3000);
 					await e.Context.MuteGroupAsync(e.GroupId, false);
 					break;
+				case "设置群名测试":
+					await e.Context.SetGroupNameAsync(e.GroupId, "测试群名");
+					break;
 				default:
 					await HandleMessageAsync(e.Message, e.MessageId, e.Context, e);
 					break;

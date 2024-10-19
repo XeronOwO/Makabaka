@@ -269,5 +269,18 @@ namespace Makabaka
 				cancellationToken
 				);
 		}
+
+		public Task<APIResponse> SetGroupNameAsync(
+			long groupId,
+			string groupName,
+			CancellationToken cancellationToken = default
+			)
+		{
+			return ExecuteAPIAsync<SetGroupNameRequestParams>(
+				"set_group_card",
+				new(groupId, groupName),
+				cancellationToken
+				);
+		}
 	}
 }
