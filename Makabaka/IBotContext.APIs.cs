@@ -281,5 +281,22 @@ namespace Makabaka
 			string? remark = null,
 			CancellationToken cancellationToken = default
 			);
+
+		/// <summary>
+		/// 处理加群请求／邀请
+		/// </summary>
+		/// <param name="flag">加群请求的 flag（需从上报的数据中获得）</param>
+		/// <param name="subType">add 或 invite，请求类型（需要和上报消息中的 sub_type 字段相符）</param>
+		/// <param name="approve">是否同意请求／邀请</param>
+		/// <param name="reason">拒绝理由（仅在拒绝时有效）</param>
+		/// <param name="cancellationToken">取消令牌</param>
+		/// <returns>处理加群请求／邀请异步任务</returns>
+		Task<APIResponse> SetGroupAddRequestAsync(
+			string flag,
+			GroupAddRequestEventType subType,
+			bool approve = true,
+			string? reason = null,
+			CancellationToken cancellationToken = default
+			);
 	}
 }

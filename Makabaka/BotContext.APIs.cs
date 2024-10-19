@@ -325,5 +325,20 @@ namespace Makabaka
 				cancellationToken
 				);
 		}
+
+		public Task<APIResponse> SetGroupAddRequestAsync(
+			string flag,
+			GroupAddRequestEventType subType,
+			bool approve = true,
+			string? reason = null,
+			CancellationToken cancellationToken = default
+			)
+		{
+			return ExecuteAPIAsync<SetGroupAddRequestRequestParams>(
+			"set_group_add_request",
+				new(flag, subType, approve, reason),
+				cancellationToken
+				);
+		}
 	}
 }

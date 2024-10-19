@@ -19,6 +19,7 @@ namespace Makabaka.Test
 			app.BotContext.OnPrivateMessage += OnPrivateMessage;
 			app.BotContext.OnGroupMessage += OnGroupMessage;
 			app.BotContext.OnFriendAddRequest += OnFriendAddRequest;
+			app.BotContext.OnGroupAddRequest += OnGroupAddRequest;
 
 			app.Run();
 		}

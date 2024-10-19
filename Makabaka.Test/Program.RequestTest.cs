@@ -8,5 +8,10 @@ namespace Makabaka.Test
 		{
 			await e.AcceptAsync();
 		}
+
+		private static async Task OnGroupAddRequest(object sender, GroupAddRequestEventArgs e)
+		{
+			await e.AcceptAsync();
+		}
 	}
 }
