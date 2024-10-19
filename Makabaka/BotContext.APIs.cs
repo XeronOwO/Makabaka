@@ -242,5 +242,18 @@ namespace Makabaka
 				cancellationToken
 				);
 		}
+
+		public Task<APIResponse> SetGroupAnonymousAsync(
+			long groupId,
+			bool enable = true,
+			CancellationToken cancellationToken = default
+			)
+		{
+			return ExecuteAPIAsync<SetGroupAnonymousRequestParams>(
+				"set_group_anonymous",
+				new(groupId, enable),
+				cancellationToken
+				);
+		}
 	}
 }

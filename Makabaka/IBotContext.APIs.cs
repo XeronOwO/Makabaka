@@ -195,5 +195,18 @@ namespace Makabaka
 			bool enable = true,
 			CancellationToken cancellationToken = default
 			);
+
+		/// <summary>
+		/// 群组匿名
+		/// </summary>
+		/// <param name="groupId">群号</param>
+		/// <param name="enable">是否允许匿名聊天</param>
+		/// <param name="cancellationToken">取消令牌</param>
+		/// <returns>群组匿名异步任务</returns>
+		Task<APIResponse> SetGroupAnonymousAsync(
+			long groupId,
+			bool enable = true,
+			CancellationToken cancellationToken = default
+			);
 	}
 }
