@@ -218,16 +218,16 @@ namespace Makabaka.Network
 					return false;
 				}
 
-				var metaEventType = node["meta_event_type"];
-				if (metaEventType == null)
+				var requestType = node["request_type"];
+				if (requestType == null)
 				{
 					return false;
 				}
-				if (metaEventType.GetValueKind() != JsonValueKind.String)
+				if (requestType.GetValueKind() != JsonValueKind.String)
 				{
 					return false;
 				}
-				if (metaEventType.GetValue<string>() != type.ToSerializedString())
+				if (requestType.GetValue<string>() != type.ToSerializedString())
 				{
 					return false;
 				}
