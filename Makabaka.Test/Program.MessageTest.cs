@@ -33,6 +33,9 @@ namespace Makabaka.Test
 				case "设置群名测试":
 					await e.Context.SetGroupNameAsync(e.GroupId, "测试群名");
 					break;
+				case "退群测试":
+					await e.Context.LeaveGroupAsync(e.GroupId);
+					break;
 				default:
 					await HandleMessageAsync(e.Message, e.MessageId, e.Context, e);
 					break;

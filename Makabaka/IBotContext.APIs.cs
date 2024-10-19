@@ -212,7 +212,7 @@ namespace Makabaka
 		/// <summary>
 		/// 设置群名片（群备注）
 		/// </summary>
-		/// <param name="groupId">	群号</param>
+		/// <param name="groupId">群号</param>
 		/// <param name="userId">要设置的 QQ 号</param>
 		/// <param name="card">群名片内容，不填或空字符串表示删除群名片</param>
 		/// <param name="cancellationToken">取消令牌</param>
@@ -234,6 +234,19 @@ namespace Makabaka
 		Task<APIResponse> SetGroupNameAsync(
 			long groupId,
 			string groupName,
+			CancellationToken cancellationToken = default
+			);
+
+		/// <summary>
+		/// 退出群组
+		/// </summary>
+		/// <param name="groupId">群号</param>
+		/// <param name="isDismiss">是否解散，如果登录号是群主，则仅在此项为 true 时能够解散</param>
+		/// <param name="cancellationToken">取消令牌</param>
+		/// <returns>退出群组异步任务</returns>
+		Task<APIResponse> LeaveGroupAsync(
+			long groupId,
+			bool isDismiss = false,
 			CancellationToken cancellationToken = default
 			);
 	}

@@ -282,5 +282,18 @@ namespace Makabaka
 				cancellationToken
 				);
 		}
+
+		public Task<APIResponse> LeaveGroupAsync(
+			long groupId,
+			bool isDismiss = false,
+			CancellationToken cancellationToken = default
+			)
+		{
+			return ExecuteAPIAsync<LeaveGroupRequestParams>(
+				"set_group_leave",
+				new(groupId, isDismiss),
+				cancellationToken
+				);
+		}
 	}
 }
