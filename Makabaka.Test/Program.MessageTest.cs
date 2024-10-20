@@ -170,8 +170,8 @@ namespace Makabaka.Test
 			var match = GetStrangerInfoTestRegex().Match(message.ToString());
 			if (match.Success)
 			{
-				var qq = long.Parse(match.Groups["qq"].Value);
-				var data = (await botContext.GetStrangerInfoAsync(qq)).Result;
+				var user = long.Parse(match.Groups["user"].Value);
+				var data = (await botContext.GetStrangerInfoAsync(user)).Result;
 				await reply.ReplyAsync([new TextSegment(JsonSerializer.Serialize(data, _jsonSerializerDisplayOptions))]);
 				return;
 			}
@@ -179,17 +179,30 @@ namespace Makabaka.Test
 			match = GetGroupInfoTestRegex().Match(message.ToString());
 			if (match.Success)
 			{
-				var qq = long.Parse(match.Groups["group"].Value);
-				var data = (await botContext.GetGroupInfoAsync(qq)).Result;
+				var group = long.Parse(match.Groups["group"].Value);
+				var data = (await botContext.GetGroupInfoAsync(group)).Result;
+				await reply.ReplyAsync([new TextSegment(JsonSerializer.Serialize(data, _jsonSerializerDisplayOptions))]);
+				return;
+			}
+
+			match = GetGroupMemberInfoTestRegex().Match(message.ToString());
+			if (match.Success)
+			{
+				var group = long.Parse(match.Groups["group"].Value);
+				var user = long.Parse(match.Groups["user"].Value);
+				var data = (await botContext.GetGroupMemberInfoAsync(group, user)).Result;
 				await reply.ReplyAsync([new TextSegment(JsonSerializer.Serialize(data, _jsonSerializerDisplayOptions))]);
 				return;
 			}
 		}
 
-		[GeneratedRegex(@"^获取陌生人信息测试 (?<qq>[0-9]+)$", RegexOptions.Compiled)]
+		[GeneratedRegex(@"^获取陌生人信息测试 (?<user>[0-9]+)$", RegexOptions.Compiled)]
 		private static partial Regex GetStrangerInfoTestRegex();
 
 		[GeneratedRegex(@"^获取群信息测试 (?<group>[0-9]+)$", RegexOptions.Compiled)]
 		private static partial Regex GetGroupInfoTestRegex();
+
+		[GeneratedRegex(@"^获取群成员信息测试 (?<group>[0-9]+) (?<user>[0-9]+)$", RegexOptions.Compiled)]
+		private static partial Regex GetGroupMemberInfoTestRegex();
 	}
 }

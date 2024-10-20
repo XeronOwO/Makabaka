@@ -3,7 +3,7 @@
 	/// <summary>
 	/// 群角色
 	/// </summary>
-	public enum GroupRole
+	public enum GroupRoleType
 	{
 		/// <summary>
 		/// 群主

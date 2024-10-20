@@ -24,7 +24,7 @@
 		/// <summary>
 		/// 角色
 		/// </summary>
-		public GroupRole Role { get; set; }
+		public GroupRoleType Role { get; set; }
 
 		/// <summary>
 		/// 专属头衔

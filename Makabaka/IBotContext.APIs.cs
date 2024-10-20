@@ -352,5 +352,20 @@ namespace Makabaka
 		Task<APIResponse<GroupInfo[]>> GetGroupListAsync(
 			CancellationToken cancellationToken = default
 			);
+
+		/// <summary>
+		/// 获取群成员信息
+		/// </summary>
+		/// <param name="groupId">群号</param>
+		/// <param name="userId">QQ 号</param>
+		/// <param name="noCache">是否不使用缓存（使用缓存可能更新不及时，但响应更快）</param>
+		/// <param name="cancellationToken">取消令牌</param>
+		/// <returns>获取群成员信息异步任务</returns>
+		Task<APIResponse<GroupMemberInfo>> GetGroupMemberInfoAsync(
+			long groupId,
+			long userId,
+			bool noCache = false,
+			CancellationToken cancellationToken = default
+			);
 	}
 }

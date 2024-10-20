@@ -1,4 +1,5 @@
 ﻿using Makabaka.Messages;
+using Makabaka.Models;
 using Makabaka.Network;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -74,6 +75,7 @@ namespace Makabaka
 				provider => provider.GetServices<IHostedService>().OfType<BotContext>().First()
 				);
 			Services.AddSingleton<JsonConverter<Message>, MessageJsonConverter>();
+			Services.AddSingleton<JsonConverter<SexType>, SexTypeJsonConverter>();
 			Services.AddTransient<ForwardWebSocketContext>();
 		}
 	}

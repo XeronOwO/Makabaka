@@ -1,4 +1,5 @@
 ﻿using Makabaka.Messages;
+using Makabaka.Models;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using System;
@@ -22,6 +23,7 @@ namespace Makabaka.Network
 			Converters =
 			{
 				services.GetRequiredService<JsonConverter<Message>>(),
+				services.GetRequiredService<JsonConverter<SexType>>(),
 				new JsonStringEnumConverter(JsonNamingPolicy.SnakeCaseLower),
 			},
 		};
