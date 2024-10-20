@@ -366,5 +366,16 @@ namespace Makabaka
 				cancellationToken
 				);
 		}
+
+		public Task<APIResponse<FriendInfo[]>> GetFriendListAsync(
+			CancellationToken cancellationToken = default
+			)
+		{
+			return ExecuteAPIAsync<EmptyRequestParams, FriendInfo[]>(
+				"get_friend_list",
+				new(),
+				cancellationToken
+				);
+		}
 	}
 }

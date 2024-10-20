@@ -321,5 +321,14 @@ namespace Makabaka
 			bool noCache = false,
 			CancellationToken cancellationToken = default
 			);
+
+		/// <summary>
+		/// 获取好友列表
+		/// </summary>
+		/// <param name="cancellationToken">取消令牌</param>
+		/// <returns>获取好友列表异步任务</returns>
+		Task<APIResponse<FriendInfo[]>> GetFriendListAsync(
+			CancellationToken cancellationToken = default
+			);
 	}
 }

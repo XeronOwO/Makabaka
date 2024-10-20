@@ -1,5 +1,6 @@
 ﻿using Makabaka.Events;
 using Makabaka.Messages;
+using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
@@ -123,6 +124,27 @@ namespace Makabaka.Test
 					{
 						var data = (await botContext.GetLoginInfoAsync()).Result;
 						await reply.ReplyAsync([new TextSegment(JsonSerializer.Serialize(data, _jsonSerializerDisplayOptions))]);
+					}
+					return;
+				case "获取好友列表测试":
+					{
+						var friends = (await botContext.GetFriendListAsync()).Result;
+						var sb = new StringBuilder();
+						foreach (var friend in friends)
+						{
+							sb.Append('[')
+								.Append(friend.UserId)
+								.Append("] ");
+							if (string.IsNullOrEmpty(friend.Remark))
+							{
+								sb.AppendLine(friend.Nickname);
+							}
+							else
+							{
+								sb.AppendLine(friend.Remark);
+							}
+						}
+						await reply.ReplyAsync([new TextSegment(sb.ToString())]);
 					}
 					return;
 
