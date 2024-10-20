@@ -183,6 +183,12 @@ namespace Makabaka.Test
 						await reply.ReplyAsync([new TextSegment(sb.ToString())]);
 					}
 					return;
+				case "获取CSRFToken测试":
+					{
+						var data = (await botContext.GetCsrfTokenAsync()).Result;
+						await reply.ReplyAsync([new TextSegment(JsonSerializer.Serialize(data, _jsonSerializerDisplayOptions))]);
+					}
+					return;
 
 				default:
 					break;

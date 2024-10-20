@@ -392,5 +392,14 @@ namespace Makabaka
 			GetGroupHonorInfoType type = GetGroupHonorInfoType.All,
 			CancellationToken cancellationToken = default
 			);
+
+		/// <summary>
+		/// 获取 CSRF Token
+		/// </summary>
+		/// <param name="cancellationToken">取消令牌</param>
+		/// <returns>获取 CSRF Token 异步任务</returns>
+		Task<APIResponse<CsrfTokenInfo>> GetCsrfTokenAsync(
+			CancellationToken cancellationToken = default
+			);
 	}
 }

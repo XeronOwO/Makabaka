@@ -438,5 +438,16 @@ namespace Makabaka
 				cancellationToken
 				);
 		}
+
+		public Task<APIResponse<CsrfTokenInfo>> GetCsrfTokenAsync(
+			CancellationToken cancellationToken = default
+			)
+		{
+			return ExecuteAPIAsync<EmptyRequestParams, CsrfTokenInfo>(
+				"get_csrf_token",
+				new(),
+				cancellationToken
+				);
+		}
 	}
 }
