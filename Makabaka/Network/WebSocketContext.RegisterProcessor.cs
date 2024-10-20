@@ -17,12 +17,14 @@ namespace Makabaka.Network
 			bool Matches(JsonNode node);
 		}
 
-		[AttributeUsage(AttributeTargets.Method, AllowMultiple = false)]
-		public class MetaAttribute(MetaEventType type) : Attribute, IMatch
+		public abstract class MatchAttribute : Attribute, IMatch
 		{
-			public bool Matches(JsonNode node)
+			public abstract bool Matches(JsonNode node);
+
+			protected bool MatchEnum<TEnum>(JsonNode node, string key, TEnum value)
+				where TEnum : Enum
 			{
-				var postType = node["post_type"];
+				var postType = node[key];
 				if (postType == null)
 				{
 					return false;
@@ -31,21 +33,26 @@ namespace Makabaka.Network
 				{
 					return false;
 				}
-				if (postType.GetValue<string>() != PostEventType.MetaEvent.ToSerializedString())
+				if (postType.GetValue<string>() != value.ToSerializedString())
 				{
 					return false;
 				}
 
-				var metaEventType = node["meta_event_type"];
-				if (metaEventType == null)
+				return true;
+			}
+		}
+
+		[AttributeUsage(AttributeTargets.Method, AllowMultiple = false)]
+		public class MetaAttribute(MetaEventType type) : MatchAttribute
+		{
+			public override bool Matches(JsonNode node)
+			{
+				if (!MatchEnum(node, "post_type", PostEventType.MetaEvent))
 				{
 					return false;
 				}
-				if (metaEventType.GetValueKind() != JsonValueKind.String)
-				{
-					return false;
-				}
-				if (metaEventType.GetValue<string>() != type.ToSerializedString())
+
+				if (!MatchEnum(node, "meta_event_type", type))
 				{
 					return false;
 				}
@@ -60,34 +67,16 @@ namespace Makabaka.Network
 		}
 
 		[AttributeUsage(AttributeTargets.Method, AllowMultiple = false)]
-		public class MessageAttribute(MessageEventType type) : Attribute, IMatch
+		public class MessageAttribute(MessageEventType type) : MatchAttribute
 		{
-			public bool Matches(JsonNode node)
+			public override bool Matches(JsonNode node)
 			{
-				var postType = node["post_type"];
-				if (postType == null)
-				{
-					return false;
-				}
-				if (postType.GetValueKind() != JsonValueKind.String)
-				{
-					return false;
-				}
-				if (postType.GetValue<string>() != PostEventType.Message.ToSerializedString())
+				if (!MatchEnum(node, "post_type", PostEventType.Message))
 				{
 					return false;
 				}
 
-				var messageType = node["message_type"];
-				if (messageType == null)
-				{
-					return false;
-				}
-				if (messageType.GetValueKind() != JsonValueKind.String)
-				{
-					return false;
-				}
-				if (messageType.GetValue<string>() != type.ToSerializedString())
+				if (!MatchEnum(node, "message_type", type))
 				{
 					return false;
 				}
@@ -102,34 +91,16 @@ namespace Makabaka.Network
 		}
 
 		[AttributeUsage(AttributeTargets.Method, AllowMultiple = false)]
-		public class NoticeAttribute(NoticeEventType type) : Attribute, IMatch
+		public class NoticeAttribute(NoticeEventType type) : MatchAttribute
 		{
-			public bool Matches(JsonNode node)
+			public override bool Matches(JsonNode node)
 			{
-				var postType = node["post_type"];
-				if (postType == null)
-				{
-					return false;
-				}
-				if (postType.GetValueKind() != JsonValueKind.String)
-				{
-					return false;
-				}
-				if (postType.GetValue<string>() != PostEventType.Notice.ToSerializedString())
+				if (!MatchEnum(node, "post_type", PostEventType.Notice))
 				{
 					return false;
 				}
 
-				var noticeType = node["notice_type"];
-				if (noticeType == null)
-				{
-					return false;
-				}
-				if (noticeType.GetValueKind() != JsonValueKind.String)
-				{
-					return false;
-				}
-				if (noticeType.GetValue<string>() != type.ToSerializedString())
+				if (!MatchEnum(node, "notice_type", type))
 				{
 					return false;
 				}
@@ -144,48 +115,21 @@ namespace Makabaka.Network
 		}
 
         [AttributeUsage(AttributeTargets.Method, AllowMultiple = false)]
-        public class NotifyAttribute(NotifyEventType type) : Attribute, IMatch
+        public class NotifyAttribute(NotifyEventType type) : MatchAttribute
 		{
-			public bool Matches(JsonNode node)
+			public override bool Matches(JsonNode node)
 			{
-				var postType = node["post_type"];
-				if (postType == null)
-				{
-					return false;
-				}
-				if (postType.GetValueKind() != JsonValueKind.String)
-				{
-					return false;
-				}
-				if (postType.GetValue<string>() != PostEventType.Notice.ToSerializedString())
+				if (!MatchEnum(node, "post_type", PostEventType.Notice))
 				{
 					return false;
 				}
 
-				var noticeType = node["notice_type"];
-				if (noticeType == null)
-				{
-					return false;
-				}
-				if (noticeType.GetValueKind() != JsonValueKind.String)
-				{
-					return false;
-				}
-				if (noticeType.GetValue<string>() != NoticeEventType.Notify.ToSerializedString())
+				if (!MatchEnum(node, "notice_type", NoticeEventType.Notify))
 				{
 					return false;
 				}
 
-				var subType = node["sub_type"];
-				if (subType == null)
-				{
-					return false;
-				}
-				if (subType.GetValueKind() != JsonValueKind.String)
-				{
-					return false;
-				}
-				if (subType.GetValue<string>() != type.ToSerializedString())
+				if (!MatchEnum(node, "sub_type", type))
 				{
 					return false;
 				}
@@ -200,34 +144,16 @@ namespace Makabaka.Network
 		}
 
 		[AttributeUsage(AttributeTargets.Method, AllowMultiple = false)]
-		public class RequestAttribute(RequestEventType type) : Attribute, IMatch
+		public class RequestAttribute(RequestEventType type) : MatchAttribute
 		{
-			public bool Matches(JsonNode node)
+			public override bool Matches(JsonNode node)
 			{
-				var postType = node["post_type"];
-				if (postType == null)
-				{
-					return false;
-				}
-				if (postType.GetValueKind() != JsonValueKind.String)
-				{
-					return false;
-				}
-				if (postType.GetValue<string>() != PostEventType.Request.ToSerializedString())
+				if (!MatchEnum(node, "post_type", PostEventType.Request))
 				{
 					return false;
 				}
 
-				var requestType = node["request_type"];
-				if (requestType == null)
-				{
-					return false;
-				}
-				if (requestType.GetValueKind() != JsonValueKind.String)
-				{
-					return false;
-				}
-				if (requestType.GetValue<string>() != type.ToSerializedString())
+				if (!MatchEnum(node, "request_type", type))
 				{
 					return false;
 				}
@@ -242,9 +168,9 @@ namespace Makabaka.Network
 		}
 
 		[AttributeUsage(AttributeTargets.Method, AllowMultiple = false)]
-		public class APIAttribute() : Attribute, IMatch
+		public class APIAttribute() : MatchAttribute
 		{
-			public bool Matches(JsonNode node)
+			public override bool Matches(JsonNode node)
 			{
 				var status = node["status"];
 				if (status == null)
@@ -309,7 +235,7 @@ namespace Makabaka.Network
 		}
 
 		private void RegisterProcessor<TAttribute>(MethodInfo method)
-			where TAttribute : Attribute, IMatch
+			where TAttribute : MatchAttribute
 		{
 			var attribute = method.GetCustomAttribute<TAttribute?>();
 			if (attribute != null)
