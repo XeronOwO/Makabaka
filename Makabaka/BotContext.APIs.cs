@@ -461,5 +461,17 @@ namespace Makabaka
 				cancellationToken
 				);
 		}
+
+		public Task<APIResponse<CredentialsInfo>> GetCredentialsAsync(
+			string domain,
+			CancellationToken cancellationToken = default
+			)
+		{
+			return ExecuteAPIAsync<GetCookiesRequestParams, CredentialsInfo>(
+				"get_credentials",
+				new(domain),
+				cancellationToken
+				);
+		}
 	}
 }

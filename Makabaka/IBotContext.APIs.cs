@@ -412,5 +412,16 @@ namespace Makabaka
 		Task<APIResponse<CsrfTokenInfo>> GetCsrfTokenAsync(
 			CancellationToken cancellationToken = default
 			);
+
+		/// <summary>
+		/// 获取 QQ 相关接口凭证
+		/// </summary>
+		/// <param name="domain">需要获取 cookies 的域名</param>
+		/// <param name="cancellationToken">取消令牌</param>
+		/// <returns>获取 QQ 相关接口凭证异步任务</returns>
+		Task<APIResponse<CredentialsInfo>> GetCredentialsAsync(
+			string domain,
+			CancellationToken cancellationToken = default
+			);
 	}
 }
