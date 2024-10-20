@@ -33,7 +33,7 @@ namespace Makabaka
 		public Task StopAsync(CancellationToken cancellationToken)
 		{
 			logger.LogInformation(SR.StoppingBot);
-			
+
 			_cancellationTokenSource.Cancel();
 
 			return Task.WhenAny(_runningTask, Task.Delay(Timeout.Infinite, cancellationToken));

@@ -1,10 +1,10 @@
 ﻿using Makabaka.Events;
 using Makabaka.Messages;
 using System.Text;
+using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Makabaka.Test
 {
@@ -54,6 +54,7 @@ namespace Makabaka.Test
 			{
 				new JsonStringEnumConverter(JsonNamingPolicy.SnakeCaseLower)
 			},
+			Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
 		};
 
 		private static async Task HandleMessageAsync(Message message, long messageId, IBotContext botContext, IMessageHandler reply)

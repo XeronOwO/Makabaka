@@ -1,5 +1,4 @@
-﻿using System.Text.Json.Nodes;
-using Makabaka.Models;
+﻿using Makabaka.Models;
 
 namespace Makabaka.Events
 {

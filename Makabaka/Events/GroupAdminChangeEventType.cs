@@ -9,7 +9,7 @@
 		/// 设置管理员
 		/// </summary>
 		Set,
-		
+
 		/// <summary>
 		/// 取消管理员
 		/// </summary>

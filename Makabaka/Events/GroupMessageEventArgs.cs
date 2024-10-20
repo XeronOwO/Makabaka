@@ -1,8 +1,8 @@
 ﻿using Makabaka.API;
 using Makabaka.Messages;
-using System.Threading.Tasks;
-using System.Threading;
 using Makabaka.Models;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Makabaka.Events
 {
