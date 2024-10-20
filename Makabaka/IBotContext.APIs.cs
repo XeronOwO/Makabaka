@@ -423,5 +423,18 @@ namespace Makabaka
 			string domain,
 			CancellationToken cancellationToken = default
 			);
+
+		/// <summary>
+		/// 获取语音
+		/// </summary>
+		/// <param name="file">收到的语音文件名（消息段的 file 参数），如 0B38145AA44505000B38145AA4450500.silk</param>
+		/// <param name="outFormat">要转换到的格式</param>
+		/// <param name="cancellationToken">取消令牌</param>
+		/// <returns>获取语音异步任务</returns>
+		Task<APIResponse<RecordInfo>> GetRecordAsync(
+			string file,
+			GetRecordFormatType outFormat,
+			CancellationToken cancellationToken = default
+			);
 	}
 }

@@ -473,5 +473,18 @@ namespace Makabaka
 				cancellationToken
 				);
 		}
+
+		public Task<APIResponse<RecordInfo>> GetRecordAsync(
+			string file,
+			GetRecordFormatType outFormat,
+			CancellationToken cancellationToken = default
+			)
+		{
+			return ExecuteAPIAsync<GetRecordRequestParams, RecordInfo>(
+				"get_record",
+				new(file, outFormat),
+				cancellationToken
+				);
+		}
 	}
 }
