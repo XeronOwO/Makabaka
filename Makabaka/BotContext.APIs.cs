@@ -374,5 +374,18 @@ namespace Makabaka
 				cancellationToken
 				);
 		}
+
+		public Task<APIResponse<GroupInfo>> GetGroupInfoAsync(
+			long groupId,
+			bool noCache = false,
+			CancellationToken cancellationToken = default
+			)
+		{
+			return ExecuteAPIAsync<GetGroupInfoRequestParams, GroupInfo>(
+				"get_group_info",
+				new(groupId, noCache),
+				cancellationToken
+				);
+		}
 	}
 }

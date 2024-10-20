@@ -153,11 +153,20 @@ namespace Makabaka.Test
 					break;
 			}
 
-			var match = _getStrangerInfoTestRegex.Match(message.ToString());
+			var match = GetStrangerInfoTestRegex().Match(message.ToString());
 			if (match.Success)
 			{
 				var qq = long.Parse(match.Groups["qq"].Value);
 				var data = (await botContext.GetStrangerInfoAsync(qq)).Result;
+				await reply.ReplyAsync([new TextSegment(JsonSerializer.Serialize(data, _jsonSerializerDisplayOptions))]);
+				return;
+			}
+
+			match = GetGroupInfoTestRegex().Match(message.ToString());
+			if (match.Success)
+			{
+				var qq = long.Parse(match.Groups["group"].Value);
+				var data = (await botContext.GetGroupInfoAsync(qq)).Result;
 				await reply.ReplyAsync([new TextSegment(JsonSerializer.Serialize(data, _jsonSerializerDisplayOptions))]);
 				return;
 			}
@@ -166,6 +175,7 @@ namespace Makabaka.Test
 		[GeneratedRegex(@"^获取陌生人信息测试 (?<qq>[0-9]+)$", RegexOptions.Compiled)]
 		private static partial Regex GetStrangerInfoTestRegex();
 
-		private static readonly Regex _getStrangerInfoTestRegex = GetStrangerInfoTestRegex();
+		[GeneratedRegex(@"^获取群信息测试 (?<group>[0-9]+)$", RegexOptions.Compiled)]
+		private static partial Regex GetGroupInfoTestRegex();
 	}
 }
