@@ -367,5 +367,17 @@ namespace Makabaka
 			bool noCache = false,
 			CancellationToken cancellationToken = default
 			);
+
+		/// <summary>
+		/// 获取群成员列表<br/>
+		/// 响应内容为 JSON 数组，每个元素的内容和上面的 get_group_member_info 接口相同，但对于同一个群组的同一个成员，获取列表时和获取单独的成员信息时，某些字段可能有所不同，例如 area、title 等字段在获取列表时无法获得，具体应以单独的成员信息为准。
+		/// </summary>
+		/// <param name="groupId">群号</param>
+		/// <param name="cancellationToken">取消令牌</param>
+		/// <returns>获取群成员列表异步任务</returns>
+		Task<APIResponse<GroupMemberInfo[]>> GetGroupMemberListAsync(
+			long groupId,
+			CancellationToken cancellationToken = default
+			);
 	}
 }

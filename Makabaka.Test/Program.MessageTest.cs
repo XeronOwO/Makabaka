@@ -1,5 +1,6 @@
 ﻿using Makabaka.Events;
 using Makabaka.Messages;
+using Serilog.Context;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
@@ -39,6 +40,20 @@ namespace Makabaka.Test
 					break;
 				case "退群测试":
 					await e.Context.LeaveGroupAsync(e.GroupId);
+					break;
+				case "获取群成员列表测试":
+					{
+						var members = (await e.Context.GetGroupMemberListAsync(e.GroupId)).Result;
+						var sb = new StringBuilder();
+						foreach (var member in members)
+						{
+							sb.Append('[')
+								.Append(member.UserId)
+								.Append("] ")
+								.AppendLine(member.Nickname);
+						}
+						await e.ReplyAsync([new TextSegment(sb.ToString())]);
+					}
 					break;
 				default:
 					await HandleMessageAsync(e.Message, e.MessageId, e.Context, e);
