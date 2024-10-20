@@ -436,5 +436,16 @@ namespace Makabaka
 			GetRecordFormatType outFormat,
 			CancellationToken cancellationToken = default
 			);
+
+		/// <summary>
+		/// 获取图片
+		/// </summary>
+		/// <param name="file">收到的图片文件名（消息段的 file 参数），如 6B4DE3DFD1BD271E3297859D41C530F5.jpg</param>
+		/// <param name="cancellationToken">取消令牌</param>
+		/// <returns>获取图片异步任务</returns>
+		Task<APIResponse<ImageInfo>> GetImageAsync(
+			string file,
+			CancellationToken cancellationToken = default
+			);
 	}
 }

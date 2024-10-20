@@ -486,5 +486,17 @@ namespace Makabaka
 				cancellationToken
 				);
 		}
+
+		public Task<APIResponse<ImageInfo>> GetImageAsync(
+			string file,
+			CancellationToken cancellationToken = default
+			)
+		{
+			return ExecuteAPIAsync<GetImageRequestParams, ImageInfo>(
+				"get_image",
+				new(file),
+				cancellationToken
+				);
+		}
 	}
 }
