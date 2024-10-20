@@ -425,5 +425,18 @@ namespace Makabaka
 				cancellationToken
 				);
 		}
+
+		public Task<APIResponse<GroupHonorInfo>> GetGroupHonorInfoAsync(
+			long groupId,
+			GetGroupHonorInfoType type = GetGroupHonorInfoType.All,
+			CancellationToken cancellationToken = default
+			)
+		{
+			return ExecuteAPIAsync<GetGroupHonorInfoRequestParams, GroupHonorInfo>(
+				"get_group_honor_info",
+				new(groupId, type),
+				cancellationToken
+				);
+		}
 	}
 }

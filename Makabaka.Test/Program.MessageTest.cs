@@ -26,21 +26,21 @@ namespace Makabaka.Test
 			{
 				case "At测试":
 					await e.ReplyAsync([new AtSegment(e.Sender!.UserId)]);
-					break;
+					return;
 				case "联系人测试":
 					await e.ReplyAsync([new ContactSegment(ContactType.Group, e.GroupId)]);
-					break;
+					return;
 				case "群禁言测试":
 					await e.Context.MuteGroupAsync(e.GroupId, true);
 					await Task.Delay(3000);
 					await e.Context.MuteGroupAsync(e.GroupId, false);
-					break;
+					return;
 				case "设置群名测试":
 					await e.Context.SetGroupNameAsync(e.GroupId, "测试群名");
-					break;
+					return;
 				case "退群测试":
 					await e.Context.LeaveGroupAsync(e.GroupId);
-					break;
+					return;
 				case "获取群成员列表测试":
 					{
 						var members = (await e.Context.GetGroupMemberListAsync(e.GroupId)).Result;
@@ -54,10 +54,16 @@ namespace Makabaka.Test
 						}
 						await e.ReplyAsync([new TextSegment(sb.ToString())]);
 					}
-					break;
+					return;
+				case "获取群荣誉信息测试":
+					{
+						var data = (await e.Context.GetGroupHonorInfoAsync(e.GroupId)).Result;
+						await e.ReplyAsync([new TextSegment(JsonSerializer.Serialize(data, _jsonSerializerDisplayOptions))]);
+					}
+					return;
 				default:
 					await HandleMessageAsync(e.Message, e.MessageId, e.Context, e);
-					break;
+					return;
 			}
 		}
 

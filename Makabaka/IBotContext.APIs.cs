@@ -379,5 +379,18 @@ namespace Makabaka
 			long groupId,
 			CancellationToken cancellationToken = default
 			);
+
+		/// <summary>
+		/// 获取群荣誉信息
+		/// </summary>
+		/// <param name="groupId">群号</param>
+		/// <param name="type">要获取的群荣誉类型</param>
+		/// <param name="cancellationToken">取消令牌</param>
+		/// <returns>获取群荣誉信息异步任务</returns>
+		Task<APIResponse<GroupHonorInfo>> GetGroupHonorInfoAsync(
+			long groupId,
+			GetGroupHonorInfoType type = GetGroupHonorInfoType.All,
+			CancellationToken cancellationToken = default
+			);
 	}
 }
