@@ -24,6 +24,7 @@ namespace Makabaka.Network
 			{
 				services.GetRequiredService<JsonConverter<Message>>(),
 				services.GetRequiredService<JsonConverter<SexType>>(),
+				services.GetRequiredService<JsonConverter<DateTime>>(),
 				new JsonStringEnumConverter(JsonNamingPolicy.SnakeCaseLower),
 			},
 		};

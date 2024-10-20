@@ -190,7 +190,7 @@ namespace Makabaka.Test
 			{
 				var group = long.Parse(match.Groups["group"].Value);
 				var user = long.Parse(match.Groups["user"].Value);
-				var data = (await botContext.GetGroupMemberInfoAsync(group, user)).Result;
+				var data = (await botContext.GetGroupMemberInfoAsync(group, user, true)).Result;
 				await reply.ReplyAsync([new TextSegment(JsonSerializer.Serialize(data, _jsonSerializerDisplayOptions))]);
 				return;
 			}

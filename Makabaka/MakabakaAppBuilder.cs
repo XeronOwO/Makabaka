@@ -1,6 +1,7 @@
 ﻿using Makabaka.Messages;
 using Makabaka.Models;
 using Makabaka.Network;
+using Makabaka.Utils;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Diagnostics.Metrics;
@@ -76,6 +77,7 @@ namespace Makabaka
 				);
 			Services.AddSingleton<JsonConverter<Message>, MessageJsonConverter>();
 			Services.AddSingleton<JsonConverter<SexType>, SexTypeJsonConverter>();
+			Services.AddSingleton<JsonConverter<DateTime>, TimestampDateTimeJsonConverter>();
 			Services.AddTransient<ForwardWebSocketContext>();
 		}
 	}

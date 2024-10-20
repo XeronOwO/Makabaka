@@ -1,5 +1,6 @@
 ﻿using Makabaka.Events;
 using Makabaka.Messages;
+using System;
 
 namespace Makabaka.Models
 {
@@ -11,7 +12,7 @@ namespace Makabaka.Models
 		/// <summary>
 		/// 发送时间
 		/// </summary>
-		public long Time { get; set; }
+		public DateTime Time { get; set; }
 
 		/// <summary>
 		/// 消息类型

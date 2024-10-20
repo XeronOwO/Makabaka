@@ -1,4 +1,6 @@
-﻿namespace Makabaka.Models
+﻿using System;
+
+namespace Makabaka.Models
 {
 	/// <summary>
 	/// 群成员信息
@@ -43,12 +45,12 @@
 		/// <summary>
 		/// 加群时间戳
 		/// </summary>
-		public long JoinTime { get; set; }
+		public DateTime JoinTime { get; set; }
 
 		/// <summary>
 		/// 最后发言时间戳
 		/// </summary>
-		public long LastSentTime { get; set; }
+		public DateTime LastSentTime { get; set; }
 
 		/// <summary>
 		/// 成员等级
@@ -73,7 +75,7 @@
 		/// <summary>
 		/// 专属头衔过期时间戳
 		/// </summary>
-		public long TitleExpireTime { get; set; }
+		public DateTime TitleExpireTime { get; set; }
 
 		/// <summary>
 		/// 是否允许修改群名片
