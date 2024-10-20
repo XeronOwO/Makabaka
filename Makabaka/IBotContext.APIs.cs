@@ -394,6 +394,17 @@ namespace Makabaka
 			);
 
 		/// <summary>
+		/// 获取 Cookies
+		/// </summary>
+		/// <param name="domain">需要获取 cookies 的域名</param>
+		/// <param name="cancellationToken">取消令牌</param>
+		/// <returns>获取 Cookies 异步任务</returns>
+		Task<APIResponse<CookiesInfo>> GetCookiesAsync(
+			string domain,
+			CancellationToken cancellationToken = default
+			);
+
+		/// <summary>
 		/// 获取 CSRF Token
 		/// </summary>
 		/// <param name="cancellationToken">取消令牌</param>

@@ -439,6 +439,18 @@ namespace Makabaka
 				);
 		}
 
+		public Task<APIResponse<CookiesInfo>> GetCookiesAsync(
+			string domain,
+			CancellationToken cancellationToken = default
+			)
+		{
+			return ExecuteAPIAsync<GetCookiesRequestParams, CookiesInfo>(
+				"get_cookies",
+				new(domain),
+				cancellationToken
+				);
+		}
+
 		public Task<APIResponse<CsrfTokenInfo>> GetCsrfTokenAsync(
 			CancellationToken cancellationToken = default
 			)
