@@ -343,5 +343,14 @@ namespace Makabaka
 			bool noCache = false,
 			CancellationToken cancellationToken = default
 			);
+
+		/// <summary>
+		/// 获取群列表
+		/// </summary>
+		/// <param name="cancellationToken">取消令牌</param>
+		/// <returns>获取群列表异步任务</returns>
+		Task<APIResponse<GroupInfo[]>> GetGroupListAsync(
+			CancellationToken cancellationToken = default
+			);
 	}
 }

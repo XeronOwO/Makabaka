@@ -148,6 +148,20 @@ namespace Makabaka.Test
 						await reply.ReplyAsync([new TextSegment(sb.ToString())]);
 					}
 					return;
+				case "获取群列表测试":
+					{
+						var groups = (await botContext.GetGroupListAsync()).Result;
+						var sb = new StringBuilder();
+						foreach (var group in groups)
+						{
+							sb.Append('[')
+								.Append(group.GroupId)
+								.Append("] ")
+								.AppendLine(group.GroupName);
+						}
+						await reply.ReplyAsync([new TextSegment(sb.ToString())]);
+					}
+					return;
 
 				default:
 					break;

@@ -6,6 +6,7 @@ using Makabaka.Models;
 using Makabaka.Utils;
 using System;
 using System.Collections.Concurrent;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -384,6 +385,17 @@ namespace Makabaka
 			return ExecuteAPIAsync<GetGroupInfoRequestParams, GroupInfo>(
 				"get_group_info",
 				new(groupId, noCache),
+				cancellationToken
+				);
+		}
+
+		public Task<APIResponse<GroupInfo[]>> GetGroupListAsync(
+			CancellationToken cancellationToken = default
+			)
+		{
+			return ExecuteAPIAsync<EmptyRequestParams, GroupInfo[]>(
+				"get_group_list",
+				new(),
 				cancellationToken
 				);
 		}
