@@ -6,11 +6,8 @@
     public class LifecycleEventArgs : MetaEventArgs
     {
         /// <summary>
-        /// 事件子类型<br/>
-        /// enable：OneBot 启用<br/>
-        /// disable：OneBot 禁用<br/>
-        /// connect：WebSocket 连接成功
+        /// 事件子类型
         /// </summary>
-        public string SubType { get; set; } = string.Empty;
+        public LifecycleEventType SubType { get; set; }
     }
 }
