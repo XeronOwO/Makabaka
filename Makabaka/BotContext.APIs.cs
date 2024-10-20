@@ -10,6 +10,7 @@ using System.Timers;
 using Makabaka.Events;
 using System.Text.RegularExpressions;
 using System.Data;
+using Makabaka.Models;
 
 namespace Makabaka
 {
@@ -85,28 +86,28 @@ namespace Makabaka
 			}
 		}
 
-		public Task<APIResponse<MessageIdResponseData>> SendPrivateMessageAsync(
+		public Task<APIResponse<MessageIdInfo>> SendPrivateMessageAsync(
 			long userId,
 			Message message,
 			bool autoEscape = false,
 			CancellationToken cancellationToken = default
 			)
 		{
-			return ExecuteAPIAsync<SendPrivateMessageRequestParams, MessageIdResponseData>(
+			return ExecuteAPIAsync<SendPrivateMessageRequestParams, MessageIdInfo>(
 				"send_private_msg",
 				new(userId, message),
 				cancellationToken
 				);
 		}
 
-		public Task<APIResponse<MessageIdResponseData>> SendGroupMessageAsync(
+		public Task<APIResponse<MessageIdInfo>> SendGroupMessageAsync(
 			long groupId,
 			Message message,
 			bool autoEscape = false,
 			CancellationToken cancellationToken = default
 			)
 		{
-			return ExecuteAPIAsync<SendGroupMessageRequestParams, MessageIdResponseData>(
+			return ExecuteAPIAsync<SendGroupMessageRequestParams, MessageIdInfo>(
 				"send_group_msg",
 				new(groupId, message),
 				cancellationToken
@@ -137,24 +138,24 @@ namespace Makabaka
 				);
 		}
 
-		public Task<APIResponse<GetMessageResponseData>> GetMessageAsync(
+		public Task<APIResponse<MessageInfo>> GetMessageAsync(
 			long messageId,
 			CancellationToken cancellationToken = default
 			)
 		{
-			return ExecuteAPIAsync<MessageIdRequestParams, GetMessageResponseData>(
+			return ExecuteAPIAsync<MessageIdRequestParams, MessageInfo>(
 				"get_msg",
 				new(messageId),
 				cancellationToken
 				);
 		}
 
-		public Task<APIResponse<GetForwardMessageResponseData>> GetForwardMessageAsync(
+		public Task<APIResponse<ForwardMessageInfo>> GetForwardMessageAsync(
 			string id,
 			CancellationToken cancellationToken = default
 			)
 		{
-			return ExecuteAPIAsync<GetForwardMessageRequestParams, GetForwardMessageResponseData>(
+			return ExecuteAPIAsync<GetForwardMessageRequestParams, ForwardMessageInfo>(
 				"get_forward_msg",
 				new(id),
 				cancellationToken
@@ -342,24 +343,24 @@ namespace Makabaka
 				);
 		}
 
-		public Task<APIResponse<GetLoginInfoResponseData>> GetLoginInfoAsync(
+		public Task<APIResponse<LoginInfo>> GetLoginInfoAsync(
 			CancellationToken cancellationToken = default
 			)
 		{
-			return ExecuteAPIAsync<EmptyRequestParams, GetLoginInfoResponseData>(
+			return ExecuteAPIAsync<EmptyRequestParams, LoginInfo>(
 				"get_login_info",
 				new(),
 				cancellationToken
 				);
 		}
 
-		public Task<APIResponse<GetStrangerInfoResponseData>> GetStrangerInfoAsync(
+		public Task<APIResponse<StrangerInfo>> GetStrangerInfoAsync(
 			long userId,
 			bool noCache = false,
 			CancellationToken cancellationToken = default
 			)
 		{
-			return ExecuteAPIAsync<GetStrangerInfoRequestParams, GetStrangerInfoResponseData>(
+			return ExecuteAPIAsync<GetStrangerInfoRequestParams, StrangerInfo>(
 				"get_stranger_info",
 				new(userId, noCache),
 				cancellationToken

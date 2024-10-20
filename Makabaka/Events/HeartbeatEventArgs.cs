@@ -1,4 +1,5 @@
 ﻿using System.Text.Json.Nodes;
+using Makabaka.Models;
 
 namespace Makabaka.Events
 {
@@ -10,7 +11,7 @@ namespace Makabaka.Events
 		/// <summary>
 		/// 状态信息
 		/// </summary>
-		public HeartbeatStatus Status { get; set; } = new();
+		public HeartbeatStatusInfo Status { get; set; } = new();
 
 		/// <summary>
 		/// 到下次心跳的间隔，单位毫秒

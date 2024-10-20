@@ -1,4 +1,4 @@
-﻿namespace Makabaka.Events
+﻿namespace Makabaka.Models
 {
 	/// <summary>
 	/// 群消息匿名发送者信息

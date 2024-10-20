@@ -1,4 +1,4 @@
-﻿namespace Makabaka.Events
+﻿namespace Makabaka.Models
 {
 	/// <summary>
 	/// 性别类型

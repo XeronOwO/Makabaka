@@ -1,4 +1,6 @@
-﻿namespace Makabaka.Events
+﻿using Makabaka.Models;
+
+namespace Makabaka.Events
 {
 	/// <summary>
 	/// 群文件上传事件参数

@@ -55,7 +55,7 @@ namespace Makabaka.Test
 			},
 		};
 
-		private static async Task HandleMessageAsync(Message message, long messageId, IBotContext botContext, IReply reply)
+		private static async Task HandleMessageAsync(Message message, long messageId, IBotContext botContext, IMessageHandler reply)
 		{
 			switch (message.ToString())
 			{

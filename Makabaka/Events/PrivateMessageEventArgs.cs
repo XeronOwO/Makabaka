@@ -1,5 +1,6 @@
 ﻿using Makabaka.API;
 using Makabaka.Messages;
+using Makabaka.Models;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -8,7 +9,7 @@ namespace Makabaka.Events
 	/// <summary>
 	/// 私聊消息事件参数
 	/// </summary>
-	public class PrivateMessageEventArgs : MessageEventArgs, IReply
+	public class PrivateMessageEventArgs : MessageEventArgs, IMessageHandler
 	{
 		/// <summary>
 		/// 消息子类型
@@ -46,7 +47,7 @@ namespace Makabaka.Events
 		public PrivateMessageSenderInfo Sender { get; set; } = new();
 
 		/// <inheritdoc/>
-		public Task<APIResponse<MessageIdResponseData>> ReplyAsync(
+		public Task<APIResponse<MessageIdInfo>> ReplyAsync(
 			Message message,
 			bool autoEscape = false,
 			CancellationToken cancellationToken = default

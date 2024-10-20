@@ -1,9 +1,9 @@
-﻿namespace Makabaka.API
+﻿namespace Makabaka.Models
 {
 	/// <summary>
-	/// 获取登录号信息响应数据
+	/// 登录号信息
 	/// </summary>
-	public class GetLoginInfoResponseData
+	public class LoginInfo
 	{
 		/// <summary>
 		/// QQ 号

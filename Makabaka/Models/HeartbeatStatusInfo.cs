@@ -1,9 +1,9 @@
-﻿namespace Makabaka.Events
+﻿namespace Makabaka.Models
 {
 	/// <summary>
-	/// 心跳状态
+	/// 心跳状态信息
 	/// </summary>
-	public class HeartbeatStatus
+	public class HeartbeatStatusInfo
 	{
 		/// <summary>
 		/// APP 是否已初始化

@@ -1,4 +1,4 @@
-﻿using Makabaka.Events;
+﻿using Makabaka.Models;
 
 namespace Makabaka.API
 {

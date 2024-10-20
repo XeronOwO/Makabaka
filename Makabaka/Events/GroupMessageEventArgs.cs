@@ -2,13 +2,14 @@
 using Makabaka.Messages;
 using System.Threading.Tasks;
 using System.Threading;
+using Makabaka.Models;
 
 namespace Makabaka.Events
 {
 	/// <summary>
 	/// 群消息事件参数
 	/// </summary>
-	public class GroupMessageEventArgs : MessageEventArgs, IReply
+	public class GroupMessageEventArgs : MessageEventArgs, IMessageHandler
 	{
 		/// <summary>
 		/// 消息子类型
@@ -56,7 +57,7 @@ namespace Makabaka.Events
 		public GroupMessageSenderInfo? Sender { get; set; }
 
 		/// <inheritdoc/>
-		public Task<APIResponse<MessageIdResponseData>> ReplyAsync(
+		public Task<APIResponse<MessageIdInfo>> ReplyAsync(
 			Message message,
 			bool autoEscape = false,
 			CancellationToken cancellationToken = default

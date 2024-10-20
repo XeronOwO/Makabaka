@@ -1,12 +1,12 @@
 ﻿using Makabaka.Events;
 using Makabaka.Messages;
 
-namespace Makabaka.API
+namespace Makabaka.Models
 {
 	/// <summary>
-	/// 获取消息响应数据
+	/// 消息信息
 	/// </summary>
-	public class GetMessageResponseData
+	public class MessageInfo
 	{
 		/// <summary>
 		/// 发送时间

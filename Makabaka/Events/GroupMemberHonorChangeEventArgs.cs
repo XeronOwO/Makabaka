@@ -1,4 +1,6 @@
-﻿namespace Makabaka.Events
+﻿using Makabaka.Models;
+
+namespace Makabaka.Events
 {
 	/// <summary>
 	/// 群成员荣誉变动事件参数

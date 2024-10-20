@@ -1,9 +1,9 @@
-﻿namespace Makabaka.API
+﻿namespace Makabaka.Models
 {
 	/// <summary>
-	/// 消息 ID 响应数据
+	/// 消息 ID 信息
 	/// </summary>
-	public class MessageIdResponseData
+	public class MessageIdInfo
 	{
 		/// <summary>
 		/// 消息 ID

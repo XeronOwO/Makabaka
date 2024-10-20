@@ -1,6 +1,7 @@
 ﻿using Makabaka.API;
 using Makabaka.Events;
 using Makabaka.Messages;
+using Makabaka.Models;
 using System.Collections.Concurrent;
 using System.Threading;
 using System.Threading.Tasks;
@@ -40,7 +41,7 @@ namespace Makabaka
 		/// <param name="autoEscape">消息内容是否作为纯文本发送（即不解析 CQ 码），只在 message 字段是字符串时有效</param>
 		/// <param name="cancellationToken">取消令牌</param>
 		/// <returns>发送私聊消息异步任务</returns>
-		Task<APIResponse<MessageIdResponseData>> SendPrivateMessageAsync(
+		Task<APIResponse<MessageIdInfo>> SendPrivateMessageAsync(
 			long userId,
 			Message message,
 			bool autoEscape = false,
@@ -55,7 +56,7 @@ namespace Makabaka
 		/// <param name="autoEscape">消息内容是否作为纯文本发送（即不解析 CQ 码），只在 message 字段是字符串时有效</param>
 		/// <param name="cancellationToken">取消令牌</param>
 		/// <returns>发送群消息异步任务</returns>
-		Task<APIResponse<MessageIdResponseData>> SendGroupMessageAsync(
+		Task<APIResponse<MessageIdInfo>> SendGroupMessageAsync(
 			long groupId,
 			Message message,
 			bool autoEscape = false,
@@ -90,7 +91,7 @@ namespace Makabaka
 		/// <param name="messageId">消息 ID</param>
 		/// <param name="cancellationToken">取消令牌</param>
 		/// <returns>获取消息异步任务</returns>
-		Task<APIResponse<GetMessageResponseData>> GetMessageAsync(
+		Task<APIResponse<MessageInfo>> GetMessageAsync(
 			long messageId,
 			CancellationToken cancellationToken = default
 			);
@@ -101,7 +102,7 @@ namespace Makabaka
 		/// <param name="id">合并转发 ID</param>
 		/// <param name="cancellationToken">取消令牌</param>
 		/// <returns>获取转发消息异步任务</returns>
-		Task<APIResponse<GetForwardMessageResponseData>> GetForwardMessageAsync(
+		Task<APIResponse<ForwardMessageInfo>> GetForwardMessageAsync(
 			string id,
 			CancellationToken cancellationToken = default
 			);
@@ -304,7 +305,7 @@ namespace Makabaka
 		/// </summary>
 		/// <param name="cancellationToken">取消令牌</param>
 		/// <returns>获取登录号信息异步任务</returns>
-		Task<APIResponse<GetLoginInfoResponseData>> GetLoginInfoAsync(
+		Task<APIResponse<LoginInfo>> GetLoginInfoAsync(
 			CancellationToken cancellationToken = default
 			);
 
@@ -315,7 +316,7 @@ namespace Makabaka
 		/// <param name="noCache">是否不使用缓存（使用缓存可能更新不及时，但响应更快）</param>
 		/// <param name="cancellationToken">取消令牌</param>
 		/// <returns>获取陌生人信息异步任务</returns>
-		Task<APIResponse<GetStrangerInfoResponseData>> GetStrangerInfoAsync(
+		Task<APIResponse<StrangerInfo>> GetStrangerInfoAsync(
 			long userId,
 			bool noCache = false,
 			CancellationToken cancellationToken = default

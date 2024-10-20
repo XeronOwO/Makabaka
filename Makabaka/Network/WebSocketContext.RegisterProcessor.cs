@@ -114,8 +114,8 @@ namespace Makabaka.Network
 			}
 		}
 
-        [AttributeUsage(AttributeTargets.Method, AllowMultiple = false)]
-        public class NotifyAttribute(NotifyEventType type) : MatchAttribute
+		[AttributeUsage(AttributeTargets.Method, AllowMultiple = false)]
+		public class NotifyAttribute(NotifyEventType type) : MatchAttribute
 		{
 			public override bool Matches(JsonNode node)
 			{
@@ -211,7 +211,7 @@ namespace Makabaka.Network
 			}
 		}
 
-        public delegate Task<bool> ProcessorDelegate(JsonNode node);
+		public delegate Task<bool> ProcessorDelegate(JsonNode node);
 
 		private record class ProcessorInfo(IMatch Match, ProcessorDelegate Delegate);
 
