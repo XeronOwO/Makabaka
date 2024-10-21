@@ -552,5 +552,20 @@ namespace Makabaka
 			long groupId,
 			CancellationToken cancellationToken = default
 			);
+
+		/// <summary>
+		/// 获取群文件 URL
+		/// </summary>
+		/// <param name="groupId">群聊 ID</param>
+		/// <param name="fileId">文件 ID</param>
+		/// <param name="busid">BusId</param>
+		/// <param name="cancellationToken">取消令牌</param>
+		/// <returns>获取群文件 URL 异步任务</returns>
+		Task<APIResponse<UrlInfo>> GetGroupFileUrlAsync(
+			long groupId,
+			string fileId,
+			uint busid,
+			CancellationToken cancellationToken = default
+			);
 	}
 }

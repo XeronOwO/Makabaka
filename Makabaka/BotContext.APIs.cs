@@ -605,5 +605,19 @@ namespace Makabaka
 				cancellationToken
 				);
 		}
+
+		public Task<APIResponse<UrlInfo>> GetGroupFileUrlAsync(
+			long groupId,
+			string fileId,
+			uint busid,
+			CancellationToken cancellationToken = default
+			)
+		{
+			return ExecuteAPIAsync<GetGroupFileUrlRequestParams, UrlInfo>(
+				"get_group_file_url",
+				new(groupId, fileId, busid),
+				cancellationToken
+				);
+		}
 	}
 }

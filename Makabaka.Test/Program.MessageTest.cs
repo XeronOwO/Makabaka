@@ -85,11 +85,24 @@ namespace Makabaka.Test
 				return;
 			}
 
+			match = GetGroupFileUrlTestRegex().Match(e.Message.ToString());
+			if (match.Success)
+			{
+				var file = match.Groups["file"].Value;
+				var bus = uint.Parse(match.Groups["bus"].Value);
+				var data = (await e.Context.GetGroupFileUrlAsync(e.GroupId, file, bus)).Result;
+				await e.ReplyAsync([new TextSegment(JsonSerializer.Serialize(data, _jsonSerializerDisplayOptions))]);
+				return;
+			}
+
 			await HandleMessageAsync(e.Message, e.MessageId, e.Context, e);
 		}
 
 		[GeneratedRegex(@"^获取群文件测试( (?<folder>[\S]+))?$", RegexOptions.Compiled)]
 		private static partial Regex GetGroupFilesTestRegex();
+
+		[GeneratedRegex(@"^获取群文件URL测试 (?<file>[\S]+) (?<bus>[\S]+)$", RegexOptions.Compiled)]
+		private static partial Regex GetGroupFileUrlTestRegex();
 
 		private static readonly JsonSerializerOptions _jsonSerializerDisplayOptions = new()
 		{
