@@ -520,5 +520,16 @@ namespace Makabaka
 				cancellationToken
 				);
 		}
+
+		public Task<APIResponse<StatusInfo>> GetStatusAsync(
+			CancellationToken cancellationToken = default
+			)
+		{
+			return ExecuteAPIAsync<EmptyRequestParams, StatusInfo>(
+				"get_status",
+				new(),
+				cancellationToken
+				);
+		}
 	}
 }

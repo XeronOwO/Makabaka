@@ -465,5 +465,14 @@ namespace Makabaka
 		Task<APIResponse<YesInfo>> CanSendRecordAsync(
 			CancellationToken cancellationToken = default
 			);
+
+		/// <summary>
+		/// 获取运行状态
+		/// </summary>
+		/// <param name="cancellationToken">取消令牌</param>
+		/// <returns>获取运行状态异步任务</returns>
+		Task<APIResponse<StatusInfo>> GetStatusAsync(
+			CancellationToken cancellationToken = default
+			);
 	}
 }
