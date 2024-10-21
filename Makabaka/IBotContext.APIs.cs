@@ -511,5 +511,22 @@ namespace Makabaka
 			string file,
 			CancellationToken cancellationToken = default
 			);
+
+		/// <summary>
+		/// 上传群文件
+		/// </summary>
+		/// <param name="groupId">群聊 ID</param>
+		/// <param name="file">文件路径</param>
+		/// <param name="name">名称</param>
+		/// <param name="folder">文件夹</param>
+		/// <param name="cancellationToken">取消令牌</param>
+		/// <returns>上传群文件异步任务</returns>
+		Task<APIResponse> UploadGroupFileAsync(
+			long groupId,
+			string file,
+			string? name = null,
+			string? folder = null,
+			CancellationToken cancellationToken = default
+			);
 	}
 }

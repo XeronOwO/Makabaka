@@ -566,5 +566,20 @@ namespace Makabaka
 				cancellationToken
 				);
 		}
+
+		public Task<APIResponse> UploadGroupFileAsync(
+			long groupId,
+			string file,
+			string? name = null,
+			string? folder = null,
+			CancellationToken cancellationToken = default
+			)
+		{
+			return ExecuteAPIAsync<UploadGroupFileRequestParams>(
+				"upload_group_file",
+				new(groupId, file, name, folder),
+				cancellationToken
+				);
+		}
 	}
 }

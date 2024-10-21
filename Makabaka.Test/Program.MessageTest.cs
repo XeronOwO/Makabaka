@@ -1,10 +1,12 @@
 ﻿using Makabaka.Events;
 using Makabaka.Messages;
+using Serilog.Context;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Makabaka.Test
 {
@@ -58,6 +60,13 @@ namespace Makabaka.Test
 					{
 						var data = (await e.Context.GetGroupHonorInfoAsync(e.GroupId)).Result;
 						await e.ReplyAsync([new TextSegment(JsonSerializer.Serialize(data, _jsonSerializerDisplayOptions))]);
+					}
+					return;
+				case "上传群文件测试":
+					{
+						var fileInfo = new FileInfo("test.png");
+						var response = await e.Context.UploadGroupFileAsync(e.GroupId, fileInfo.FullName);
+						await e.ReplyAsync([new TextSegment(JsonSerializer.Serialize(response, _jsonSerializerDisplayOptions))]);
 					}
 					return;
 				default:
