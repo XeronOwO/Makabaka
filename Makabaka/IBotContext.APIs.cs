@@ -474,5 +474,14 @@ namespace Makabaka
 		Task<APIResponse<StatusInfo>> GetStatusAsync(
 			CancellationToken cancellationToken = default
 			);
+
+		/// <summary>
+		/// 获取版本信息
+		/// </summary>
+		/// <param name="cancellationToken">取消令牌</param>
+		/// <returns>获取版本信息异步任务</returns>
+		Task<APIResponse<VersionInfo>> GetVersionInfoAsync(
+			CancellationToken cancellationToken = default
+			);
 	}
 }

@@ -201,9 +201,15 @@ namespace Makabaka.Test
 						await reply.ReplyAsync([new TextSegment(JsonSerializer.Serialize(data, _jsonSerializerDisplayOptions))]);
 					}
 					return;
-				case "获取运行状态":
+				case "获取运行状态测试":
 					{
 						var data = (await botContext.GetStatusAsync()).Result;
+						await reply.ReplyAsync([new TextSegment(JsonSerializer.Serialize(data, _jsonSerializerDisplayOptions))]);
+					}
+					return;
+				case "获取版本信息测试":
+					{
+						var data = (await botContext.GetVersionInfoAsync()).Result;
 						await reply.ReplyAsync([new TextSegment(JsonSerializer.Serialize(data, _jsonSerializerDisplayOptions))]);
 					}
 					return;
