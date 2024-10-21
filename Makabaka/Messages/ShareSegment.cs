@@ -47,11 +47,5 @@ namespace Makabaka.Messages
 		public ShareSegment() : this(string.Empty, string.Empty)
 		{
 		}
-
-		/// <inheritdoc/>
-		public override string ToString()
-		{
-			return $"[CQ:{Type},url={CqCode.Escape(Data.Url)},title={CqCode.Escape(Data.Title)}]";
-		}
 	}
 }

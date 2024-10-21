@@ -65,35 +65,5 @@ namespace Makabaka.Messages
 		public NodeSegment() : this(string.Empty)
 		{
 		}
-
-		/// <inheritdoc/>
-		public override string ToString()
-		{
-			var sb = new StringBuilder();
-			sb.Append("[CQ:");
-			sb.Append(Type);
-			if (Data.Id != null)
-			{
-				sb.Append(",id=")
-					.Append(CqCode.Escape(Data.Id));
-			}
-			if (Data.UserId != null)
-			{
-				sb.Append(",user_id=")
-					.Append(CqCode.Escape(Data.UserId));
-			}
-			if (Data.Nickname != null)
-			{
-				sb.Append(",nickname=")
-					.Append(CqCode.Escape(Data.Nickname));
-			}
-			if (Data.Content != null)
-			{
-				sb.Append(",content=")
-					.Append(CqCode.Escape(Data.Content.ToString()));
-			}
-			sb.Append(']');
-			return sb.ToString();
-		}
 	}
 }

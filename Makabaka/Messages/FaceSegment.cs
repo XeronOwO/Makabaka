@@ -26,11 +26,5 @@ namespace Makabaka.Messages
 		public FaceSegment() : this(string.Empty)
 		{
 		}
-
-		/// <inheritdoc/>
-		public override string ToString()
-		{
-			return $"[CQ:{Type},id={CqCode.Escape(Data.Id)}]";
-		}
 	}
 }

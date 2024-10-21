@@ -21,11 +21,5 @@ namespace Makabaka.Messages
 		public MarkdownSegment() : this(string.Empty)
 		{
 		}
-
-		/// <inheritdoc/>
-		public override string ToString()
-		{
-			return $"[CQ:{Type},content={CqCode.Escape(Data.Content)}]";
-		}
 	}
 }

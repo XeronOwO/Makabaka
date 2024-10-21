@@ -47,11 +47,5 @@ namespace Makabaka.Messages
 		public LocationSegment() : this(0, 0)
 		{
 		}
-
-		/// <inheritdoc/>
-		public override string ToString()
-		{
-			return $"[CQ:{Type},lat={CqCode.Escape(Data.Lat.ToString())},lon={CqCode.Escape(Data.Lon.ToString())}]";
-		}
 	}
 }

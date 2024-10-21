@@ -20,11 +20,5 @@ namespace Makabaka.Messages
 		public JsonSegment() : this(string.Empty)
 		{
 		}
-
-		/// <inheritdoc/>
-		public override string ToString()
-		{
-			return $"[CQ:{Type},data={CqCode.Escape(Data.Data)}]";
-		}
 	}
 }

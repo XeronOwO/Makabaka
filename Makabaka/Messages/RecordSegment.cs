@@ -27,11 +27,5 @@ namespace Makabaka.Messages
 		public RecordSegment() : this(string.Empty)
 		{
 		}
-
-		/// <inheritdoc/>
-		public override string ToString()
-		{
-			return $"[CQ:{Type},file={CqCode.Escape(Data.File)}]";
-		}
 	}
 }

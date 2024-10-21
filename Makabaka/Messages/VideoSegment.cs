@@ -27,11 +27,5 @@ namespace Makabaka.Messages
 		public VideoSegment() : this(string.Empty)
 		{
 		}
-
-		/// <inheritdoc/>
-		public override string ToString()
-		{
-			return $"[CQ:{Type},file={CqCode.Escape(Data.File)}]";
-		}
 	}
 }

@@ -23,11 +23,5 @@ namespace Makabaka.Messages
 		public MusicSegment() : this(default, string.Empty)
 		{
 		}
-
-		/// <inheritdoc/>
-		public override string ToString()
-		{
-			return $"[CQ:{Type},type={CqCode.Escape(Data.Type.ToSerializedString())},id={CqCode.Escape(Data.Id)}]";
-		}
 	}
 }

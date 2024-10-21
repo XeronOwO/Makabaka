@@ -35,11 +35,5 @@ namespace Makabaka.Messages
 		public PokeSegment() : this(string.Empty, string.Empty)
 		{
 		}
-
-		/// <inheritdoc/>
-		public override string ToString()
-		{
-			return $"[CQ:{Type},type={CqCode.Escape(Data.Type)},id={CqCode.Escape(Data.Id)}]";
-		}
 	}
 }

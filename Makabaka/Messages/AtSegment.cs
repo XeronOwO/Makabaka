@@ -34,11 +34,5 @@ namespace Makabaka.Messages
 		public AtSegment(long qq, string? name = null) : this(qq.ToString(), name)
 		{
 		}
-
-		/// <inheritdoc/>
-		public override string ToString()
-		{
-			return $"[CQ:{Type},qq={CqCode.Escape(Data.QQ)}]";
-		}
 	}
 }

@@ -80,11 +80,5 @@ namespace Makabaka.Messages
 		{
 			return FromBytes(File.ReadAllBytes(path));
 		}
-
-		/// <inheritdoc/>
-		public override string ToString()
-		{
-			return $"[CQ:{Type},file={CqCode.Escape(Data.File)}]";
-		}
 	}
 }

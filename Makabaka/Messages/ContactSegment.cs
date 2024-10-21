@@ -54,11 +54,5 @@ namespace Makabaka.Messages
 		public ContactSegment() : this(default, string.Empty)
 		{
 		}
-
-		/// <inheritdoc/>
-		public override string ToString()
-		{
-			return $"[CQ:{Type},type={CqCode.Escape(Data.Type.ToSerializedString())},id={CqCode.Escape(Data.Id)}]";
-		}
 	}
 }

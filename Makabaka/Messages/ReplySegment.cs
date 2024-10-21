@@ -32,11 +32,5 @@ namespace Makabaka.Messages
 		public ReplySegment() : this(string.Empty)
 		{
 		}
-
-		/// <inheritdoc/>
-		public override string ToString()
-		{
-			return $"[CQ:{Type},id={CqCode.Escape(Data.Id)}]";
-		}
 	}
 }
