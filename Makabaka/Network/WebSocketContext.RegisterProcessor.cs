@@ -62,7 +62,7 @@ namespace Makabaka.Network
 
 			public override string ToString()
 			{
-				return $"meta={type}";
+				return $"meta={type.ToSerializedString()}";
 			}
 		}
 
@@ -86,7 +86,7 @@ namespace Makabaka.Network
 
 			public override string ToString()
 			{
-				return $"message={type}";
+				return $"message={type.ToSerializedString()}";
 			}
 		}
 
@@ -110,7 +110,7 @@ namespace Makabaka.Network
 
 			public override string ToString()
 			{
-				return $"notice={type}";
+				return $"notice={type.ToSerializedString()}";
 			}
 		}
 
@@ -139,7 +139,7 @@ namespace Makabaka.Network
 
 			public override string ToString()
 			{
-				return $"notify={type}";
+				return $"notify={type.ToSerializedString()}";
 			}
 		}
 
@@ -163,7 +163,7 @@ namespace Makabaka.Network
 
 			public override string ToString()
 			{
-				return $"request={type}";
+				return $"request={type.ToSerializedString()}";
 			}
 		}
 
@@ -207,7 +207,7 @@ namespace Makabaka.Network
 
 			public override string ToString()
 			{
-				return "request=API";
+				return "API";
 			}
 		}
 
