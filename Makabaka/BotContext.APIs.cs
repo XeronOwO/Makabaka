@@ -498,5 +498,27 @@ namespace Makabaka
 				cancellationToken
 				);
 		}
+
+		public Task<APIResponse<YesInfo>> CanSendImageAsync(
+			CancellationToken cancellationToken = default
+			)
+		{
+			return ExecuteAPIAsync<EmptyRequestParams, YesInfo>(
+				"can_send_image",
+				new(),
+				cancellationToken
+				);
+		}
+
+		public Task<APIResponse<YesInfo>> CanSendRecordAsync(
+			CancellationToken cancellationToken = default
+			)
+		{
+			return ExecuteAPIAsync<EmptyRequestParams, YesInfo>(
+				"can_send_record",
+				new(),
+				cancellationToken
+				);
+		}
 	}
 }

@@ -447,5 +447,23 @@ namespace Makabaka
 			string file,
 			CancellationToken cancellationToken = default
 			);
+
+		/// <summary>
+		/// 检查是否可以发送图片
+		/// </summary>
+		/// <param name="cancellationToken">取消令牌</param>
+		/// <returns>检查是否可以发送图片异步任务</returns>
+		Task<APIResponse<YesInfo>> CanSendImageAsync(
+			CancellationToken cancellationToken = default
+			);
+
+		/// <summary>
+		/// 检查是否可以发送语音
+		/// </summary>
+		/// <param name="cancellationToken">取消令牌</param>
+		/// <returns>检查是否可以发送语音异步任务</returns>
+		Task<APIResponse<YesInfo>> CanSendRecordAsync(
+			CancellationToken cancellationToken = default
+			);
 	}
 }

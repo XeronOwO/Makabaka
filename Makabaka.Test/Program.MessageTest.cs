@@ -189,6 +189,18 @@ namespace Makabaka.Test
 						await reply.ReplyAsync([new TextSegment(JsonSerializer.Serialize(data, _jsonSerializerDisplayOptions))]);
 					}
 					return;
+				case "检查是否可以发送图片测试":
+					{
+						var data = (await botContext.CanSendImageAsync()).Result;
+						await reply.ReplyAsync([new TextSegment(JsonSerializer.Serialize(data, _jsonSerializerDisplayOptions))]);
+					}
+					return;
+				case "检查是否可以发送语音测试":
+					{
+						var data = (await botContext.CanSendRecordAsync()).Result;
+						await reply.ReplyAsync([new TextSegment(JsonSerializer.Serialize(data, _jsonSerializerDisplayOptions))]);
+					}
+					return;
 
 				default:
 					break;
