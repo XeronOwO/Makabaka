@@ -542,5 +542,17 @@ namespace Makabaka
 				cancellationToken
 				);
 		}
+
+		public Task<APIResponse> RestartAsync(
+			long delay = 0,
+			CancellationToken cancellationToken = default
+			)
+		{
+			return ExecuteAPIAsync<RestartRequestParams>(
+				"set_restart",
+				new(delay),
+				cancellationToken
+				);
+		}
 	}
 }

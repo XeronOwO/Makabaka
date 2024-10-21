@@ -483,5 +483,16 @@ namespace Makabaka
 		Task<APIResponse<VersionInfo>> GetVersionInfoAsync(
 			CancellationToken cancellationToken = default
 			);
+
+		/// <summary>
+		/// 重启 OneBot 实现
+		/// </summary>
+		/// <param name="delay">要延迟的毫秒数，如果默认情况下无法重启，可以尝试设置延迟为 2000 左右</param>
+		/// <param name="cancellationToken">取消令牌</param>
+		/// <returns>重启 OneBot 实现异步任务</returns>
+		Task<APIResponse> RestartAsync(
+			long delay = 0,
+			CancellationToken cancellationToken = default
+			);
 	}
 }

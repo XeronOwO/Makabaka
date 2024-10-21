@@ -213,6 +213,12 @@ namespace Makabaka.Test
 						await reply.ReplyAsync([new TextSegment(JsonSerializer.Serialize(data, _jsonSerializerDisplayOptions))]);
 					}
 					return;
+				case "重启测试":
+					{
+						var response = await botContext.RestartAsync();
+						await reply.ReplyAsync([new TextSegment(JsonSerializer.Serialize(response, _jsonSerializerDisplayOptions))]);
+					}
+					return;
 
 				default:
 					break;
