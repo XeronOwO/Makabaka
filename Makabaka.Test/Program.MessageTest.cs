@@ -70,10 +70,28 @@ namespace Makabaka.Test
 					}
 					return;
 				default:
-					await HandleMessageAsync(e.Message, e.MessageId, e.Context, e);
-					return;
+					break;
 			}
+
+			var match = GetGroupFilesTestRegex().Match(e.Message.ToString());
+			if (match.Success)
+			{
+				string? folder = null;
+				var folderGroup = match.Groups["folder"];
+				if (folderGroup.Success)
+				{
+					folder = folderGroup.Value;
+				}
+				var data = (await e.Context.GetGroupFilesByFolderAsync(e.GroupId, folder)).Result;
+				await e.ReplyAsync([new TextSegment(JsonSerializer.Serialize(data, _jsonSerializerDisplayOptions))]);
+				return;
+			}
+
+			await HandleMessageAsync(e.Message, e.MessageId, e.Context, e);
 		}
+
+		[GeneratedRegex(@"^获取群文件测试( (?<folder>[\S]+))?$", RegexOptions.Compiled)]
+		private static partial Regex GetGroupFilesTestRegex();
 
 		private static readonly JsonSerializerOptions _jsonSerializerDisplayOptions = new()
 		{

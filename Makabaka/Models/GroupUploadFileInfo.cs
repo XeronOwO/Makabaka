@@ -1,9 +1,11 @@
-﻿namespace Makabaka.Models
+﻿using System.Text.Json.Serialization;
+
+namespace Makabaka.Models
 {
 	/// <summary>
 	/// 群文件信息
 	/// </summary>
-	public class GroupFileInfo
+	public class GroupUploadFileInfo
 	{
 		/// <summary>
 		/// 文件 ID
@@ -18,12 +20,13 @@
 		/// <summary>
 		/// 文件大小（字节数）
 		/// </summary>
-		public long Size { get; set; }
+		public ulong Size { get; set; }
 
 		/// <summary>
 		/// busid（目前不清楚有什么作用）
 		/// </summary>
-		public long Busid { get; set; }
+		[JsonPropertyName("busid")]
+		public long BusId { get; set; }
 
 		/// <summary>
 		/// [Lagrange拓展] 文件 URL

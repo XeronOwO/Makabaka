@@ -9,6 +9,7 @@ using System.Collections.Concurrent;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace Makabaka
 {
@@ -578,6 +579,31 @@ namespace Makabaka
 			return ExecuteAPIAsync<UploadGroupFileRequestParams>(
 				"upload_group_file",
 				new(groupId, file, name, folder),
+				cancellationToken
+				);
+		}
+
+		public Task<APIResponse<GroupFilesInfo>> GetGroupFilesByFolderAsync(
+			long groupId,
+			string? folderId = null,
+			CancellationToken cancellationToken = default
+			)
+		{
+			return ExecuteAPIAsync<GetGroupFilesRequestParams, GroupFilesInfo>(
+				"get_group_files_by_folder",
+				new(groupId, folderId),
+				cancellationToken
+				);
+		}
+
+		public Task<APIResponse<GroupFilesInfo>> GetGroupRootFilesAsync(
+			long groupId,
+			CancellationToken cancellationToken = default
+			)
+		{
+			return ExecuteAPIAsync<GetGroupFilesRequestParams, GroupFilesInfo>(
+				"get_group_root_files",
+				new(groupId),
 				cancellationToken
 				);
 		}

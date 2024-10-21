@@ -528,5 +528,29 @@ namespace Makabaka
 			string? folder = null,
 			CancellationToken cancellationToken = default
 			);
+
+		/// <summary>
+		/// 获取群文件信息
+		/// </summary>
+		/// <param name="groupId">群聊 ID</param>
+		/// <param name="folderId">文件夹 ID ，留空表示根文件夹</param>
+		/// <param name="cancellationToken">取消令牌</param>
+		/// <returns>获取群文件信息异步任务</returns>
+		Task<APIResponse<GroupFilesInfo>> GetGroupFilesByFolderAsync(
+			long groupId,
+			string? folderId = null,
+			CancellationToken cancellationToken = default
+			);
+
+		/// <summary>
+		/// 获取群根文件夹文件信息
+		/// </summary>
+		/// <param name="groupId">群聊 ID</param>
+		/// <param name="cancellationToken">取消令牌</param>
+		/// <returns>获取群根文件夹文件信息异步任务</returns>
+		Task<APIResponse<GroupFilesInfo>> GetGroupRootFilesAsync(
+			long groupId,
+			CancellationToken cancellationToken = default
+			);
 	}
 }
