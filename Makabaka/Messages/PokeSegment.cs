@@ -17,14 +17,16 @@ namespace Makabaka.Messages
 	/// ✔ 收<br/>
 	/// ✔ 发
 	/// </param>
+	/// <param name="strength">力度</param>
 	[Segment(SegmentType.Poke)]
-	public class PokeSegment(string type, string id)
+	public class PokeSegment(string type, string id, string? strength = null)
 		: Segment<PokeData>(
 			SegmentType.Poke.ToSerializedString(),
 			new()
 			{
 				Type = type,
-				Id = id
+				Id = id,
+				Strength = strength,
 			})
 	{
 		/// <summary>

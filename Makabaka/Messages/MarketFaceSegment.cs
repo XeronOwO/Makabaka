@@ -13,7 +13,7 @@ namespace Makabaka.Messages
 	/// 请使用 <see cref="IBotContext.FetchMarketFaceKeyAsync(string[], System.Threading.CancellationToken)"/> 获取
 	/// </param>
 	/// <param name="summary">简介</param>
-	[Segment(SegmentType.Mface)]
+	[Segment(SegmentType.MarketFace)]
 	public class MarketFaceSegment(
 		string url,
 		long emojiPackageId,
@@ -21,7 +21,7 @@ namespace Makabaka.Messages
 		string key,
 		string summary = "[动画表情]"
 		) : Segment<MarketFaceData>(
-			SegmentType.Mface.ToSerializedString(),
+			SegmentType.MarketFace.ToSerializedString(),
 			new()
 			{
 				Url = url,
@@ -29,8 +29,7 @@ namespace Makabaka.Messages
 				EmojiId = emojiId,
 				Key = key,
 				Summary = summary,
-			}
-			)
+			})
 	{
 		/// <summary>
 		/// 反序列化保留，请使用其它构造函数

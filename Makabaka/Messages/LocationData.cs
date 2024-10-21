@@ -24,13 +24,13 @@
 		/// ✔ 收<br/>
 		/// ✔ 发
 		/// </summary>
-		public string? Title { get; set; } = string.Empty;
+		public string Title { get; set; } = string.Empty;
 
 		/// <summary>
 		/// 发送时可选，内容描述<br/>
 		/// ✔ 收<br/>
 		/// ✔ 发
 		/// </summary>
-		public string? Content { get; set; } = string.Empty;
+		public string Content { get; set; } = string.Empty;
 	}
 }

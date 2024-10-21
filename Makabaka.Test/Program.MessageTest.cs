@@ -1,6 +1,5 @@
 ﻿using Makabaka.Events;
 using Makabaka.Messages;
-using Serilog.Context;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
@@ -15,7 +14,7 @@ namespace Makabaka.Test
 		{
 			return e.Message.ToString() switch
 			{
-				"联系人测试" => e.ReplyAsync([new ContactSegment(ContactType.Qq, e.Sender.UserId)]),
+				"联系人测试" => e.ReplyAsync([new ContactSegment(ContactType.QQ, e.Sender.UserId)]),
 				_ => HandleMessageAsync(e.Message, e.MessageId, e.Context, e),
 			};
 		}

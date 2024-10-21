@@ -22,11 +22,8 @@
 		public string Id { get; set; } = string.Empty;
 
 		/// <summary>
-		/// 表情名<br/>
-		/// 见 <a href="https://github.com/mamoe/mirai/blob/f5eefae7ecee84d18a66afce3f89b89fe1584b78/mirai-core/src/commonMain/kotlin/net.mamoe.mirai/message/data/HummerMessage.kt#L49">Mirai 的 PokeMessage 类</a><br/>
-		/// ✔ 收<br/>
-		/// ✘ 发
+		/// 力度
 		/// </summary>
-		public string Name { get; set; } = string.Empty;
+		public string? Strength { get; set; }
 	}
 }

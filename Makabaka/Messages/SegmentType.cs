@@ -1,4 +1,6 @@
-﻿namespace Makabaka.Messages
+﻿using System.Text.Json.Serialization;
+
+namespace Makabaka.Messages
 {
 	/// <summary>
 	/// 段消息类型
@@ -113,6 +115,18 @@
 		/// <summary>
 		/// 商城表情
 		/// </summary>
-		Mface,
+		[JsonPropertyName("mface")]
+		MarketFace,
+
+		/// <summary>
+		/// 长消息
+		/// </summary>
+		[JsonPropertyName("longmsg")]
+		LongMessage,
+
+		/// <summary>
+		/// Markdown 消息
+		/// </summary>
+		Markdown,
 	}
 }

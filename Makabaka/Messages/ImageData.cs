@@ -25,15 +25,6 @@
 		public string? Filename { get; set; }
 
 		/// <summary>
-		/// 图片类型<br/>
-		/// flash：闪照<br/>
-		/// &lt;空&gt;：普通图片<br/>
-		/// ✔ 收<br/>
-		/// ✔ 发
-		/// </summary>
-		public string Type { get; set; } = string.Empty;
-
-		/// <summary>
 		/// 图片 URL<br/>
 		/// ✔ 收<br/>
 		/// ✘ 发
@@ -54,30 +45,5 @@
 		/// ✔ 发
 		/// </summary>
 		public int SubType { get; set; }
-
-		/// <summary>
-		/// 只在通过网络 URL 发送时有效，表示是否使用已缓存的文件，默认 1<br/>
-		/// 0：不使用已缓存的文件<br/>
-		/// 1：使用已缓存的文件<br/>
-		/// ✘ 收<br/>
-		/// ✔ 发
-		/// </summary>
-		public int? Cache { get; set; }
-
-		/// <summary>
-		/// 只在通过网络 URL 发送时有效，表示是否通过代理下载文件（需通过环境变量或配置文件配置代理），默认 1<br/>
-		/// 0：不通过代理下载文件<br/>
-		/// 1：通过代理下载文件<br/>
-		/// ✘ 收<br/>
-		/// ✔ 发
-		/// </summary>
-		public int? Proxy { get; set; }
-
-		/// <summary>
-		/// 只在通过网络 URL 发送时有效，单位秒，表示下载网络文件的超时时间，默认不超时<br/>
-		/// ✘ 收<br/>
-		/// ✔ 发
-		/// </summary>
-		public int? Timeout { get; set; }
 	}
 }

@@ -6,20 +6,23 @@ namespace Makabaka.Messages
 	/// @某人
 	/// </summary>
 	/// <param name="qq">@的 QQ 号，all 表示全体成员</param>
+	/// <param name="name">[Lagrange拓展] @的名称</param>
 	[Segment(SegmentType.At)]
 	public class AtSegment(
-		string qq
+		string qq,
+		string? name = null
 		) : Segment<AtData>(
 			SegmentType.At.ToSerializedString(),
 			new()
 			{
-				Qq = qq
+				QQ = qq,
+				Name = name,
 			})
 	{
 		/// <summary>
 		/// 反序列化保留，请使用其它构造函数
 		/// </summary>
-		public AtSegment() : this(string.Empty)
+		public AtSegment() : this(string.Empty, null)
 		{
 		}
 
@@ -27,14 +30,15 @@ namespace Makabaka.Messages
 		/// @某人
 		/// </summary>
 		/// <param name="qq">@的 QQ 号</param>
-		public AtSegment(long qq) : this(qq.ToString())
+		/// <param name="name">[Lagrange拓展] @的名称</param>
+		public AtSegment(long qq, string? name = null) : this(qq.ToString(), name)
 		{
 		}
 
 		/// <inheritdoc/>
 		public override string ToString()
 		{
-			return $"[CQ:{Type},qq={CqCode.Escape(Data.Qq)}]";
+			return $"[CQ:{Type},qq={CqCode.Escape(Data.QQ)}]";
 		}
 	}
 }

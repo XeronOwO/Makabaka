@@ -10,19 +10,20 @@ namespace Makabaka.Messages
 		/// <summary>
 		/// QQ 音乐
 		/// </summary>
-		Qq,
+		[JsonPropertyName("qq")]
+		QQ,
 
 		/// <summary>
 		/// 网易云音乐
 		/// </summary>
 		[JsonPropertyName("163")]
-		Netease,
+		NetEase,
 
 		/// <summary>
 		/// 虾米音乐
 		/// </summary>
 		[JsonPropertyName("xm")]
-		Xiami,
+		XiaMi,
 
 		/// <summary>
 		/// 自定义音乐
