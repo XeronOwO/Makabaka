@@ -1,12 +1,10 @@
 ﻿using Makabaka.Events;
 using Makabaka.Messages;
-using Serilog.Context;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Makabaka.Test
 {
