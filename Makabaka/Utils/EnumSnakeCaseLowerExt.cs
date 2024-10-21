@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Reflection;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -18,10 +19,16 @@ namespace Makabaka.Utils
 		public static string ToSerializedString(this Enum @enum)
 		{
 			var type = @enum.GetType();
-			var jsonPropertyNameAttribute = type.GetCustomAttribute<JsonPropertyNameAttribute?>();
-			if (jsonPropertyNameAttribute != null)
+			var memberInfo = type.GetMember(@enum.ToString()).FirstOrDefault();
+
+			if (memberInfo != null)
 			{
-				return jsonPropertyNameAttribute.Name;
+				var attribute = memberInfo.GetCustomAttribute<JsonPropertyNameAttribute>();
+				if (attribute != null)
+				{
+					return attribute.Name;
+
+				}
 			}
 
 			return JsonNamingPolicy.SnakeCaseLower.ConvertName(@enum.ToString());
