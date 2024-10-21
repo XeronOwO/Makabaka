@@ -218,6 +218,12 @@ namespace Makabaka.Test
 						await reply.ReplyAsync([new TextSegment(JsonSerializer.Serialize(response, _jsonSerializerDisplayOptions))]);
 					}
 					return;
+				case "上传图片测试":
+					{
+						var url = (await botContext.UploadImageAsync(ImageSegment.FromFile("test.png").Data.File)).Result;
+						await reply.ReplyAsync([new TextSegment(url)]);
+					}
+					return;
 
 				default:
 					break;

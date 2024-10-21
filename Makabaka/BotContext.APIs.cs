@@ -554,5 +554,17 @@ namespace Makabaka
 				cancellationToken
 				);
 		}
+
+		public Task<APIResponse<string>> UploadImageAsync(
+			string file,
+			CancellationToken cancellationToken = default
+			)
+		{
+			return ExecuteAPIAsync<UploadImageRequestParams, string>(
+				"upload_image",
+				new(file),
+				cancellationToken
+				);
+		}
 	}
 }
