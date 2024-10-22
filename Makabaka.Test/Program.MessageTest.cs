@@ -158,6 +158,16 @@ namespace Makabaka.Test
 				return;
 			}
 
+			match = RenameGroupFolderTestRegex().Match(e.Message.ToString());
+			if (match.Success)
+			{
+				var folder = match.Groups["folder"].Value;
+				var name = match.Groups["name"].Value;
+				var data = (await e.Context.RenameGroupFolderAsync(e.GroupId, folder, name)).Result;
+				await e.ReplyAsync([new TextSegment(JsonSerializer.Serialize(data, _jsonSerializerDisplayOptions))]);
+				return;
+			}
+
 			await HandleMessageAsync(e.Message, e.MessageId, e.Context, e);
 		}
 
@@ -178,6 +188,9 @@ namespace Makabaka.Test
 
 		[GeneratedRegex(@"^删除群文件夹测试 (?<folder>[\S]+)$", RegexOptions.Compiled)]
 		private static partial Regex DeleteGroupFolderTestRegex();
+
+		[GeneratedRegex(@"^重命名群文件夹测试 (?<folder>[\S]+) (?<name>[\S]+)$", RegexOptions.Compiled)]
+		private static partial Regex RenameGroupFolderTestRegex();
 
 		private static readonly JsonSerializerOptions _jsonSerializerDisplayOptions = new()
 		{

@@ -675,5 +675,19 @@ namespace Makabaka
 				cancellationToken
 				);
 		}
+
+		public Task<APIResponse<GroupFileSystemOperationInfo>> RenameGroupFolderAsync(
+			long groupId,
+			string folderId,
+			string newFolderName,
+			CancellationToken cancellationToken = default
+			)
+		{
+			return ExecuteAPIAsync<RenameGroupFolderRequestParams, GroupFileSystemOperationInfo>(
+				"rename_group_file_folder",
+				new(groupId, folderId, newFolderName),
+				cancellationToken
+				);
+		}
 	}
 }

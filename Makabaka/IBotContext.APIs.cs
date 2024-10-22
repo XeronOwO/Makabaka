@@ -625,5 +625,20 @@ namespace Makabaka
 			string folderId,
 			CancellationToken cancellationToken = default
 			);
+
+		/// <summary>
+		/// 重命名群文件夹
+		/// </summary>
+		/// <param name="groupId">群聊 ID</param>
+		/// <param name="folderId">文件夹 ID</param>
+		/// <param name="newFolderName">新文件夹名称</param>
+		/// <param name="cancellationToken">取消令牌</param>
+		/// <returns>重命名群文件夹异步任务</returns>
+		Task<APIResponse<GroupFileSystemOperationInfo>> RenameGroupFolderAsync(
+			long groupId,
+			string folderId,
+			string newFolderName,
+			CancellationToken cancellationToken = default
+			);
 	}
 }
