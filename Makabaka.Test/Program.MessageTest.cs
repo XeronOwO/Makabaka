@@ -1,6 +1,5 @@
 ﻿using Makabaka.Events;
 using Makabaka.Messages;
-using Serilog.Context;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
@@ -22,7 +21,7 @@ namespace Makabaka.Test
 				await e.ReplyAsync([new TextSegment(ex.Message)]);
 			}
 		}
-		
+
 		private static async Task OnPrivateMessageInternal(object sender, PrivateMessageEventArgs e)
 		{
 			switch (e.Message.ToString())

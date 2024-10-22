@@ -1,5 +1,4 @@
 ﻿using Makabaka.Utils;
-using System.Text;
 
 namespace Makabaka.Messages
 {
