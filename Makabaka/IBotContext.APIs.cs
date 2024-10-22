@@ -719,5 +719,22 @@ namespace Makabaka
 			uint enable,
 			CancellationToken cancellationToken = default
 			);
+
+		/// <summary>
+		/// 发送群聊机器人回调
+		/// </summary>
+		/// <param name="groupId">群聊 ID</param>
+		/// <param name="botId">机器人 ID</param>
+		/// <param name="data_1">参数1</param>
+		/// <param name="data_2">参数2</param>
+		/// <param name="cancellationToken">取消令牌</param>
+		/// <returns>发送群聊机器人回调异步任务</returns>
+		Task<APIResponse<long>> SendGroupBotCallbackAsync(
+			long groupId,
+			long botId,
+			string? data_1 = null,
+			string? data_2 = null,
+			CancellationToken cancellationToken = default
+			);
 	}
 }

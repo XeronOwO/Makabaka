@@ -766,5 +766,20 @@ namespace Makabaka
 				cancellationToken
 				);
 		}
+
+		public Task<APIResponse<long>> SendGroupBotCallbackAsync(
+			long groupId,
+			long botId,
+			string? data_1 = null,
+			string? data_2 = null,
+			CancellationToken cancellationToken = default
+			)
+		{
+			return ExecuteAPIAsync<SendGroupBotCallbackRequestParams, long>(
+				"send_group_bot_callback",
+				new(groupId, botId, data_1, data_2),
+				cancellationToken
+				);
+		}
 	}
 }
