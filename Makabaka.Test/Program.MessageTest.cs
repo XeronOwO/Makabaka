@@ -106,6 +106,15 @@ namespace Makabaka.Test
 				return;
 			}
 
+			match = DeleteGroupFilesTestRegex().Match(e.Message.ToString());
+			if (match.Success)
+			{
+				var file = match.Groups["file"].Value;
+				var data = (await e.Context.DeleteGroupFileAsync(e.GroupId, file)).Result;
+				await e.ReplyAsync([new TextSegment(JsonSerializer.Serialize(data, _jsonSerializerDisplayOptions))]);
+				return;
+			}
+
 			await HandleMessageAsync(e.Message, e.MessageId, e.Context, e);
 		}
 
@@ -117,6 +126,9 @@ namespace Makabaka.Test
 
 		[GeneratedRegex(@"^移动群文件测试 (?<file>[\S]+) (?<src>[\S]+) (?<dst>[\S]+)$", RegexOptions.Compiled)]
 		private static partial Regex MoveGroupFilesTestRegex();
+
+		[GeneratedRegex(@"^删除群文件测试 (?<file>[\S]+)$", RegexOptions.Compiled)]
+		private static partial Regex DeleteGroupFilesTestRegex();
 
 		private static readonly JsonSerializerOptions _jsonSerializerDisplayOptions = new()
 		{

@@ -577,11 +577,24 @@ namespace Makabaka
 		/// <param name="targetDirectory">目标文件夹</param>
 		/// <param name="cancellationToken">取消令牌</param>
 		/// <returns>移动群文件异步任务</returns>
-		Task<APIResponse<MoveGroupFileInfo>> MoveGroupFileAsync(
+		Task<APIResponse<OperateGroupFileInfo>> MoveGroupFileAsync(
 			long groupId,
 			string fileId,
 			string parentDirectory,
 			string targetDirectory,
+			CancellationToken cancellationToken = default
+			);
+
+		/// <summary>
+		/// 删除群文件
+		/// </summary>
+		/// <param name="groupId">群聊 ID</param>
+		/// <param name="fileId">文件 ID</param>
+		/// <param name="cancellationToken">取消令牌</param>
+		/// <returns>删除群文件异步任务</returns>
+		Task<APIResponse<OperateGroupFileInfo>> DeleteGroupFileAsync(
+			long groupId,
+			string fileId,
 			CancellationToken cancellationToken = default
 			);
 	}

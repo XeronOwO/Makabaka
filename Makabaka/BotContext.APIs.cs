@@ -620,7 +620,7 @@ namespace Makabaka
 				);
 		}
 
-		public Task<APIResponse<MoveGroupFileInfo>> MoveGroupFileAsync(
+		public Task<APIResponse<OperateGroupFileInfo>> MoveGroupFileAsync(
 			long groupId,
 			string fileId,
 			string parentDirectory,
@@ -628,9 +628,22 @@ namespace Makabaka
 			CancellationToken cancellationToken = default
 			)
 		{
-			return ExecuteAPIAsync<MoveGroupFileRequestParams, MoveGroupFileInfo>(
+			return ExecuteAPIAsync<MoveGroupFileRequestParams, OperateGroupFileInfo>(
 				"move_group_file",
 				new(groupId, fileId, parentDirectory, targetDirectory),
+				cancellationToken
+				);
+		}
+
+		public Task<APIResponse<OperateGroupFileInfo>> DeleteGroupFileAsync(
+			long groupId,
+			string fileId,
+			CancellationToken cancellationToken = default
+			)
+		{
+			return ExecuteAPIAsync<DeleteGroupFileRequestParams, OperateGroupFileInfo>(
+				"delete_group_file",
+				new(groupId, fileId),
 				cancellationToken
 				);
 		}
