@@ -6,6 +6,7 @@ using Makabaka.Models;
 using Makabaka.Utils;
 using System;
 using System.Collections.Concurrent;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Linq;
@@ -686,6 +687,20 @@ namespace Makabaka
 			return ExecuteAPIAsync<RenameGroupFolderRequestParams, GroupFileSystemOperationInfo>(
 				"rename_group_file_folder",
 				new(groupId, folderId, newFolderName),
+				cancellationToken
+				);
+		}
+
+		public Task<APIResponse> UploadPrivateFileAsync(
+			long userId,
+			string file,
+			string? name = null,
+			CancellationToken cancellationToken = default
+			)
+		{
+			return ExecuteAPIAsync<UploadPrivateFileRequestParams>(
+				"upload_private_file",
+				new(userId, file, name),
 				cancellationToken
 				);
 		}

@@ -22,13 +22,22 @@ namespace Makabaka.Test
 			}
 		}
 		
-		private static Task OnPrivateMessageInternal(object sender, PrivateMessageEventArgs e)
+		private static async Task OnPrivateMessageInternal(object sender, PrivateMessageEventArgs e)
 		{
-			return e.Message.ToString() switch
+			switch (e.Message.ToString())
 			{
-				"联系人测试" => e.ReplyAsync([new ContactSegment(ContactType.QQ, e.Sender.UserId)]),
-				_ => HandleMessageAsync(e.Message, e.MessageId, e.Context, e),
-			};
+				case "联系人测试":
+					await e.ReplyAsync([new ContactSegment(ContactType.QQ, e.Sender.UserId)]);
+					return;
+				case "上传私聊文件测试":
+					var fileInfo = new FileInfo("test.png");
+					await e.Context.UploadPrivateFileAsync(e.Sender.UserId, fileInfo.FullName);
+					return;
+				default:
+					break;
+			}
+
+			await HandleMessageAsync(e.Message, e.MessageId, e.Context, e);
 		}
 
 		private static async Task OnGroupMessage(object sender, GroupMessageEventArgs e)

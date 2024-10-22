@@ -640,5 +640,20 @@ namespace Makabaka
 			string newFolderName,
 			CancellationToken cancellationToken = default
 			);
+
+		/// <summary>
+		/// 上传私聊文件
+		/// </summary>
+		/// <param name="userId">QQ</param>
+		/// <param name="file">文件路径</param>
+		/// <param name="name">名称</param>
+		/// <param name="cancellationToken">取消令牌</param>
+		/// <returns>上传私聊文件异步任务</returns>
+		Task<APIResponse> UploadPrivateFileAsync(
+			long userId,
+			string file,
+			string? name = null,
+			CancellationToken cancellationToken = default
+			);
 	}
 }
