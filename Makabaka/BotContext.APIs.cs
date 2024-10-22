@@ -752,5 +752,19 @@ namespace Makabaka
 				cancellationToken
 				);
 		}
+
+		public Task<APIResponse<long>> SetGroupBotAsync(
+			long groupId,
+			long botId,
+			uint enable,
+			CancellationToken cancellationToken = default
+			)
+		{
+			return ExecuteAPIAsync<SetGroupBotRequestParams, long>(
+				"set_group_bot_status",
+				new(groupId, botId, enable),
+				cancellationToken
+				);
+		}
 	}
 }
