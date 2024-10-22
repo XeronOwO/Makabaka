@@ -740,5 +740,17 @@ namespace Makabaka
 				cancellationToken
 				);
 		}
+
+		public Task<APIResponse<GroupNoticeInfo[]>> GetGroupNoticeAsync(
+			long groupId,
+			CancellationToken cancellationToken = default
+			)
+		{
+			return ExecuteAPIAsync<GetGroupNoticeRequestParams, GroupNoticeInfo[]>(
+				"_get_group_notice",
+				new(groupId),
+				cancellationToken
+				);
+		}
 	}
 }

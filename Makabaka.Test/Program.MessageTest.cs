@@ -1,5 +1,6 @@
 ﻿using Makabaka.Events;
 using Makabaka.Messages;
+using Serilog.Context;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
@@ -98,6 +99,12 @@ namespace Makabaka.Test
 						var fileInfo = new FileInfo("test.png");
 						var response = await e.Context.UploadGroupFileAsync(e.GroupId, fileInfo.FullName);
 						await e.ReplyAsync([new TextSegment(JsonSerializer.Serialize(response, _jsonSerializerDisplayOptions))]);
+					}
+					return;
+				case "获取群公告测试":
+					{
+						var data = (await e.Context.GetGroupNoticeAsync(e.GroupId)).Result;
+						await e.ReplyAsync([new TextSegment(JsonSerializer.Serialize(data, _jsonSerializerDisplayOptions))]);
 					}
 					return;
 				default:

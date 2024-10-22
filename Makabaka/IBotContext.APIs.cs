@@ -693,5 +693,16 @@ namespace Makabaka
 			string noticeId,
 			CancellationToken cancellationToken = default
 			);
+
+		/// <summary>
+		/// 获取群公告
+		/// </summary>
+		/// <param name="groupId">群聊 ID</param>
+		/// <param name="cancellationToken">取消令牌</param>
+		/// <returns>获取群公告异步任务</returns>
+		Task<APIResponse<GroupNoticeInfo[]>> GetGroupNoticeAsync(
+			long groupId,
+			CancellationToken cancellationToken = default
+			);
 	}
 }
