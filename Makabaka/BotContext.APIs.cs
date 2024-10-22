@@ -11,6 +11,7 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Makabaka
 {
@@ -793,6 +794,19 @@ namespace Makabaka
 			return ExecuteAPIAsync<CreateGroupNoticeRequestParams, string>(
 			"_send_group_notice",
 				new(groupId, content, image),
+				cancellationToken
+				);
+		}
+
+		public Task<APIResponse> SetGroupPortraitAsync(
+			long groupId,
+			string file,
+			CancellationToken cancellationToken = default
+			)
+		{
+			return ExecuteAPIAsync<SetGroupPortraitRequestParams>(
+			"_send_group_notice",
+				new(groupId, file),
 				cancellationToken
 				);
 		}
