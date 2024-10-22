@@ -216,8 +216,6 @@ namespace Makabaka.Test
 		{
 			switch (message.ToString())
 			{
-				/* ===== 段消息测试 ===== */
-
 				case "骰子测试":
 					await reply.ReplyAsync([new DiceSegment()]);
 					return;
@@ -260,9 +258,6 @@ namespace Makabaka.Test
 				case "图片测试":
 					await reply.ReplyAsync([ImageSegment.FromFile("test.png")]);
 					return;
-
-				/* ===== API 测试 ===== */
-
 				case "撤回消息测试":
 					{
 						var data = (await reply.ReplyAsync([new TextSegment("撤回测试")])).Result;
@@ -357,6 +352,12 @@ namespace Makabaka.Test
 					{
 						var url = (await botContext.UploadImageAsync(ImageSegment.FromFile("test.png").Data.File)).Result;
 						await reply.ReplyAsync([new TextSegment(url)]);
+					}
+					return;
+				case "获取自定义表情包测试":
+					{
+						var data = (await botContext.FetchCustomFaceAsync()).Result;
+						await reply.ReplyAsync([new TextSegment(JsonSerializer.Serialize(data, _jsonSerializerDisplayOptions))]);
 					}
 					return;
 

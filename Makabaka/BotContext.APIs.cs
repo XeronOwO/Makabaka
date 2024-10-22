@@ -704,5 +704,16 @@ namespace Makabaka
 				cancellationToken
 				);
 		}
+
+		public Task<APIResponse<string[]>> FetchCustomFaceAsync(
+			CancellationToken cancellationToken = default
+			)
+		{
+			return ExecuteAPIAsync<EmptyRequestParams, string[]>(
+				"fetch_custom_face",
+				new(),
+				cancellationToken
+				);
+		}
 	}
 }

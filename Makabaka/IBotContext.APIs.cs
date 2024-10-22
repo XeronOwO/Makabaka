@@ -655,5 +655,14 @@ namespace Makabaka
 			string? name = null,
 			CancellationToken cancellationToken = default
 			);
+
+		/// <summary>
+		/// 获取自定义表情包
+		/// </summary>
+		/// <param name="cancellationToken">取消令牌</param>
+		/// <returns>获取自定义表情包异步任务</returns>
+		Task<APIResponse<string[]>> FetchCustomFaceAsync(
+			CancellationToken cancellationToken = default
+			);
 	}
 }
