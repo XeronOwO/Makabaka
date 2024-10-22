@@ -736,5 +736,20 @@ namespace Makabaka
 			string? data_2 = null,
 			CancellationToken cancellationToken = default
 			);
+
+		/// <summary>
+		/// 创建群公告
+		/// </summary>
+		/// <param name="groupId">群聊 ID</param>
+		/// <param name="content">内容</param>
+		/// <param name="image">图片</param>
+		/// <param name="cancellationToken">取消令牌</param>
+		/// <returns>发送群聊机器人回调异步任务，返回公告 ID</returns>
+		Task<APIResponse<string>> CreateGroupNoticeAsync(
+			long groupId,
+			string content,
+			string? image = null,
+			CancellationToken cancellationToken = default
+			);
 	}
 }

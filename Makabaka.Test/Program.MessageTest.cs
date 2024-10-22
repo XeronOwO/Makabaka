@@ -107,6 +107,12 @@ namespace Makabaka.Test
 						await e.ReplyAsync([new TextSegment(JsonSerializer.Serialize(data, _jsonSerializerDisplayOptions))]);
 					}
 					return;
+				case "创建群公告测试":
+					{
+						var data = (await e.Context.CreateGroupNoticeAsync(e.GroupId, "测试公告")).Result;
+						await e.ReplyAsync([new TextSegment(JsonSerializer.Serialize(data, _jsonSerializerDisplayOptions))]);
+					}
+					return;
 				default:
 					break;
 			}
@@ -184,6 +190,15 @@ namespace Makabaka.Test
 				return;
 			}
 
+			match = DeleteGroupNoticeTestRegex().Match(e.Message.ToString());
+			if (match.Success)
+			{
+				var notice = match.Groups["notice"].Value;
+				var response = await e.Context.DeleteGroupNoticeAsync(e.GroupId, notice);
+				await e.ReplyAsync([new TextSegment(JsonSerializer.Serialize(response, _jsonSerializerDisplayOptions))]);
+				return;
+			}
+
 			await HandleMessageAsync(e.Message, e.MessageId, e.Context, e);
 		}
 
@@ -207,6 +222,9 @@ namespace Makabaka.Test
 
 		[GeneratedRegex(@"^重命名群文件夹测试 (?<folder>[\S]+) (?<name>[\S]+)$", RegexOptions.Compiled)]
 		private static partial Regex RenameGroupFolderTestRegex();
+
+		[GeneratedRegex(@"^删除群公告测试 (?<notice>[\S]+)$", RegexOptions.Compiled)]
+		private static partial Regex DeleteGroupNoticeTestRegex();
 
 		private static readonly JsonSerializerOptions _jsonSerializerDisplayOptions = new()
 		{

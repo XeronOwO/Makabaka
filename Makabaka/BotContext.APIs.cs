@@ -6,6 +6,7 @@ using Makabaka.Models;
 using Makabaka.Utils;
 using System;
 using System.Collections.Concurrent;
+using System.Security.Cryptography;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
@@ -778,6 +779,20 @@ namespace Makabaka
 			return ExecuteAPIAsync<SendGroupBotCallbackRequestParams, long>(
 				"send_group_bot_callback",
 				new(groupId, botId, data_1, data_2),
+				cancellationToken
+				);
+		}
+
+		public Task<APIResponse<string>> CreateGroupNoticeAsync(
+			long groupId,
+			string content,
+			string? image = null,
+			CancellationToken cancellationToken = default
+			)
+		{
+			return ExecuteAPIAsync<CreateGroupNoticeRequestParams, string>(
+			"_send_group_notice",
+				new(groupId, content, image),
 				cancellationToken
 				);
 		}
