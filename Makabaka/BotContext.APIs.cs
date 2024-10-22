@@ -727,5 +727,18 @@ namespace Makabaka
 				cancellationToken
 				);
 		}
+
+		public Task<APIResponse> DeleteGroupNoticeAsync(
+			long groupId,
+			string noticeId,
+			CancellationToken cancellationToken = default
+			)
+		{
+			return ExecuteAPIAsync<DeleteGroupNoticeRequestParams>(
+				"_del_group_notice",
+				new(groupId, noticeId),
+				cancellationToken
+				);
+		}
 	}
 }

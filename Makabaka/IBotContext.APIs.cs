@@ -680,5 +680,18 @@ namespace Makabaka
 			string file,
 			CancellationToken cancellationToken = default
 			);
+
+		/// <summary>
+		/// 删除群公告
+		/// </summary>
+		/// <param name="groupId">群聊 ID</param>
+		/// <param name="noticeId">公告 ID</param>
+		/// <param name="cancellationToken">取消令牌</param>
+		/// <returns>删除群公告异步任务</returns>
+		Task<APIResponse> DeleteGroupNoticeAsync(
+			long groupId,
+			string noticeId,
+			CancellationToken cancellationToken = default
+			);
 	}
 }
