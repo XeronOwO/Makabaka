@@ -3,9 +3,9 @@
 namespace Makabaka.Models
 {
 	/// <summary>
-	/// 群文件信息
+	/// 上传群文件信息
 	/// </summary>
-	public class GroupUploadFileInfo
+	public class UploadGroupFileInfo
 	{
 		/// <summary>
 		/// 文件 ID

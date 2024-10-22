@@ -567,5 +567,22 @@ namespace Makabaka
 			uint busid,
 			CancellationToken cancellationToken = default
 			);
+
+		/// <summary>
+		/// 移动群文件
+		/// </summary>
+		/// <param name="groupId">群聊 ID</param>
+		/// <param name="fileId">文件 ID</param>
+		/// <param name="parentDirectory">原文件夹</param>
+		/// <param name="targetDirectory">目标文件夹</param>
+		/// <param name="cancellationToken">取消令牌</param>
+		/// <returns>移动群文件异步任务</returns>
+		Task<APIResponse<MoveGroupFileInfo>> MoveGroupFileAsync(
+			long groupId,
+			string fileId,
+			string parentDirectory,
+			string targetDirectory,
+			CancellationToken cancellationToken = default
+			);
 	}
 }

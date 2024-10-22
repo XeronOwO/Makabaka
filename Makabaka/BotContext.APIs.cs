@@ -619,5 +619,20 @@ namespace Makabaka
 				cancellationToken
 				);
 		}
+
+		public Task<APIResponse<MoveGroupFileInfo>> MoveGroupFileAsync(
+			long groupId,
+			string fileId,
+			string parentDirectory,
+			string targetDirectory,
+			CancellationToken cancellationToken = default
+			)
+		{
+			return ExecuteAPIAsync<MoveGroupFileRequestParams, MoveGroupFileInfo>(
+				"move_group_file",
+				new(groupId, fileId, parentDirectory, targetDirectory),
+				cancellationToken
+				);
+		}
 	}
 }

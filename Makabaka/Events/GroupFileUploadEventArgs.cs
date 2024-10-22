@@ -20,6 +20,6 @@ namespace Makabaka.Events
 		/// <summary>
 		/// 文件信息
 		/// </summary>
-		public GroupUploadFileInfo File { get; set; } = new();
+		public UploadGroupFileInfo File { get; set; } = new();
 	}
 }

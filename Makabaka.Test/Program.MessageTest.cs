@@ -95,6 +95,17 @@ namespace Makabaka.Test
 				return;
 			}
 
+			match = MoveGroupFilesTestRegex().Match(e.Message.ToString());
+			if (match.Success)
+			{
+				var file = match.Groups["file"].Value;
+				var src = match.Groups["src"].Value;
+				var dst = match.Groups["dst"].Value;
+				var data = (await e.Context.MoveGroupFileAsync(e.GroupId, file, src, dst)).Result;
+				await e.ReplyAsync([new TextSegment(JsonSerializer.Serialize(data, _jsonSerializerDisplayOptions))]);
+				return;
+			}
+
 			await HandleMessageAsync(e.Message, e.MessageId, e.Context, e);
 		}
 
@@ -103,6 +114,9 @@ namespace Makabaka.Test
 
 		[GeneratedRegex(@"^获取群文件URL测试 (?<file>[\S]+) (?<bus>[\S]+)$", RegexOptions.Compiled)]
 		private static partial Regex GetGroupFileUrlTestRegex();
+
+		[GeneratedRegex(@"^移动群文件测试 (?<file>[\S]+) (?<src>[\S]+) (?<dst>[\S]+)$", RegexOptions.Compiled)]
+		private static partial Regex MoveGroupFilesTestRegex();
 
 		private static readonly JsonSerializerOptions _jsonSerializerDisplayOptions = new()
 		{
