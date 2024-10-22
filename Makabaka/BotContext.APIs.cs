@@ -715,5 +715,17 @@ namespace Makabaka
 				cancellationToken
 				);
 		}
+
+		public Task<APIResponse> SetQQAvatarAsync(
+			string file,
+			CancellationToken cancellationToken = default
+			)
+		{
+			return ExecuteAPIAsync<SetQQAvatarRequestParams>(
+				"set_qq_avatar",
+				new(file),
+				cancellationToken
+				);
+		}
 	}
 }
