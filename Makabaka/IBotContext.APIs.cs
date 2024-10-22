@@ -612,5 +612,18 @@ namespace Makabaka
 			string parentId = "",
 			CancellationToken cancellationToken = default
 			);
+
+		/// <summary>
+		/// 删除群文件夹
+		/// </summary>
+		/// <param name="groupId">群聊 ID</param>
+		/// <param name="folderId">文件夹 ID</param>
+		/// <param name="cancellationToken">取消令牌</param>
+		/// <returns>删除群文件夹异步任务</returns>
+		Task<APIResponse<GroupFileSystemOperationInfo>> DeleteGroupFolderAsync(
+			long groupId,
+			string folderId,
+			CancellationToken cancellationToken = default
+			);
 	}
 }

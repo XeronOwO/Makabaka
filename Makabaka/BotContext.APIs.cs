@@ -8,6 +8,7 @@ using System;
 using System.Collections.Concurrent;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace Makabaka
 {
@@ -658,6 +659,19 @@ namespace Makabaka
 			return ExecuteAPIAsync<CreateGroupFolderRequestParams, GroupFileSystemOperationInfo>(
 				"create_group_file_folder",
 				new(groupId, name, parentId),
+				cancellationToken
+				);
+		}
+
+		public Task<APIResponse<GroupFileSystemOperationInfo>> DeleteGroupFolderAsync(
+			long groupId,
+			string folderId,
+			CancellationToken cancellationToken = default
+			)
+		{
+			return ExecuteAPIAsync<DeleteGroupFolderRequestParams, GroupFileSystemOperationInfo>(
+				"delete_group_file_folder",
+				new(groupId, folderId),
 				cancellationToken
 				);
 		}

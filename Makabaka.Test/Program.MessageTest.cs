@@ -142,9 +142,18 @@ namespace Makabaka.Test
 			match = CreateGroupFolderTestRegex().Match(e.Message.ToString());
 			if (match.Success)
 			{
-				var file = match.Groups["name"].Value;
+				var name = match.Groups["name"].Value;
 				var parent = match.Groups["parent"].Value;
-				var data = (await e.Context.CreateGroupFolderAsync(e.GroupId, file, parent)).Result;
+				var data = (await e.Context.CreateGroupFolderAsync(e.GroupId, name, parent)).Result;
+				await e.ReplyAsync([new TextSegment(JsonSerializer.Serialize(data, _jsonSerializerDisplayOptions))]);
+				return;
+			}
+
+			match = DeleteGroupFolderTestRegex().Match(e.Message.ToString());
+			if (match.Success)
+			{
+				var folder = match.Groups["folder"].Value;
+				var data = (await e.Context.DeleteGroupFolderAsync(e.GroupId, folder)).Result;
 				await e.ReplyAsync([new TextSegment(JsonSerializer.Serialize(data, _jsonSerializerDisplayOptions))]);
 				return;
 			}
@@ -166,6 +175,9 @@ namespace Makabaka.Test
 
 		[GeneratedRegex(@"^创建群文件夹测试 (?<name>[\S]+) (?<parent>[\S]+)$", RegexOptions.Compiled)]
 		private static partial Regex CreateGroupFolderTestRegex();
+
+		[GeneratedRegex(@"^删除群文件夹测试 (?<folder>[\S]+)$", RegexOptions.Compiled)]
+		private static partial Regex DeleteGroupFolderTestRegex();
 
 		private static readonly JsonSerializerOptions _jsonSerializerDisplayOptions = new()
 		{
