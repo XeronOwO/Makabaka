@@ -577,7 +577,7 @@ namespace Makabaka
 		/// <param name="targetDirectory">目标文件夹</param>
 		/// <param name="cancellationToken">取消令牌</param>
 		/// <returns>移动群文件异步任务</returns>
-		Task<APIResponse<OperateGroupFileInfo>> MoveGroupFileAsync(
+		Task<APIResponse<GroupFileSystemOperationInfo>> MoveGroupFileAsync(
 			long groupId,
 			string fileId,
 			string parentDirectory,
@@ -592,9 +592,24 @@ namespace Makabaka
 		/// <param name="fileId">文件 ID</param>
 		/// <param name="cancellationToken">取消令牌</param>
 		/// <returns>删除群文件异步任务</returns>
-		Task<APIResponse<OperateGroupFileInfo>> DeleteGroupFileAsync(
+		Task<APIResponse<GroupFileSystemOperationInfo>> DeleteGroupFileAsync(
 			long groupId,
 			string fileId,
+			CancellationToken cancellationToken = default
+			);
+
+		/// <summary>
+		/// 创建群文件夹
+		/// </summary>
+		/// <param name="groupId">群聊 ID</param>
+		/// <param name="name">文件夹名称</param>
+		/// <param name="parentId">父级文件夹 ID</param>
+		/// <param name="cancellationToken">取消令牌</param>
+		/// <returns>创建群文件夹异步任务</returns>
+		Task<APIResponse<GroupFileSystemOperationInfo>> CreateGroupFolderAsync(
+			long groupId,
+			string name,
+			string parentId = "",
 			CancellationToken cancellationToken = default
 			);
 	}

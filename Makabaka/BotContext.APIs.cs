@@ -620,7 +620,7 @@ namespace Makabaka
 				);
 		}
 
-		public Task<APIResponse<OperateGroupFileInfo>> MoveGroupFileAsync(
+		public Task<APIResponse<GroupFileSystemOperationInfo>> MoveGroupFileAsync(
 			long groupId,
 			string fileId,
 			string parentDirectory,
@@ -628,22 +628,36 @@ namespace Makabaka
 			CancellationToken cancellationToken = default
 			)
 		{
-			return ExecuteAPIAsync<MoveGroupFileRequestParams, OperateGroupFileInfo>(
+			return ExecuteAPIAsync<MoveGroupFileRequestParams, GroupFileSystemOperationInfo>(
 				"move_group_file",
 				new(groupId, fileId, parentDirectory, targetDirectory),
 				cancellationToken
 				);
 		}
 
-		public Task<APIResponse<OperateGroupFileInfo>> DeleteGroupFileAsync(
+		public Task<APIResponse<GroupFileSystemOperationInfo>> DeleteGroupFileAsync(
 			long groupId,
 			string fileId,
 			CancellationToken cancellationToken = default
 			)
 		{
-			return ExecuteAPIAsync<DeleteGroupFileRequestParams, OperateGroupFileInfo>(
+			return ExecuteAPIAsync<DeleteGroupFileRequestParams, GroupFileSystemOperationInfo>(
 				"delete_group_file",
 				new(groupId, fileId),
+				cancellationToken
+				);
+		}
+
+		public Task<APIResponse<GroupFileSystemOperationInfo>> CreateGroupFolderAsync(
+			long groupId,
+			string name,
+			string parentId = "",
+			CancellationToken cancellationToken = default
+			)
+		{
+			return ExecuteAPIAsync<CreateGroupFolderRequestParams, GroupFileSystemOperationInfo>(
+				"create_group_file_folder",
+				new(groupId, name, parentId),
 				cancellationToken
 				);
 		}

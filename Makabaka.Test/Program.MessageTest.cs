@@ -10,7 +10,19 @@ namespace Makabaka.Test
 {
 	internal partial class Program
 	{
-		private static Task OnPrivateMessage(object sender, PrivateMessageEventArgs e)
+		private static async Task OnPrivateMessage(object sender, PrivateMessageEventArgs e)
+		{
+			try
+			{
+				await OnPrivateMessageInternal(sender, e);
+			}
+			catch (Exception ex)
+			{
+				await e.ReplyAsync([new TextSegment(ex.Message)]);
+			}
+		}
+		
+		private static Task OnPrivateMessageInternal(object sender, PrivateMessageEventArgs e)
 		{
 			return e.Message.ToString() switch
 			{
@@ -20,6 +32,18 @@ namespace Makabaka.Test
 		}
 
 		private static async Task OnGroupMessage(object sender, GroupMessageEventArgs e)
+		{
+			try
+			{
+				await OnGroupMessageInternal(sender, e);
+			}
+			catch (Exception ex)
+			{
+				await e.ReplyAsync([new TextSegment(ex.Message)]);
+			}
+		}
+
+		private static async Task OnGroupMessageInternal(object sender, GroupMessageEventArgs e)
 		{
 			switch (e.Message.ToString())
 			{
@@ -95,7 +119,7 @@ namespace Makabaka.Test
 				return;
 			}
 
-			match = MoveGroupFilesTestRegex().Match(e.Message.ToString());
+			match = MoveGroupFileTestRegex().Match(e.Message.ToString());
 			if (match.Success)
 			{
 				var file = match.Groups["file"].Value;
@@ -106,11 +130,21 @@ namespace Makabaka.Test
 				return;
 			}
 
-			match = DeleteGroupFilesTestRegex().Match(e.Message.ToString());
+			match = DeleteGroupFileTestRegex().Match(e.Message.ToString());
 			if (match.Success)
 			{
 				var file = match.Groups["file"].Value;
 				var data = (await e.Context.DeleteGroupFileAsync(e.GroupId, file)).Result;
+				await e.ReplyAsync([new TextSegment(JsonSerializer.Serialize(data, _jsonSerializerDisplayOptions))]);
+				return;
+			}
+
+			match = CreateGroupFolderTestRegex().Match(e.Message.ToString());
+			if (match.Success)
+			{
+				var file = match.Groups["name"].Value;
+				var parent = match.Groups["parent"].Value;
+				var data = (await e.Context.CreateGroupFolderAsync(e.GroupId, file, parent)).Result;
 				await e.ReplyAsync([new TextSegment(JsonSerializer.Serialize(data, _jsonSerializerDisplayOptions))]);
 				return;
 			}
@@ -125,10 +159,13 @@ namespace Makabaka.Test
 		private static partial Regex GetGroupFileUrlTestRegex();
 
 		[GeneratedRegex(@"^移动群文件测试 (?<file>[\S]+) (?<src>[\S]+) (?<dst>[\S]+)$", RegexOptions.Compiled)]
-		private static partial Regex MoveGroupFilesTestRegex();
+		private static partial Regex MoveGroupFileTestRegex();
 
 		[GeneratedRegex(@"^删除群文件测试 (?<file>[\S]+)$", RegexOptions.Compiled)]
-		private static partial Regex DeleteGroupFilesTestRegex();
+		private static partial Regex DeleteGroupFileTestRegex();
+
+		[GeneratedRegex(@"^创建群文件夹测试 (?<name>[\S]+) (?<parent>[\S]+)$", RegexOptions.Compiled)]
+		private static partial Regex CreateGroupFolderTestRegex();
 
 		private static readonly JsonSerializerOptions _jsonSerializerDisplayOptions = new()
 		{

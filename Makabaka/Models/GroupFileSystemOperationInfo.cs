@@ -3,9 +3,9 @@
 namespace Makabaka.Models
 {
 	/// <summary>
-	/// 操作群文件信息
+	/// 群文件系统操作信息
 	/// </summary>
-	public class OperateGroupFileInfo
+	public class GroupFileSystemOperationInfo
 	{
 		/// <summary>
 		/// 消息
