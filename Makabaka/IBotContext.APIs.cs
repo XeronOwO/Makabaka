@@ -769,5 +769,16 @@ namespace Makabaka
 			string file,
 			CancellationToken cancellationToken = default
 			);
+
+		/// <summary>
+		/// 删除精华消息
+		/// </summary>
+		/// <param name="messageId">消息 ID</param>
+		/// <param name="cancellationToken">取消令牌</param>
+		/// <returns>删除精华消息异步任务</returns>
+		Task<APIResponse> DeleteEssenceMessageAsync(
+			long messageId,
+			CancellationToken cancellationToken = default
+			);
 	}
 }

@@ -6,6 +6,7 @@ using Makabaka.Models;
 using Makabaka.Utils;
 using System;
 using System.Collections.Concurrent;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -803,6 +804,18 @@ namespace Makabaka
 			return ExecuteAPIAsync<SetGroupPortraitRequestParams>(
 			"_send_group_notice",
 				new(groupId, file),
+				cancellationToken
+				);
+		}
+
+		public Task<APIResponse> DeleteEssenceMessageAsync(
+			long messageId,
+			CancellationToken cancellationToken = default
+			)
+		{
+			return ExecuteAPIAsync<MessageIdRequestParams>(
+			"delete_essence_msg",
+				new(messageId),
 				cancellationToken
 				);
 		}
