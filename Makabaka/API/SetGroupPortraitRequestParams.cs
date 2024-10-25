@@ -3,7 +3,7 @@
 	/// <summary>
 	/// 设置群聊头像请求参数
 	/// </summary>
-	/// <param name="GroupId">群聊 ID</param>
+	/// <param name="GroupId">群号</param>
 	/// <param name="File">
 	/// file 参数除了支持使用收到的图片文件名直接发送外，还支持：<br/>
 	/// - 绝对路径，例如 file:///C:\\Users\Richard\Pictures\1.png，格式使用 <a href="https://tools.ietf.org/html/rfc8089">file URI</a><br/>

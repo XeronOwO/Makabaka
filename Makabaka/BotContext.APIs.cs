@@ -419,7 +419,7 @@ namespace Makabaka
 			CancellationToken cancellationToken = default
 			)
 		{
-			return ExecuteAPIAsync<GetGroupMemberListRequestParams, GroupMemberInfo[]>(
+			return ExecuteAPIAsync<GroupIdRequestParams, GroupMemberInfo[]>(
 				"get_group_member_list",
 				new(groupId),
 				cancellationToken
@@ -745,7 +745,7 @@ namespace Makabaka
 			CancellationToken cancellationToken = default
 			)
 		{
-			return ExecuteAPIAsync<GetGroupNoticeRequestParams, GroupNoticeInfo[]>(
+			return ExecuteAPIAsync<GroupIdRequestParams, GroupNoticeInfo[]>(
 				"_get_group_notice",
 				new(groupId),
 				cancellationToken
@@ -828,6 +828,18 @@ namespace Makabaka
 			return ExecuteAPIAsync<FriendPokeRequestParams>(
 			"friend_poke",
 				new(userId),
+				cancellationToken
+				);
+		}
+
+		public Task<APIResponse<EssenceMessageSegment[]>> GetGroupEssenceMessageListAsync(
+			long groupId,
+			CancellationToken cancellationToken = default
+			)
+		{
+			return ExecuteAPIAsync<GroupIdRequestParams, EssenceMessageSegment[]>(
+			"get_essence_msg_list",
+				new(groupId),
 				cancellationToken
 				);
 		}

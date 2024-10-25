@@ -115,6 +115,20 @@ namespace Makabaka.Test
 						await e.ReplyAsync([new TextSegment(JsonSerializer.Serialize(data, _jsonSerializerDisplayOptions))]);
 					}
 					return;
+				case "获取群精华消息测试":
+					{
+						var segments = (await e.Context.GetGroupEssenceMessageListAsync(e.GroupId)).Result;
+						var sb = new StringBuilder();
+						foreach (var segment in segments)
+						{
+							sb.Append('[')
+								.Append(segment.MessageId)
+								.Append("] ")
+								.AppendLine(segment.Content.ToString());
+						}
+						await e.ReplyAsync([new TextSegment(sb.ToString())]);
+					}
+					return;
 				default:
 					break;
 			}

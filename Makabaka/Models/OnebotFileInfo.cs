@@ -9,7 +9,7 @@ namespace Makabaka.Models
 	public class OnebotFileInfo
 	{
 		/// <summary>
-		/// 群聊 ID
+		/// 群号
 		/// </summary>
 		public long GroupId { get; set; }
 

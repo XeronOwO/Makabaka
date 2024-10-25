@@ -515,7 +515,7 @@ namespace Makabaka
 		/// <summary>
 		/// 上传群文件
 		/// </summary>
-		/// <param name="groupId">群聊 ID</param>
+		/// <param name="groupId">群号</param>
 		/// <param name="file">文件路径</param>
 		/// <param name="name">名称</param>
 		/// <param name="folder">文件夹</param>
@@ -532,7 +532,7 @@ namespace Makabaka
 		/// <summary>
 		/// 获取群文件信息
 		/// </summary>
-		/// <param name="groupId">群聊 ID</param>
+		/// <param name="groupId">群号</param>
 		/// <param name="folderId">文件夹 ID ，留空表示根文件夹</param>
 		/// <param name="cancellationToken">取消令牌</param>
 		/// <returns>获取群文件信息异步任务</returns>
@@ -545,7 +545,7 @@ namespace Makabaka
 		/// <summary>
 		/// 获取群根文件夹文件信息
 		/// </summary>
-		/// <param name="groupId">群聊 ID</param>
+		/// <param name="groupId">群号</param>
 		/// <param name="cancellationToken">取消令牌</param>
 		/// <returns>获取群根文件夹文件信息异步任务</returns>
 		Task<APIResponse<GroupFilesInfo>> GetGroupRootFilesAsync(
@@ -556,7 +556,7 @@ namespace Makabaka
 		/// <summary>
 		/// 获取群文件 URL
 		/// </summary>
-		/// <param name="groupId">群聊 ID</param>
+		/// <param name="groupId">群号</param>
 		/// <param name="fileId">文件 ID</param>
 		/// <param name="busid">BusId</param>
 		/// <param name="cancellationToken">取消令牌</param>
@@ -571,7 +571,7 @@ namespace Makabaka
 		/// <summary>
 		/// 移动群文件
 		/// </summary>
-		/// <param name="groupId">群聊 ID</param>
+		/// <param name="groupId">群号</param>
 		/// <param name="fileId">文件 ID</param>
 		/// <param name="parentDirectory">原文件夹</param>
 		/// <param name="targetDirectory">目标文件夹</param>
@@ -588,7 +588,7 @@ namespace Makabaka
 		/// <summary>
 		/// 删除群文件
 		/// </summary>
-		/// <param name="groupId">群聊 ID</param>
+		/// <param name="groupId">群号</param>
 		/// <param name="fileId">文件 ID</param>
 		/// <param name="cancellationToken">取消令牌</param>
 		/// <returns>删除群文件异步任务</returns>
@@ -601,7 +601,7 @@ namespace Makabaka
 		/// <summary>
 		/// 创建群文件夹
 		/// </summary>
-		/// <param name="groupId">群聊 ID</param>
+		/// <param name="groupId">群号</param>
 		/// <param name="name">文件夹名称</param>
 		/// <param name="parentId">父级文件夹 ID</param>
 		/// <param name="cancellationToken">取消令牌</param>
@@ -616,7 +616,7 @@ namespace Makabaka
 		/// <summary>
 		/// 删除群文件夹
 		/// </summary>
-		/// <param name="groupId">群聊 ID</param>
+		/// <param name="groupId">群号</param>
 		/// <param name="folderId">文件夹 ID</param>
 		/// <param name="cancellationToken">取消令牌</param>
 		/// <returns>删除群文件夹异步任务</returns>
@@ -629,7 +629,7 @@ namespace Makabaka
 		/// <summary>
 		/// 重命名群文件夹
 		/// </summary>
-		/// <param name="groupId">群聊 ID</param>
+		/// <param name="groupId">群号</param>
 		/// <param name="folderId">文件夹 ID</param>
 		/// <param name="newFolderName">新文件夹名称</param>
 		/// <param name="cancellationToken">取消令牌</param>
@@ -684,7 +684,7 @@ namespace Makabaka
 		/// <summary>
 		/// 删除群公告
 		/// </summary>
-		/// <param name="groupId">群聊 ID</param>
+		/// <param name="groupId">群号</param>
 		/// <param name="noticeId">公告 ID</param>
 		/// <param name="cancellationToken">取消令牌</param>
 		/// <returns>删除群公告异步任务</returns>
@@ -697,7 +697,7 @@ namespace Makabaka
 		/// <summary>
 		/// 获取群公告
 		/// </summary>
-		/// <param name="groupId">群聊 ID</param>
+		/// <param name="groupId">群号</param>
 		/// <param name="cancellationToken">取消令牌</param>
 		/// <returns>获取群公告异步任务</returns>
 		Task<APIResponse<GroupNoticeInfo[]>> GetGroupNoticeAsync(
@@ -708,7 +708,7 @@ namespace Makabaka
 		/// <summary>
 		/// 设置群聊机器人
 		/// </summary>
-		/// <param name="groupId">群聊 ID</param>
+		/// <param name="groupId">群号</param>
 		/// <param name="botId">机器人 ID</param>
 		/// <param name="enable">是否启用</param>
 		/// <param name="cancellationToken">取消令牌</param>
@@ -723,7 +723,7 @@ namespace Makabaka
 		/// <summary>
 		/// 发送群聊机器人回调
 		/// </summary>
-		/// <param name="groupId">群聊 ID</param>
+		/// <param name="groupId">群号</param>
 		/// <param name="botId">机器人 ID</param>
 		/// <param name="data_1">参数1</param>
 		/// <param name="data_2">参数2</param>
@@ -740,7 +740,7 @@ namespace Makabaka
 		/// <summary>
 		/// 创建群公告
 		/// </summary>
-		/// <param name="groupId">群聊 ID</param>
+		/// <param name="groupId">群号</param>
 		/// <param name="content">内容</param>
 		/// <param name="image">图片</param>
 		/// <param name="cancellationToken">取消令牌</param>
@@ -755,7 +755,7 @@ namespace Makabaka
 		/// <summary>
 		/// 设置群头像
 		/// </summary>
-		/// <param name="groupId">群聊 ID</param>
+		/// <param name="groupId">群号</param>
 		/// <param name="file">
 		/// file 参数除了支持使用收到的图片文件名直接发送外，还支持：<br/>
 		/// - 绝对路径，例如 file:///C:\\Users\Richard\Pictures\1.png，格式使用 <a href="https://tools.ietf.org/html/rfc8089">file URI</a><br/>
@@ -789,6 +789,17 @@ namespace Makabaka
 		/// <returns>好友戳一戳异步任务</returns>
 		Task<APIResponse> PokeFriendAsync(
 			long userId,
+			CancellationToken cancellationToken = default
+			);
+
+		/// <summary>
+		/// 获取群精华消息列表
+		/// </summary>
+		/// <param name="groupId">群号</param>
+		/// <param name="cancellationToken">取消令牌</param>
+		/// <returns>获取群精华消息列表异步任务</returns>
+		Task<APIResponse<EssenceMessageSegment[]>> GetGroupEssenceMessageListAsync(
+			long groupId,
 			CancellationToken cancellationToken = default
 			);
 	}
