@@ -817,5 +817,20 @@ namespace Makabaka
 			uint count,
 			CancellationToken cancellationToken = default
 			);
+
+		/// <summary>
+		/// 获取群聊消息历史记录
+		/// </summary>
+		/// <param name="groupId">群号</param>
+		/// <param name="messageId">基准消息 ID</param>
+		/// <param name="count">消息数量</param>
+		/// <param name="cancellationToken">取消令牌</param>
+		/// <returns>获取群聊消息历史记录异步任务</returns>
+		Task<APIResponse<GroupMessagesInfo>> GetGroupMessageHistoryAsync(
+			long groupId,
+			long messageId,
+			uint count,
+			CancellationToken cancellationToken = default
+			);
 	}
 }

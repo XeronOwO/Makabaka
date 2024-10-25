@@ -143,6 +143,20 @@ namespace Makabaka.Test
 						await e.ReplyAsync([new TextSegment(sb.ToString())]);
 					}
 					return;
+				case "获取群聊消息历史记录测试":
+					{
+						var info = (await e.Context.GetGroupMessageHistoryAsync(e.GroupId, e.MessageId, 3)).Result;
+						var sb = new StringBuilder();
+						foreach (var message in info.Messages)
+						{
+							sb.Append('[')
+								.Append(message.MessageId)
+								.Append("] ")
+								.AppendLine(message.Message.ToString());
+						}
+						await e.ReplyAsync([new TextSegment(sb.ToString())]);
+					}
+					return;
 				default:
 					break;
 			}

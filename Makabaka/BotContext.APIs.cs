@@ -868,5 +868,30 @@ namespace Makabaka
 
 			return result;
 		}
+
+		public async Task<APIResponse<GroupMessagesInfo>> GetGroupMessageHistoryAsync(
+			long groupId,
+			long messageId,
+			uint count,
+			CancellationToken cancellationToken = default
+			)
+		{
+			var result = await ExecuteAPIAsync<GetGroupMessageHistoryRequestParams, GroupMessagesInfo>(
+				"get_group_msg_history",
+				new(groupId, messageId, count),
+				cancellationToken
+				);
+
+			if (result.Data != null)
+			{
+				foreach (var message in result.Data.Messages)
+				{
+					// 方面起见，直接使用 EventArgs 反序列化，因此需要手动设置 Context
+					message.Context = this;
+				}
+			}
+
+			return result;
+		}
 	}
 }
