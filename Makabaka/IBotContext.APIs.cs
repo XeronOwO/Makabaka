@@ -802,5 +802,20 @@ namespace Makabaka
 			long groupId,
 			CancellationToken cancellationToken = default
 			);
+
+		/// <summary>
+		/// 获取好友消息历史记录
+		/// </summary>
+		/// <param name="userId">用户 ID</param>
+		/// <param name="messageId">基准消息 ID</param>
+		/// <param name="count">消息数量</param>
+		/// <param name="cancellationToken">取消令牌</param>
+		/// <returns>获取好友消息历史记录异步任务</returns>
+		Task<APIResponse<PrivateMessagesInfo>> GetFriendMessageHistoryAsync(
+			long userId,
+			long messageId,
+			uint count,
+			CancellationToken cancellationToken = default
+			);
 	}
 }

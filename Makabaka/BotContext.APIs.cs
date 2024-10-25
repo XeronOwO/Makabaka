@@ -789,7 +789,7 @@ namespace Makabaka
 			)
 		{
 			return ExecuteAPIAsync<CreateGroupNoticeRequestParams, string>(
-			"_send_group_notice",
+				"_send_group_notice",
 				new(groupId, content, image),
 				cancellationToken
 				);
@@ -802,7 +802,7 @@ namespace Makabaka
 			)
 		{
 			return ExecuteAPIAsync<SetGroupPortraitRequestParams>(
-			"_send_group_notice",
+				"_send_group_notice",
 				new(groupId, file),
 				cancellationToken
 				);
@@ -814,7 +814,7 @@ namespace Makabaka
 			)
 		{
 			return ExecuteAPIAsync<MessageIdRequestParams>(
-			"delete_essence_msg",
+				"delete_essence_msg",
 				new(messageId),
 				cancellationToken
 				);
@@ -826,7 +826,7 @@ namespace Makabaka
 			)
 		{
 			return ExecuteAPIAsync<FriendPokeRequestParams>(
-			"friend_poke",
+				"friend_poke",
 				new(userId),
 				cancellationToken
 				);
@@ -838,10 +838,35 @@ namespace Makabaka
 			)
 		{
 			return ExecuteAPIAsync<GroupIdRequestParams, EssenceMessageSegment[]>(
-			"get_essence_msg_list",
+				"get_essence_msg_list",
 				new(groupId),
 				cancellationToken
 				);
+		}
+
+		public async Task<APIResponse<PrivateMessagesInfo>> GetFriendMessageHistoryAsync(
+			long userId,
+			long messageId,
+			uint count,
+			CancellationToken cancellationToken = default
+			)
+		{
+			var result = await ExecuteAPIAsync<GetFriendMessageHistoryRequestParams, PrivateMessagesInfo>(
+				"get_friend_msg_history",
+				new(userId, messageId, count),
+				cancellationToken
+				);
+
+			if (result.Data != null)
+			{
+				foreach (var message in result.Data.Messages)
+				{
+					// 方面起见，直接使用 EventArgs 反序列化，因此需要手动设置 Context
+					message.Context = this;
+				}
+			}
+
+			return result;
 		}
 	}
 }

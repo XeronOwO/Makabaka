@@ -36,6 +36,20 @@ namespace Makabaka.Test
 				case "好友戳一戳测试":
 					await e.Context.PokeFriendAsync(e.UserId);
 					return;
+				case "获取好友消息历史记录测试":
+					{
+						var info = (await e.Context.GetFriendMessageHistoryAsync(e.UserId, e.MessageId, 3)).Result;
+						var sb = new StringBuilder();
+						foreach (var message in info.Messages)
+						{
+							sb.Append('[')
+								.Append(message.MessageId)
+								.Append("] ")
+								.AppendLine(message.Message.ToString());
+						}
+						await e.ReplyAsync([new TextSegment(sb.ToString())]);
+					}
+					return;
 				default:
 					break;
 			}
