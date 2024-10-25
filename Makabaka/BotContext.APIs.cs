@@ -912,5 +912,18 @@ namespace Makabaka
 				cancellationToken
 				);
 		}
+
+		public Task<APIResponse> PokeGroupMemberAsync(
+			long userId,
+			long groupId,
+			CancellationToken cancellationToken = default
+			)
+		{
+			return ExecuteAPIAsync<GroupPokeRequestParams>(
+				"group_poke",
+				new(userId, groupId),
+				cancellationToken
+				);
+		}
 	}
 }

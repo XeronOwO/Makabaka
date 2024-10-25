@@ -157,6 +157,9 @@ namespace Makabaka.Test
 						await e.ReplyAsync([new TextSegment(sb.ToString())]);
 					}
 					return;
+				case "群聊戳一戳测试":
+					await e.Context.PokeGroupMemberAsync(e.UserId, e.GroupId);
+					return;
 				default:
 					break;
 			}

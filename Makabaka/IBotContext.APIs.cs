@@ -857,5 +857,18 @@ namespace Makabaka
 			string sourceMsgId = "",
 			CancellationToken cancellationToken = default
 			);
+
+		/// <summary>
+		/// 群聊戳一戳
+		/// </summary>
+		/// <param name="userId">用户 ID</param>
+		/// <param name="groupId">群号</param>
+		/// <param name="cancellationToken">取消令牌</param>
+		/// <returns>群聊戳一戳异步任务</returns>
+		Task<APIResponse> PokeGroupMemberAsync(
+			long userId,
+			long groupId,
+			CancellationToken cancellationToken = default
+			);
 	}
 }
