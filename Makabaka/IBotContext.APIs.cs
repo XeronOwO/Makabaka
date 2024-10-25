@@ -780,5 +780,16 @@ namespace Makabaka
 			long messageId,
 			CancellationToken cancellationToken = default
 			);
+
+		/// <summary>
+		/// 好友戳一戳
+		/// </summary>
+		/// <param name="userId">用户 ID</param>
+		/// <param name="cancellationToken">取消令牌</param>
+		/// <returns>好友戳一戳异步任务</returns>
+		Task<APIResponse> PokeFriendAsync(
+			long userId,
+			CancellationToken cancellationToken = default
+			);
 	}
 }

@@ -819,5 +819,17 @@ namespace Makabaka
 				cancellationToken
 				);
 		}
+
+		public Task<APIResponse> PokeFriendAsync(
+			long userId,
+			CancellationToken cancellationToken = default
+			)
+		{
+			return ExecuteAPIAsync<FriendPokeRequestParams>(
+			"friend_poke",
+				new(userId),
+				cancellationToken
+				);
+		}
 	}
 }

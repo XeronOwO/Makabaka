@@ -33,6 +33,9 @@ namespace Makabaka.Test
 					var fileInfo = new FileInfo("test.png");
 					await e.Context.UploadPrivateFileAsync(e.Sender.UserId, fileInfo.FullName);
 					return;
+				case "好友戳一戳测试":
+					await e.Context.PokeFriendAsync(e.UserId);
+					return;
 				default:
 					break;
 			}
