@@ -832,5 +832,30 @@ namespace Makabaka
 			uint count,
 			CancellationToken cancellationToken = default
 			);
+
+		/// <summary>
+		/// 获取音乐 Ark
+		/// </summary>
+		/// <param name="title">标题</param>
+		/// <param name="desc">简介</param>
+		/// <param name="jumpUrl">跳转链接</param>
+		/// <param name="musicUrl">音乐链接</param>
+		/// <param name="sourceIcon">图标源</param>
+		/// <param name="tag">标签</param>
+		/// <param name="preview">预览</param>
+		/// <param name="sourceMsgId">源消息 ID</param>
+		/// <param name="cancellationToken">取消令牌</param>
+		/// <returns>获取音乐 Ark 异步任务</returns>
+		Task<APIResponse<string>> GetMusicArkAsync(
+			string title = "",
+			string desc = "",
+			string jumpUrl = "",
+			string musicUrl = "",
+			string sourceIcon = "",
+			string tag = "",
+			string preview = "",
+			string sourceMsgId = "",
+			CancellationToken cancellationToken = default
+			);
 	}
 }

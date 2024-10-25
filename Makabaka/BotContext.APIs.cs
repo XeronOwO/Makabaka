@@ -6,6 +6,7 @@ using Makabaka.Models;
 using Makabaka.Utils;
 using System;
 using System.Collections.Concurrent;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -891,6 +892,25 @@ namespace Makabaka
 			}
 
 			return result;
+		}
+
+		public Task<APIResponse<string>> GetMusicArkAsync(
+			string title = "",
+			string desc = "",
+			string jumpUrl = "",
+			string musicUrl = "",
+			string sourceIcon = "",
+			string tag = "",
+			string preview = "",
+			string sourceMsgId = "",
+			CancellationToken cancellationToken = default
+			)
+		{
+			return ExecuteAPIAsync<GetMusicArkRequestParams, string>(
+				"get_music_ark",
+				new(title, desc, jumpUrl, musicUrl, sourceIcon, tag, preview, sourceMsgId),
+				cancellationToken
+				);
 		}
 	}
 }
