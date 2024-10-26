@@ -937,5 +937,17 @@ namespace Makabaka
 				cancellationToken
 				);
 		}
+
+		public Task<APIResponse<string>> SendForwardMessageAsync(
+			Message messages,
+			CancellationToken cancellationToken = default
+			)
+		{
+			return ExecuteAPIAsync<SendForwardMessageRequestParams, string>(
+				"send_forward_msg",
+				new(messages),
+				cancellationToken
+				);
+		}
 	}
 }

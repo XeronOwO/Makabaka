@@ -5,6 +5,8 @@ namespace Makabaka
 {
 	internal partial class BotContext
 	{
+		public long SelfId { get; private set; }
+
 		public event EventHandlerAsync<LifecycleEventArgs>? OnLifecycle;
 
 		async Task IBotContext.InvokeOnLifecycle(object sender, LifecycleEventArgs e)
@@ -13,6 +15,8 @@ namespace Makabaka
 			{
 				return;
 			}
+
+			SelfId = e.SelfId;
 
 			await OnLifecycle.Invoke(sender, e);
 		}

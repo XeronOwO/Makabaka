@@ -64,5 +64,35 @@ namespace Makabaka.Messages
 		public NodeSegment() : this(string.Empty)
 		{
 		}
+
+		/// <summary>
+		/// 合并转发自定义节点
+		/// </summary>
+		/// <param name="userId">
+		/// (合并转发自定义节点) 发送者 QQ 号<br/>
+		/// ✔ 收<br/>
+		/// ✔ 发
+		/// </param>
+		/// <param name="nickname">
+		/// (合并转发自定义节点) 发送者昵称<br/>
+		/// ✔ 收<br/>
+		/// ✔ 发
+		/// </param>
+		/// <param name="content">
+		/// (合并转发自定义节点) 消息内容，支持发送消息时的 message 数据类型，见 <a href="https://github.com/botuniverse/onebot-11/blob/master/api/#%E5%8F%82%E6%95%B0">API 的参数</a><br/>
+		/// ✔ 收<br/>
+		/// ✔ 发
+		/// </param>
+		public NodeSegment(
+			long userId,
+			string nickname,
+			Message content
+			) : this(
+				userId.ToString(),
+				nickname,
+				content
+				)
+		{
+		}
 	}
 }

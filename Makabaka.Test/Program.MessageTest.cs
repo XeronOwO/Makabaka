@@ -298,28 +298,49 @@ namespace Makabaka.Test
 					await reply.ReplyAsync([new TextSegment("测试")]);
 					return;
 				case "转发测试":
-
+					{
+						var content = "# Title\n```json\n{\n\t\"name\": \"value\"\n}\n```";
+						var jsonContent = JsonSerializer.Serialize(
+							new
+							{
+								content,
+							}
+							);
+						var resId1 = (await botContext.SendForwardMessageAsync([
+							new NodeSegment(botContext.SelfId, "测试1", [new TextSegment("1")]),
+							new NodeSegment(botContext.SelfId, "测试1", [new MarkdownSegment(jsonContent)]),
+							])).Result;
+						var resId2 = (await botContext.SendForwardMessageAsync([
+							new NodeSegment(botContext.SelfId, "测试2", [new TextSegment("2")]),
+							new NodeSegment(botContext.SelfId, "测试2", [new ForwardSegment(resId1)]),
+							new NodeSegment(botContext.SelfId, "测试2", [ImageSegment.FromFile("test.png")]),
+							])).Result;
+						await reply.ReplyAsync([new TextSegment($"resId1={resId1}\nresId2={resId2}")]);
+						await reply.ReplyAsync([new ForwardSegment(resId2)]);
+					}
 					return;
 				case "商城表情测试":
-					var emojiId = "f9af2410431e5ee59d7087ada014cdb3";
-					var keys = await botContext.FetchMarketFaceKeyAsync([emojiId]);
-					if (keys.Data == null)
 					{
-						await reply.ReplyAsync([new TextSegment("获取商城表情密钥失败")]);
-						return;
+						var emojiId = "f9af2410431e5ee59d7087ada014cdb3";
+						var keys = await botContext.FetchMarketFaceKeyAsync([emojiId]);
+						if (keys.Data == null)
+						{
+							await reply.ReplyAsync([new TextSegment("获取商城表情密钥失败")]);
+							return;
+						}
+						if (keys.Data.Length == 0)
+						{
+							await reply.ReplyAsync([new TextSegment("获取的商城表情密钥为空")]);
+							return;
+						}
+						await reply.ReplyAsync([new MarketFaceSegment(
+							"https://gxh.vip.qq.com/club/item/parcel/item/f9/f9af2410431e5ee59d7087ada014cdb3/raw300.gif",
+							235308,
+							emojiId,
+							keys.Data.First(),
+							"[测试]"
+							)]);
 					}
-					if (keys.Data.Length == 0)
-					{
-						await reply.ReplyAsync([new TextSegment("获取的商城表情密钥为空")]);
-						return;
-					}
-					await reply.ReplyAsync([new MarketFaceSegment(
-						"https://gxh.vip.qq.com/club/item/parcel/item/f9/f9af2410431e5ee59d7087ada014cdb3/raw300.gif",
-						235308,
-						emojiId,
-						keys.Data.First(),
-						"[测试]"
-						)]);
 					return;
 				case "戳一戳测试":
 					await reply.ReplyAsync([new PokeSegment("1", "-1")]);
