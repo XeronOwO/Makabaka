@@ -41,39 +41,30 @@ namespace Makabaka
 
 		private async Task RunAsync(CancellationToken cancellationToken)
 		{
-			var networkContextFactory = GetNetworkContextFactory();
-			if (networkContextFactory == null)
+			var networkContext = GetNetworkContext();
+			if (networkContext == null)
 			{
 				logger.LogError(SR.ConfigureNetworkServiceFailed);
 				return;
 			}
 
-			var networkContext = networkContextFactory.Invoke();
 			await networkContext.RunAsync(cancellationToken);
 		}
 
-		private Func<INetworkContext>? GetNetworkContextFactory()
+		private INetworkContext? GetNetworkContext()
 		{
-			if (TryGetForwardWebSocketContextFactory(out var factory))
-			{
-				return factory;
-			}
-
-			return null;
+			return TryCreateForwardWebSocketContext();
 		}
 
-		private bool TryGetForwardWebSocketContextFactory(out Func<INetworkContext>? factory)
+		private INetworkContext? TryCreateForwardWebSocketContext()
 		{
-			factory = null;
-
 			var enabled = configuration.GetValue("Bot:ForwardWebSocket:Enabled", false);
 			if (!enabled)
 			{
-				return false;
+				return null;
 			}
 
-			factory = () => services.GetRequiredService<ForwardWebSocketContext>();
-			return true;
+			return services.GetRequiredService<ForwardWebSocketContext>();
 		}
 	}
 }
