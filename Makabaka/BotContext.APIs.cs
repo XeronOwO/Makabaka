@@ -949,5 +949,18 @@ namespace Makabaka
 				cancellationToken
 				);
 		}
+
+		public Task<APIResponse<string>> SendGroupForwardMessageAsync(
+			long groupId,
+			Message messages,
+			CancellationToken cancellationToken = default
+			)
+		{
+			return ExecuteAPIAsync<SendGroupForwardMessageRequestParams, string>(
+				"send_group_forward_msg",
+				new(groupId, messages),
+				cancellationToken
+				);
+		}
 	}
 }

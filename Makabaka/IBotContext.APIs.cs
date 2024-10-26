@@ -892,5 +892,18 @@ namespace Makabaka
 			Message messages,
 			CancellationToken cancellationToken = default
 			);
+
+		/// <summary>
+		/// 发送群聊转发消息
+		/// </summary>
+		/// <param name="groupId">群号</param>
+		/// <param name="messages">转发消息</param>
+		/// <param name="cancellationToken">取消令牌</param>
+		/// <returns>发送群聊转发消息异步任务</returns>
+		Task<APIResponse<string>> SendGroupForwardMessageAsync(
+			long groupId,
+			Message messages,
+			CancellationToken cancellationToken = default
+			);
 	}
 }
