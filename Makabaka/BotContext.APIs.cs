@@ -975,5 +975,18 @@ namespace Makabaka
 				cancellationToken
 				);
 		}
+
+		public Task<APIResponse<string>> SendPrivateForwardMessageAsync(
+			long userId,
+			Message messages,
+			CancellationToken cancellationToken = default
+			)
+		{
+			return ExecuteAPIAsync<SendPrivateForwardMessageRequestParams, string>(
+				"send_private_forward_msg",
+				new(userId, messages),
+				cancellationToken
+				);
+		}
 	}
 }
