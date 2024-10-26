@@ -607,13 +607,13 @@ namespace Makabaka
 		public Task<APIResponse<UrlInfo>> GetGroupFileUrlAsync(
 			long groupId,
 			string fileId,
-			uint busid,
+			uint busId,
 			CancellationToken cancellationToken = default
 			)
 		{
 			return ExecuteAPIAsync<GetGroupFileUrlRequestParams, UrlInfo>(
 				"get_group_file_url",
-				new(groupId, fileId, busid),
+				new(groupId, fileId, busId),
 				cancellationToken
 				);
 		}

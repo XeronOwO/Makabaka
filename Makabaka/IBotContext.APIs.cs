@@ -554,13 +554,13 @@ namespace Makabaka
 		/// </summary>
 		/// <param name="groupId">群号</param>
 		/// <param name="fileId">文件 ID</param>
-		/// <param name="busid">BusId</param>
+		/// <param name="busId">BusId</param>
 		/// <param name="cancellationToken">取消令牌</param>
 		/// <returns>链接信息</returns>
 		Task<APIResponse<UrlInfo>> GetGroupFileUrlAsync(
 			long groupId,
 			string fileId,
-			uint busid,
+			uint busId,
 			CancellationToken cancellationToken = default
 			);
 
