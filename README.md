@@ -9,6 +9,10 @@
 </div>
 
 ## 说明
+
+> [!WARNING]
+> 目前正在重构 Makabaka 2.0，绝大部分代码都使用 [DI](https://www.nuget.org/packages/Microsoft.Extensions.DependencyInjection/) 进行了重构，因此调用逻辑与 1.x 差异较大。如果你从 1.x 迁移到 2.0 ，可能需要改动较多代码。
+
 本项目将持续跟进 [Lagrange.Core](https://github.com/LagrangeDev/Lagrange.Core) 项目进度。由于 [Lagrange.Core](https://github.com/LagrangeDev/Lagrange.Core) 项目仍在开发当中，可能有部分功能暂未支持。  
 如果对该项目有任何问题，欢迎在 [Issues](https://github.com/XeronOwO/Makabaka/issues) 中提出。  
 
@@ -30,17 +34,17 @@ Makabaka 已发布到 [NuGet](https://www.nuget.org/packages/Makabaka "前往NuG
 | [At]             |    🟢    |
 | [Rps]            |    🟢    |
 | [Dice]           |    🟢    |
-| [Shake]          |    🔴    |
+| [Shake]          |    🟢    |
 | [Poke]           |    🟢    |
-| [Anonymous]      |    🔴    |
-| [Share]          |    🔴    |
-| [Contact]        |    🔴    |
+| [Anonymous]      |    🟢    |
+| [Share]          |    🟢    |
+| [Contact]        |    🟢    |
 | [Location]       |    🟢    |
-| [Music]          |    🔴    |
+| [Music]          |    🟢    |
 | [Reply]          |    🟢    |
 | [Forward]        |    🟢    |
 | [Node]           |    🟢    |
-| [Xml]            |    🔴    |
+| [Xml]            |    🟢    |
 | [Json]           |    🟢    |
 
 [Text]: https://github.com/botuniverse/onebot-11/blob/master/message/segment.md#qq-%E8%A1%A8%E6%83%85
@@ -73,39 +77,39 @@ Makabaka 已发布到 [NuGet](https://www.nuget.org/packages/Makabaka "前往NuG
 | -------------------------- | :-----: |
 | [/send_private_msg]        |    🟢    |
 | [/send_group_msg]          |    🟢    |
-| ~~[/send_msg]~~            |    🔴    |
+| [/send_msg]                |    🟢    |
 | [/delete_msg]              |    🟢    |
 | [/get_msg]                 |    🟢    |
 | [/get_forward_msg]         |    🟢    |
 | [/send_like]               |    🟢    |
 | [/set_group_kick]          |    🟢    |
 | [/set_group_ban]           |    🟢    |
-| ~~[/set_group_anonymous_ban]~~ |    🔴    |
+| [/set_group_anonymous_ban] |    🟢    |
 | [/set_group_whole_ban]     |    🟢    |
 | [/set_group_admin]         |    🟢    |
-| [/set_group_anonymous]     |    🔴    |
+| [/set_group_anonymous]     |    🟢    |
 | [/set_group_card]          |    🟢    |
 | [/set_group_name]          |    🟢    |
 | [/set_group_leave]         |    🟢    |
-| ~~[/set_group_special_title]~~ |    🔴    |
+| [/set_group_special_title] |    🟢    |
 | [/set_friend_add_request]  |    🟢    |
 | [/set_group_add_request]   |    🟢    |
 | [/get_login_info]          |    🟢    |
-| ~~[/get_stranger_info]~~   |    🔴    |
+| [/get_stranger_info]       |    🟢    |
 | [/get_friend_list]         |    🟢    |
 | [/get_group_info]          |    🟢    |
 | [/get_group_list]          |    🟢    |
 | [/get_group_member_info]   |    🟢    |
 | [/get_group_member_list]   |    🟢    |
-| ~~[/get_group_honor_info]~~    |    🔴    |
+| [/get_group_honor_info]    |    🟢    |
 | [/get_cookies]             |    🟢    |
-| ~~[/get_csrf_token]~~          |    🔴    |
-| ~~[/get_credentials]~~         |    🔴    |
-| [/get_record]              |    🔴    |
-| [/get_image]               |    🔴    |
+| [/get_csrf_token]          |    🟢    |
+| [/get_credentials]         |    🟢    |
+| [/get_record]              |    🟢    |
+| [/get_image]               |    🟢    |
 | [/can_send_image]          |    🟢    |
 | [/can_send_record]         |    🟢    |
-| [/get_status]              |    🔴    |
+| [/get_status]              |    🟢    |
 | [/get_version_info]        |    🟢    |
 | [/set_restart]             |    🟢    |
 | [/clean_cache]             |    🔴    |
@@ -166,9 +170,9 @@ Makabaka 已发布到 [NuGet](https://www.nuget.org/packages/Makabaka "前往NuG
 | Notice   | [Friend Add]                   |    🟢    |
 | Notice   | [Group Recall Message]         |    🟢    |
 | Notice   | [Friend Recall Message]        |    🟢    |
-| Notice   | [Group Poke]                   |    🔴    |
-| Notice   | [Group red envelope luck king] |    🔴    |
-| Notice   | [Group Member Honor Changed]   |    🔴    |
+| Notice   | [Group Poke]                   |    🟢    |
+| Notice   | [Group red envelope luck king] |    🟢    |
+| Notice   | [Group Member Honor Changed]   |    🟢    |
 | Request  | [Add Friend Request]           |    🟢    |
 | Request  | [Group Request/Invitations]    |    🟢    |
 | Meta     | [LifeCycle]                    |    🟢    |
