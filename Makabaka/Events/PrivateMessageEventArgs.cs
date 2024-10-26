@@ -49,11 +49,10 @@ namespace Makabaka.Events
 		/// <inheritdoc/>
 		public Task<APIResponse<MessageIdInfo>> ReplyAsync(
 			Message message,
-			bool autoEscape = false,
 			CancellationToken cancellationToken = default
 			)
 		{
-			return Context.SendPrivateMessageAsync(Sender.UserId, message, autoEscape, cancellationToken);
+			return Context.SendPrivateMessageAsync(Sender.UserId, message, cancellationToken);
 		}
 	}
 }

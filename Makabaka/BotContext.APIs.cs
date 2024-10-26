@@ -87,7 +87,6 @@ namespace Makabaka
 		public Task<APIResponse<MessageIdInfo>> SendPrivateMessageAsync(
 			long userId,
 			Message message,
-			bool autoEscape = false,
 			CancellationToken cancellationToken = default
 			)
 		{
@@ -101,7 +100,6 @@ namespace Makabaka
 		public Task<APIResponse<MessageIdInfo>> SendGroupMessageAsync(
 			long groupId,
 			Message message,
-			bool autoEscape = false,
 			CancellationToken cancellationToken = default
 			)
 		{
@@ -959,6 +957,21 @@ namespace Makabaka
 			return ExecuteAPIAsync<SendGroupForwardMessageRequestParams, string>(
 				"send_group_forward_msg",
 				new(groupId, messages),
+				cancellationToken
+				);
+		}
+
+		public Task<APIResponse<MessageIdInfo>> SendMessageAsync(
+			MessageEventType messageType,
+			Message message,
+			long userId = 0,
+			long groupId = 0,
+			CancellationToken cancellationToken = default
+			)
+		{
+			return ExecuteAPIAsync<SendMessageRequestParams, MessageIdInfo>(
+				"send_msg",
+				new(messageType, message, userId, groupId),
 				cancellationToken
 				);
 		}

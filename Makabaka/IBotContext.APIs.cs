@@ -38,13 +38,11 @@ namespace Makabaka
 		/// </summary>
 		/// <param name="userId">对方 QQ 号</param>
 		/// <param name="message">要发送的内容</param>
-		/// <param name="autoEscape">消息内容是否作为纯文本发送（即不解析 CQ 码），只在 message 字段是字符串时有效</param>
 		/// <param name="cancellationToken">取消令牌</param>
 		/// <returns>发送私聊消息异步任务</returns>
 		Task<APIResponse<MessageIdInfo>> SendPrivateMessageAsync(
 			long userId,
 			Message message,
-			bool autoEscape = false,
 			CancellationToken cancellationToken = default
 			);
 
@@ -53,13 +51,11 @@ namespace Makabaka
 		/// </summary>
 		/// <param name="groupId">群号</param>
 		/// <param name="message">要发送的内容</param>
-		/// <param name="autoEscape">消息内容是否作为纯文本发送（即不解析 CQ 码），只在 message 字段是字符串时有效</param>
 		/// <param name="cancellationToken">取消令牌</param>
 		/// <returns>发送群消息异步任务</returns>
 		Task<APIResponse<MessageIdInfo>> SendGroupMessageAsync(
 			long groupId,
 			Message message,
-			bool autoEscape = false,
 			CancellationToken cancellationToken = default
 			);
 
@@ -903,6 +899,23 @@ namespace Makabaka
 		Task<APIResponse<string>> SendGroupForwardMessageAsync(
 			long groupId,
 			Message messages,
+			CancellationToken cancellationToken = default
+			);
+
+		/// <summary>
+		/// 发送消息
+		/// </summary>
+		/// <param name="messageType">消息类型</param>
+		/// <param name="message">要发送的内容</param>
+		/// <param name="userId">对方 QQ 号（消息类型为 <see cref="MessageEventType.Private"/> 时需要）</param>
+		/// <param name="groupId">群号（消息类型为 <see cref="MessageEventType.Group"/> 时需要）</param>
+		/// <param name="cancellationToken">取消令牌</param>
+		/// <returns>发送消息异步任务</returns>
+		Task<APIResponse<MessageIdInfo>> SendMessageAsync(
+			MessageEventType messageType,
+			Message message,
+			long userId = 0,
+			long groupId = 0,
 			CancellationToken cancellationToken = default
 			);
 	}
