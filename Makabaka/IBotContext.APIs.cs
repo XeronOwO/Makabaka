@@ -20,7 +20,7 @@ namespace Makabaka
 		/// <param name="action">用于指定要调用的 API</param>
 		/// <param name="req">请求参数</param>
 		/// <param name="cancellationToken">取消令牌</param>
-		/// <returns>执行 API 异步任务</returns>
+		/// <returns>响应数据</returns>
 		Task<APIResponse<TRsp>> ExecuteAPIAsync<TReq, TRsp>(string action, TReq req, CancellationToken cancellationToken = default);
 
 		/// <summary>
@@ -30,7 +30,7 @@ namespace Makabaka
 		/// <param name="action">用于指定要调用的 API</param>
 		/// <param name="req">请求参数</param>
 		/// <param name="cancellationToken">取消令牌</param>
-		/// <returns>执行 API 异步任务</returns>
+		/// <returns></returns>
 		Task<APIResponse> ExecuteAPIAsync<TReq>(string action, TReq req, CancellationToken cancellationToken = default);
 
 		/// <summary>
@@ -39,7 +39,7 @@ namespace Makabaka
 		/// <param name="userId">对方 QQ 号</param>
 		/// <param name="message">要发送的内容</param>
 		/// <param name="cancellationToken">取消令牌</param>
-		/// <returns>发送私聊消息异步任务</returns>
+		/// <returns>消息 ID 信息</returns>
 		Task<APIResponse<MessageIdInfo>> SendPrivateMessageAsync(
 			long userId,
 			Message message,
@@ -52,7 +52,7 @@ namespace Makabaka
 		/// <param name="groupId">群号</param>
 		/// <param name="message">要发送的内容</param>
 		/// <param name="cancellationToken">取消令牌</param>
-		/// <returns>发送群消息异步任务</returns>
+		/// <returns>消息 ID 信息</returns>
 		Task<APIResponse<MessageIdInfo>> SendGroupMessageAsync(
 			long groupId,
 			Message message,
@@ -64,7 +64,7 @@ namespace Makabaka
 		/// </summary>
 		/// <param name="emojiIds">商城表情</param>
 		/// <param name="cancellationToken">取消令牌</param>
-		/// <returns>获取商城表情密钥异步任务</returns>
+		/// <returns>密钥列表</returns>
 		Task<APIResponse<string[]>> FetchMarketFaceKeyAsync(
 			string[] emojiIds,
 			CancellationToken cancellationToken = default
@@ -75,7 +75,7 @@ namespace Makabaka
 		/// </summary>
 		/// <param name="messageId">消息 ID</param>
 		/// <param name="cancellationToken">取消令牌</param>
-		/// <returns>撤回消息异步任务</returns>
+		/// <returns></returns>
 		Task<APIResponse> RevokeMessageAsync(
 			long messageId,
 			CancellationToken cancellationToken = default
@@ -86,7 +86,7 @@ namespace Makabaka
 		/// </summary>
 		/// <param name="messageId">消息 ID</param>
 		/// <param name="cancellationToken">取消令牌</param>
-		/// <returns>获取消息异步任务</returns>
+		/// <returns>消息信息</returns>
 		Task<APIResponse<MessageInfo>> GetMessageAsync(
 			long messageId,
 			CancellationToken cancellationToken = default
@@ -97,7 +97,7 @@ namespace Makabaka
 		/// </summary>
 		/// <param name="id">合并转发 ID</param>
 		/// <param name="cancellationToken">取消令牌</param>
-		/// <returns>获取转发消息异步任务</returns>
+		/// <returns>转发消息信息</returns>
 		Task<APIResponse<ForwardMessageInfo>> GetForwardMessageAsync(
 			string id,
 			CancellationToken cancellationToken = default
@@ -109,7 +109,7 @@ namespace Makabaka
 		/// <param name="userId">对方 QQ 号</param>
 		/// <param name="times">赞的次数，每个好友每天最多 10 次</param>
 		/// <param name="cancellationToken">取消令牌</param>
-		/// <returns>发送好友赞异步任务</returns>
+		/// <returns></returns>
 		Task<APIResponse> SendLikeAsync(
 			long userId,
 			int times = 1,
@@ -123,7 +123,7 @@ namespace Makabaka
 		/// <param name="userId">要踢的 QQ 号</param>
 		/// <param name="rejectAddRequest">拒绝此人的加群请求</param>
 		/// <param name="cancellationToken">取消令牌</param>
-		/// <returns>踢出群成员异步任务</returns>
+		/// <returns></returns>
 		Task<APIResponse> KickGroupMemberAsync(
 			long groupId,
 			long userId,
@@ -138,7 +138,7 @@ namespace Makabaka
 		/// <param name="userId">要禁言的 QQ 号</param>
 		/// <param name="duration">禁言时长，单位秒，0 表示取消禁言</param>
 		/// <param name="cancellationToken">取消令牌</param>
-		/// <returns>群组单人禁言异步任务</returns>
+		/// <returns></returns>
 		Task<APIResponse> MuteGroupMemberAsync(
 			long groupId,
 			long userId,
@@ -155,7 +155,7 @@ namespace Makabaka
 		/// <param name="flag">可选，要禁言的匿名用户的 flag（需从群消息上报的数据中获得）</param>
 		/// <param name="duration">禁言时长，单位秒，无法取消匿名用户禁言</param>
 		/// <param name="cancellationToken">取消令牌</param>
-		/// <returns>群组匿名用户禁言异步任务</returns>
+		/// <returns></returns>
 		Task<APIResponse> MuteGroupAnonymousMemberAsync(
 			long groupId,
 			GroupMessageAnonymousSenderInfo? anonymous = null,
@@ -171,7 +171,7 @@ namespace Makabaka
 		/// <param name="groupId">群号</param>
 		/// <param name="enable">是否禁言</param>
 		/// <param name="cancellationToken">取消令牌</param>
-		/// <returns>群组全员禁言异步任务</returns>
+		/// <returns></returns>
 		Task<APIResponse> MuteGroupAsync(
 			long groupId,
 			bool enable = true,
@@ -185,7 +185,7 @@ namespace Makabaka
 		/// <param name="userId">要设置管理员的 QQ 号</param>
 		/// <param name="enable">true 为设置，false 为取消</param>
 		/// <param name="cancellationToken">取消令牌</param>
-		/// <returns>群组设置管理员异步任务</returns>
+		/// <returns></returns>
 		Task<APIResponse> SetGroupAdminAsync(
 			long groupId,
 			long userId,
@@ -199,7 +199,7 @@ namespace Makabaka
 		/// <param name="groupId">群号</param>
 		/// <param name="enable">是否允许匿名聊天</param>
 		/// <param name="cancellationToken">取消令牌</param>
-		/// <returns>群组匿名异步任务</returns>
+		/// <returns></returns>
 		Task<APIResponse> SetGroupAnonymousAsync(
 			long groupId,
 			bool enable = true,
@@ -213,7 +213,7 @@ namespace Makabaka
 		/// <param name="userId">要设置的 QQ 号</param>
 		/// <param name="card">群名片内容，不填或空字符串表示删除群名片</param>
 		/// <param name="cancellationToken">取消令牌</param>
-		/// <returns>设置群名片（群备注）异步任务</returns>
+		/// <returns></returns>
 		Task<APIResponse> SetGroupMemberCardAsync(
 			long groupId,
 			long userId,
@@ -227,7 +227,7 @@ namespace Makabaka
 		/// <param name="groupId">群号</param>
 		/// <param name="groupName">新群名</param>
 		/// <param name="cancellationToken">取消令牌</param>
-		/// <returns>设置群名异步任务</returns>
+		/// <returns></returns>
 		Task<APIResponse> SetGroupNameAsync(
 			long groupId,
 			string groupName,
@@ -240,7 +240,7 @@ namespace Makabaka
 		/// <param name="groupId">群号</param>
 		/// <param name="isDismiss">是否解散，如果登录号是群主，则仅在此项为 true 时能够解散</param>
 		/// <param name="cancellationToken">取消令牌</param>
-		/// <returns>退出群组异步任务</returns>
+		/// <returns></returns>
 		Task<APIResponse> LeaveGroupAsync(
 			long groupId,
 			bool isDismiss = false,
@@ -255,7 +255,7 @@ namespace Makabaka
 		/// <param name="specialTitle">专属头衔，不填或空字符串表示删除专属头衔</param>
 		/// <param name="duration">专属头衔有效期，单位秒，-1 表示永久，不过此项似乎没有效果，可能是只有某些特殊的时间长度有效，有待测试</param>
 		/// <param name="cancellationToken">取消令牌</param>
-		/// <returns>设置群组专属头衔异步任务</returns>
+		/// <returns></returns>
 		Task<APIResponse> SetGroupMemberTitleAsync(
 			long groupId,
 			long userId,
@@ -271,7 +271,7 @@ namespace Makabaka
 		/// <param name="approve">是否同意请求</param>
 		/// <param name="remark">添加后的好友备注（仅在同意时有效）</param>
 		/// <param name="cancellationToken">取消令牌</param>
-		/// <returns>处理加好友请求异步任务</returns>
+		/// <returns></returns>
 		Task<APIResponse> SetFriendAddRequestAsync(
 			string flag,
 			bool approve = true,
@@ -287,7 +287,7 @@ namespace Makabaka
 		/// <param name="approve">是否同意请求／邀请</param>
 		/// <param name="reason">拒绝理由（仅在拒绝时有效）</param>
 		/// <param name="cancellationToken">取消令牌</param>
-		/// <returns>处理加群请求／邀请异步任务</returns>
+		/// <returns></returns>
 		Task<APIResponse> SetGroupAddRequestAsync(
 			string flag,
 			GroupAddRequestEventType subType,
@@ -300,7 +300,7 @@ namespace Makabaka
 		/// 获取登录号信息
 		/// </summary>
 		/// <param name="cancellationToken">取消令牌</param>
-		/// <returns>获取登录号信息异步任务</returns>
+		/// <returns>登录信息</returns>
 		Task<APIResponse<LoginInfo>> GetLoginInfoAsync(
 			CancellationToken cancellationToken = default
 			);
@@ -311,7 +311,7 @@ namespace Makabaka
 		/// <param name="userId">QQ 号</param>
 		/// <param name="noCache">是否不使用缓存（使用缓存可能更新不及时，但响应更快）</param>
 		/// <param name="cancellationToken">取消令牌</param>
-		/// <returns>获取陌生人信息异步任务</returns>
+		/// <returns>陌生人信息</returns>
 		Task<APIResponse<StrangerInfo>> GetStrangerInfoAsync(
 			long userId,
 			bool noCache = false,
@@ -322,7 +322,7 @@ namespace Makabaka
 		/// 获取好友列表
 		/// </summary>
 		/// <param name="cancellationToken">取消令牌</param>
-		/// <returns>获取好友列表异步任务</returns>
+		/// <returns>好友信息列表</returns>
 		Task<APIResponse<FriendInfo[]>> GetFriendListAsync(
 			CancellationToken cancellationToken = default
 			);
@@ -333,7 +333,7 @@ namespace Makabaka
 		/// <param name="groupId">群号</param>
 		/// <param name="noCache">是否不使用缓存（使用缓存可能更新不及时，但响应更快）</param>
 		/// <param name="cancellationToken">取消令牌</param>
-		/// <returns>获取群信息异步任务</returns>
+		/// <returns>群信息</returns>
 		Task<APIResponse<GroupInfo>> GetGroupInfoAsync(
 			long groupId,
 			bool noCache = false,
@@ -344,7 +344,7 @@ namespace Makabaka
 		/// 获取群列表
 		/// </summary>
 		/// <param name="cancellationToken">取消令牌</param>
-		/// <returns>获取群列表异步任务</returns>
+		/// <returns>群信息列表</returns>
 		Task<APIResponse<GroupInfo[]>> GetGroupListAsync(
 			CancellationToken cancellationToken = default
 			);
@@ -356,7 +356,7 @@ namespace Makabaka
 		/// <param name="userId">QQ 号</param>
 		/// <param name="noCache">是否不使用缓存（使用缓存可能更新不及时，但响应更快）</param>
 		/// <param name="cancellationToken">取消令牌</param>
-		/// <returns>获取群成员信息异步任务</returns>
+		/// <returns>群成员信息</returns>
 		Task<APIResponse<GroupMemberInfo>> GetGroupMemberInfoAsync(
 			long groupId,
 			long userId,
@@ -370,7 +370,7 @@ namespace Makabaka
 		/// </summary>
 		/// <param name="groupId">群号</param>
 		/// <param name="cancellationToken">取消令牌</param>
-		/// <returns>获取群成员列表异步任务</returns>
+		/// <returns>群成员信息列表</returns>
 		Task<APIResponse<GroupMemberInfo[]>> GetGroupMemberListAsync(
 			long groupId,
 			CancellationToken cancellationToken = default
@@ -382,7 +382,7 @@ namespace Makabaka
 		/// <param name="groupId">群号</param>
 		/// <param name="type">要获取的群荣誉类型</param>
 		/// <param name="cancellationToken">取消令牌</param>
-		/// <returns>获取群荣誉信息异步任务</returns>
+		/// <returns>群荣誉信息</returns>
 		Task<APIResponse<GroupHonorInfo>> GetGroupHonorInfoAsync(
 			long groupId,
 			GetGroupHonorInfoType type = GetGroupHonorInfoType.All,
@@ -394,7 +394,7 @@ namespace Makabaka
 		/// </summary>
 		/// <param name="domain">需要获取 cookies 的域名</param>
 		/// <param name="cancellationToken">取消令牌</param>
-		/// <returns>获取 Cookies 异步任务</returns>
+		/// <returns>Cookies 信息</returns>
 		Task<APIResponse<CookiesInfo>> GetCookiesAsync(
 			string domain,
 			CancellationToken cancellationToken = default
@@ -404,7 +404,7 @@ namespace Makabaka
 		/// 获取 CSRF Token
 		/// </summary>
 		/// <param name="cancellationToken">取消令牌</param>
-		/// <returns>获取 CSRF Token 异步任务</returns>
+		/// <returns>CSRF Token 信息</returns>
 		Task<APIResponse<CsrfTokenInfo>> GetCsrfTokenAsync(
 			CancellationToken cancellationToken = default
 			);
@@ -414,7 +414,7 @@ namespace Makabaka
 		/// </summary>
 		/// <param name="domain">需要获取 cookies 的域名</param>
 		/// <param name="cancellationToken">取消令牌</param>
-		/// <returns>获取 QQ 相关接口凭证异步任务</returns>
+		/// <returns>凭证信息</returns>
 		Task<APIResponse<CredentialsInfo>> GetCredentialsAsync(
 			string domain,
 			CancellationToken cancellationToken = default
@@ -426,7 +426,7 @@ namespace Makabaka
 		/// <param name="file">收到的语音文件名（消息段的 file 参数），如 0B38145AA44505000B38145AA4450500.silk</param>
 		/// <param name="outFormat">要转换到的格式</param>
 		/// <param name="cancellationToken">取消令牌</param>
-		/// <returns>获取语音异步任务</returns>
+		/// <returns>语音信息</returns>
 		Task<APIResponse<RecordInfo>> GetRecordAsync(
 			string file,
 			GetRecordFormatType outFormat,
@@ -438,7 +438,7 @@ namespace Makabaka
 		/// </summary>
 		/// <param name="file">收到的图片文件名（消息段的 file 参数），如 6B4DE3DFD1BD271E3297859D41C530F5.jpg</param>
 		/// <param name="cancellationToken">取消令牌</param>
-		/// <returns>获取图片异步任务</returns>
+		/// <returns>图片信息</returns>
 		Task<APIResponse<ImageInfo>> GetImageAsync(
 			string file,
 			CancellationToken cancellationToken = default
@@ -448,7 +448,7 @@ namespace Makabaka
 		/// 检查是否可以发送图片
 		/// </summary>
 		/// <param name="cancellationToken">取消令牌</param>
-		/// <returns>检查是否可以发送图片异步任务</returns>
+		/// <returns>是否信息</returns>
 		Task<APIResponse<YesInfo>> CanSendImageAsync(
 			CancellationToken cancellationToken = default
 			);
@@ -457,7 +457,7 @@ namespace Makabaka
 		/// 检查是否可以发送语音
 		/// </summary>
 		/// <param name="cancellationToken">取消令牌</param>
-		/// <returns>检查是否可以发送语音异步任务</returns>
+		/// <returns>是否信息</returns>
 		Task<APIResponse<YesInfo>> CanSendRecordAsync(
 			CancellationToken cancellationToken = default
 			);
@@ -466,7 +466,7 @@ namespace Makabaka
 		/// 获取运行状态
 		/// </summary>
 		/// <param name="cancellationToken">取消令牌</param>
-		/// <returns>获取运行状态异步任务</returns>
+		/// <returns>状态信息</returns>
 		Task<APIResponse<StatusInfo>> GetStatusAsync(
 			CancellationToken cancellationToken = default
 			);
@@ -475,7 +475,7 @@ namespace Makabaka
 		/// 获取版本信息
 		/// </summary>
 		/// <param name="cancellationToken">取消令牌</param>
-		/// <returns>获取版本信息异步任务</returns>
+		/// <returns>版本信息</returns>
 		Task<APIResponse<VersionInfo>> GetVersionInfoAsync(
 			CancellationToken cancellationToken = default
 			);
@@ -485,7 +485,7 @@ namespace Makabaka
 		/// </summary>
 		/// <param name="delay">要延迟的毫秒数，如果默认情况下无法重启，可以尝试设置延迟为 2000 左右</param>
 		/// <param name="cancellationToken">取消令牌</param>
-		/// <returns>重启 OneBot 实现异步任务</returns>
+		/// <returns></returns>
 		Task<APIResponse> RestartAsync(
 			long delay = 0,
 			CancellationToken cancellationToken = default
@@ -502,7 +502,7 @@ namespace Makabaka
 		/// - Base64 编码，例如 base64://iVBORw0KGgoAAAANSUhEUgAAABQAAAAVCAIAAADJt1n/AAAAKElEQVQ4EWPk5+RmIBcwkasRpG9UM4mhNxpgowFGMARGEwnBIEJVAAAdBgBNAZf+QAAAAABJRU5ErkJggg==
 		/// </param>
 		/// <param name="cancellationToken">取消令牌</param>
-		/// <returns>上传图片异步任务</returns>
+		/// <returns>图片链接</returns>
 		Task<APIResponse<string>> UploadImageAsync(
 			string file,
 			CancellationToken cancellationToken = default
@@ -516,7 +516,7 @@ namespace Makabaka
 		/// <param name="name">名称</param>
 		/// <param name="folder">文件夹</param>
 		/// <param name="cancellationToken">取消令牌</param>
-		/// <returns>上传群文件异步任务</returns>
+		/// <returns></returns>
 		Task<APIResponse> UploadGroupFileAsync(
 			long groupId,
 			string file,
@@ -531,7 +531,7 @@ namespace Makabaka
 		/// <param name="groupId">群号</param>
 		/// <param name="folderId">文件夹 ID ，留空表示根文件夹</param>
 		/// <param name="cancellationToken">取消令牌</param>
-		/// <returns>获取群文件信息异步任务</returns>
+		/// <returns>群文件信息</returns>
 		Task<APIResponse<GroupFilesInfo>> GetGroupFilesByFolderAsync(
 			long groupId,
 			string? folderId = null,
@@ -543,7 +543,7 @@ namespace Makabaka
 		/// </summary>
 		/// <param name="groupId">群号</param>
 		/// <param name="cancellationToken">取消令牌</param>
-		/// <returns>获取群根文件夹文件信息异步任务</returns>
+		/// <returns>群文件信息</returns>
 		Task<APIResponse<GroupFilesInfo>> GetGroupRootFilesAsync(
 			long groupId,
 			CancellationToken cancellationToken = default
@@ -556,7 +556,7 @@ namespace Makabaka
 		/// <param name="fileId">文件 ID</param>
 		/// <param name="busid">BusId</param>
 		/// <param name="cancellationToken">取消令牌</param>
-		/// <returns>获取群文件 URL 异步任务</returns>
+		/// <returns>链接信息</returns>
 		Task<APIResponse<UrlInfo>> GetGroupFileUrlAsync(
 			long groupId,
 			string fileId,
@@ -572,7 +572,7 @@ namespace Makabaka
 		/// <param name="parentDirectory">原文件夹</param>
 		/// <param name="targetDirectory">目标文件夹</param>
 		/// <param name="cancellationToken">取消令牌</param>
-		/// <returns>移动群文件异步任务</returns>
+		/// <returns>群文件系统操作信息</returns>
 		Task<APIResponse<GroupFileSystemOperationInfo>> MoveGroupFileAsync(
 			long groupId,
 			string fileId,
@@ -587,7 +587,7 @@ namespace Makabaka
 		/// <param name="groupId">群号</param>
 		/// <param name="fileId">文件 ID</param>
 		/// <param name="cancellationToken">取消令牌</param>
-		/// <returns>删除群文件异步任务</returns>
+		/// <returns>群文件系统操作信息</returns>
 		Task<APIResponse<GroupFileSystemOperationInfo>> DeleteGroupFileAsync(
 			long groupId,
 			string fileId,
@@ -601,7 +601,7 @@ namespace Makabaka
 		/// <param name="name">文件夹名称</param>
 		/// <param name="parentId">父级文件夹 ID</param>
 		/// <param name="cancellationToken">取消令牌</param>
-		/// <returns>创建群文件夹异步任务</returns>
+		/// <returns>群文件系统操作信息</returns>
 		Task<APIResponse<GroupFileSystemOperationInfo>> CreateGroupFolderAsync(
 			long groupId,
 			string name,
@@ -615,7 +615,7 @@ namespace Makabaka
 		/// <param name="groupId">群号</param>
 		/// <param name="folderId">文件夹 ID</param>
 		/// <param name="cancellationToken">取消令牌</param>
-		/// <returns>删除群文件夹异步任务</returns>
+		/// <returns>群文件系统操作信息</returns>
 		Task<APIResponse<GroupFileSystemOperationInfo>> DeleteGroupFolderAsync(
 			long groupId,
 			string folderId,
@@ -629,7 +629,7 @@ namespace Makabaka
 		/// <param name="folderId">文件夹 ID</param>
 		/// <param name="newFolderName">新文件夹名称</param>
 		/// <param name="cancellationToken">取消令牌</param>
-		/// <returns>重命名群文件夹异步任务</returns>
+		/// <returns>群文件系统操作信息</returns>
 		Task<APIResponse<GroupFileSystemOperationInfo>> RenameGroupFolderAsync(
 			long groupId,
 			string folderId,
@@ -656,7 +656,7 @@ namespace Makabaka
 		/// 获取自定义表情包
 		/// </summary>
 		/// <param name="cancellationToken">取消令牌</param>
-		/// <returns>获取自定义表情包异步任务</returns>
+		/// <returns>表情包链接列表</returns>
 		Task<APIResponse<string[]>> FetchCustomFaceAsync(
 			CancellationToken cancellationToken = default
 			);
@@ -671,7 +671,7 @@ namespace Makabaka
 		/// - Base64 编码，例如 base64://iVBORw0KGgoAAAANSUhEUgAAABQAAAAVCAIAAADJt1n/AAAAKElEQVQ4EWPk5+RmIBcwkasRpG9UM4mhNxpgowFGMARGEwnBIEJVAAAdBgBNAZf+QAAAAABJRU5ErkJggg==
 		/// </param>
 		/// <param name="cancellationToken">取消令牌</param>
-		/// <returns>设置 QQ 头像异步任务</returns>
+		/// <returns></returns>
 		Task<APIResponse> SetQQAvatarAsync(
 			string file,
 			CancellationToken cancellationToken = default
@@ -683,7 +683,7 @@ namespace Makabaka
 		/// <param name="groupId">群号</param>
 		/// <param name="noticeId">公告 ID</param>
 		/// <param name="cancellationToken">取消令牌</param>
-		/// <returns>删除群公告异步任务</returns>
+		/// <returns></returns>
 		Task<APIResponse> DeleteGroupNoticeAsync(
 			long groupId,
 			string noticeId,
@@ -695,7 +695,7 @@ namespace Makabaka
 		/// </summary>
 		/// <param name="groupId">群号</param>
 		/// <param name="cancellationToken">取消令牌</param>
-		/// <returns>获取群公告异步任务</returns>
+		/// <returns>群公告信息列表</returns>
 		Task<APIResponse<GroupNoticeInfo[]>> GetGroupNoticeAsync(
 			long groupId,
 			CancellationToken cancellationToken = default
@@ -708,7 +708,7 @@ namespace Makabaka
 		/// <param name="botId">机器人 ID</param>
 		/// <param name="enable">是否启用</param>
 		/// <param name="cancellationToken">取消令牌</param>
-		/// <returns>设置群聊机器人异步任务</returns>
+		/// <returns>机器人 ID</returns>
 		Task<APIResponse<long>> SetGroupBotAsync(
 			long groupId,
 			long botId,
@@ -724,7 +724,7 @@ namespace Makabaka
 		/// <param name="data_1">参数1</param>
 		/// <param name="data_2">参数2</param>
 		/// <param name="cancellationToken">取消令牌</param>
-		/// <returns>发送群聊机器人回调异步任务</returns>
+		/// <returns>机器人 ID</returns>
 		Task<APIResponse<long>> SendGroupBotCallbackAsync(
 			long groupId,
 			long botId,
@@ -740,7 +740,7 @@ namespace Makabaka
 		/// <param name="content">内容</param>
 		/// <param name="image">图片</param>
 		/// <param name="cancellationToken">取消令牌</param>
-		/// <returns>发送群聊机器人回调异步任务，返回公告 ID</returns>
+		/// <returns>公告 ID</returns>
 		Task<APIResponse<string>> CreateGroupNoticeAsync(
 			long groupId,
 			string content,
@@ -759,7 +759,7 @@ namespace Makabaka
 		/// - Base64 编码，例如 base64://iVBORw0KGgoAAAANSUhEUgAAABQAAAAVCAIAAADJt1n/AAAAKElEQVQ4EWPk5+RmIBcwkasRpG9UM4mhNxpgowFGMARGEwnBIEJVAAAdBgBNAZf+QAAAAABJRU5ErkJggg==
 		/// </param>
 		/// <param name="cancellationToken">取消令牌</param>
-		/// <returns>设置群头像异步任务</returns>
+		/// <returns></returns>
 		Task<APIResponse> SetGroupPortraitAsync(
 			long groupId,
 			string file,
@@ -771,7 +771,7 @@ namespace Makabaka
 		/// </summary>
 		/// <param name="messageId">消息 ID</param>
 		/// <param name="cancellationToken">取消令牌</param>
-		/// <returns>删除精华消息异步任务</returns>
+		/// <returns></returns>
 		Task<APIResponse> DeleteEssenceMessageAsync(
 			long messageId,
 			CancellationToken cancellationToken = default
@@ -782,7 +782,7 @@ namespace Makabaka
 		/// </summary>
 		/// <param name="userId">用户 ID</param>
 		/// <param name="cancellationToken">取消令牌</param>
-		/// <returns>好友戳一戳异步任务</returns>
+		/// <returns></returns>
 		Task<APIResponse> PokeFriendAsync(
 			long userId,
 			CancellationToken cancellationToken = default
@@ -793,7 +793,7 @@ namespace Makabaka
 		/// </summary>
 		/// <param name="groupId">群号</param>
 		/// <param name="cancellationToken">取消令牌</param>
-		/// <returns>获取群精华消息列表异步任务</returns>
+		/// <returns>精华消息列表</returns>
 		Task<APIResponse<EssenceMessageSegment[]>> GetGroupEssenceMessageListAsync(
 			long groupId,
 			CancellationToken cancellationToken = default
@@ -806,7 +806,7 @@ namespace Makabaka
 		/// <param name="messageId">基准消息 ID</param>
 		/// <param name="count">消息数量</param>
 		/// <param name="cancellationToken">取消令牌</param>
-		/// <returns>获取好友消息历史记录异步任务</returns>
+		/// <returns>好友消息信息</returns>
 		Task<APIResponse<PrivateMessagesInfo>> GetFriendMessageHistoryAsync(
 			long userId,
 			long messageId,
@@ -821,7 +821,7 @@ namespace Makabaka
 		/// <param name="messageId">基准消息 ID</param>
 		/// <param name="count">消息数量</param>
 		/// <param name="cancellationToken">取消令牌</param>
-		/// <returns>获取群聊消息历史记录异步任务</returns>
+		/// <returns>群聊消息信息</returns>
 		Task<APIResponse<GroupMessagesInfo>> GetGroupMessageHistoryAsync(
 			long groupId,
 			long messageId,
@@ -841,7 +841,7 @@ namespace Makabaka
 		/// <param name="preview">预览</param>
 		/// <param name="sourceMsgId">源消息 ID</param>
 		/// <param name="cancellationToken">取消令牌</param>
-		/// <returns>获取音乐 Ark 异步任务</returns>
+		/// <returns>音乐 Ark</returns>
 		Task<APIResponse<string>> GetMusicArkAsync(
 			string title = "",
 			string desc = "",
@@ -860,7 +860,7 @@ namespace Makabaka
 		/// <param name="userId">用户 ID</param>
 		/// <param name="groupId">群号</param>
 		/// <param name="cancellationToken">取消令牌</param>
-		/// <returns>群聊戳一戳异步任务</returns>
+		/// <returns></returns>
 		Task<APIResponse> PokeGroupMemberAsync(
 			long userId,
 			long groupId,
@@ -872,7 +872,7 @@ namespace Makabaka
 		/// </summary>
 		/// <param name="messageId">消息 ID</param>
 		/// <param name="cancellationToken">取消令牌</param>
-		/// <returns>标记消息已读异步任务</returns>
+		/// <returns></returns>
 		Task<APIResponse> MarkMessageAsReadAsync(
 			long messageId,
 			CancellationToken cancellationToken = default
@@ -883,7 +883,7 @@ namespace Makabaka
 		/// </summary>
 		/// <param name="messages">转发消息</param>
 		/// <param name="cancellationToken">取消令牌</param>
-		/// <returns>发送转发消息异步任务</returns>
+		/// <returns>转发消息 ID</returns>
 		Task<APIResponse<string>> SendForwardMessageAsync(
 			Message messages,
 			CancellationToken cancellationToken = default
@@ -895,7 +895,7 @@ namespace Makabaka
 		/// <param name="groupId">群号</param>
 		/// <param name="messages">转发消息</param>
 		/// <param name="cancellationToken">取消令牌</param>
-		/// <returns>发送群聊转发消息异步任务</returns>
+		/// <returns>转发消息 ID</returns>
 		Task<APIResponse<string>> SendGroupForwardMessageAsync(
 			long groupId,
 			Message messages,
@@ -910,7 +910,7 @@ namespace Makabaka
 		/// <param name="userId">对方 QQ 号（消息类型为 <see cref="MessageEventType.Private"/> 时需要）</param>
 		/// <param name="groupId">群号（消息类型为 <see cref="MessageEventType.Group"/> 时需要）</param>
 		/// <param name="cancellationToken">取消令牌</param>
-		/// <returns>发送消息异步任务</returns>
+		/// <returns>消息 ID 信息</returns>
 		Task<APIResponse<MessageIdInfo>> SendMessageAsync(
 			MessageEventType messageType,
 			Message message,
@@ -925,7 +925,7 @@ namespace Makabaka
 		/// <param name="userId">用户 ID</param>
 		/// <param name="messages">转发消息</param>
 		/// <param name="cancellationToken">取消令牌</param>
-		/// <returns>发送私聊转发消息异步任务</returns>
+		/// <returns>转发消息 ID</returns>
 		Task<APIResponse<string>> SendPrivateForwardMessageAsync(
 			long userId,
 			Message messages,
@@ -937,7 +937,7 @@ namespace Makabaka
 		/// </summary>
 		/// <param name="messageId">消息 ID</param>
 		/// <param name="cancellationToken">取消令牌</param>
-		/// <returns>设置精华消息异步任务</returns>
+		/// <returns></returns>
 		Task<APIResponse> SetEssenceMessageAsync(
 			long messageId,
 			CancellationToken cancellationToken = default
