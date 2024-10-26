@@ -925,5 +925,17 @@ namespace Makabaka
 				cancellationToken
 				);
 		}
+
+		public Task<APIResponse> MarkMessageAsReadAsync(
+			long messageId,
+			CancellationToken cancellationToken = default
+			)
+		{
+			return ExecuteAPIAsync<MessageIdRequestParams>(
+				"mark_msg_as_read",
+				new(messageId),
+				cancellationToken
+				);
+		}
 	}
 }

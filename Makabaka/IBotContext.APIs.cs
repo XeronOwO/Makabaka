@@ -870,5 +870,16 @@ namespace Makabaka
 			long groupId,
 			CancellationToken cancellationToken = default
 			);
+
+		/// <summary>
+		/// 标记消息已读
+		/// </summary>
+		/// <param name="messageId">消息 ID</param>
+		/// <param name="cancellationToken">取消令牌</param>
+		/// <returns>标记消息已读异步任务</returns>
+		Task<APIResponse> MarkMessageAsReadAsync(
+			long messageId,
+			CancellationToken cancellationToken = default
+			);
 	}
 }
