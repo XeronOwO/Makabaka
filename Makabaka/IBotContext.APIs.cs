@@ -931,5 +931,16 @@ namespace Makabaka
 			Message messages,
 			CancellationToken cancellationToken = default
 			);
+
+		/// <summary>
+		/// 设置精华消息
+		/// </summary>
+		/// <param name="messageId">消息 ID</param>
+		/// <param name="cancellationToken">取消令牌</param>
+		/// <returns>设置精华消息异步任务</returns>
+		Task<APIResponse> SetEssenceMessageAsync(
+			long messageId,
+			CancellationToken cancellationToken = default
+			);
 	}
 }

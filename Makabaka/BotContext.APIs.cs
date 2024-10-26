@@ -988,5 +988,17 @@ namespace Makabaka
 				cancellationToken
 				);
 		}
+
+		public Task<APIResponse> SetEssenceMessageAsync(
+			long messageId,
+			CancellationToken cancellationToken = default
+			)
+		{
+			return ExecuteAPIAsync<SetEssenceMessageRequestParams>(
+				"set_essence_msg",
+				new(messageId),
+				cancellationToken
+				);
+		}
 	}
 }
