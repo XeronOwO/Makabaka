@@ -53,7 +53,8 @@ namespace Makabaka
 
 		private INetworkContext? GetNetworkContext()
 		{
-			return TryCreateForwardWebSocketContext();
+			return TryCreateForwardWebSocketContext()
+				?? TryCreateReverseWebSocketContext();
 		}
 
 		private INetworkContext? TryCreateForwardWebSocketContext()
@@ -65,6 +66,17 @@ namespace Makabaka
 			}
 
 			return services.GetRequiredService<ForwardWebSocketContext>();
+		}
+
+		private INetworkContext? TryCreateReverseWebSocketContext()
+		{
+			var enabled = configuration.GetValue("Bot:ReverseWebSocket:Enabled", false);
+			if (!enabled)
+			{
+				return null;
+			}
+
+			return services.GetRequiredService<ReverseWebSocketContext>();
 		}
 	}
 }

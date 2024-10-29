@@ -66,20 +66,20 @@ namespace Makabaka.Network
 		{
 			while (!cancellationToken.IsCancellationRequested)
 			{
-				logger.LogInformation(SR.ForwardWebSocketConnecting, Url);
-
-				var uri = new Uri(Url);
-				using var client = new WatsonWsClient(uri);
-				client.ServerDisconnected += ServerDisconnected;
-				client.MessageReceived += MessageReceived;
-				client.ConfigureOptions(options =>
-				{
-					options.UseDefaultCredentials = true;
-					options.SetRequestHeader("Authorization", $"Bearer {AccessToken}");
-				});
-
 				try
 				{
+					logger.LogInformation(SR.ForwardWebSocketConnecting, Url);
+
+					var uri = new Uri(Url);
+					using var client = new WatsonWsClient(uri);
+					client.ServerDisconnected += ServerDisconnected;
+					client.MessageReceived += MessageReceived;
+					client.ConfigureOptions(options =>
+					{
+						options.UseDefaultCredentials = true;
+						options.SetRequestHeader("Authorization", $"Bearer {AccessToken}");
+					});
+
 					var timeoutCancellationTokenSource = new CancellationTokenSource(ConnectionTimeout);
 					var linkedCancellationTokenSource = CancellationTokenSource.CreateLinkedTokenSource(timeoutCancellationTokenSource.Token, cancellationToken);
 					var success = await client.StartWithTimeoutAsync(token: linkedCancellationTokenSource.Token);
@@ -104,6 +104,10 @@ namespace Makabaka.Network
 				catch (Exception e)
 				{
 					logger.LogError(e, SR.UnexpectedException);
+				}
+				finally
+				{
+					logger.LogInformation(SR.ForwardWebSocketStopped);
 				}
 			}
 		}

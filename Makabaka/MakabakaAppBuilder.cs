@@ -79,6 +79,7 @@ namespace Makabaka
 			Services.AddSingleton<JsonConverter<SexType>, SexTypeJsonConverter>();
 			Services.AddSingleton<JsonConverter<DateTime>, TimestampDateTimeJsonConverter>();
 			Services.AddTransient<ForwardWebSocketContext>();
+			Services.AddTransient<ReverseWebSocketContext>();
 		}
 	}
 }

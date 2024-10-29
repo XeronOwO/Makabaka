@@ -129,6 +129,9 @@
   <data name="ForwardWebSocketTaskCanceled" xml:space="preserve">
     <value>[正向WebSocket] 任务被取消。</value>
   </data>
+  <data name="ReverseWebSocketTaskCanceled" xml:space="preserve">
+    <value>[反向WebSocket] 任务被取消。</value>
+  </data>
   <data name="ForwardWebSocketConnectSuccess" xml:space="preserve">
     <value>[正向WebSocket] 连接成功。</value>
   </data>
@@ -143,6 +146,9 @@
   </data>
   <data name="ForwardWebSocketReceived" xml:space="preserve">
     <value>[正向WebSocket] 接收：{0}</value>
+  </data>
+  <data name="ReverseWebSocketReceived" xml:space="preserve">
+    <value>[反向WebSocket] [{0}] 接收：{1}</value>
   </data>
   <data name="ForwardWebSocketProcessError" xml:space="preserve">
     <value>[正向WebSocket] 处理数据时出现异常。</value>
@@ -183,6 +189,9 @@
   <data name="ForwardWebSocketAPISendTaskCanceled" xml:space="preserve">
     <value>[正向WebSocket] API发送任务被取消。</value>
   </data>
+  <data name="ReverseWebSocketAPISendTaskCanceled" xml:space="preserve">
+    <value>[反向WebSocket] API发送任务被取消。</value>
+  </data>
   <data name="ForwardWebSocketSendFailed" xml:space="preserve">
     <value>[正向WebSocket] 发送数据包失败。</value>
   </data>
@@ -195,10 +204,34 @@
   <data name="ForwardWebSocketSent" xml:space="preserve">
     <value>[正向WebSocket] 发送：{0}</value>
   </data>
+  <data name="ReverseWebSocketSent" xml:space="preserve">
+    <value>[反向WebSocket] 发送：{0}</value>
+  </data>
+  <data name="ReverseWebSocketServerStopped" xml:space="preserve">
+    <value>[反向WebSocket] 已停止。</value>
+  </data>
+  <data name="ForwardWebSocketStopped" xml:space="preserve">
+    <value>[正向WebSocket] 已停止。</value>
+  </data>
   <data name="APIResponseError" xml:space="preserve">
     <value>API响应未显示成功：[{0}] {1} ({2})。</value>
   </data>
   <data name="APIResponseDataNull" xml:space="preserve">
     <value>API响应数据为null：{0}。</value>
+  </data>
+  <data name="ReverseWebSocketServerStarting" xml:space="preserve">
+    <value>[反向WebSocket] 于 {0} 启动WebSocket服务器。</value>
+  </data>
+  <data name="ReverseWebSocketServerStartSuccess" xml:space="preserve">
+    <value>[反向WebSocket] WebSocket服务器启动成功。</value>
+  </data>
+  <data name="ReverseWebSocketWrongAuthorization" xml:space="preserve">
+    <value>[反向WebSocket] {0} 授权错误。期望 "{1}"，但得到 "{2}"。</value>
+  </data>
+  <data name="ReverseWebSocketClientDisconnected" xml:space="preserve">
+    <value>[反向WebSocket] {0} 断开连接。</value>
+  </data>
+  <data name="ReverseWebSocketClientConnected" xml:space="preserve">
+    <value>[反向WebSocket] {0} 已成功连接。</value>
   </data>
 </root>

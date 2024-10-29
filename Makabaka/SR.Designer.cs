@@ -187,6 +187,15 @@ namespace Makabaka {
         }
         
         /// <summary>
+        ///   查找类似 [ForwardWebSocket] Stopped. 的本地化字符串。
+        /// </summary>
+        internal static string ForwardWebSocketStopped {
+            get {
+                return ResourceManager.GetString("ForwardWebSocketStopped", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 [ForwardWebSocket] Task canceled. 的本地化字符串。
         /// </summary>
         internal static string ForwardWebSocketTaskCanceled {
@@ -246,6 +255,96 @@ namespace Makabaka {
         internal static string PrivateMessage {
             get {
                 return ResourceManager.GetString("PrivateMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 [ReverseWebSocket] API send task canceled. 的本地化字符串。
+        /// </summary>
+        internal static string ReverseWebSocketAPISendTaskCanceled {
+            get {
+                return ResourceManager.GetString("ReverseWebSocketAPISendTaskCanceled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 [ReverseWebSocket] Client connected from {0}. 的本地化字符串。
+        /// </summary>
+        internal static string ReverseWebSocketClientConnected {
+            get {
+                return ResourceManager.GetString("ReverseWebSocketClientConnected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 [ReverseWebSocket] Client disconnected from {0}. 的本地化字符串。
+        /// </summary>
+        internal static string ReverseWebSocketClientDisconnected {
+            get {
+                return ResourceManager.GetString("ReverseWebSocketClientDisconnected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 [ReverseWebSocket] [{0}] Received: {1} 的本地化字符串。
+        /// </summary>
+        internal static string ReverseWebSocketReceived {
+            get {
+                return ResourceManager.GetString("ReverseWebSocketReceived", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 [ReverseWebSocket] Sent: {0} 的本地化字符串。
+        /// </summary>
+        internal static string ReverseWebSocketSent {
+            get {
+                return ResourceManager.GetString("ReverseWebSocketSent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 [ReverseWebSocket] Starting web socket server on {0}. 的本地化字符串。
+        /// </summary>
+        internal static string ReverseWebSocketServerStarting {
+            get {
+                return ResourceManager.GetString("ReverseWebSocketServerStarting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 [ReverseWebSocket] Web socket server started successfully. 的本地化字符串。
+        /// </summary>
+        internal static string ReverseWebSocketServerStartSuccess {
+            get {
+                return ResourceManager.GetString("ReverseWebSocketServerStartSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 [ReverseWebSocket] Stopped. 的本地化字符串。
+        /// </summary>
+        internal static string ReverseWebSocketServerStopped {
+            get {
+                return ResourceManager.GetString("ReverseWebSocketServerStopped", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 [ReverseWebSocket] Task canceled. 的本地化字符串。
+        /// </summary>
+        internal static string ReverseWebSocketTaskCanceled {
+            get {
+                return ResourceManager.GetString("ReverseWebSocketTaskCanceled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 [ReverseWebSocket] Wrong authorization from {0}. Expected &quot;{1}&quot;, but got &quot;{2}&quot;. 的本地化字符串。
+        /// </summary>
+        internal static string ReverseWebSocketWrongAuthorization {
+            get {
+                return ResourceManager.GetString("ReverseWebSocketWrongAuthorization", resourceCulture);
             }
         }
         
