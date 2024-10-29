@@ -252,27 +252,36 @@ Makabaka 已发布到 [NuGet](https://www.nuget.org/packages/Makabaka "前往NuG
 
 ```json
 {
-	"Logging": {
-		"LogLevel": {
-			"Default": "Information" // 日志等级，如果需要看到详细的收发数据包内容（例如提出 issue），请改成 Trace ，一般情况下用 Information 就行
-		}
-	},
-	"Bot": {
-		"ForwardWebSocket": { // 正向 WebSocket
-			"Enabled": true, // 是否启用。注意：一般情况下 ForwardWebSocket 与 ReverseWebSocket 同一时间只能存在一个
-			"Url": "ws://127.0.0.1:8081", // 远程 Lagrange.Onebot 的 ws 服务器地址
-			"AccessToken": "", // 鉴权密钥
-			"ReconnectInterval": 1000,
-			"ConnectionTimeout": 5000,
-			"ApiTimeout": 10000
-		},
-		"ReverseWebSocket": { // 反向 WebSocket
-			"Enabled": false, // 是否启用
-			"Url": "http://127.0.0.1:8082/onebot/v11/ws/", // 本地开启的 ws 服务器地址
-			"AccessToken": "", // 鉴权密钥
-			"RestartInterval": 1000
-		}
-	}
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "@Default": "日志等级，如果需要看到详细的收发数据包内容（例如提出 issue），请改成 Trace ，一般情况下用 Information 就行"
+    }
+  },
+  "Bot": {
+    "ForwardWebSocket": {
+      "@ForwardWebSocket": "正向 WebSocket",
+      "Enabled": true,
+      "@Enabled": "是否启用。注意：一般情况下 ForwardWebSocket 与 ReverseWebSocket 同一时间只能存在一个",
+      "Url": "ws://127.0.0.1:8081",
+      "@Url": "远程 Lagrange.Onebot 的 ws 服务器地址",
+      "AccessToken": "",
+      "@AccessToken": "鉴权密钥",
+      "ReconnectInterval": 1000,
+      "ConnectionTimeout": 5000,
+      "ApiTimeout": 10000
+    },
+    "ReverseWebSocket": {
+      "@ReverseWebSocket": "反向 WebSocket",
+      "Enabled": false,
+      "@Enabled": "是否启用",
+      "Url": "http://127.0.0.1:8082/onebot/v11/ws/",
+      "@Url": "本地开启的 ws 服务器地址，请严格按照 http(s):// 开头、/ 结尾的格式，否则可能报错",
+      "AccessToken": "",
+      "@AccessToken": "鉴权密钥",
+      "RestartInterval": 1000
+    }
+  }
 }
 ```
 
@@ -290,42 +299,44 @@ using Microsoft.Extensions.Logging;
 
 namespace MyApp
 {
-	internal class Program
-	{
-		private static ILogger<Program> _logger = null!;
+    internal class Program
+    {
+        private static ILogger<Program> _logger = null!;
 
-		static void Main(string[] args)
-		{
-			var builder = new MakabakaAppBuilder(args);
-			var app = builder.Build();
+        static void Main(string[] args)
+        {
+            var builder = new MakabakaAppBuilder(args);
+            var app = builder.Build();
 
-			_logger = app.Services.GetRequiredService<ILogger<Program>>();
-			app.BotContext.OnPrivateMessage += OnPrivateMessage;
-			app.BotContext.OnGroupMessage += OnGroupMessage;
+            _logger = app.Services.GetRequiredService<ILogger<Program>>();
+            app.BotContext.OnPrivateMessage += OnPrivateMessage;
+            app.BotContext.OnGroupMessage += OnGroupMessage;
 
-			app.Run();
-		}
+            app.Run();
+        }
 
-		private static Task OnPrivateMessage(object sender, PrivateMessageEventArgs e)
-		{
-			return OnMessage(e.Message, e);
-		}
+        private static Task OnPrivateMessage(object sender, PrivateMessageEventArgs e)
+        {
+            return OnMessage(e.Message, e);
+        }
 
-		private static Task OnGroupMessage(object sender, GroupMessageEventArgs e)
-		{
-			return OnMessage(e.Message, e);
-		}
+        private static Task OnGroupMessage(object sender, GroupMessageEventArgs e)
+        {
+            return OnMessage(e.Message, e);
+        }
 
-		private static async Task OnMessage(Message message, IMessageHandler reply)
-		{
-			if (message.ToString() == "文本测试")
-			{
-				await reply.ReplyAsync([new TextSegment("Hello, world!")]);
-			}
-		}
-	}
+        private static async Task OnMessage(Message message, IMessageHandler reply)
+        {
+            if (message.ToString() == "文本测试")
+            {
+                await reply.ReplyAsync([new TextSegment("Hello, world!")]);
+            }
+        }
+    }
 }
 ```
+
+详细的API见 [Program.cs](Makabaka.Test/) 。  
 
 ## 开源协议
 [GPL-3.0 license](https://github.com/XeronOwO/Makabaka/blob/main/LICENSE.txt)
