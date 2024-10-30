@@ -336,7 +336,7 @@ namespace MyApp
 }
 ```
 
-详细的API见 [Program.cs](Makabaka.Test/) 。  
+详细的API见 [Makabaka.Test](Makabaka.Test/) 。  
 
 ## 开源协议
 [GPL-3.0 license](https://github.com/XeronOwO/Makabaka/blob/main/LICENSE.txt)
