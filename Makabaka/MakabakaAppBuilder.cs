@@ -1,16 +1,10 @@
-﻿using Makabaka.Messages;
-using Makabaka.Models;
-using Makabaka.Network;
-using Makabaka.Utils;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Diagnostics.Metrics;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text.Json.Serialization;
 
 namespace Makabaka
 {
@@ -35,7 +29,7 @@ namespace Makabaka
 		public MakabakaAppBuilder(string[]? args)
 		{
 			_hostApplicationBuilder = new(args);
-			Initialize();
+			Services.AddMakabaka();
 		}
 
 		IDictionary<object, object> IHostApplicationBuilder.Properties => ((IHostApplicationBuilder)_hostApplicationBuilder).Properties;
@@ -68,18 +62,5 @@ namespace Makabaka
 		/// <returns>Makabaka应用</returns>
 		public MakabakaApp Build()
 			=> new(_hostApplicationBuilder.Build());
-
-		private void Initialize()
-		{
-			Services.AddHostedService<BotContext>();
-			Services.AddSingleton<IBotContext, BotContext>(
-				provider => provider.GetServices<IHostedService>().OfType<BotContext>().First()
-				);
-			Services.AddSingleton<JsonConverter<Message>, MessageJsonConverter>();
-			Services.AddSingleton<JsonConverter<SexType>, SexTypeJsonConverter>();
-			Services.AddSingleton<JsonConverter<DateTime>, TimestampDateTimeJsonConverter>();
-			Services.AddTransient<ForwardWebSocketContext>();
-			Services.AddTransient<ReverseWebSocketContext>();
-		}
 	}
 }

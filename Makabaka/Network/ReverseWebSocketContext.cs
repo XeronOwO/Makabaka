@@ -43,13 +43,13 @@ namespace Makabaka.Network
 			{
 				try
 				{
-                    if (!first)
-                    {
-                        await Task.Delay(RestartInterval, cancellationToken);
+					if (!first)
+					{
+						await Task.Delay(RestartInterval, cancellationToken);
 					}
 					first = false;
 
-                    logger.LogInformation(SR.ReverseWebSocketServerStarting, Url);
+					logger.LogInformation(SR.ReverseWebSocketServerStarting, Url);
 
 					var uri = new Uri(Url);
 					_server = new WatsonWsServer(uri);
@@ -111,11 +111,11 @@ namespace Makabaka.Network
 				logger.LogInformation(SR.ReverseWebSocketClientConnected, e.Client.IpPort);
 			}
 			else
-            {
+			{
 				logger.LogError(SR.ReverseWebSocketWrongAuthorization, e.Client.IpPort, Authorization, authorization);
 				_server.DisconnectClient(e.Client.Guid);
-            }
-        }
+			}
+		}
 
 		private void ClientDisconnected(object sender, DisconnectionEventArgs e)
 		{
@@ -161,11 +161,11 @@ namespace Makabaka.Network
 			foreach (var client in server.ListClients())
 			{
 				var success = await server.SendAsync(client.Guid, message, type, cancellationToken);
-                if (success)
-                {
+				if (success)
+				{
 					result = success;
-                }
-            }
+				}
+			}
 			return result;
 		}
 
