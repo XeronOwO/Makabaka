@@ -8,7 +8,7 @@
 	/// <param name="Count">消息数量</param>
 	public record class GetFriendMessageHistoryRequestParams(
 		ulong UserId,
-		ulong MessageId,
+		long MessageId,
 		uint Count
 		)
 	{

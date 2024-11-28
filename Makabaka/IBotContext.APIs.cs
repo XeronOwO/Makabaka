@@ -77,7 +77,7 @@ namespace Makabaka
 		/// <param name="cancellationToken">取消令牌</param>
 		/// <returns></returns>
 		Task<APIResponse> RevokeMessageAsync(
-			ulong messageId,
+			long messageId,
 			CancellationToken cancellationToken = default
 			);
 
@@ -88,7 +88,7 @@ namespace Makabaka
 		/// <param name="cancellationToken">取消令牌</param>
 		/// <returns>消息信息</returns>
 		Task<APIResponse<MessageInfo>> GetMessageAsync(
-			ulong messageId,
+			long messageId,
 			CancellationToken cancellationToken = default
 			);
 
@@ -773,7 +773,7 @@ namespace Makabaka
 		/// <param name="cancellationToken">取消令牌</param>
 		/// <returns></returns>
 		Task<APIResponse> DeleteEssenceMessageAsync(
-			ulong messageId,
+			long messageId,
 			CancellationToken cancellationToken = default
 			);
 
@@ -809,7 +809,7 @@ namespace Makabaka
 		/// <returns>好友消息信息</returns>
 		Task<APIResponse<PrivateMessagesInfo>> GetFriendMessageHistoryAsync(
 			ulong userId,
-			ulong messageId,
+			long messageId,
 			uint count,
 			CancellationToken cancellationToken = default
 			);
@@ -824,7 +824,7 @@ namespace Makabaka
 		/// <returns>群聊消息信息</returns>
 		Task<APIResponse<GroupMessagesInfo>> GetGroupMessageHistoryAsync(
 			ulong groupId,
-			ulong messageId,
+			long messageId,
 			uint count,
 			CancellationToken cancellationToken = default
 			);
@@ -874,7 +874,7 @@ namespace Makabaka
 		/// <param name="cancellationToken">取消令牌</param>
 		/// <returns></returns>
 		Task<APIResponse> MarkMessageAsReadAsync(
-			ulong messageId,
+			long messageId,
 			CancellationToken cancellationToken = default
 			);
 
@@ -939,7 +939,7 @@ namespace Makabaka
 		/// <param name="cancellationToken">取消令牌</param>
 		/// <returns></returns>
 		Task<APIResponse> SetEssenceMessageAsync(
-			ulong messageId,
+			long messageId,
 			CancellationToken cancellationToken = default
 			);
 	}

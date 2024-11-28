@@ -22,7 +22,7 @@ namespace Makabaka.Messages
 		/// 回复段消息
 		/// </summary>
 		/// <param name="id"></param>
-		public ReplySegment(ulong id) : this(id.ToString())
+		public ReplySegment(long id) : this(id.ToString())
 		{
 		}
 

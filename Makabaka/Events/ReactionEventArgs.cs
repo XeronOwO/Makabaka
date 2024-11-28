@@ -13,7 +13,7 @@
 		/// <summary>
 		/// 消息 ID
 		/// </summary>
-		public ulong MessageId { get; set; }
+		public long MessageId { get; set; }
 
 		/// <summary>
 		/// 操作者 QQ 号

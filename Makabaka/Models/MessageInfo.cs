@@ -22,12 +22,12 @@ namespace Makabaka.Models
 		/// <summary>
 		/// 消息 ID
 		/// </summary>
-		public ulong MessageId { get; set; }
+		public long MessageId { get; set; }
 
 		/// <summary>
 		/// 消息真实 ID
 		/// </summary>
-		public ulong RealId { get; set; }
+		public long RealId { get; set; }
 
 		/// <summary>
 		/// 发送人信息

@@ -284,7 +284,7 @@ namespace Makabaka.Test
 			Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
 		};
 
-		private static async Task HandleMessageAsync(Message message, ulong messageId, IBotContext botContext, IMessageHandler reply)
+		private static async Task HandleMessageAsync(Message message, long messageId, IBotContext botContext, IMessageHandler reply)
 		{
 			switch (message.ToString())
 			{

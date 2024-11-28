@@ -13,6 +13,6 @@
 		/// <summary>
 		/// 被撤回的消息 ID
 		/// </summary>
-		public ulong MessageId { get; set; }
+		public long MessageId { get; set; }
 	}
 }

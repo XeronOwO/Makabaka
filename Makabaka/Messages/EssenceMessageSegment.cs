@@ -40,7 +40,7 @@ namespace Makabaka.Messages
 		/// <summary>
 		/// 消息 ID
 		/// </summary>
-		public ulong MessageId { get; set; }
+		public long MessageId { get; set; }
 
 		/// <summary>
 		/// 内容

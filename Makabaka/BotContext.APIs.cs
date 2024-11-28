@@ -122,7 +122,7 @@ namespace Makabaka
 		}
 
 		public Task<APIResponse> RevokeMessageAsync(
-			ulong messageId,
+			long messageId,
 			CancellationToken cancellationToken = default
 			)
 		{
@@ -134,7 +134,7 @@ namespace Makabaka
 		}
 
 		public Task<APIResponse<MessageInfo>> GetMessageAsync(
-			ulong messageId,
+			long messageId,
 			CancellationToken cancellationToken = default
 			)
 		{
@@ -806,7 +806,7 @@ namespace Makabaka
 		}
 
 		public Task<APIResponse> DeleteEssenceMessageAsync(
-			ulong messageId,
+			long messageId,
 			CancellationToken cancellationToken = default
 			)
 		{
@@ -843,7 +843,7 @@ namespace Makabaka
 
 		public async Task<APIResponse<PrivateMessagesInfo>> GetFriendMessageHistoryAsync(
 			ulong userId,
-			ulong messageId,
+			long messageId,
 			uint count,
 			CancellationToken cancellationToken = default
 			)
@@ -868,7 +868,7 @@ namespace Makabaka
 
 		public async Task<APIResponse<GroupMessagesInfo>> GetGroupMessageHistoryAsync(
 			ulong groupId,
-			ulong messageId,
+			long messageId,
 			uint count,
 			CancellationToken cancellationToken = default
 			)
@@ -924,7 +924,7 @@ namespace Makabaka
 		}
 
 		public Task<APIResponse> MarkMessageAsReadAsync(
-			ulong messageId,
+			long messageId,
 			CancellationToken cancellationToken = default
 			)
 		{
@@ -989,7 +989,7 @@ namespace Makabaka
 		}
 
 		public Task<APIResponse> SetEssenceMessageAsync(
-			ulong messageId,
+			long messageId,
 			CancellationToken cancellationToken = default
 			)
 		{
