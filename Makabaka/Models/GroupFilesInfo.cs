@@ -1,6 +1,4 @@
-﻿using Makabaka.Models;
-
-namespace Makabaka.Messages
+﻿namespace Makabaka.Models
 {
 	/// <summary>
 	/// 群文件信息
