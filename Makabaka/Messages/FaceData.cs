@@ -1,4 +1,6 @@
-﻿namespace Makabaka.Messages
+﻿using System.Text.Json.Serialization;
+
+namespace Makabaka.Messages
 {
 	/// <summary>
 	/// QQ 表情数据
@@ -15,6 +17,7 @@
 		/// <summary>
 		/// [Lagrange拓展] 是否是大表情
 		/// </summary>
+		[JsonPropertyName("large")]
 		public bool IsLarge { get; set; } = false;
 	}
 }
