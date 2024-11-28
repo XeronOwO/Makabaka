@@ -31,7 +31,7 @@ namespace Makabaka.Messages
 		/// </summary>
 		/// <param name="qq">@的 QQ 号</param>
 		/// <param name="name">[Lagrange拓展] @的名称</param>
-		public AtSegment(long qq, string? name = null) : this(qq.ToString(), name)
+		public AtSegment(ulong qq, string? name = null) : this(qq.ToString(), name)
 		{
 		}
 	}

@@ -84,7 +84,7 @@ namespace Makabaka.Messages
 		/// ✔ 发
 		/// </param>
 		public NodeSegment(
-			long userId,
+			ulong userId,
 			string nickname,
 			Message content
 			) : this(

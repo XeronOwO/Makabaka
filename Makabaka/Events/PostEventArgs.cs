@@ -15,7 +15,7 @@ namespace Makabaka.Events
 		/// <summary>
 		/// 收到事件的机器人 QQ 号
 		/// </summary>
-		public long SelfId { get; set; }
+		public ulong SelfId { get; set; }
 
 		/// <summary>
 		/// 事件类型

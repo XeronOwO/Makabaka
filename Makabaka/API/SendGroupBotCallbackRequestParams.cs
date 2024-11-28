@@ -8,8 +8,8 @@
 	/// <param name="Data_1">参数1</param>
 	/// <param name="Data_2">参数2</param>
 	public record class SendGroupBotCallbackRequestParams(
-		long GroupId,
-		long BotId,
+		ulong GroupId,
+		ulong BotId,
 		string? Data_1 = null,
 		string? Data_2 = null
 		)

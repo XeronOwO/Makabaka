@@ -284,7 +284,7 @@ namespace Makabaka.Test
 			Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
 		};
 
-		private static async Task HandleMessageAsync(Message message, long messageId, IBotContext botContext, IMessageHandler reply)
+		private static async Task HandleMessageAsync(Message message, ulong messageId, IBotContext botContext, IMessageHandler reply)
 		{
 			switch (message.ToString())
 			{
@@ -461,7 +461,7 @@ namespace Makabaka.Test
 			var match = GetStrangerInfoTestRegex().Match(message.ToString());
 			if (match.Success)
 			{
-				var user = long.Parse(match.Groups["user"].Value);
+				var user = ulong.Parse(match.Groups["user"].Value);
 				var data = (await botContext.GetStrangerInfoAsync(user)).Result;
 				await reply.ReplyAsync([new TextSegment(JsonSerializer.Serialize(data, _jsonSerializerDisplayOptions))]);
 				return;
@@ -470,7 +470,7 @@ namespace Makabaka.Test
 			match = GetGroupInfoTestRegex().Match(message.ToString());
 			if (match.Success)
 			{
-				var group = long.Parse(match.Groups["group"].Value);
+				var group = ulong.Parse(match.Groups["group"].Value);
 				var data = (await botContext.GetGroupInfoAsync(group)).Result;
 				await reply.ReplyAsync([new TextSegment(JsonSerializer.Serialize(data, _jsonSerializerDisplayOptions))]);
 				return;
@@ -479,8 +479,8 @@ namespace Makabaka.Test
 			match = GetGroupMemberInfoTestRegex().Match(message.ToString());
 			if (match.Success)
 			{
-				var group = long.Parse(match.Groups["group"].Value);
-				var user = long.Parse(match.Groups["user"].Value);
+				var group = ulong.Parse(match.Groups["group"].Value);
+				var user = ulong.Parse(match.Groups["user"].Value);
 				var data = (await botContext.GetGroupMemberInfoAsync(group, user, true)).Result;
 				await reply.ReplyAsync([new TextSegment(JsonSerializer.Serialize(data, _jsonSerializerDisplayOptions))]);
 				return;

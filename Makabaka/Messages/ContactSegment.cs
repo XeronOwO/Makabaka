@@ -43,7 +43,7 @@ namespace Makabaka.Messages
 		/// </param>
 		public ContactSegment(
 			ContactType type,
-			long id
+			ulong id
 			) : this(type, id.ToString())
 		{
 		}

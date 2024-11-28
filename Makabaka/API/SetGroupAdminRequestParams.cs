@@ -7,8 +7,8 @@
 	/// <param name="UserId">要设置管理员的 QQ 号</param>
 	/// <param name="Enable">true 为设置，false 为取消</param>
 	public record class SetGroupAdminRequestParams(
-		long GroupId,
-		long UserId,
+		ulong GroupId,
+		ulong UserId,
 		bool Enable = true
 		)
 	{

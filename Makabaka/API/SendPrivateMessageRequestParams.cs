@@ -8,7 +8,7 @@ namespace Makabaka.API
 	/// <param name="UserId">对方 QQ 号</param>
 	/// <param name="Message">要发送的内容</param>
 	public record class SendPrivateMessageRequestParams(
-		long UserId,
+		ulong UserId,
 		Message Message
 		);
 }

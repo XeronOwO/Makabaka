@@ -19,12 +19,12 @@ namespace Makabaka.Events
 		/// <summary>
 		/// 消息 ID
 		/// </summary>
-		public long MessageId { get; set; }
+		public ulong MessageId { get; set; }
 
 		/// <summary>
 		/// 发送者 QQ 号
 		/// </summary>
-		public long UserId { get; set; }
+		public ulong UserId { get; set; }
 
 		/// <summary>
 		/// 消息内容
@@ -39,7 +39,7 @@ namespace Makabaka.Events
 		/// <summary>
 		/// 字体
 		/// </summary>
-		public long Font { get; set; }
+		public ulong Font { get; set; }
 
 		/// <summary>
 		/// 发送人信息

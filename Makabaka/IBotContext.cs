@@ -5,6 +5,6 @@
 		/// <summary>
 		/// Bot QQ 号
 		/// </summary>
-		public long SelfId { get; }
+		public ulong SelfId { get; }
 	}
 }

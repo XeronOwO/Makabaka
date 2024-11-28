@@ -26,7 +26,7 @@ namespace Makabaka.Models
 		/// busid（目前不清楚有什么作用）
 		/// </summary>
 		[JsonPropertyName("busid")]
-		public long BusId { get; set; }
+		public ulong BusId { get; set; }
 
 		/// <summary>
 		/// [Lagrange拓展] 文件 URL

@@ -5,7 +5,7 @@ namespace Makabaka
 {
 	internal partial class BotContext
 	{
-		public long SelfId { get; private set; }
+		public ulong SelfId { get; private set; }
 
 		public event EventHandlerAsync<LifecycleEventArgs>? OnLifecycle;
 

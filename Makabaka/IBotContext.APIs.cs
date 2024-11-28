@@ -41,7 +41,7 @@ namespace Makabaka
 		/// <param name="cancellationToken">取消令牌</param>
 		/// <returns>消息 ID 信息</returns>
 		Task<APIResponse<MessageIdInfo>> SendPrivateMessageAsync(
-			long userId,
+			ulong userId,
 			Message message,
 			CancellationToken cancellationToken = default
 			);
@@ -54,7 +54,7 @@ namespace Makabaka
 		/// <param name="cancellationToken">取消令牌</param>
 		/// <returns>消息 ID 信息</returns>
 		Task<APIResponse<MessageIdInfo>> SendGroupMessageAsync(
-			long groupId,
+			ulong groupId,
 			Message message,
 			CancellationToken cancellationToken = default
 			);
@@ -77,7 +77,7 @@ namespace Makabaka
 		/// <param name="cancellationToken">取消令牌</param>
 		/// <returns></returns>
 		Task<APIResponse> RevokeMessageAsync(
-			long messageId,
+			ulong messageId,
 			CancellationToken cancellationToken = default
 			);
 
@@ -88,7 +88,7 @@ namespace Makabaka
 		/// <param name="cancellationToken">取消令牌</param>
 		/// <returns>消息信息</returns>
 		Task<APIResponse<MessageInfo>> GetMessageAsync(
-			long messageId,
+			ulong messageId,
 			CancellationToken cancellationToken = default
 			);
 
@@ -111,7 +111,7 @@ namespace Makabaka
 		/// <param name="cancellationToken">取消令牌</param>
 		/// <returns></returns>
 		Task<APIResponse> SendLikeAsync(
-			long userId,
+			ulong userId,
 			int times = 1,
 			CancellationToken cancellationToken = default
 			);
@@ -125,8 +125,8 @@ namespace Makabaka
 		/// <param name="cancellationToken">取消令牌</param>
 		/// <returns></returns>
 		Task<APIResponse> KickGroupMemberAsync(
-			long groupId,
-			long userId,
+			ulong groupId,
+			ulong userId,
 			bool rejectAddRequest = false,
 			CancellationToken cancellationToken = default
 			);
@@ -140,8 +140,8 @@ namespace Makabaka
 		/// <param name="cancellationToken">取消令牌</param>
 		/// <returns></returns>
 		Task<APIResponse> MuteGroupMemberAsync(
-			long groupId,
-			long userId,
+			ulong groupId,
+			ulong userId,
 			int duration = 30 * 60,
 			CancellationToken cancellationToken = default
 			);
@@ -157,7 +157,7 @@ namespace Makabaka
 		/// <param name="cancellationToken">取消令牌</param>
 		/// <returns></returns>
 		Task<APIResponse> MuteGroupAnonymousMemberAsync(
-			long groupId,
+			ulong groupId,
 			GroupMessageAnonymousSenderInfo? anonymous = null,
 			string? anonymousFlag = null,
 			string? flag = null,
@@ -173,7 +173,7 @@ namespace Makabaka
 		/// <param name="cancellationToken">取消令牌</param>
 		/// <returns></returns>
 		Task<APIResponse> MuteGroupAsync(
-			long groupId,
+			ulong groupId,
 			bool enable = true,
 			CancellationToken cancellationToken = default
 			);
@@ -187,8 +187,8 @@ namespace Makabaka
 		/// <param name="cancellationToken">取消令牌</param>
 		/// <returns></returns>
 		Task<APIResponse> SetGroupAdminAsync(
-			long groupId,
-			long userId,
+			ulong groupId,
+			ulong userId,
 			bool enable = true,
 			CancellationToken cancellationToken = default
 			);
@@ -201,7 +201,7 @@ namespace Makabaka
 		/// <param name="cancellationToken">取消令牌</param>
 		/// <returns></returns>
 		Task<APIResponse> SetGroupAnonymousAsync(
-			long groupId,
+			ulong groupId,
 			bool enable = true,
 			CancellationToken cancellationToken = default
 			);
@@ -215,8 +215,8 @@ namespace Makabaka
 		/// <param name="cancellationToken">取消令牌</param>
 		/// <returns></returns>
 		Task<APIResponse> SetGroupMemberCardAsync(
-			long groupId,
-			long userId,
+			ulong groupId,
+			ulong userId,
 			string? card = null,
 			CancellationToken cancellationToken = default
 			);
@@ -229,7 +229,7 @@ namespace Makabaka
 		/// <param name="cancellationToken">取消令牌</param>
 		/// <returns></returns>
 		Task<APIResponse> SetGroupNameAsync(
-			long groupId,
+			ulong groupId,
 			string groupName,
 			CancellationToken cancellationToken = default
 			);
@@ -242,7 +242,7 @@ namespace Makabaka
 		/// <param name="cancellationToken">取消令牌</param>
 		/// <returns></returns>
 		Task<APIResponse> LeaveGroupAsync(
-			long groupId,
+			ulong groupId,
 			bool isDismiss = false,
 			CancellationToken cancellationToken = default
 			);
@@ -257,8 +257,8 @@ namespace Makabaka
 		/// <param name="cancellationToken">取消令牌</param>
 		/// <returns></returns>
 		Task<APIResponse> SetGroupMemberTitleAsync(
-			long groupId,
-			long userId,
+			ulong groupId,
+			ulong userId,
 			string? specialTitle = null,
 			int duration = -1,
 			CancellationToken cancellationToken = default
@@ -313,7 +313,7 @@ namespace Makabaka
 		/// <param name="cancellationToken">取消令牌</param>
 		/// <returns>陌生人信息</returns>
 		Task<APIResponse<StrangerInfo>> GetStrangerInfoAsync(
-			long userId,
+			ulong userId,
 			bool noCache = false,
 			CancellationToken cancellationToken = default
 			);
@@ -335,7 +335,7 @@ namespace Makabaka
 		/// <param name="cancellationToken">取消令牌</param>
 		/// <returns>群信息</returns>
 		Task<APIResponse<GroupInfo>> GetGroupInfoAsync(
-			long groupId,
+			ulong groupId,
 			bool noCache = false,
 			CancellationToken cancellationToken = default
 			);
@@ -358,8 +358,8 @@ namespace Makabaka
 		/// <param name="cancellationToken">取消令牌</param>
 		/// <returns>群成员信息</returns>
 		Task<APIResponse<GroupMemberInfo>> GetGroupMemberInfoAsync(
-			long groupId,
-			long userId,
+			ulong groupId,
+			ulong userId,
 			bool noCache = false,
 			CancellationToken cancellationToken = default
 			);
@@ -372,7 +372,7 @@ namespace Makabaka
 		/// <param name="cancellationToken">取消令牌</param>
 		/// <returns>群成员信息列表</returns>
 		Task<APIResponse<GroupMemberInfo[]>> GetGroupMemberListAsync(
-			long groupId,
+			ulong groupId,
 			CancellationToken cancellationToken = default
 			);
 
@@ -384,7 +384,7 @@ namespace Makabaka
 		/// <param name="cancellationToken">取消令牌</param>
 		/// <returns>群荣誉信息</returns>
 		Task<APIResponse<GroupHonorInfo>> GetGroupHonorInfoAsync(
-			long groupId,
+			ulong groupId,
 			GetGroupHonorInfoType type = GetGroupHonorInfoType.All,
 			CancellationToken cancellationToken = default
 			);
@@ -518,7 +518,7 @@ namespace Makabaka
 		/// <param name="cancellationToken">取消令牌</param>
 		/// <returns></returns>
 		Task<APIResponse> UploadGroupFileAsync(
-			long groupId,
+			ulong groupId,
 			string file,
 			string? name = null,
 			string? folder = null,
@@ -533,7 +533,7 @@ namespace Makabaka
 		/// <param name="cancellationToken">取消令牌</param>
 		/// <returns>群文件信息</returns>
 		Task<APIResponse<GroupFilesInfo>> GetGroupFilesByFolderAsync(
-			long groupId,
+			ulong groupId,
 			string? folderId = null,
 			CancellationToken cancellationToken = default
 			);
@@ -545,7 +545,7 @@ namespace Makabaka
 		/// <param name="cancellationToken">取消令牌</param>
 		/// <returns>群文件信息</returns>
 		Task<APIResponse<GroupFilesInfo>> GetGroupRootFilesAsync(
-			long groupId,
+			ulong groupId,
 			CancellationToken cancellationToken = default
 			);
 
@@ -558,7 +558,7 @@ namespace Makabaka
 		/// <param name="cancellationToken">取消令牌</param>
 		/// <returns>链接信息</returns>
 		Task<APIResponse<UrlInfo>> GetGroupFileUrlAsync(
-			long groupId,
+			ulong groupId,
 			string fileId,
 			uint busId,
 			CancellationToken cancellationToken = default
@@ -574,7 +574,7 @@ namespace Makabaka
 		/// <param name="cancellationToken">取消令牌</param>
 		/// <returns>群文件系统操作信息</returns>
 		Task<APIResponse<GroupFileSystemOperationInfo>> MoveGroupFileAsync(
-			long groupId,
+			ulong groupId,
 			string fileId,
 			string parentDirectory,
 			string targetDirectory,
@@ -589,7 +589,7 @@ namespace Makabaka
 		/// <param name="cancellationToken">取消令牌</param>
 		/// <returns>群文件系统操作信息</returns>
 		Task<APIResponse<GroupFileSystemOperationInfo>> DeleteGroupFileAsync(
-			long groupId,
+			ulong groupId,
 			string fileId,
 			CancellationToken cancellationToken = default
 			);
@@ -603,7 +603,7 @@ namespace Makabaka
 		/// <param name="cancellationToken">取消令牌</param>
 		/// <returns>群文件系统操作信息</returns>
 		Task<APIResponse<GroupFileSystemOperationInfo>> CreateGroupFolderAsync(
-			long groupId,
+			ulong groupId,
 			string name,
 			string parentId = "",
 			CancellationToken cancellationToken = default
@@ -617,7 +617,7 @@ namespace Makabaka
 		/// <param name="cancellationToken">取消令牌</param>
 		/// <returns>群文件系统操作信息</returns>
 		Task<APIResponse<GroupFileSystemOperationInfo>> DeleteGroupFolderAsync(
-			long groupId,
+			ulong groupId,
 			string folderId,
 			CancellationToken cancellationToken = default
 			);
@@ -631,7 +631,7 @@ namespace Makabaka
 		/// <param name="cancellationToken">取消令牌</param>
 		/// <returns>群文件系统操作信息</returns>
 		Task<APIResponse<GroupFileSystemOperationInfo>> RenameGroupFolderAsync(
-			long groupId,
+			ulong groupId,
 			string folderId,
 			string newFolderName,
 			CancellationToken cancellationToken = default
@@ -646,7 +646,7 @@ namespace Makabaka
 		/// <param name="cancellationToken">取消令牌</param>
 		/// <returns>上传私聊文件异步任务</returns>
 		Task<APIResponse> UploadPrivateFileAsync(
-			long userId,
+			ulong userId,
 			string file,
 			string? name = null,
 			CancellationToken cancellationToken = default
@@ -685,7 +685,7 @@ namespace Makabaka
 		/// <param name="cancellationToken">取消令牌</param>
 		/// <returns></returns>
 		Task<APIResponse> DeleteGroupNoticeAsync(
-			long groupId,
+			ulong groupId,
 			string noticeId,
 			CancellationToken cancellationToken = default
 			);
@@ -697,7 +697,7 @@ namespace Makabaka
 		/// <param name="cancellationToken">取消令牌</param>
 		/// <returns>群公告信息列表</returns>
 		Task<APIResponse<GroupNoticeInfo[]>> GetGroupNoticeAsync(
-			long groupId,
+			ulong groupId,
 			CancellationToken cancellationToken = default
 			);
 
@@ -709,9 +709,9 @@ namespace Makabaka
 		/// <param name="enable">是否启用</param>
 		/// <param name="cancellationToken">取消令牌</param>
 		/// <returns>机器人 ID</returns>
-		Task<APIResponse<long>> SetGroupBotAsync(
-			long groupId,
-			long botId,
+		Task<APIResponse<ulong>> SetGroupBotAsync(
+			ulong groupId,
+			ulong botId,
 			uint enable,
 			CancellationToken cancellationToken = default
 			);
@@ -725,9 +725,9 @@ namespace Makabaka
 		/// <param name="data_2">参数2</param>
 		/// <param name="cancellationToken">取消令牌</param>
 		/// <returns>机器人 ID</returns>
-		Task<APIResponse<long>> SendGroupBotCallbackAsync(
-			long groupId,
-			long botId,
+		Task<APIResponse<ulong>> SendGroupBotCallbackAsync(
+			ulong groupId,
+			ulong botId,
 			string? data_1 = null,
 			string? data_2 = null,
 			CancellationToken cancellationToken = default
@@ -742,7 +742,7 @@ namespace Makabaka
 		/// <param name="cancellationToken">取消令牌</param>
 		/// <returns>公告 ID</returns>
 		Task<APIResponse<string>> CreateGroupNoticeAsync(
-			long groupId,
+			ulong groupId,
 			string content,
 			string? image = null,
 			CancellationToken cancellationToken = default
@@ -761,7 +761,7 @@ namespace Makabaka
 		/// <param name="cancellationToken">取消令牌</param>
 		/// <returns></returns>
 		Task<APIResponse> SetGroupPortraitAsync(
-			long groupId,
+			ulong groupId,
 			string file,
 			CancellationToken cancellationToken = default
 			);
@@ -773,7 +773,7 @@ namespace Makabaka
 		/// <param name="cancellationToken">取消令牌</param>
 		/// <returns></returns>
 		Task<APIResponse> DeleteEssenceMessageAsync(
-			long messageId,
+			ulong messageId,
 			CancellationToken cancellationToken = default
 			);
 
@@ -784,7 +784,7 @@ namespace Makabaka
 		/// <param name="cancellationToken">取消令牌</param>
 		/// <returns></returns>
 		Task<APIResponse> PokeFriendAsync(
-			long userId,
+			ulong userId,
 			CancellationToken cancellationToken = default
 			);
 
@@ -795,7 +795,7 @@ namespace Makabaka
 		/// <param name="cancellationToken">取消令牌</param>
 		/// <returns>精华消息列表</returns>
 		Task<APIResponse<EssenceMessageSegment[]>> GetGroupEssenceMessageListAsync(
-			long groupId,
+			ulong groupId,
 			CancellationToken cancellationToken = default
 			);
 
@@ -808,8 +808,8 @@ namespace Makabaka
 		/// <param name="cancellationToken">取消令牌</param>
 		/// <returns>好友消息信息</returns>
 		Task<APIResponse<PrivateMessagesInfo>> GetFriendMessageHistoryAsync(
-			long userId,
-			long messageId,
+			ulong userId,
+			ulong messageId,
 			uint count,
 			CancellationToken cancellationToken = default
 			);
@@ -823,8 +823,8 @@ namespace Makabaka
 		/// <param name="cancellationToken">取消令牌</param>
 		/// <returns>群聊消息信息</returns>
 		Task<APIResponse<GroupMessagesInfo>> GetGroupMessageHistoryAsync(
-			long groupId,
-			long messageId,
+			ulong groupId,
+			ulong messageId,
 			uint count,
 			CancellationToken cancellationToken = default
 			);
@@ -862,8 +862,8 @@ namespace Makabaka
 		/// <param name="cancellationToken">取消令牌</param>
 		/// <returns></returns>
 		Task<APIResponse> PokeGroupMemberAsync(
-			long userId,
-			long groupId,
+			ulong userId,
+			ulong groupId,
 			CancellationToken cancellationToken = default
 			);
 
@@ -874,7 +874,7 @@ namespace Makabaka
 		/// <param name="cancellationToken">取消令牌</param>
 		/// <returns></returns>
 		Task<APIResponse> MarkMessageAsReadAsync(
-			long messageId,
+			ulong messageId,
 			CancellationToken cancellationToken = default
 			);
 
@@ -897,7 +897,7 @@ namespace Makabaka
 		/// <param name="cancellationToken">取消令牌</param>
 		/// <returns>转发消息 ID</returns>
 		Task<APIResponse<string>> SendGroupForwardMessageAsync(
-			long groupId,
+			ulong groupId,
 			Message messages,
 			CancellationToken cancellationToken = default
 			);
@@ -914,8 +914,8 @@ namespace Makabaka
 		Task<APIResponse<MessageIdInfo>> SendMessageAsync(
 			MessageEventType messageType,
 			Message message,
-			long userId = 0,
-			long groupId = 0,
+			ulong userId = 0,
+			ulong groupId = 0,
 			CancellationToken cancellationToken = default
 			);
 
@@ -927,7 +927,7 @@ namespace Makabaka
 		/// <param name="cancellationToken">取消令牌</param>
 		/// <returns>转发消息 ID</returns>
 		Task<APIResponse<string>> SendPrivateForwardMessageAsync(
-			long userId,
+			ulong userId,
 			Message messages,
 			CancellationToken cancellationToken = default
 			);
@@ -939,7 +939,7 @@ namespace Makabaka
 		/// <param name="cancellationToken">取消令牌</param>
 		/// <returns></returns>
 		Task<APIResponse> SetEssenceMessageAsync(
-			long messageId,
+			ulong messageId,
 			CancellationToken cancellationToken = default
 			);
 	}

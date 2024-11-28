@@ -5,7 +5,7 @@
 	/// </summary>
 	/// <param name="GroupId">群号</param>
 	public record class GroupIdRequestParams(
-		long GroupId
+		ulong GroupId
 		)
 	{
 	}

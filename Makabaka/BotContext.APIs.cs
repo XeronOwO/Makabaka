@@ -84,7 +84,7 @@ namespace Makabaka
 		}
 
 		public Task<APIResponse<MessageIdInfo>> SendPrivateMessageAsync(
-			long userId,
+			ulong userId,
 			Message message,
 			CancellationToken cancellationToken = default
 			)
@@ -97,7 +97,7 @@ namespace Makabaka
 		}
 
 		public Task<APIResponse<MessageIdInfo>> SendGroupMessageAsync(
-			long groupId,
+			ulong groupId,
 			Message message,
 			CancellationToken cancellationToken = default
 			)
@@ -122,7 +122,7 @@ namespace Makabaka
 		}
 
 		public Task<APIResponse> RevokeMessageAsync(
-			long messageId,
+			ulong messageId,
 			CancellationToken cancellationToken = default
 			)
 		{
@@ -134,7 +134,7 @@ namespace Makabaka
 		}
 
 		public Task<APIResponse<MessageInfo>> GetMessageAsync(
-			long messageId,
+			ulong messageId,
 			CancellationToken cancellationToken = default
 			)
 		{
@@ -158,7 +158,7 @@ namespace Makabaka
 		}
 
 		public Task<APIResponse> SendLikeAsync(
-			long userId,
+			ulong userId,
 			int times = 1,
 			CancellationToken cancellationToken = default
 			)
@@ -171,8 +171,8 @@ namespace Makabaka
 		}
 
 		public Task<APIResponse> KickGroupMemberAsync(
-			long groupId,
-			long userId,
+			ulong groupId,
+			ulong userId,
 			bool rejectAddRequest = false,
 			CancellationToken cancellationToken = default
 			)
@@ -185,8 +185,8 @@ namespace Makabaka
 		}
 
 		public Task<APIResponse> MuteGroupMemberAsync(
-			long groupId,
-			long userId,
+			ulong groupId,
+			ulong userId,
 			int duration = 30 * 60,
 			CancellationToken cancellationToken = default
 			)
@@ -199,7 +199,7 @@ namespace Makabaka
 		}
 
 		public Task<APIResponse> MuteGroupAnonymousMemberAsync(
-			long groupId,
+			ulong groupId,
 			GroupMessageAnonymousSenderInfo? anonymous = null,
 			string? anonymousFlag = null,
 			string? flag = null,
@@ -215,7 +215,7 @@ namespace Makabaka
 		}
 
 		public Task<APIResponse> MuteGroupAsync(
-			long groupId,
+			ulong groupId,
 			bool enable = true,
 			CancellationToken cancellationToken = default
 			)
@@ -228,8 +228,8 @@ namespace Makabaka
 		}
 
 		public Task<APIResponse> SetGroupAdminAsync(
-			long groupId,
-			long userId,
+			ulong groupId,
+			ulong userId,
 			bool enable = true,
 			CancellationToken cancellationToken = default
 			)
@@ -242,7 +242,7 @@ namespace Makabaka
 		}
 
 		public Task<APIResponse> SetGroupAnonymousAsync(
-			long groupId,
+			ulong groupId,
 			bool enable = true,
 			CancellationToken cancellationToken = default
 			)
@@ -255,8 +255,8 @@ namespace Makabaka
 		}
 
 		public Task<APIResponse> SetGroupMemberCardAsync(
-			long groupId,
-			long userId,
+			ulong groupId,
+			ulong userId,
 			string? card = null,
 			CancellationToken cancellationToken = default
 			)
@@ -269,7 +269,7 @@ namespace Makabaka
 		}
 
 		public Task<APIResponse> SetGroupNameAsync(
-			long groupId,
+			ulong groupId,
 			string groupName,
 			CancellationToken cancellationToken = default
 			)
@@ -282,7 +282,7 @@ namespace Makabaka
 		}
 
 		public Task<APIResponse> LeaveGroupAsync(
-			long groupId,
+			ulong groupId,
 			bool isDismiss = false,
 			CancellationToken cancellationToken = default
 			)
@@ -295,8 +295,8 @@ namespace Makabaka
 		}
 
 		public Task<APIResponse> SetGroupMemberTitleAsync(
-			long groupId,
-			long userId,
+			ulong groupId,
+			ulong userId,
 			string? specialTitle = null,
 			int duration = -1,
 			CancellationToken cancellationToken = default
@@ -350,7 +350,7 @@ namespace Makabaka
 		}
 
 		public Task<APIResponse<StrangerInfo>> GetStrangerInfoAsync(
-			long userId,
+			ulong userId,
 			bool noCache = false,
 			CancellationToken cancellationToken = default
 			)
@@ -374,7 +374,7 @@ namespace Makabaka
 		}
 
 		public Task<APIResponse<GroupInfo>> GetGroupInfoAsync(
-			long groupId,
+			ulong groupId,
 			bool noCache = false,
 			CancellationToken cancellationToken = default
 			)
@@ -398,8 +398,8 @@ namespace Makabaka
 		}
 
 		public Task<APIResponse<GroupMemberInfo>> GetGroupMemberInfoAsync(
-			long groupId,
-			long userId,
+			ulong groupId,
+			ulong userId,
 			bool noCache = false,
 			CancellationToken cancellationToken = default
 			)
@@ -412,7 +412,7 @@ namespace Makabaka
 		}
 
 		public Task<APIResponse<GroupMemberInfo[]>> GetGroupMemberListAsync(
-			long groupId,
+			ulong groupId,
 			CancellationToken cancellationToken = default
 			)
 		{
@@ -424,7 +424,7 @@ namespace Makabaka
 		}
 
 		public Task<APIResponse<GroupHonorInfo>> GetGroupHonorInfoAsync(
-			long groupId,
+			ulong groupId,
 			GetGroupHonorInfoType type = GetGroupHonorInfoType.All,
 			CancellationToken cancellationToken = default
 			)
@@ -565,7 +565,7 @@ namespace Makabaka
 		}
 
 		public Task<APIResponse> UploadGroupFileAsync(
-			long groupId,
+			ulong groupId,
 			string file,
 			string? name = null,
 			string? folder = null,
@@ -580,7 +580,7 @@ namespace Makabaka
 		}
 
 		public Task<APIResponse<GroupFilesInfo>> GetGroupFilesByFolderAsync(
-			long groupId,
+			ulong groupId,
 			string? folderId = null,
 			CancellationToken cancellationToken = default
 			)
@@ -593,7 +593,7 @@ namespace Makabaka
 		}
 
 		public Task<APIResponse<GroupFilesInfo>> GetGroupRootFilesAsync(
-			long groupId,
+			ulong groupId,
 			CancellationToken cancellationToken = default
 			)
 		{
@@ -605,7 +605,7 @@ namespace Makabaka
 		}
 
 		public Task<APIResponse<UrlInfo>> GetGroupFileUrlAsync(
-			long groupId,
+			ulong groupId,
 			string fileId,
 			uint busId,
 			CancellationToken cancellationToken = default
@@ -619,7 +619,7 @@ namespace Makabaka
 		}
 
 		public Task<APIResponse<GroupFileSystemOperationInfo>> MoveGroupFileAsync(
-			long groupId,
+			ulong groupId,
 			string fileId,
 			string parentDirectory,
 			string targetDirectory,
@@ -634,7 +634,7 @@ namespace Makabaka
 		}
 
 		public Task<APIResponse<GroupFileSystemOperationInfo>> DeleteGroupFileAsync(
-			long groupId,
+			ulong groupId,
 			string fileId,
 			CancellationToken cancellationToken = default
 			)
@@ -647,7 +647,7 @@ namespace Makabaka
 		}
 
 		public Task<APIResponse<GroupFileSystemOperationInfo>> CreateGroupFolderAsync(
-			long groupId,
+			ulong groupId,
 			string name,
 			string parentId = "",
 			CancellationToken cancellationToken = default
@@ -661,7 +661,7 @@ namespace Makabaka
 		}
 
 		public Task<APIResponse<GroupFileSystemOperationInfo>> DeleteGroupFolderAsync(
-			long groupId,
+			ulong groupId,
 			string folderId,
 			CancellationToken cancellationToken = default
 			)
@@ -674,7 +674,7 @@ namespace Makabaka
 		}
 
 		public Task<APIResponse<GroupFileSystemOperationInfo>> RenameGroupFolderAsync(
-			long groupId,
+			ulong groupId,
 			string folderId,
 			string newFolderName,
 			CancellationToken cancellationToken = default
@@ -688,7 +688,7 @@ namespace Makabaka
 		}
 
 		public Task<APIResponse> UploadPrivateFileAsync(
-			long userId,
+			ulong userId,
 			string file,
 			string? name = null,
 			CancellationToken cancellationToken = default
@@ -725,7 +725,7 @@ namespace Makabaka
 		}
 
 		public Task<APIResponse> DeleteGroupNoticeAsync(
-			long groupId,
+			ulong groupId,
 			string noticeId,
 			CancellationToken cancellationToken = default
 			)
@@ -738,7 +738,7 @@ namespace Makabaka
 		}
 
 		public Task<APIResponse<GroupNoticeInfo[]>> GetGroupNoticeAsync(
-			long groupId,
+			ulong groupId,
 			CancellationToken cancellationToken = default
 			)
 		{
@@ -749,29 +749,29 @@ namespace Makabaka
 				);
 		}
 
-		public Task<APIResponse<long>> SetGroupBotAsync(
-			long groupId,
-			long botId,
+		public Task<APIResponse<ulong>> SetGroupBotAsync(
+			ulong groupId,
+			ulong botId,
 			uint enable,
 			CancellationToken cancellationToken = default
 			)
 		{
-			return ExecuteAPIAsync<SetGroupBotRequestParams, long>(
+			return ExecuteAPIAsync<SetGroupBotRequestParams, ulong>(
 				"set_group_bot_status",
 				new(groupId, botId, enable),
 				cancellationToken
 				);
 		}
 
-		public Task<APIResponse<long>> SendGroupBotCallbackAsync(
-			long groupId,
-			long botId,
+		public Task<APIResponse<ulong>> SendGroupBotCallbackAsync(
+			ulong groupId,
+			ulong botId,
 			string? data_1 = null,
 			string? data_2 = null,
 			CancellationToken cancellationToken = default
 			)
 		{
-			return ExecuteAPIAsync<SendGroupBotCallbackRequestParams, long>(
+			return ExecuteAPIAsync<SendGroupBotCallbackRequestParams, ulong>(
 				"send_group_bot_callback",
 				new(groupId, botId, data_1, data_2),
 				cancellationToken
@@ -779,7 +779,7 @@ namespace Makabaka
 		}
 
 		public Task<APIResponse<string>> CreateGroupNoticeAsync(
-			long groupId,
+			ulong groupId,
 			string content,
 			string? image = null,
 			CancellationToken cancellationToken = default
@@ -793,7 +793,7 @@ namespace Makabaka
 		}
 
 		public Task<APIResponse> SetGroupPortraitAsync(
-			long groupId,
+			ulong groupId,
 			string file,
 			CancellationToken cancellationToken = default
 			)
@@ -806,7 +806,7 @@ namespace Makabaka
 		}
 
 		public Task<APIResponse> DeleteEssenceMessageAsync(
-			long messageId,
+			ulong messageId,
 			CancellationToken cancellationToken = default
 			)
 		{
@@ -818,7 +818,7 @@ namespace Makabaka
 		}
 
 		public Task<APIResponse> PokeFriendAsync(
-			long userId,
+			ulong userId,
 			CancellationToken cancellationToken = default
 			)
 		{
@@ -830,7 +830,7 @@ namespace Makabaka
 		}
 
 		public Task<APIResponse<EssenceMessageSegment[]>> GetGroupEssenceMessageListAsync(
-			long groupId,
+			ulong groupId,
 			CancellationToken cancellationToken = default
 			)
 		{
@@ -842,8 +842,8 @@ namespace Makabaka
 		}
 
 		public async Task<APIResponse<PrivateMessagesInfo>> GetFriendMessageHistoryAsync(
-			long userId,
-			long messageId,
+			ulong userId,
+			ulong messageId,
 			uint count,
 			CancellationToken cancellationToken = default
 			)
@@ -867,8 +867,8 @@ namespace Makabaka
 		}
 
 		public async Task<APIResponse<GroupMessagesInfo>> GetGroupMessageHistoryAsync(
-			long groupId,
-			long messageId,
+			ulong groupId,
+			ulong messageId,
 			uint count,
 			CancellationToken cancellationToken = default
 			)
@@ -911,8 +911,8 @@ namespace Makabaka
 		}
 
 		public Task<APIResponse> PokeGroupMemberAsync(
-			long userId,
-			long groupId,
+			ulong userId,
+			ulong groupId,
 			CancellationToken cancellationToken = default
 			)
 		{
@@ -924,7 +924,7 @@ namespace Makabaka
 		}
 
 		public Task<APIResponse> MarkMessageAsReadAsync(
-			long messageId,
+			ulong messageId,
 			CancellationToken cancellationToken = default
 			)
 		{
@@ -948,7 +948,7 @@ namespace Makabaka
 		}
 
 		public Task<APIResponse<string>> SendGroupForwardMessageAsync(
-			long groupId,
+			ulong groupId,
 			Message messages,
 			CancellationToken cancellationToken = default
 			)
@@ -963,8 +963,8 @@ namespace Makabaka
 		public Task<APIResponse<MessageIdInfo>> SendMessageAsync(
 			MessageEventType messageType,
 			Message message,
-			long userId = 0,
-			long groupId = 0,
+			ulong userId = 0,
+			ulong groupId = 0,
 			CancellationToken cancellationToken = default
 			)
 		{
@@ -976,7 +976,7 @@ namespace Makabaka
 		}
 
 		public Task<APIResponse<string>> SendPrivateForwardMessageAsync(
-			long userId,
+			ulong userId,
 			Message messages,
 			CancellationToken cancellationToken = default
 			)
@@ -989,7 +989,7 @@ namespace Makabaka
 		}
 
 		public Task<APIResponse> SetEssenceMessageAsync(
-			long messageId,
+			ulong messageId,
 			CancellationToken cancellationToken = default
 			)
 		{

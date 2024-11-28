@@ -7,8 +7,8 @@
 	/// <param name="BotId">机器人 ID</param>
 	/// <param name="Enable">是否启用</param>
 	public record class SetGroupBotRequestParams(
-		long GroupId,
-		long BotId,
+		ulong GroupId,
+		ulong BotId,
 		uint Enable
 		)
 	{

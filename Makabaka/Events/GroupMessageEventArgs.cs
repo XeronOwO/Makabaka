@@ -19,17 +19,17 @@ namespace Makabaka.Events
 		/// <summary>
 		/// 消息 ID
 		/// </summary>
-		public long MessageId { get; set; }
+		public ulong MessageId { get; set; }
 
 		/// <summary>
 		/// 群号
 		/// </summary>
-		public long GroupId { get; set; }
+		public ulong GroupId { get; set; }
 
 		/// <summary>
 		/// 发送者 QQ 号
 		/// </summary>
-		public long UserId { get; set; }
+		public ulong UserId { get; set; }
 
 		/// <summary>
 		/// 匿名信息，如果不是匿名消息则为 null
@@ -49,7 +49,7 @@ namespace Makabaka.Events
 		/// <summary>
 		/// 字体
 		/// </summary>
-		public long Font { get; set; }
+		public ulong Font { get; set; }
 
 		/// <summary>
 		/// 发送人信息

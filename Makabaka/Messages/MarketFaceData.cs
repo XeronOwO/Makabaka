@@ -13,7 +13,7 @@
 		/// <summary>
 		/// 表情包 ID
 		/// </summary>
-		public long EmojiPackageId { get; set; }
+		public ulong EmojiPackageId { get; set; }
 
 		/// <summary>
 		/// 表情 ID

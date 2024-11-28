@@ -8,21 +8,21 @@
 		/// <summary>
 		/// 群号
 		/// </summary>
-		public long GroupId { get; set; }
+		public ulong GroupId { get; set; }
 
 		/// <summary>
 		/// 消息发送者 QQ 号
 		/// </summary>
-		public long UserId { get; set; }
+		public ulong UserId { get; set; }
 
 		/// <summary>
 		/// 操作者 QQ 号
 		/// </summary>
-		public long OperatorId { get; set; }
+		public ulong OperatorId { get; set; }
 
 		/// <summary>
 		/// 被撤回的消息 ID
 		/// </summary>
-		public long MessageId { get; set; }
+		public ulong MessageId { get; set; }
 	}
 }

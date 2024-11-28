@@ -8,7 +8,7 @@
 		/// <summary>
 		/// 群号
 		/// </summary>
-		public long GroupId { get; set; }
+		public ulong GroupId { get; set; }
 
 		/// <summary>
 		/// 群名称

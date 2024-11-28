@@ -7,7 +7,7 @@
 	/// <param name="Content">内容</param>
 	/// <param name="Image">图片</param>
 	public record class CreateGroupNoticeRequestParams(
-		long GroupId,
+		ulong GroupId,
 		string Content,
 		string? Image = null
 		)

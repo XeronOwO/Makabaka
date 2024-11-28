@@ -10,7 +10,7 @@ namespace Makabaka.Messages
 		/// <summary>
 		/// 发送者 ID
 		/// </summary>
-		public long SenderId { get; set; }
+		public ulong SenderId { get; set; }
 
 		/// <summary>
 		/// 发送者昵称
@@ -25,7 +25,7 @@ namespace Makabaka.Messages
 		/// <summary>
 		/// 操作者 ID
 		/// </summary>
-		public long OperatorId { get; set; }
+		public ulong OperatorId { get; set; }
 
 		/// <summary>
 		/// 操作者昵称
@@ -40,7 +40,7 @@ namespace Makabaka.Messages
 		/// <summary>
 		/// 消息 ID
 		/// </summary>
-		public long MessageId { get; set; }
+		public ulong MessageId { get; set; }
 
 		/// <summary>
 		/// 内容

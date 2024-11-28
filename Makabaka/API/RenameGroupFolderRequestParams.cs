@@ -7,7 +7,7 @@
 	/// <param name="FolderId">文件夹 ID</param>
 	/// <param name="NewFolderName">新文件夹名称</param>
 	public record class RenameGroupFolderRequestParams(
-		long GroupId,
+		ulong GroupId,
 		string FolderId,
 		string NewFolderName
 		)

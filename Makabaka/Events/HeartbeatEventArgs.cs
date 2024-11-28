@@ -15,6 +15,6 @@ namespace Makabaka.Events
 		/// <summary>
 		/// 到下次心跳的间隔，单位毫秒
 		/// </summary>
-		public long Interval { get; set; }
+		public ulong Interval { get; set; }
 	}
 }

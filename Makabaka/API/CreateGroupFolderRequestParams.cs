@@ -7,7 +7,7 @@
 	/// <param name="Name">文件夹名称</param>
 	/// <param name="ParentId">父级文件夹 ID</param>
 	public record class CreateGroupFolderRequestParams(
-		long GroupId,
+		ulong GroupId,
 		string Name,
 		string ParentId = ""
 		)

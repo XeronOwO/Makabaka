@@ -8,7 +8,7 @@ namespace Makabaka.API
 	/// <param name="UserId">用户 ID</param>
 	/// <param name="Messages">转发消息</param>
 	public record class SendPrivateForwardMessageRequestParams(
-		long UserId,
+		ulong UserId,
 		Message Messages
 		) : SendForwardMessageRequestParams(Messages)
 	{

@@ -7,7 +7,7 @@
 	/// <param name="File">文件路径</param>
 	/// <param name="Name">名称</param>
 	public record class UploadPrivateFileRequestParams(
-		long UserId,
+		ulong UserId,
 		string File,
 		string? Name = null
 		)

@@ -10,7 +10,7 @@ namespace Makabaka.Models
 		/// <summary>
 		/// 群号
 		/// </summary>
-		public long GroupId { get; set; }
+		public ulong GroupId { get; set; }
 
 		/// <summary>
 		/// 文件夹 ID
@@ -30,7 +30,7 @@ namespace Makabaka.Models
 		/// <summary>
 		/// 创建者
 		/// </summary>
-		public long Creator { get; set; }
+		public ulong Creator { get; set; }
 
 		/// <summary>
 		/// 创建者名称

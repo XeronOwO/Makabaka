@@ -16,7 +16,7 @@ namespace Makabaka.Messages
 	[Segment(SegmentType.MarketFace)]
 	public class MarketFaceSegment(
 		string url,
-		long emojiPackageId,
+		ulong emojiPackageId,
 		string emojiId,
 		string key,
 		string summary = "[动画表情]"

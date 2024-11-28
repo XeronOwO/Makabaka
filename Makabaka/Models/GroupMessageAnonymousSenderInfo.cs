@@ -8,7 +8,7 @@
 		/// <summary>
 		/// 匿名用户 ID
 		/// </summary>
-		public long Id { get; set; }
+		public ulong Id { get; set; }
 
 		/// <summary>
 		/// 匿名用户名称

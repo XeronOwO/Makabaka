@@ -11,7 +11,7 @@ namespace Makabaka.Models
 		/// <summary>
 		/// 群号
 		/// </summary>
-		public long GroupId { get; set; }
+		public ulong GroupId { get; set; }
 
 		/// <summary>
 		/// 文件 ID
@@ -57,7 +57,7 @@ namespace Makabaka.Models
 		/// <summary>
 		/// 上传者
 		/// </summary>
-		public long Uploader { get; set; }
+		public ulong Uploader { get; set; }
 
 		/// <summary>
 		/// 上传者名称

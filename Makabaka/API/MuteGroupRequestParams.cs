@@ -6,7 +6,7 @@
 	/// <param name="GroupId">群号</param>
 	/// <param name="Enable">是否禁言</param>
 	public record class MuteGroupRequestParams(
-		long GroupId,
+		ulong GroupId,
 		bool Enable = true
 		)
 	{

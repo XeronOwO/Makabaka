@@ -10,7 +10,7 @@ namespace Makabaka.Events
 		/// <summary>
 		/// 群号
 		/// </summary>
-		public long GroupId { get; set; }
+		public ulong GroupId { get; set; }
 
 		/// <summary>
 		/// 荣誉类型，分别表示龙王、群聊之火、快乐源泉
@@ -20,6 +20,6 @@ namespace Makabaka.Events
 		/// <summary>
 		/// 成员 QQ 号
 		/// </summary>
-		public long UserId { get; set; }
+		public ulong UserId { get; set; }
 	}
 }

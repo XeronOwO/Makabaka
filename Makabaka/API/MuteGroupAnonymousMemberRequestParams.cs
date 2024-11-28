@@ -11,7 +11,7 @@ namespace Makabaka.API
 	/// <param name="Flag">可选，要禁言的匿名用户的 flag（需从群消息上报的数据中获得）</param>
 	/// <param name="Duration">禁言时长，单位秒，无法取消匿名用户禁言</param>
 	public record class MuteGroupAnonymousMemberRequestParams(
-		long GroupId,
+		ulong GroupId,
 		GroupMessageAnonymousSenderInfo? Anonymous = null,
 		string? AnonymousFlag = null,
 		string? Flag = null,

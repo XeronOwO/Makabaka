@@ -6,7 +6,7 @@
 	/// <param name="GroupId">群号</param>
 	/// <param name="Enable">是否允许匿名聊天</param>
 	public record class SetGroupAnonymousRequestParams(
-		long GroupId,
+		ulong GroupId,
 		bool Enable = true
 		)
 	{

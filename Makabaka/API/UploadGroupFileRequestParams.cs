@@ -8,7 +8,7 @@
 	/// <param name="Name">名称</param>
 	/// <param name="Folder">文件夹</param>
 	public record class UploadGroupFileRequestParams(
-		long GroupId,
+		ulong GroupId,
 		string File,
 		string? Name = null,
 		string? Folder = null

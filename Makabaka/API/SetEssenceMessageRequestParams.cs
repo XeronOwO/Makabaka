@@ -5,7 +5,7 @@
 	/// </summary>
 	/// <param name="MessageId">消息 ID</param>
 	public record class SetEssenceMessageRequestParams(
-		long MessageId
+		ulong MessageId
 		)
 	{
 	}

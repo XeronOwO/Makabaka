@@ -28,7 +28,7 @@ namespace Makabaka.Utils
 		{
 			var localDateTime = value;
 			var utcDateTime = TimeZoneInfo.ConvertTimeToUtc(localDateTime, TimeZoneInfo.Local);
-			var timestamp = (long)(utcDateTime - DateTime.UnixEpoch).TotalSeconds;
+			var timestamp = (ulong)(utcDateTime - DateTime.UnixEpoch).TotalSeconds;
 			writer.WriteNumberValue(timestamp);
 		}
 	}

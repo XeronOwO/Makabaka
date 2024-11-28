@@ -11,7 +11,7 @@
 	/// - Base64 编码，例如 base64://iVBORw0KGgoAAAANSUhEUgAAABQAAAAVCAIAAADJt1n/AAAAKElEQVQ4EWPk5+RmIBcwkasRpG9UM4mhNxpgowFGMARGEwnBIEJVAAAdBgBNAZf+QAAAAABJRU5ErkJggg==
 	/// </param>
 	public record class SetGroupPortraitRequestParams(
-		long GroupId,
+		ulong GroupId,
 		string File
 		)
 	{

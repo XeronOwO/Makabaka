@@ -13,16 +13,16 @@
 		/// <summary>
 		/// 群号
 		/// </summary>
-		public long GroupId { get; set; }
+		public ulong GroupId { get; set; }
 
 		/// <summary>
 		/// 操作者 QQ 号
 		/// </summary>
-		public long OperatorId { get; set; }
+		public ulong OperatorId { get; set; }
 
 		/// <summary>
 		/// 加入者 QQ 号
 		/// </summary>
-		public long UserId { get; set; }
+		public ulong UserId { get; set; }
 	}
 }

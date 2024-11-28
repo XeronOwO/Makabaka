@@ -5,7 +5,7 @@
 	/// </summary>
 	/// <param name="UserId">用户 ID</param>
 	public record class FriendPokeRequestParams(
-		long UserId
+		ulong UserId
 		)
 	{
 	}

@@ -6,7 +6,7 @@
 	/// <param name="GroupId">群号</param>
 	/// <param name="FileId">文件 ID</param>
 	public record class DeleteGroupFileRequestParams(
-		long GroupId,
+		ulong GroupId,
 		string FileId
 		)
 	{

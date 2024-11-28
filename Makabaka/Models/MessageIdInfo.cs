@@ -8,6 +8,6 @@
 		/// <summary>
 		/// 消息 ID
 		/// </summary>
-		public long MessageId { get; set; }
+		public ulong MessageId { get; set; }
 	}
 }

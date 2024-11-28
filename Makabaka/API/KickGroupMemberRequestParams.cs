@@ -7,8 +7,8 @@
 	/// <param name="UserId">要踢的 QQ 号</param>
 	/// <param name="RejectAddRequest">拒绝此人的加群请求</param>
 	public record class KickGroupMemberRequestParams(
-		long GroupId,
-		long UserId,
+		ulong GroupId,
+		ulong UserId,
 		bool RejectAddRequest = false
 		)
 	{

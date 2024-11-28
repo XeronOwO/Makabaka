@@ -8,6 +8,6 @@
 		/// <summary>
 		/// 新添加好友 QQ 号
 		/// </summary>
-		public long UserId { get; set; }
+		public ulong UserId { get; set; }
 	}
 }

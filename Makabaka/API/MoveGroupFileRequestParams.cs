@@ -8,7 +8,7 @@
 	/// <param name="ParentDirectory">原文件夹</param>
 	/// <param name="TargetDirectory">目标文件夹</param>
 	public record class MoveGroupFileRequestParams(
-		long GroupId,
+		ulong GroupId,
 		string FileId,
 		string ParentDirectory,
 		string TargetDirectory

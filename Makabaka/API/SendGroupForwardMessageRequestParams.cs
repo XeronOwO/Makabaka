@@ -8,7 +8,7 @@ namespace Makabaka.API
 	/// <param name="GroupId">群号</param>
 	/// <param name="Messages">转发消息</param>
 	public record class SendGroupForwardMessageRequestParams(
-		long GroupId,
+		ulong GroupId,
 		Message Messages
 		) : SendForwardMessageRequestParams(Messages)
 	{

@@ -13,8 +13,8 @@ namespace Makabaka.API
 	public record class SendMessageRequestParams(
 		MessageEventType MessageType,
 		Message Message,
-		long UserId = 0,
-		long GroupId = 0
+		ulong UserId = 0,
+		ulong GroupId = 0
 		)
 	{
 	}

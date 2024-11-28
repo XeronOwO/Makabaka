@@ -13,21 +13,21 @@
 		/// <summary>
 		/// 群号
 		/// </summary>
-		public long GroupId { get; set; }
+		public ulong GroupId { get; set; }
 
 		/// <summary>
 		/// 操作者 QQ 号
 		/// </summary>
-		public long OperatorId { get; set; }
+		public ulong OperatorId { get; set; }
 
 		/// <summary>
 		/// 被禁言 QQ 号
 		/// </summary>
-		public long UserId { get; set; }
+		public ulong UserId { get; set; }
 
 		/// <summary>
 		/// 禁言时长，单位秒
 		/// </summary>
-		public long Duration { get; set; }
+		public ulong Duration { get; set; }
 	}
 }

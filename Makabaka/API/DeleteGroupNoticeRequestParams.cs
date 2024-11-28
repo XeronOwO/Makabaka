@@ -6,7 +6,7 @@
 	/// <param name="GroupId">群号</param>
 	/// <param name="NoticeId">公告 ID</param>
 	public record class DeleteGroupNoticeRequestParams(
-		long GroupId,
+		ulong GroupId,
 		string NoticeId
 		)
 	{

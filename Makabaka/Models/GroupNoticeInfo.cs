@@ -15,7 +15,7 @@ namespace Makabaka.Models
 		/// <summary>
 		/// 发送者 ID
 		/// </summary>
-		public long SenderId { get; set; }
+		public ulong SenderId { get; set; }
 
 		/// <summary>
 		/// 发送时间

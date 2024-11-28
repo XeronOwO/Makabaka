@@ -6,7 +6,7 @@
 	/// <param name="GroupId">群号</param>
 	/// <param name="Type">要获取的群荣誉类型</param>
 	public record class GetGroupHonorInfoRequestParams(
-		long GroupId,
+		ulong GroupId,
 		GetGroupHonorInfoType Type
 		)
 	{

@@ -7,8 +7,8 @@
 	/// <param name="MessageId">基准消息 ID</param>
 	/// <param name="Count">消息数量</param>
 	public record class GetGroupMessageHistoryRequestParams(
-		long GroupId,
-		long MessageId,
+		ulong GroupId,
+		ulong MessageId,
 		uint Count
 		)
 	{

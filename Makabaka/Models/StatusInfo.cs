@@ -38,6 +38,6 @@
 		/// <summary>
 		/// 内存
 		/// </summary>
-		public long Memory { get; set; }
+		public ulong Memory { get; set; }
 	}
 }

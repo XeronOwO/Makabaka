@@ -9,7 +9,7 @@ namespace Makabaka.API
 	/// <param name="FileId">文件 ID</param>
 	/// <param name="BusId">BusId</param>
 	public record class GetGroupFileUrlRequestParams(
-		long GroupId,
+		ulong GroupId,
 		string FileId,
 		[property: JsonPropertyName("busid")] uint BusId
 		)

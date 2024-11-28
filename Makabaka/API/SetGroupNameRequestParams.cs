@@ -6,7 +6,7 @@
 	/// <param name="GroupId">群号</param>
 	/// <param name="GroupName">新群名</param>
 	public record class SetGroupNameRequestParams(
-		long GroupId,
+		ulong GroupId,
 		string GroupName
 		)
 	{

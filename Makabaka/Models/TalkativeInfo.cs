@@ -8,7 +8,7 @@
 		/// <summary>
 		/// QQ 号
 		/// </summary>
-		public long Uin { get; set; }
+		public ulong Uin { get; set; }
 
 		/// <summary>
 		/// 昵称
