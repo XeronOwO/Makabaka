@@ -11,5 +11,10 @@
 		/// ✔ 发
 		/// </summary>
 		public string Id { get; set; } = string.Empty;
+
+		/// <summary>
+		/// [Lagrange拓展] 是否是大表情
+		/// </summary>
+		public bool IsLarge { get; set; } = false;
 	}
 }
