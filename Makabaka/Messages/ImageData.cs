@@ -1,4 +1,6 @@
-﻿namespace Makabaka.Messages
+﻿using System.Text.Json.Serialization;
+
+namespace Makabaka.Messages
 {
 	/// <summary>
 	/// 图片数据
@@ -44,6 +46,7 @@
 		/// ✔ 收<br/>
 		/// ✔ 发
 		/// </summary>
+		[JsonPropertyName("subType")]
 		public int SubType { get; set; }
 	}
 }
