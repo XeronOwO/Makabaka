@@ -18,6 +18,6 @@ namespace Makabaka.Messages
 		/// [Lagrange拓展] 是否是大表情
 		/// </summary>
 		[JsonPropertyName("large")]
-		public bool IsLarge { get; set; } = false;
+		public bool? IsLarge { get; set; }
 	}
 }
